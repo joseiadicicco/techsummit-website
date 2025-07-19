@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardano Tech Summit 2025 LATAM</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #F9FAFB; /* text-gray-50 */
+        }
+        .hero-video-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 51, 173, 0.7), 0 0 20px rgba(0, 51, 173, 0.5);
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 25px rgba(0, 51, 173, 0.4), 0 0 40px rgba(79, 70, 229, 0.3);
+        }
+        .speaker-card {
+            border: 1px solid #374151;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .speaker-card:hover {
+            border-color: #0033AD;
+            box-shadow: 0 0 15px rgba(0, 51, 173, 0.5);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 4px;
+        }
+        .calendar-day {
+            aspect-ratio: 1/1;
+        }
+        .track-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .track-card:hover {
+            transform: scale(1.03);
+            border-color: #22d3ee; /* cyan-400 */
+        }
+        .golden-ticket-bg {
+            background: linear-gradient(135deg, #fde047, #facc15, #eab308, #d97706);
+        }
+        
+        /* CORRECTED MODAL STYLES using <dialog> */
+        #vip-modal {
+            background: transparent;
+            border: none;
+            max-width: 24rem; /* sm */
+            width: 100%;
+            padding: 0;
+            box-shadow: none;
+        }
+        #vip-modal::backdrop {
+            background: rgba(17, 24, 39, 0.8); /* bg-gray-900 with opacity */
+            backdrop-filter: blur(4px);
+        }
+        /* Animation for dialog */
+        #vip-modal[open] {
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-50">
+
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">
+                <span class="text-cyan-400">TechSummit</span><span class="font-light">.lat</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#cities" class="hover:text-cyan-400 transition-colors" data-key="nav_venues">Venues</a>
+                <a href="#speakers" class="hover:text-cyan-400 transition-colors" data-key="nav_speakers">Speakers</a>
+                <a href="#sponsors" class="hover:text-cyan-400 transition-colors" data-key="nav_sponsors">Sponsors</a>
+                <a href="#team" class="hover:text-cyan-400 transition-colors" data-key="nav_team">Team</a>
+            </div>
+            <div class="relative">
+                <button id="lang-menu-button" class="flex items-center space-x-2 border border-gray-700 px-3 py-2 rounded-md hover:bg-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.002 6.002 0 0111.336 0H4.332zM15.668 11.973A6.002 6.002 0 014.332 11.973h11.336z" clip-rule="evenodd" /></svg>
+                    <span id="current-lang">EN</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="lang-menu" class="hidden absolute right-0 mt-2 w-32 bg-gray-800 rounded-md shadow-lg py-1 z-10">
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="en">English</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="es">Español</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="pt">Português</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main-content-container">
+        <main>
+            <section class="relative h-screen flex items-center justify-center text-center hero-video-overlay overflow-hidden">
+                <video autoplay loop muted playsinline class="absolute z-0 w-auto min-w-full min-h-full max-w-none">
+                    <source src="https://placehold.co/1920x1080/000000/FFFFFF/mp4?text=Awesome+Tech+Week+Video" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="relative z-10 px-4">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase text-glow" data-key="hero_title">Cardano Tech Summit</h1>
+                    <p class="text-2xl md:text-4xl font-light text-cyan-300 mt-2" data-key="hero_subtitle">LATAM 2025</p>
+                    <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300" data-key="hero_description">Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.</p>
+                    <div class="mt-8 flex justify-center gap-4">
+                         <a href="#sponsors" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105" data-key="hero_cta_sponsor">Become a Sponsor</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cities" class="py-20 md:py-32 bg-gray-900">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="cities_title">Two Cities, One Epic Summit</h2>
+                    <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="cities_subtitle">We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+                        <div class="bg-gray-800 rounded-2xl overflow-hidden card-glow">
+                            <img src="https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="[Imagen de Río de Janeiro de noche]" class="w-full h-72 object-cover">
+                            <div class="p-8">
+                                <h3 class="text-3xl font-bold mb-2" data-key="rio_city">Rio de Janeiro</h3>
+                                <p class="text-cyan-400 text-xl font-semibold mb-4" data-key="rio_date">October 2025</p>
+                                <p class="text-gray-400" data-key="rio_description">The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.</p>
+                                <div class="mt-6 w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-lg text-center" data-key="rio_details_soon">Details Coming Soon</div>
+                            </div>
+                        </div>
+
+                        <div id="ba-card-link" class="bg-gray-800 rounded-2xl overflow-hidden card-glow cursor-pointer">
+                            <img src="https://images.pexels.com/photos/14331393/pexels-photo-14331393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="[Imagen de Buenos Aires de noche]" class="w-full h-72 object-cover">
+                            <div class="p-8">
+                                <h3 class="text-3xl font-bold mb-2" data-key="ba_city">Buenos Aires</h3>
+                                <p class="text-cyan-400 text-xl font-semibold mb-4" data-key="ba_date">November 2025</p>
+                                <p class="text-gray-400" data-key="ba_description">The grand finale in the passionate capital of Argentina. A deep dive into the local ecosystem, celebrating a year of growth and collaboration.</p>
+                                 <div class="mt-6 w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-center" data-key="ba_details_button">View BA Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="speakers" class="py-20 md:py-28 bg-gray-800/50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="speakers_title">Featured Speakers</h2>
+                    <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="speakers_subtitle">The brilliant minds and leading voices of the Cardano ecosystem shaping the future of blockchain.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="https://placehold.co/200x200/06B6D4/FFFFFF?text=S1" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700" alt="Speaker 1"> <h3 class="text-xl font-bold text-white">Speaker Name</h3> <p class="text-cyan-400 mb-2" data-key="speaker_1_title">CEO of a Great Project</p> <p class="text-sm text-gray-400" data-key="speaker_1_bio">Pioneering Plutus V3 applications and decentralized governance.</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="https://placehold.co/200x200/06B6D4/FFFFFF?text=S2" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700" alt="Speaker 2"> <h3 class="text-xl font-bold text-white">Another Speaker</h3> <p class="text-cyan-400 mb-2" data-key="speaker_2_title">Core Developer, IOG</p> <p class="text-sm text-gray-400" data-key="speaker_2_bio">Expert in Hydra and scaling solutions for the Cardano network.</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="https://placehold.co/200x200/06B6D4/FFFFFF?text=S3" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700" alt="Speaker 3"> <h3 class="text-xl font-bold text-white">Third Speaker</h3> <p class="text-cyan-400 mb-2" data-key="speaker_3_title">DeFi Architect</p> <p class="text-sm text-gray-400" data-key="speaker_3_bio">Building the next generation of financial products on Cardano.</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="https://placehold.co/200x200/06B6D4/FFFFFF?text=S4" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700" alt="Speaker 4"> <h3 class="text-xl font-bold text-white">Fourth Speaker</h3> <p class="text-cyan-400 mb-2" data-key="speaker_4_title">NFT Artist & Visionary</p> <p class="text-sm text-gray-400" data-key="speaker_4_bio">Exploring the frontiers of digital identity and art on the blockchain.</p> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sponsors" class="py-20 md:py-28 bg-gray-900">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="sponsors_title">Our Valued Sponsors</h2>
+                    <p class="text-center text-lg text-gray-400 mb-16" data-key="sponsors_subtitle">Powering the future of decentralization in LATAM.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+                        <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor+1" alt="Sponsor 1 Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div> <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor+2" alt="Sponsor 2 Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div> <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor+3" alt="Sponsor 3 Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div> <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor+4" alt="Sponsor 4 Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div> <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor+5" alt="Sponsor 5 Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="team" class="py-20 md:py-32 bg-gray-800/50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="team_title">Meet the Organizing Team</h2>
+                    <p class="text-center text-lg text-gray-400 mb-16" data-key="team_subtitle">The passionate individuals bringing this summit to life.</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
+                        <div><img src="https://placehold.co/200x200/0033AD/FFFFFF?text=K" alt="Kehua" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700"><h3 class="text-xl font-bold">Kehua</h3><p class="text-cyan-400" data-key="team_role">Organizer</p></div>
+                        <div><img src="https://placehold.co/200x200/0033AD/FFFFFF?text=S" alt="Sabrina" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700"><h3 class="text-xl font-bold">Sabrina</h3><p class="text-cyan-400" data-key="team_role_2">Organizer</p></div>
+                        <div><img src="https://placehold.co/200x200/0033AD/FFFFFF?text=J" alt="Jose" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700"><h3 class="text-xl font-bold">Jose</h3><p class="text-cyan-400" data-key="team_role_3">Organizer</p></div>
+                        <div><img src="https://placehold.co/200x200/0033AD/FFFFFF?text=Y" alt="Yen" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700"><h3 class="text-xl font-bold">Yen</h3><p class="text-cyan-400" data-key="team_role_4">Organizer</p></div>
+                        <div><img src="https://placehold.co/200x200/0033AD/FFFFFF?text=N" alt="Nicolas" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700"><h3 class="text-xl font-bold">Nicolas</h3><p class="text-cyan-400" data-key="team_role_5">Organizer</p></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-gray-900">
+            <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+                <p>&copy; 2025 Cardano Tech Summit LATAM. All Rights Reserved.</p>
+                <p class="text-sm mt-2" data-key="footer_made_with_love">An event by the community, for the community.</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="buenos-aires-details" class="hidden">
+        <section class="py-20 md:py-28 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <button id="back-to-main" class="mb-8 inline-flex items-center text-cyan-400 hover:text-cyan-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span data-key="back_to_summit">Back to Main Summit</span>
+                </button>
+
+                <h2 class="text-4xl md:text-6xl font-bold text-center mb-4 text-glow" data-key="ba_experience_title">The Buenos Aires Experience</h2>
+                <p class="text-center text-lg text-gray-400 mb-16 max-w-3xl mx-auto" data-key="ba_experience_subtitle">An immersive week of learning, building, and competition. Prepare for the ultimate Cardano developer challenge.</p>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="bg-gray-800 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6" data-key="ba_agenda_title">November 2025 Agenda</h3>
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="text-xl font-semibold">November</h4>
+                                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                                    <div class="flex items-center"><span class="w-4 h-4 bg-indigo-500 rounded-sm mr-2"></span><span data-key="legend_aiken">Aiken Course</span></div>
+                                    <div class="flex items-center"><span class="w-4 h-4 bg-cyan-500 rounded-sm mr-2"></span><span data-key="legend_hackathon">Hackathon</span></div>
+                                    <div class="flex items-center"><span class="w-4 h-4 bg-purple-700 rounded-sm mr-2"></span><span data-key="legend_summit">Cardano Summit</span></div>
+                                    <div class="flex items-center"><span class="w-4 h-4 golden-ticket-bg rounded-sm mr-2"></span><span data-key="legend_vip">VIP Day</span></div>
+                                </div>
+                            </div>
+                            <div id="calendar" class="calendar-grid text-xs text-center font-semibold">
+                                <!-- Calendar is populated by JS -->
+                            </div>
+                        </div>
+                        
+                        <div id="agenda-details">
+                            <h4 class="text-xl font-bold mb-2" data-key="hackathon_title">Hackathon</h4>
+                            <p class="text-gray-400 mb-4" data-key="hackathon_desc">Put your new skills to the test. Compete for prizes, build innovative dApps, and get feedback from Cardano OGs. (Nov 14-15)</p>
+                            
+                            <h4 class="text-xl font-bold mb-2" data-key="summit_title">Cardano LATAM Summit</h4>
+                            <p class="text-gray-400 mb-4" data-key="summit_desc">The main event. A full day of keynotes, technical panels, and ecosystem showcases. (Nov 15)</p>
+
+                            <h4 class="text-xl font-bold mb-2" data-key="vip_title">VIP Day</h4>
+                            <p class="text-gray-400" data-key="vip_desc">An exclusive day for sponsors, speakers, and special guests, featuring high-level networking and strategic roundtables. (Nov 16)</p>
+                            <button id="vip-ticket-button" class="mt-2 text-amber-400 hover:text-amber-300 font-bold" data-key="vip_acquire_ticket">Acquire VIP Ticket</button>
+                        </div>
+
+                    </div>
+
+                    <div class="flex flex-col space-y-8">
+                        <h3 class="text-2xl font-bold text-center" data-key="reg_hub_title">Choose Your Path</h3>
+                        <div class="bg-gray-800 p-6 rounded-2xl border-2 border-cyan-500/50 track-card">
+                            <h4 class="text-xl font-bold text-cyan-400" data-key="track_full_title">Full Experience</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_full_desc">The complete package. Join the intensive Aiken course and then compete in the hackathon.</p>
+                            <button class="register-button w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg" data-track="full" data-key="track_button">Register Now</button>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-2xl border-2 border-gray-700 track-card">
+                            <h4 class="text-xl font-bold" data-key="track_course_title">Aiken Course Only</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_course_desc">Focus on learning. Master smart contracts with our 10-day expert-led bootcamp.</p>
+                            <button class="register-button w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-lg" data-track="course" data-key="track_button_2">Register Now</button>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-2xl border-2 border-gray-700 track-card">
+                            <h4 class="text-xl font-bold" data-key="track_hackathon_title">Hackathon Only</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_hackathon_desc">Ready to build? Jump straight into the 48-hour competition and showcase your skills.</p>
+                            <button class="register-button w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-lg" data-track="hackathon" data-key="track_button_3">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="registration-form-container" class="hidden mt-16 max-w-3xl mx-auto">
+                     <div class="bg-gray-800 p-8 rounded-2xl border border-cyan-500/50">
+                        <h3 id="form-title" class="text-2xl font-bold mb-6 text-center">Registration</h3>
+                        <form id="application-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                            <input type="hidden" id="registration-type" name="registration_type" value="">
+                            
+                            <div class="border-b border-gray-700 pb-6 mb-6">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_personal">Personal Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium text-gray-300" data-key="form_name">Full Name</label>
+                                        <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-300" data-key="form_email">Email Address</label>
+                                        <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-300" data-key="form_phone">Phone Number</label>
+                                        <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500" placeholder="+54 9 11 12345678">
+                                    </div>
+                                    <div>
+                                        <label for="portfolio" class="block text-sm font-medium text-gray-300" data-key="form_portfolio">GitHub / Portfolio URL</label>
+                                        <input type="url" name="portfolio" id="portfolio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-b border-gray-700 pb-6 mb-6">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_technical">Technical Profile</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="study-level" class="block text-sm font-medium text-gray-300" data-key="form_study_level">Level of Study</label>
+                                        <select id="study-level" name="study_level" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                            <option value="student" data-key="option_student">Student</option>
+                                            <option value="professional" data-key="option_professional">Graduate / Professional</option>
+                                            <option value="self_taught" data-key="option_self_taught">Self-taught</option>
+                                            <option value="other" data-key="option_other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="specialty" class="block text-sm font-medium text-gray-300" data-key="form_specialty">Area of Study / Specialty</label>
+                                        <input type="text" name="specialty" id="specialty" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="block text-sm font-medium text-gray-300" data-key="form_skills_title">Technical Skills (select all that apply)</label>
+                                    <div class="mt-2 grid grid-cols-2 gap-2">
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="blockchain" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_blockchain">Blockchain</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="smart_contracts" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_smart_contracts">Smart Contracts</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="frontend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_frontend">Frontend Dev</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="backend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_backend">Backend Dev</span></label>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label for="experience-detail" class="block text-sm font-medium text-gray-300" data-key="form_experience_detail">Please describe your experience with the selected skills</label>
+                                    <textarea id="experience-detail" name="experience_detail" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_commitment">Commitment & Consent</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <input id="availability" name="availability" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
+                                        <div class="ml-3 text-sm">
+                                            <label for="availability" class="font-medium text-gray-300" data-key="form_availability_check">I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
+                                        <div class="ml-3 text-sm">
+                                            <label for="privacy" class="font-medium text-gray-300" data-key="form_privacy_check">I authorize the event organizers to use my personal data for administrative and educational purposes.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8">
+                                <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-lg" data-key="form_submit">Apply Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Corrected Modal using <dialog> -->
+    <dialog id="vip-modal">
+        <div class="relative golden-ticket-bg p-8 rounded-2xl border-4 border-amber-300 shadow-2xl text-center text-gray-900">
+            <button id="close-vip-modal-button" class="absolute top-2 right-2 text-gray-800 hover:text-black p-2 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-3xl font-black uppercase" data-key="vip_modal_title">Golden Ticket</h3>
+            <p class="font-semibold" data-key="vip_modal_subtitle">VIP Access</p>
+            <div class="my-6">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2" alt="[Código QR para pago]" class="mx-auto rounded-lg">
+            </div>
+            <div class="bg-black/20 p-4 rounded-lg mb-4">
+                <p class="text-white font-mono break-words text-sm" data-key="vip_modal_address">addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2</p>
+            </div>
+            <div class="text-left text-gray-800 space-y-2">
+                <p class="font-bold" data-key="vip_modal_instruction_1">1. Send 200 ₳ to the address above.</p>
+                <p class="font-bold" data-key="vip_modal_instruction_2">2. Important: Add your ID and full name in the transaction memo.</p>
+            </div>
+        </div>
+    </dialog>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                en: {
+                    nav_venues: 'Venues', nav_speakers: 'Speakers', nav_sponsors: 'Sponsors', nav_team: 'Team',
+                    hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.', hero_cta_sponsor: 'Become a Sponsor',
+                    cities_title: 'Two Cities, One Epic Summit', cities_subtitle: "We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.",
+                    rio_city: 'Rio de Janeiro', rio_date: 'October 2025', rio_description: 'The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.', rio_details_soon: 'Details Coming Soon',
+                    ba_city: 'Buenos Aires', ba_date: 'November 2025', ba_description: 'The grand finale in the passionate capital of Argentina. A deep dive into the local ecosystem, celebrating a year of growth and collaboration.', ba_details_button: 'View BA Experience',
+                    speakers_title: 'Featured Speakers', speakers_subtitle: 'The brilliant minds and leading voices of the Cardano ecosystem shaping the future of blockchain.',
+                    speaker_1_title: 'CEO of a Great Project', speaker_1_bio: 'Pioneering Plutus V3 applications and decentralized governance.',
+                    speaker_2_title: 'Core Developer, IOG', speaker_2_bio: 'Expert in Hydra and scaling solutions for the Cardano network.',
+                    speaker_3_title: 'DeFi Architect', speaker_3_bio: 'Building the next generation of financial products on Cardano.',
+                    speaker_4_title: 'NFT Artist & Visionary', speaker_4_bio: 'Exploring the frontiers of digital identity and art on the blockchain.',
+                    sponsors_title: 'Our Valued Sponsors', sponsors_subtitle: 'Powering the future of decentralization in LATAM.',
+                    team_title: 'Meet the Organizing Team', team_subtitle: 'The passionate individuals bringing this summit to life.',
+                    team_role: 'Organizer', team_role_2: 'Organizer', team_role_3: 'Organizer', team_role_4: 'Organizer', team_role_5: 'Organizer',
+                    footer_made_with_love: 'An event by the community, for the community.',
+                    back_to_summit: 'Back to Main Summit',
+                    ba_experience_title: 'The Buenos Aires Experience', ba_experience_subtitle: 'An immersive week of learning, building, and competition. Prepare for the ultimate Cardano developer challenge.',
+                    ba_agenda_title: 'November 2025 Agenda', legend_aiken: 'Aiken Course', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'VIP Day',
+                    day_mon: 'MON', day_tue: 'TUE', day_wed: 'WED', day_thu: 'THU', day_fri: 'FRI', day_sat: 'SAT', day_sun: 'SUN',
+                    hackathon_title: 'Hackathon', hackathon_desc: 'Put your new skills to the test. Compete for prizes, build innovative dApps, and get feedback from Cardano OGs. (Nov 14-15)',
+                    summit_title: 'Cardano LATAM Summit', summit_desc: 'The main event. A full day of keynotes, technical panels, and ecosystem showcases. (Nov 15)',
+                    vip_title: 'VIP Day', vip_desc: 'An exclusive day for sponsors, speakers, and special guests, featuring high-level networking and strategic roundtables. (Nov 16)', vip_acquire_ticket: 'Acquire VIP Ticket',
+                    reg_hub_title: 'Choose Your Path',
+                    track_full_title: 'Full Experience', track_full_desc: 'The complete package. Join the intensive Aiken course and then compete in the hackathon.', track_button: 'Register Now',
+                    track_course_title: 'Aiken Course Only', track_course_desc: 'Focus on learning. Master smart contracts with our 10-day expert-led bootcamp.', track_button_2: 'Register Now',
+                    track_hackathon_title: 'Hackathon Only', track_hackathon_desc: 'Ready to build? Jump straight into the 48-hour competition and showcase your skills.', track_button_3: 'Register Now',
+                    form_title_full: 'Registration for Full Experience', form_title_course: 'Registration for Aiken Course', form_title_hackathon: 'Registration for Hackathon',
+                    form_section_personal: 'Personal Information', form_section_technical: 'Technical Profile', form_section_commitment: 'Commitment & Consent',
+                    form_name: 'Full Name', form_email: 'Email Address', form_phone: 'Phone Number', form_portfolio: 'GitHub / Portfolio URL',
+                    form_study_level: 'Level of Study', option_student: 'Student', option_professional: 'Graduate / Professional', option_self_taught: 'Self-taught', option_other: 'Other',
+                    form_specialty: 'Area of Study / Specialty',
+                    form_skills_title: 'Technical Skills (select all that apply)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Frontend Dev', skill_backend: 'Backend Dev',
+                    form_experience_detail: 'Please describe your experience with the selected skills',
+                    form_availability_check: 'I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.',
+                    form_privacy_check: 'I authorize the event organizers to use my personal data for administrative and educational purposes.',
+                    form_submit: 'Apply Now',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_instruction_1: '1. Send 200 ₳ to the address above.', vip_modal_instruction_2: '2. Important: Add your ID and full name in the transaction memo.',
+                },
+                es: {
+                    nav_venues: 'Sedes', nav_speakers: 'Oradores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
+                    hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Basándonos en el éxito de la Cardano Tech Week, nos expandimos por América Latina para conectar, construir e innovar.', hero_cta_sponsor: 'Conviértete en Sponsor',
+                    cities_title: 'Dos Ciudades, Un Summit Épico', cities_subtitle: 'Llevamos el ecosistema de Cardano al corazón de Brasil y Argentina.',
+                    rio_city: 'Río de Janeiro', rio_date: 'Octubre 2025', rio_description: 'La primera parada de nuestro tour LATAM en la vibrante ciudad de Río. Espera networking de alta energía, charlas de tecnología punta y experiencias inolvidables.', rio_details_soon: 'Detalles Próximamente',
+                    ba_city: 'Buenos Aires', ba_date: 'Noviembre 2025', ba_description: 'La gran final en la apasionada capital de Argentina. Una inmersión profunda en el ecosistema local, celebrando un año de crecimiento y colaboración.', ba_details_button: 'Ver Experiencia BA',
+                    speakers_title: 'Oradores Destacados', speakers_subtitle: 'Las mentes brillantes y las voces líderes del ecosistema de Cardano que dan forma al futuro de la blockchain.',
+                    speaker_1_title: 'CEO de un Gran Proyecto', speaker_1_bio: 'Pionero en aplicaciones Plutus V3 y gobernanza descentralizada.',
+                    speaker_2_title: 'Desarrollador Core, IOG', speaker_2_bio: 'Experto en Hydra y soluciones de escalado para la red de Cardano.',
+                    speaker_3_title: 'Arquitecto DeFi', speaker_3_bio: 'Construyendo la próxima generación de productos financieros en Cardano.',
+                    speaker_4_title: 'Artista NFT y Visionario', speaker_4_bio: 'Explorando las fronteras de la identidad digital y el arte en la blockchain.',
+                    sponsors_title: 'Nuestros Valiosos Sponsors', sponsors_subtitle: 'Impulsando el futuro de la descentralización en LATAM.',
+                    team_title: 'Conoce al Equipo Organizador', team_subtitle: 'Las personas apasionadas que dan vida a este summit.',
+                    team_role: 'Organizador', team_role_2: 'Organizadora', team_role_3: 'Organizador', team_role_4: 'Organizadora', team_role_5: 'Organizador',
+                    footer_made_with_love: 'Un evento por la comunidad, para la comunidad.',
+                    back_to_summit: 'Volver al Summit Principal',
+                    ba_experience_title: 'La Experiencia Buenos Aires', ba_experience_subtitle: 'Una semana inmersiva de aprendizaje, construcción y competencia. Prepárate para el desafío definitivo para desarrolladores de Cardano.',
+                    ba_agenda_title: 'Agenda Noviembre 2025', legend_aiken: 'Curso de Aiken', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'Día VIP',
+                    day_mon: 'LUN', day_tue: 'MAR', day_wed: 'MIÉ', day_thu: 'JUE', day_fri: 'VIE', day_sat: 'SÁB', day_sun: 'DOM',
+                    hackathon_title: 'Hackathon', hackathon_desc: 'Pon a prueba tus nuevas habilidades. Compite por premios, construye dApps inovadoras y recibe feedback de los OGs de Cardano. (14-15 Nov)',
+                    summit_title: 'Cardano LATAM Summit', summit_desc: 'El evento principal. Un día completo de keynotes, paneles técnicos y showcases del ecosistema. (15 Nov)',
+                    vip_title: 'Día VIP', vip_desc: 'Un día exclusivo para sponsors, oradores e invitados especiales, con networking de alto nivel y mesas redondas estratégicas. (16 Nov)', vip_acquire_ticket: 'Adquirir Ticket VIP',
+                    reg_hub_title: 'Elige tu Camino',
+                    track_full_title: 'Experiencia Completa', track_full_desc: 'El paquete completo. Únete al curso intensivo de Aiken y luego compite en el hackathon.', track_button: 'Inscribirse Ahora',
+                    track_course_title: 'Solo Curso de Aiken', track_course_desc: 'Enfócate en aprender. Domina los smart contracts con nuestro bootcamp de 10 días.', track_button_2: 'Inscribirse Ahora',
+                    track_hackathon_title: 'Solo Hackathon', track_hackathon_desc: '¿Listo para construir? Salta directamente a la competencia de 48 horas y demuestra tus habilidades.', track_button_3: 'Inscribirse Ahora',
+                    form_title_full: 'Inscripción para Experiencia Completa', form_title_course: 'Inscripción para el Curso de Aiken', form_title_hackathon: 'Inscripción para el Hackathon',
+                    form_section_personal: 'Información Personal', form_section_technical: 'Perfil Técnico', form_section_commitment: 'Compromiso y Consentimiento',
+                    form_name: 'Nombre Completo', form_email: 'Correo Electrónico', form_phone: 'Número de Teléfono', form_portfolio: 'URL de GitHub / Portfolio',
+                    form_study_level: 'Nivel de Estudios', option_student: 'Estudiante', option_professional: 'Graduado / Profesional', option_self_taught: 'Autodidacta', option_other: 'Otro',
+                    form_specialty: 'Carrera / Especialidad',
+                    form_skills_title: 'Habilidades Técnicas (selecciona todas las que apliquen)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Desarrollo Frontend', skill_backend: 'Desarrollo Backend',
+                    form_experience_detail: 'Por favor describe tu experiencia en los puntos anteriores',
+                    form_availability_check: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Lun-Vie, 9 a 17hs) en CABA del 3 al 15 de Noviembre de 2025.',
+                    form_privacy_check: 'Autorizo a los organizadores a utilizar mis datos personales para fines administrativos y educativos.',
+                    form_submit: 'Postular Ahora',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_instruction_1: '1. Envíe 200 ₳ a la dirección indicada.', vip_modal_instruction_2: '2. Importante: Añada su ID y nombre completo en el memo de la transacción.',
+                },
+                pt: {
+                    nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
+                    hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Com base no sucesso da Cardano Tech Week, estamos expandindo pela América Latina para conectar, construir e inovar.', hero_cta_sponsor: 'Torne-se um Patrocinador',
+                    cities_title: 'Duas Cidades, Um Summit Épico', cities_subtitle: 'Estamos trazendo o ecossistema Cardano para o coração do Brasil e da Argentina.',
+                    rio_city: 'Rio de Janeiro', rio_date: 'Outubro de 2025', rio_description: 'A primeira parada de nossa turnê LATAM na vibrante cidade do Rio. Espere networking de alta energia, palestras de tecnologia de ponta e experiências inesquecíveis.', rio_details_soon: 'Detalhes em Breve',
+                    ba_city: 'Buenos Aires', ba_date: 'Novembro de 2025', ba_description: 'A grande final na apaixonada capital da Argentina. Um mergulho profundo no ecossistema local, comemorando um ano de crescimento e colaboração.', ba_details_button: 'Ver Experiência BA',
+                    speakers_title: 'Palestrantes em Destaque', speakers_subtitle: 'As mentes brilhantes e as vozes líderes do ecossistema Cardano que moldam o futuro da blockchain.',
+                    speaker_1_title: 'CEO de um Grande Projeto', speaker_1_bio: 'Pioneiro em aplicações Plutus V3 e governança descentralizada.',
+                    speaker_2_title: 'Desenvolvedor Principal, IOG', speaker_2_bio: 'Especialista em Hydra e soluções de escalabilidade para a rede Cardano.',
+                    speaker_3_title: 'Arquiteto DeFi', speaker_3_bio: 'Construindo a próxima geração de produtos financeiros na Cardano.',
+                    speaker_4_title: 'Artista NFT e Visionário', speaker_4_bio: 'Explorando as fronteiras da identidade digital e da arte na blockchain.',
+                    sponsors_title: 'Nossos Valiosos Patrocinadores', sponsors_subtitle: 'Potencializando o futuro da descentralização na LATAM.',
+                    team_title: 'Conheça a Equipe Organizadora', team_subtitle: 'Os indivíduos apaixonados que dão vida a este summit.',
+                    team_role: 'Organizador', team_role_2: 'Organizadora', team_role_3: 'Organizador', team_role_4: 'Organizadora', team_role_5: 'Organizador',
+                    footer_made_with_love: 'Um evento da comunidade, para a comunidade.',
+                    back_to_summit: 'Voltar ao Summit Principal',
+                    ba_experience_title: 'A Experiência Buenos Aires', ba_experience_subtitle: 'Uma semana imersiva de aprendizado, construção e competição. Prepare-se para o desafio final para desenvolvedores Cardano.',
+                    ba_agenda_title: 'Agenda de Novembro de 2025', legend_aiken: 'Curso de Aiken', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'Dia VIP',
+                    day_mon: 'SEG', day_tue: 'TER', day_wed: 'QUA', day_thu: 'QUI', day_fri: 'SEX', day_sat: 'SÁB', day_sun: 'DOM',
+                    hackathon_title: 'Hackathon', hackathon_desc: 'Teste suas novas habilidades. Compita por prêmios, construa dApps inovadores e receba feedback dos OGs da Cardano. (14-15 Nov)',
+                    summit_title: 'Cardano LATAM Summit', summit_desc: 'O evento principal. Um dia inteiro de keynotes, painéis técnicos e showcases do ecossistema. (15 Nov)',
+                    vip_title: 'Dia VIP', vip_desc: 'Um dia exclusivo para patrocinadores, palestrantes e convidados especiais, com networking de alto nível e mesas redondas estratégicas. (16 Nov)', vip_acquire_ticket: 'Adquirir Ingresso VIP',
+                    reg_hub_title: 'Escolha o Seu Caminho',
+                    track_full_title: 'Experiência Completa', track_full_desc: 'O pacote completo. Participe do curso intensivo de Aiken e depois compita na hackathon.', track_button: 'Inscreva-se Agora',
+                    track_course_title: 'Apenas Curso de Aiken', track_course_desc: 'Foco no aprendizado. Domine smart contracts com nosso bootcamp de 10 dias.', track_button_2: 'Inscreva-se Agora',
+                    track_hackathon_title: 'Apenas Hackathon', track_hackathon_desc: 'Pronto para construir? Vá direto para a competição de 48 horas e mostre suas habilidades.', track_button_3: 'Inscreva-se Agora',
+                    form_title_full: 'Inscrição para a Experiência Completa', form_title_course: 'Inscrição para o Curso de Aiken', form_title_hackathon: 'Inscrição para a Hackathon',
+                    form_section_personal: 'Informações Pessoais', form_section_technical: 'Perfil Técnico', form_section_commitment: 'Compromisso e Consentimento',
+                    form_name: 'Nome Completo', form_email: 'Endereço de E-mail', form_phone: 'Número de Telefone', form_portfolio: 'URL do GitHub / Portfólio',
+                    form_study_level: 'Nível de Escolaridade', option_student: 'Estudante', option_professional: 'Graduado / Profissional', option_self_taught: 'Autodidata', option_other: 'Outro',
+                    form_specialty: 'Área de Estudo / Especialidade',
+                    form_skills_title: 'Habilidades Técnicas (selecione todas as aplicáveis)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Dev Frontend', skill_backend: 'Dev Backend',
+                    form_experience_detail: 'Por favor, descreva sua experiência com as habilidades selecionadas',
+                    form_availability_check: 'Confirmo que posso participar das sessões em tempo integral (Seg-Sex, 9h-17h) em CABA de 3 a 15 de novembro de 2025.',
+                    form_privacy_check: 'Autorizo os organizadores do evento a usar meus dados pessoais para fins administrativos e educacionais.',
+                    form_submit: 'Inscreva-se Agora',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_instruction_1: '1. Envie 200 ₳ para o endereço acima.', vip_modal_instruction_2: '2. Importante: Adicione seu ID e nome completo no memorando da transação.',
+                }
+            };
+
+            let currentLanguage = 'en';
+            const langMenuButton = document.getElementById('lang-menu-button');
+            const langMenu = document.getElementById('lang-menu');
+            const currentLangSpan = document.getElementById('current-lang');
+            const baCardLink = document.getElementById('ba-card-link');
+            const mainContentContainer = document.getElementById('main-content-container');
+            const buenosAiresDetails = document.getElementById('buenos-aires-details');
+            const backToMainButton = document.getElementById('back-to-main');
+            const registrationFormContainer = document.getElementById('registration-form-container');
+            const registerButtons = document.querySelectorAll('.register-button');
+            const formTitle = document.getElementById('form-title');
+            const registrationTypeInput = document.getElementById('registration-type');
+            const calendarGrid = document.getElementById('calendar');
+            
+            const vipModal = document.getElementById('vip-modal');
+            const openVipModalButton = document.getElementById('vip-ticket-button');
+            const closeVipModalButton = document.getElementById('close-vip-modal-button');
+
+            const eventDays = {
+                3: { class: 'bg-indigo-500' }, 4: { class: 'bg-indigo-500' },
+                5: { class: 'bg-indigo-500' }, 6: { class: 'bg-indigo-500' },
+                7: { class: 'bg-indigo-500' }, 10: { class: 'bg-indigo-500' },
+                11: { class: 'bg-indigo-500' }, 12: { class: 'bg-indigo-500' },
+                13: { class: 'bg-indigo-500' }, 14: { class: 'bg-cyan-500' },
+                15: { class: 'bg-purple-700' },
+                16: { class: 'golden-ticket-bg' } 
+            };
+
+            const populateCalendar = () => {
+                calendarGrid.innerHTML = '';
+                const dayNames = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                dayNames.forEach(day => {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'text-gray-500 text-center';
+                    dayEl.dataset.key = `day_${day}`;
+                    calendarGrid.appendChild(dayEl);
+                });
+
+                for (let i = 0; i < 5; i++) {
+                    calendarGrid.appendChild(document.createElement('div'));
+                }
+
+                for (let i = 1; i <= 30; i++) {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'calendar-day flex items-center justify-center rounded';
+                    dayEl.textContent = i;
+
+                    if (eventDays[i]) {
+                        const eventInfo = eventDays[i];
+                        dayEl.classList.add(...eventInfo.class.split(' '), 'text-white', 'font-bold');
+                    } else {
+                        dayEl.classList.add('bg-gray-700/50');
+                    }
+                    calendarGrid.appendChild(dayEl);
+                }
+                updateTranslations();
+            };
+
+            const updateFormTitle = () => {
+                const track = registrationTypeInput.value;
+                if (!track) return;
+                let titleKey = '';
+                if (track === 'full') titleKey = 'form_title_full';
+                else if (track === 'course') titleKey = 'form_title_course';
+                else if (track === 'hackathon') titleKey = 'form_title_hackathon';
+                if (titleKey && formTitle) formTitle.dataset.key = titleKey;
+            };
+
+            const updateTranslations = () => {
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                        element.textContent = translations[currentLanguage][key];
+                    }
+                });
+                document.querySelectorAll('#study-level option').forEach(option => {
+                    const key = option.getAttribute('data-key');
+                    if(translations[currentLanguage] && translations[currentLanguage][key]) option.textContent = translations[currentLanguage][key];
+                });
+            };
+
+            const setLanguage = (lang) => {
+                if (!translations[lang]) return;
+                currentLanguage = lang;
+                populateCalendar();
+                currentLangSpan.textContent = lang.toUpperCase();
+                document.documentElement.lang = lang;
+                langMenu.classList.add('hidden');
+            };
+            
+            // --- Event Listeners ---
+            langMenuButton.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('hidden'); });
+            document.addEventListener('click', () => { if (!langMenu.classList.contains('hidden')) langMenu.classList.add('hidden'); });
+            langMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); } });
+            
+            baCardLink.addEventListener('click', () => {
+                mainContentContainer.classList.add('hidden');
+                buenosAiresDetails.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            });
+
+            backToMainButton.addEventListener('click', () => {
+                mainContentContainer.classList.remove('hidden');
+                buenosAiresDetails.classList.add('hidden');
+                registrationFormContainer.classList.add('hidden');
+                window.scrollTo(0, 0);
+            });
+
+            registerButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const track = button.getAttribute('data-track');
+                    registrationTypeInput.value = track;
+                    
+                    registrationFormContainer.classList.remove('hidden');
+                    updateFormTitle(); 
+                    updateTranslations();
+                    
+                    const headerOffset = 80;
+                    const elementPosition = registrationFormContainer.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    
+                    setTimeout(() => { document.getElementById('name').focus(); }, 500);
+                });
+            });
+
+            // --- Corrected Modal Logic ---
+            if (vipModal && openVipModalButton && closeVipModalButton) {
+                openVipModalButton.addEventListener('click', () => {
+                    vipModal.showModal();
+                });
+
+                closeVipModalButton.addEventListener('click', () => {
+                    vipModal.close();
+                });
+
+                vipModal.addEventListener('click', (event) => {
+                    const rect = vipModal.getBoundingClientRect();
+                    const isInDialog = (
+                        rect.top <= event.clientY &&
+                        event.clientY <= rect.top + rect.height &&
+                        rect.left <= event.clientX &&
+                        event.clientX <= rect.left + rect.width
+                    );
+                    if (!isInDialog) {
+                        vipModal.close();
+                    }
+                });
+            }
+
+            // Initial Load
+            setLanguage('en'); 
+        });
+    </script>
+
+</body>
+</html>
