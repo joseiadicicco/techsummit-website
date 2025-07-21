@@ -123,6 +123,9 @@
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
+        .aspect-video {
+            aspect-ratio: 16 / 9;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-50">
@@ -135,6 +138,7 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#cities" class="hover:text-cyan-400 transition-colors" data-key="nav_venues">Venues</a>
                 <a href="#speakers" class="hover:text-cyan-400 transition-colors" data-key="nav_speakers">Speakers</a>
+                <a href="#past-events" class="hover:text-cyan-400 transition-colors" data-key="nav_past_events">Past Events</a>
                 <a href="#sponsors" class="hover:text-cyan-400 transition-colors" data-key="nav_sponsors">Sponsors</a>
                 <a href="#team" class="hover:text-cyan-400 transition-colors" data-key="nav_team">Team</a>
             </div>
@@ -212,7 +216,51 @@
                 </div>
             </section>
 
-            <section id="sponsors" class="py-20 md:py-28 bg-gray-900">
+            <section id="past-events" class="py-20 md:py-28 bg-gray-900">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="past_events_title">Revive the Experience</h2>
+                    <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="past_events_subtitle">Moments from our previous events that defined the community.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                        <!-- Video 1 -->
+                        <div>
+                            <div class="aspect-video w-full rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/8N4zK7tHSqI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="text-center mt-4 font-semibold" data-key="video1_title">Cardano Summit Buenos Aires 2021</p>
+                        </div>
+                        <!-- Video 2 -->
+                        <div>
+                            <div class="aspect-video w-full rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/vsWZeZi1iFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="text-center mt-4 font-semibold" data-key="video2_title">Cardano Summit Buenos Aires 2022</p>
+                        </div>
+                        <!-- Video 3 -->
+                        <div>
+                            <div class="aspect-video w-full rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/-mXCAlkkcFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="text-center mt-4 font-semibold" data-key="video3_title">Cardano Summit Buenos Aires 2023</p>
+                        </div>
+                        <!-- Video 4 -->
+                        <div>
+                            <div class="aspect-video w-full rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/-_oRuPvBSIg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="text-center mt-4 font-semibold" data-key="video4_title">Cardano Summit Buenos Aires 2024</p>
+                        </div>
+                        <!-- Video 5 Placeholder -->
+                        <div class="md:col-span-2">
+                             <div class="aspect-video w-full rounded-lg overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/-_oRuPvBSIg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="text-center mt-4 font-semibold" data-key="video5_title">Cardano Tech Week 2024 (Coming Soon)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sponsors" class="py-20 md:py-28 bg-gray-800/50">
                 <div class="container mx-auto px-6">
                     <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="sponsors_title">Our Valued Sponsors</h2>
                     <p class="text-center text-lg text-gray-400 mb-16" data-key="sponsors_subtitle">Powering the future of decentralization in LATAM.</p>
@@ -222,7 +270,7 @@
                 </div>
             </section>
 
-            <section id="team" class="py-20 md:py-32 bg-gray-800/50">
+            <section id="team" class="py-20 md:py-32 bg-gray-900">
                 <div class="container mx-auto px-6">
                     <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="team_title">Meet the Organizing Team</h2>
                     <p class="text-center text-lg text-gray-400 mb-16" data-key="team_subtitle">The passionate individuals bringing this summit to life.</p>
@@ -425,7 +473,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const translations = {
                 en: {
-                    nav_venues: 'Venues', nav_speakers: 'Speakers', nav_sponsors: 'Sponsors', nav_team: 'Team',
+                    nav_venues: 'Venues', nav_speakers: 'Speakers', nav_past_events: 'Past Events', nav_sponsors: 'Sponsors', nav_team: 'Team',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.', hero_cta_sponsor: 'Become a Sponsor',
                     cities_title: 'Two Cities, One Epic Summit', cities_subtitle: "We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.",
                     rio_city: 'Rio de Janeiro', rio_date: 'October 2025', rio_description: 'The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.', rio_details_soon: 'Details Coming Soon',
@@ -435,6 +483,8 @@
                     speaker_2_title: 'Core Developer, IOG', speaker_2_bio: 'Expert in Hydra and scaling solutions for the Cardano network.',
                     speaker_3_title: 'DeFi Architect', speaker_3_bio: 'Building the next generation of financial products on Cardano.',
                     speaker_4_title: 'NFT Artist & Visionary', speaker_4_bio: 'Exploring the frontiers of digital identity and art on the blockchain.',
+                    past_events_title: 'Revive the Experience', past_events_subtitle: 'Moments from our previous events that defined the community.',
+                    video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024 (Coming Soon)',
                     sponsors_title: 'Our Valued Sponsors', sponsors_subtitle: 'Powering the future of decentralization in LATAM.',
                     team_title: 'Meet the Organizing Team', team_subtitle: 'The passionate individuals bringing this summit to life.',
                     team_role: 'Organizer', team_role_2: 'Organizer', team_role_3: 'Organizer', team_role_4: 'Organizer', team_role_5: 'Organizer',
@@ -476,7 +526,7 @@
                     day16_title: 'VIP Experience', day16_topics: 'Exclusive day for sponsors, speakers, and special guests at a surprise location.'
                 },
                 es: {
-                    nav_venues: 'Sedes', nav_speakers: 'Oradores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
+                    nav_venues: 'Sedes', nav_speakers: 'Oradores', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Basándonos en el éxito de la Cardano Tech Week, nos expandimos por América Latina para conectar, construir e innovar.', hero_cta_sponsor: 'Conviértete en Sponsor',
                     cities_title: 'Dos Ciudades, Un Summit Épico', cities_subtitle: 'Llevamos el ecosistema de Cardano al corazón de Brasil y Argentina.',
                     rio_city: 'Río de Janeiro', rio_date: 'Octubre 2025', rio_description: 'La primera parada de nuestro tour LATAM en la vibrante ciudad de Río. Espera networking de alta energía, charlas de tecnología punta y experiencias inolvidables.', rio_details_soon: 'Detalles Próximamente',
@@ -486,6 +536,8 @@
                     speaker_2_title: 'Desarrollador Core, IOG', speaker_2_bio: 'Experto en Hydra y soluciones de escalado para la red de Cardano.',
                     speaker_3_title: 'Arquitecto DeFi', speaker_3_bio: 'Construyendo la próxima generación de productos financieros en Cardano.',
                     speaker_4_title: 'Artista NFT y Visionario', speaker_4_bio: 'Explorando las fronteras de la identidad digital y el arte en la blockchain.',
+                    past_events_title: 'Revive la Experiencia', past_events_subtitle: 'Momentos de nuestros eventos anteriores que definieron a la comunidad.',
+                    video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024 (Próximamente)',
                     sponsors_title: 'Nuestros Valiosos Sponsors', sponsors_subtitle: 'Impulsando el futuro de la descentralización en LATAM.',
                     team_title: 'Conoce al Equipo Organizador', team_subtitle: 'Las personas apasionadas que dan vida a este summit.',
                     team_role: 'Organizador', team_role_2: 'Organizadora', team_role_3: 'Organizador', team_role_4: 'Organizadora', team_role_5: 'Organizador',
@@ -527,7 +579,7 @@
                     day16_title: 'Experiencia VIP', day16_topics: 'Día exclusivo para sponsors, oradores e invitados especiales en una ubicación sorpresa.'
                 },
                 pt: {
-                    nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
+                    nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Com base no sucesso da Cardano Tech Week, estamos expandindo pela América Latina para conectar, construir e inovar.', hero_cta_sponsor: 'Torne-se um Patrocinador',
                     cities_title: 'Duas Cidades, Um Summit Épico', cities_subtitle: 'Estamos trazendo o ecossistema Cardano para o coração do Brasil e da Argentina.',
                     rio_city: 'Rio de Janeiro', rio_date: 'Outubro de 2025', rio_description: 'A primeira parada de nossa turnê LATAM na vibrante cidade do Rio. Espere networking de alta energia, palestras de tecnologia de ponta e experiências inesquecíveis.', rio_details_soon: 'Detalhes em Breve',
@@ -537,6 +589,8 @@
                     speaker_2_title: 'Desenvolvedor Principal, IOG', speaker_2_bio: 'Especialista em Hydra e soluções de escalabilidade para a rede Cardano.',
                     speaker_3_title: 'Arquiteto DeFi', speaker_3_bio: 'Construindo a próxima geração de produtos financeiros na Cardano.',
                     speaker_4_title: 'Artista NFT e Visionário', speaker_4_bio: 'Explorando as fronteiras da identidade digital e da arte na blockchain.',
+                    past_events_title: 'Reviva a Experiência', past_events_subtitle: 'Momentos de nossos eventos anteriores que definiram a comunidade.',
+                    video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024 (Em breve)',
                     sponsors_title: 'Nossos Valiosos Patrocinadores', sponsors_subtitle: 'Potencializando o futuro da descentralização na LATAM.',
                     team_title: 'Conheça a Equipe Organizadora', team_subtitle: 'Os indivíduos apaixonados que dão vida a este summit.',
                     team_role: 'Organizador', team_role_2: 'Organizadora', team_role_3: 'Organizador', team_role_4: 'Organizadora', team_role_5: 'Organizador',
