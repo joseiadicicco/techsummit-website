@@ -67,7 +67,42 @@
             background: linear-gradient(135deg, #fde047, #facc15, #eab308, #d97706);
         }
         
-        /* CORRECTED MODAL STYLES using <dialog> */
+        /* Tooltip Styles */
+        #calendar-tooltip {
+            position: absolute;
+            background-color: #1F2937; /* bg-gray-800 */
+            color: #F9FAFB; /* text-gray-50 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #374151; /* border-gray-700 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none;
+        }
+        #calendar-tooltip.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #calendar-tooltip ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        #calendar-tooltip li {
+            font-size: 0.875rem; /* text-sm */
+            margin-bottom: 0.25rem; /* mb-1 */
+        }
+        #calendar-tooltip h5 {
+            font-size: 1rem; /* text-base */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.5rem; /* mb-2 */
+            color: #67e8f9; /* cyan-300 */
+        }
+
+        /* Modal Styles using <dialog> */
         #vip-modal {
             background: transparent;
             border: none;
@@ -122,7 +157,7 @@
         <main>
             <section class="relative h-screen flex items-center justify-center text-center hero-video-overlay overflow-hidden">
                 <video autoplay loop muted playsinline class="absolute z-0 w-auto min-w-full min-h-full max-w-none">
-                    <source src="https://placehold.co/1920x1080/000000/FFFFFF/mp4?text=Awesome+Tech+Week+Video" type="video/mp4">
+                    <source src="images/reelcorto.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <div class="relative z-10 px-4">
@@ -361,6 +396,9 @@
             </div>
         </section>
     </div>
+    
+    <!-- Tooltip Element -->
+    <div id="calendar-tooltip"></div>
 
     <!-- Corrected Modal using <dialog> -->
     <dialog id="vip-modal">
@@ -371,10 +409,10 @@
             <h3 class="text-3xl font-black uppercase" data-key="vip_modal_title">Golden Ticket</h3>
             <p class="font-semibold" data-key="vip_modal_subtitle">VIP Access</p>
             <div class="my-6">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2" alt="[Código QR para pago]" class="mx-auto rounded-lg">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy" alt="[Código QR para pago]" class="mx-auto rounded-lg">
             </div>
             <div class="bg-black/20 p-4 rounded-lg mb-4">
-                <p class="text-white font-mono break-words text-sm" data-key="vip_modal_address">addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2</p>
+                <p class="text-white font-mono break-words text-sm" data-key="vip_modal_address">addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy</p>
             </div>
             <div class="text-left text-gray-800 space-y-2">
                 <p class="font-bold" data-key="vip_modal_instruction_1">1. Send 200 ₳ to the address above.</p>
@@ -422,8 +460,20 @@
                     form_availability_check: 'I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.',
                     form_privacy_check: 'I authorize the event organizers to use my personal data for administrative and educational purposes.',
                     form_submit: 'Apply Now',
-                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Send 200 ₳ to the address above.', vip_modal_instruction_2: '2. Important: Add your ID and full name in the transaction memo.',
+                    day3_title: 'Aiken Course - Day 1', day3_topics: 'Course Intro, Tools, Cryptography, How Blockchain Works',
+                    day4_title: 'Aiken Course - Day 2', day4_topics: 'UTXO Model, (E)UTXO, On-chain vs Off-chain',
+                    day5_title: 'Aiken Course - Day 3', day5_topics: 'Off-chain Tx Creation, Native Scripts, Native Tokens',
+                    day6_title: 'Aiken Course - Day 4', day6_topics: 'Plutus Validators, Functional Languages, Aiken Intro',
+                    day7_title: 'Aiken Course - Day 5', day7_topics: 'Adapting Web2 to Web3, Script Context, First DApp',
+                    day10_title: 'Aiken Course - Day 6', day10_topics: 'NFT Creation, Using NFTs (Gift Card DApp), Oracles',
+                    day11_title: 'Aiken Course - Day 7', day11_topics: 'Time in Cardano, Vesting Validator',
+                    day12_title: 'Aiken Course - Day 8', day12_topics: 'Unit Testing, Property-based Testing, Swap Contract',
+                    day13_title: 'Aiken Course - Day 9', day13_topics: 'Stablecoin DApp',
+                    day14_title: 'Aiken Course Day 10 & Hackathon Kick-off', day14_topics: 'Course wrap-up: Common Vulnerabilities, Patterns, Next Steps. Hackathon starts: Team formation, Intensive building session',
+                    day15_title: 'Summit & Hackathon Finals', day15_topics: 'Hackathon Finals (morning), Cardano Summit LATAM BA (starts 14:00)',
+                    day16_title: 'VIP Experience', day16_topics: 'Exclusive day for sponsors, speakers, and special guests at a surprise location.'
                 },
                 es: {
                     nav_venues: 'Sedes', nav_speakers: 'Oradores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
@@ -461,8 +511,20 @@
                     form_availability_check: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Lun-Vie, 9 a 17hs) en CABA del 3 al 15 de Noviembre de 2025.',
                     form_privacy_check: 'Autorizo a los organizadores a utilizar mis datos personales para fines administrativos y educativos.',
                     form_submit: 'Postular Ahora',
-                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envíe 200 ₳ a la dirección indicada.', vip_modal_instruction_2: '2. Importante: Añada su ID y nombre completo en el memo de la transacción.',
+                    day3_title: 'Curso Aiken - Día 1', day3_topics: 'Intro al curso, Herramientas, Criptografía, Funcionamiento de Blockchain',
+                    day4_title: 'Curso Aiken - Día 2', day4_topics: 'Modelo UTXO, (E)UTXO, On-chain vs Off-chain',
+                    day5_title: 'Curso Aiken - Día 3', day5_topics: 'Creación de Tx Off-chain, Native Scripts, Tokens Nativos',
+                    day6_title: 'Curso Aiken - Día 4', day6_topics: 'Validadores Plutus, Lenguajes Funcionales, Intro a Aiken',
+                    day7_title: 'Curso Aiken - Día 5', day7_topics: 'Adaptar Web2 a Web3, Script Context, Primera DApp',
+                    day10_title: 'Curso Aiken - Día 6', day10_topics: 'Creación de NFTs, Uso de NFTs (DApp Gift Card), Oráculos',
+                    day11_title: 'Curso Aiken - Día 7', day11_topics: 'El tiempo en Cardano, Validador de Vesting',
+                    day12_title: 'Curso Aiken - Día 8', day12_topics: 'Unit Testing, Property-based Testing, Contrato de Swap',
+                    day13_title: 'Curso Aiken - Día 9', day13_topics: 'DApp de Stablecoin',
+                    day14_title: 'Curso Aiken Día 10 e Inicio del Hackathon', day14_topics: 'Cierre del curso: Vulnerabilidades comunes, Patrones comunes, Próximos pasos. Comienzo del Hackathon: Formación de equipos, Desarrollo intensivo',
+                    day15_title: 'Summit y Final del Hackathon', day15_topics: 'Final del Hackathon (mañana), Cardano Summit LATAM BA (desde 14:00hs)',
+                    day16_title: 'Experiencia VIP', day16_topics: 'Día exclusivo para sponsors, oradores e invitados especiales en una ubicación sorpresa.'
                 },
                 pt: {
                     nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
@@ -500,8 +562,20 @@
                     form_availability_check: 'Confirmo que posso participar das sessões em tempo integral (Seg-Sex, 9h-17h) em CABA de 3 a 15 de novembro de 2025.',
                     form_privacy_check: 'Autorizo os organizadores do evento a usar meus dados pessoais para fins administrativos e educacionais.',
                     form_submit: 'Inscreva-se Agora',
-                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8ujvckulazm3qlc52kafuqz5f7p8je6quksx732fexp3zj5512sw2rtltm6j5elc3mz6gtcvc8ng3tufxks6ff0t4qld6xg2',
+                    vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envie 200 ₳ para o endereço acima.', vip_modal_instruction_2: '2. Importante: Adicione seu ID e nome completo no memorando da transação.',
+                    day3_title: 'Curso Aiken - Dia 1', day3_topics: 'Introdução ao curso, Ferramentas, Criptografia, Como funciona a Blockchain',
+                    day4_title: 'Curso Aiken - Dia 2', day4_topics: 'Modelo UTXO, (E)UTXO, On-chain vs Off-chain',
+                    day5_title: 'Curso Aiken - Dia 3', day5_topics: 'Criação de Tx Off-chain, Scripts Nativos, Tokens Nativos',
+                    day6_title: 'Curso Aiken - Dia 4', day6_topics: 'Validadores Plutus, Linguagens Funcionais, Introdução ao Aiken',
+                    day7_title: 'Curso Aiken - Dia 5', day7_topics: 'Adaptando Web2 para Web3, Contexto de Script, Primeiro DApp',
+                    day10_title: 'Curso Aiken - Dia 6', day10_topics: 'Criação de NFTs, Uso de NFTs (DApp Gift Card), Oráculos',
+                    day11_title: 'Curso Aiken - Dia 7', day11_topics: 'O tempo no Cardano, Validador de Vesting',
+                    day12_title: 'Curso Aiken - Dia 8', day12_topics: 'Unit Testing, Property-based Testing, Contrato de Swap',
+                    day13_title: 'Curso Aiken - Dia 9', day13_topics: 'DApp de Stablecoin',
+                    day14_title: 'Curso Aiken Dia 10 e Início do Hackathon', day14_topics: 'Encerramento do curso: Vulnerabilidades comuns, Padrões comuns, Próximos passos. Início do Hackathon: Formação de equipes, Desenvolvimento intensivo',
+                    day15_title: 'Summit e Final do Hackathon', day15_topics: 'Final do Hackathon (manhã), Cardano Summit LATAM BA (a partir das 14:00)',
+                    day16_title: 'Experiência VIP', day16_topics: 'Dia exclusivo para patrocinadores, palestrantes e convidados especiais em um local surpresa.'
                 }
             };
 
@@ -518,19 +592,21 @@
             const formTitle = document.getElementById('form-title');
             const registrationTypeInput = document.getElementById('registration-type');
             const calendarGrid = document.getElementById('calendar');
+            const tooltip = document.getElementById('calendar-tooltip');
             
             const vipModal = document.getElementById('vip-modal');
             const openVipModalButton = document.getElementById('vip-ticket-button');
             const closeVipModalButton = document.getElementById('close-vip-modal-button');
 
             const eventDays = {
-                3: { class: 'bg-indigo-500' }, 4: { class: 'bg-indigo-500' },
-                5: { class: 'bg-indigo-500' }, 6: { class: 'bg-indigo-500' },
-                7: { class: 'bg-indigo-500' }, 10: { class: 'bg-indigo-500' },
-                11: { class: 'bg-indigo-500' }, 12: { class: 'bg-indigo-500' },
-                13: { class: 'bg-indigo-500' }, 14: { class: 'bg-cyan-500' },
-                15: { class: 'bg-purple-700' },
-                16: { class: 'golden-ticket-bg' }
+                3: { key: 'day3', class: 'bg-indigo-500' }, 4: { key: 'day4', class: 'bg-indigo-500' },
+                5: { key: 'day5', class: 'bg-indigo-500' }, 6: { key: 'day6', class: 'bg-indigo-500' },
+                7: { key: 'day7', class: 'bg-indigo-500' },
+                10: { key: 'day10', class: 'bg-indigo-500' }, 11: { key: 'day11', class: 'bg-indigo-500' },
+                12: { key: 'day12', class: 'bg-indigo-500' }, 13: { key: 'day13', class: 'bg-indigo-500' },
+                14: { key: 'day14', class: 'bg-cyan-500' },
+                15: { key: 'day15', class: 'bg-purple-700' },
+                16: { key: 'day16', class: 'golden-ticket-bg' }
             };
 
             const populateCalendar = () => {
@@ -554,13 +630,45 @@
 
                     if (eventDays[i]) {
                         const eventInfo = eventDays[i];
-                        dayEl.classList.add(...eventInfo.class.split(' '), 'text-white', 'font-bold');
+                        dayEl.classList.add(...eventInfo.class.split(' '), 'text-white', 'font-bold', 'cursor-pointer');
+                        dayEl.dataset.tooltipKey = eventInfo.key;
                     } else {
                         dayEl.classList.add('bg-gray-700/50');
                     }
                     calendarGrid.appendChild(dayEl);
                 }
+                addTooltipListeners();
                 updateTranslations();
+            };
+
+            const addTooltipListeners = () => {
+                 calendarGrid.querySelectorAll('[data-tooltip-key]').forEach(dayEl => {
+                    dayEl.addEventListener('mouseenter', (e) => {
+                        const key = e.target.dataset.tooltipKey;
+                        const titleKey = `${key}_title`;
+                        const topicsKey = `${key}_topics`;
+                        
+                        const title = translations[currentLanguage][titleKey] || '';
+                        const topics = (translations[currentLanguage][topicsKey] || '').split('.').map(topic => `<li>${topic.trim()}</li>`).join('');
+
+                        tooltip.innerHTML = `<h5>${title}</h5><ul>${topics}</ul>`;
+                        
+                        const rect = e.target.getBoundingClientRect();
+                        const tooltipRect = tooltip.getBoundingClientRect();
+                        let left = rect.right + 10;
+                        if (left + tooltipRect.width > window.innerWidth) {
+                            left = rect.left - tooltipRect.width - 10;
+                        }
+                        
+                        tooltip.style.left = `${left}px`;
+                        tooltip.style.top = `${rect.top + window.scrollY}px`;
+                        tooltip.classList.add('visible');
+                    });
+
+                    dayEl.addEventListener('mouseleave', () => {
+                        tooltip.classList.remove('visible');
+                    });
+                });
             };
 
             const updateFormTitle = () => {
