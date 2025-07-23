@@ -56,12 +56,36 @@
             box-shadow: 0 0 25px rgba(0, 51, 173, 0.4), 0 0 40px rgba(79, 70, 229, 0.3);
         }
         .speaker-card {
+            position: relative;
+            overflow: hidden;
             border: 1px solid #374151;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .speaker-card:hover {
             border-color: #0033AD;
             box-shadow: 0 0 15px rgba(0, 51, 173, 0.5);
+        }
+        .speaker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .speaker-card-ar::before {
+             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='3' height='2' fill='%2375AADB'/%3E%3Crect width='3' height='1' fill='white'/%3E%3C/svg%3E");
+        }
+        .speaker-card-br::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 7'%3E%3Cpath fill='%23009B3A' d='M0 0h10v7H0z'/%3E%3Cpath fill='%23FFCC29' d='M5 1l4 2.5L5 6 .9 3.5z'/%3E%3Ccircle cx='5' cy='3.5' r='1.75' fill='%23002776'/%3E%3C/svg%3E");
+        }
+        .speaker-card > * {
+            position: relative;
+            z-index: 1;
         }
         .calendar-grid {
             display: grid;
@@ -223,10 +247,10 @@
                     <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="speakers_title">Featured Speakers</h2>
                     <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="speakers_subtitle">The brilliant minds and leading voices of the Cardano ecosystem shaping the future of blockchain.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="/images/guillermooliveto.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Guillermo Oliveto"> <h3 class="text-xl font-bold text-white">Guillermo Oliveto</h3> <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_1_title">Decano de la UTN FRBA</p> <p class="text-xs text-gray-400" data-key="speaker_1_bio">Miembro del Comité Ejecutivo del GEDC</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="/images/mariopetrucci.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Mario Petrucci"> <h3 class="text-xl font-bold text-white">Mario Petrucci</h3> <p class="text-cyan-400 mb-2" data-key="speaker_2_title">Presidente Federación Argentina de Ajedrez</p> <p class="text-sm text-gray-400" data-key="speaker_2_bio">&nbsp;</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="/images/rafafraga.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Rafael Fraga"> <h3 class="text-xl font-bold text-white">Rafael Fraga</h3> <p class="text-cyan-400 mb-2" data-key="speaker_3_title">LATAM Business Development Lead at Cardano Foundation</p> <p class="text-sm text-gray-400" data-key="speaker_3_bio">&nbsp;</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card"> <img src="/images/fedeweill.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Fede Weill"> <h3 class="text-xl font-bold text-white">Fede Weill</h3> <p class="text-cyan-400 mb-2" data-key="speaker_4_title">Co-founder of Txpipe.io</p> <p class="text-sm text-gray-400" data-key="speaker_4_bio">Decentralizing the future.</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/guillermooliveto.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Guillermo Oliveto"> <h3 class="text-xl font-bold text-white">Guillermo Oliveto</h3> <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_1_title">Decano de la UTN FRBA</p> <p class="text-xs text-gray-400" data-key="speaker_1_bio">Miembro del Comité Ejecutivo del GEDC</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/mariopetrucci.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Mario Petrucci"> <h3 class="text-xl font-bold text-white">Mario Petrucci</h3> <p class="text-cyan-400 mb-2" data-key="speaker_2_title">Presidente Federación Argentina de Ajedrez</p> <p class="text-sm text-gray-400" data-key="speaker_2_bio">&nbsp;</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-br"> <img src="/images/rafafraga.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Rafael Fraga"> <h3 class="text-xl font-bold text-white">Rafael Fraga</h3> <p class="text-cyan-400 mb-2" data-key="speaker_3_title">LATAM Business Development Lead at Cardano Foundation</p> <p class="text-sm text-gray-400" data-key="speaker_3_bio">&nbsp;</p> </div>
+                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/fedeweill.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Fede Weill"> <h3 class="text-xl font-bold text-white">Fede Weill</h3> <p class="text-cyan-400 mb-2" data-key="speaker_4_title">Co-founder of Txpipe.io</p> <p class="text-sm text-gray-400" data-key="speaker_4_bio">Decentralizing the future.</p> </div>
                     </div>
                 </div>
             </section>
@@ -289,30 +313,19 @@
                     <h2 class="text-3xl md:text-5xl font-bold mb-4" data-key="sponsors_title">Our Valued Sponsors</h2>
                     <p class="text-lg text-gray-400 mb-16" data-key="sponsors_subtitle">Powering the future of decentralization in LATAM.</p>
                     
-                    <!-- Platinum Tier -->
                     <div class="mb-16">
-                        <h3 class="text-2xl font-bold text-amber-300 mb-8" data-key="platinum_sponsors">Platinum Sponsors</h3>
+                        <h3 class="text-2xl font-bold text-cyan-300 mb-8" data-key="main_sponsors">Main Sponsors</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center max-w-4xl mx-auto">
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/300x150/FFFFFF/111827?text=Platinum+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
+                            <div class="flex justify-center p-4"> <img src="https://placehold.co/300x150/FFFFFF/111827?text=Main+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
                         </div>
                     </div>
 
-                    <!-- Gold Tier -->
-                    <div class="mb-16">
-                        <h3 class="text-2xl font-bold text-yellow-400 mb-8" data-key="gold_sponsors">Gold Sponsors</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center max-w-5xl mx-auto">
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/250x125/FFFFFF/111827?text=Gold+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/250x125/FFFFFF/111827?text=Gold+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
-                        </div>
-                    </div>
-
-                    <!-- Silver Tier -->
-                    <div class="mb-16">
-                        <h3 class="text-2xl font-bold text-gray-300 mb-8" data-key="silver_sponsors">Silver Sponsors</h3>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-300 mb-8" data-key="ecosystem_sponsors">Ecosystem Sponsors</h3>
                         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Silver+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Silver+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
-                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Silver+Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
+                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
+                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
+                            <div class="flex justify-center p-4"> <img src="https://placehold.co/200x100/FFFFFF/111827?text=Sponsor" alt="Sponsor Logo" class="grayscale hover:grayscale-0 transition-all duration-300"> </div>
                         </div>
                     </div>
                 </div>
@@ -340,7 +353,7 @@
     </div>
 
     <div id="buenos-aires-details" class="hidden">
-        <section class="py-20 md:py-28 bg-gray-900">
+        <section class="pt-8 md:pt-12 pb-20 md:pb-28 bg-gray-900">
             <div class="container mx-auto px-6">
                 <button id="back-to-main" class="mb-8 inline-flex items-center text-cyan-400 hover:text-cyan-300">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -398,6 +411,11 @@
                             <h4 class="text-xl font-bold" data-key="track_hackathon_title">Hackathon Only</h4>
                             <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_hackathon_desc">Ready to build? Jump straight into the 48-hour competition and showcase your skills.</p>
                             <button class="register-button w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-lg" data-track="hackathon" data-key="track_button_3">Register Now</button>
+                        </div>
+                         <div class="bg-gray-800 p-6 rounded-2xl border-2 border-gray-700 track-card">
+                            <h4 class="text-xl font-bold" data-key="track_summit_title">Summit Only</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_summit_desc">Join us for the main event day, full of keynotes, panels, and networking.</p>
+                            <a href="https://lu.ma/placeholder" target="_blank" class="block w-full bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg" data-key="track_summit_button">Get your Ticket on Luma</a>
                         </div>
                     </div>
                 </div>
@@ -530,7 +548,7 @@
                     past_events_title: 'Revive the Experience', past_events_subtitle: 'Moments from our previous events that defined the community.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Our Valued Sponsors', sponsors_subtitle: 'Powering the future of decentralization in LATAM.',
-                    platinum_sponsors: 'Platinum Sponsors', gold_sponsors: 'Gold Sponsors', silver_sponsors: 'Silver Sponsors',
+                    main_sponsors: 'Main Sponsors', ecosystem_sponsors: 'Ecosystem Sponsors',
                     media_partners_title: 'Media Partners', media_partners_subtitle: 'Spreading the word across the ecosystem.',
                     team_title: 'Meet the Organizing Team', team_subtitle: 'The passionate individuals bringing this summit to life.',
                     team_role_kehua: 'Logistics & Content Coordinator', team_role_sabrina: 'Marketing & Community Manager', team_role_jose: 'Event Director', team_role_yen: 'Sponsorship Coordinator', team_role_nicolas: 'Technical Director',
@@ -546,6 +564,7 @@
                     track_full_title: 'Full Experience', track_full_desc: 'The complete package. Join the intensive Aiken course and then compete in the hackathon.', track_button: 'Register Now',
                     track_course_title: 'Aiken Course Only', track_course_desc: 'Focus on learning. Master smart contracts with our 10-day expert-led bootcamp.', track_button_2: 'Register Now',
                     track_hackathon_title: 'Hackathon Only', track_hackathon_desc: 'Ready to build? Jump straight into the 48-hour competition and showcase your skills.', track_button_3: 'Register Now',
+                    track_summit_title: 'Summit Only', track_summit_desc: 'Join us for the main event day, full of keynotes, panels, and networking.', track_summit_button: 'Get your Ticket on Luma',
                     form_title_full: 'Registration for Full Experience', form_title_course: 'Registration for Aiken Course', form_title_hackathon: 'Registration for Hackathon',
                     form_section_personal: 'Personal Information', form_section_technical: 'Technical Profile', form_section_commitment: 'Commitment & Consent',
                     form_name: 'Full Name', form_email: 'Email Address', form_phone: 'Phone Number', form_portfolio: 'GitHub / Portfolio URL',
@@ -585,7 +604,7 @@
                     past_events_title: 'Revive la Experiencia', past_events_subtitle: 'Momentos de nuestros eventos anteriores que definieron a la comunidad.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nuestros Valiosos Sponsors', sponsors_subtitle: 'Impulsando el futuro de la descentralización en LATAM.',
-                    platinum_sponsors: 'Sponsors Platino', gold_sponsors: 'Sponsors Oro', silver_sponsors: 'Sponsors Plata',
+                    main_sponsors: 'Sponsors Principales', ecosystem_sponsors: 'Sponsors del Ecosistema',
                     media_partners_title: 'Media Partners', media_partners_subtitle: 'Difundiendo la palabra por todo el ecosistema.',
                     team_title: 'Conoce al Equipo Organizador', team_subtitle: 'Las personas apasionadas que dan vida a este summit.',
                     team_role_kehua: 'Coordinador de Logística y Contenido', team_role_sabrina: 'Marketing & Community Manager', team_role_jose: 'Director del Evento', team_role_yen: 'Coordinadora de Patrocinios', team_role_nicolas: 'Director Técnico',
@@ -601,6 +620,7 @@
                     track_full_title: 'Experiencia Completa', track_full_desc: 'El paquete completo. Únete al curso intensivo de Aiken y luego compite en el hackathon.', track_button: 'Inscribirse Ahora',
                     track_course_title: 'Solo Curso de Aiken', track_course_desc: 'Enfócate en aprender. Domina los smart contracts con nuestro bootcamp de 10 días.', track_button_2: 'Inscribirse Ahora',
                     track_hackathon_title: 'Solo Hackathon', track_hackathon_desc: '¿Listo para construir? Salta directamente a la competencia de 48 horas y demuestra tus habilidades.', track_button_3: 'Inscribirse Ahora',
+                    track_summit_title: 'Solo Summit', track_summit_desc: 'Únete a nosotros para el día del evento principal, lleno de conferencias, paneles y networking.', track_summit_button: 'Obtén tu Ticket en Luma',
                     form_title_full: 'Inscripción para Experiencia Completa', form_title_course: 'Inscripción para el Curso de Aiken', form_title_hackathon: 'Inscripción para el Hackathon',
                     form_section_personal: 'Información Personal', form_section_technical: 'Perfil Técnico', form_section_commitment: 'Compromiso y Consentimiento',
                     form_name: 'Nombre Completo', form_email: 'Correo Electrónico', form_phone: 'Número de Teléfono', form_portfolio: 'URL de GitHub / Portfolio',
@@ -640,7 +660,7 @@
                     past_events_title: 'Reviva a Experiência', past_events_subtitle: 'Momentos de nossos eventos anteriores que definiram a comunidade.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nossos Valiosos Patrocinadores', sponsors_subtitle: 'Potencializando o futuro da descentralização na LATAM.',
-                    platinum_sponsors: 'Patrocinadores Platina', gold_sponsors: 'Patrocinadores Ouro', silver_sponsors: 'Patrocinadores Prata',
+                    main_sponsors: 'Patrocinadores Principais', ecosystem_sponsors: 'Patrocinadores do Ecossistema',
                     media_partners_title: 'Parceiros de Mídia', media_partners_subtitle: 'Divulgando a palavra em todo o ecossistema.',
                     team_title: 'Conheça a Equipe Organizadora', team_subtitle: 'Os indivíduos apaixonados que dão vida a este summit.',
                     team_role_kehua: 'Coordenador de Logística e Conteúdo', team_role_sabrina: 'Gerente de Marketing e Comunidade', team_role_jose: 'Diretor do Evento', team_role_yen: 'Coordenadora de Patrocínios', team_role_nicolas: 'Diretor Técnico',
@@ -656,6 +676,7 @@
                     track_full_title: 'Experiência Completa', track_full_desc: 'O pacote completo. Participe do curso intensivo de Aiken e depois compita na hackathon.', track_button: 'Inscreva-se Agora',
                     track_course_title: 'Apenas Curso de Aiken', track_course_desc: 'Foco no aprendizado. Domine smart contracts com nosso bootcamp de 10 dias.', track_button_2: 'Inscreva-se Agora',
                     track_hackathon_title: 'Apenas Hackathon', track_hackathon_desc: 'Pronto para construir? Vá direto para a competição de 48 horas e mostre suas habilidades.', track_button_3: 'Inscreva-se Agora',
+                    track_summit_title: 'Apenas Summit', track_summit_desc: 'Junte-se a nós no dia do evento principal, cheio de palestras, painéis e networking.', track_summit_button: 'Obtenha seu Ingresso no Luma',
                     form_title_full: 'Inscrição para a Experiência Completa', form_title_course: 'Inscrição para o Curso de Aiken', form_title_hackathon: 'Inscrição para a Hackathon',
                     form_section_personal: 'Informações Pessoais', form_section_technical: 'Perfil Técnico', form_section_commitment: 'Compromisso e Consentimento',
                     form_name: 'Nome Completo', form_email: 'Endereço de E-mail', form_phone: 'Número de Telefone', form_portfolio: 'URL do GitHub / Portfólio',
