@@ -26,6 +26,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
     <style>
         html {
             scroll-behavior: smooth;
@@ -82,6 +85,9 @@
         }
         .speaker-card-br::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 7'%3E%3Cpath fill='%23009B3A' d='M0 0h10v7H0z'/%3E%3Cpath fill='%23FFCC29' d='M5 1l4 2.5L5 6 .9 3.5z'/%3E%3Ccircle cx='5' cy='3.5' r='1.75' fill='%23002776'/%3E%3C/svg%3E");
+        }
+        .speaker-card-be::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 13'%3E%3Crect width='15' height='13' fill='%232D2926'/%3E%3Crect width='5' height='13' fill='%23FFCD00' x='5'/%3E%3Crect width='5' height='13' fill='%23E31D1A' x='10'/%3E%3C/svg%3E");
         }
         .speaker-card > * {
             position: relative;
@@ -165,6 +171,24 @@
         .aspect-video {
             aspect-ratio: 16 / 9;
         }
+
+        /* Swiper Styles */
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            height: auto; /* Allow slide to grow */
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #67e8f9; /* cyan-300 */
+        }
+        .swiper-pagination-bullet-active {
+            background: #67e8f9; /* cyan-300 */
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-50">
@@ -191,6 +215,7 @@
                     <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="en">English</a>
                     <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="es">Español</a>
                     <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="pt">Português</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="ja">日本語</a>
                 </div>
             </div>
         </nav>
@@ -246,11 +271,71 @@
                 <div class="container mx-auto px-6">
                     <h2 class="text-3xl md:text-5xl font-bold text-center mb-4" data-key="speakers_title">Featured Speakers</h2>
                     <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="speakers_subtitle">The brilliant minds and leading voices of the Cardano ecosystem shaping the future of blockchain.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/guillermooliveto.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Guillermo Oliveto"> <h3 class="text-xl font-bold text-white">Guillermo Oliveto</h3> <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_1_title">Decano de la UTN FRBA</p> <p class="text-xs text-gray-400" data-key="speaker_1_bio">Miembro del Comité Ejecutivo del GEDC</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/mariopetrucci.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Mario Petrucci"> <h3 class="text-xl font-bold text-white">Mario Petrucci</h3> <p class="text-cyan-400 mb-2" data-key="speaker_2_title">Presidente Federación Argentina de Ajedrez</p> <p class="text-sm text-gray-400" data-key="speaker_2_bio">&nbsp;</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-br"> <img src="/images/rafafraga.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Rafael Fraga"> <h3 class="text-xl font-bold text-white">Rafael Fraga</h3> <p class="text-cyan-400 mb-2" data-key="speaker_3_title">LATAM Business Development Lead at Cardano Foundation</p> <p class="text-sm text-gray-400" data-key="speaker_3_bio">&nbsp;</p> </div>
-                        <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar"> <img src="/images/fedeweill.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Fede Weill"> <h3 class="text-xl font-bold text-white">Fede Weill</h3> <p class="text-cyan-400 mb-2" data-key="speaker_4_title">Co-founder of Txpipe.io</p> <p class="text-sm text-gray-400" data-key="speaker_4_bio">Decentralizing the future.</p> </div>
+                    
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- Speaker 1 -->
+                            <div class="swiper-slide">
+                                <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar w-full flex flex-col">
+                                    <img src="/images/guillermooliveto.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Guillermo Oliveto">
+                                    <h3 class="text-xl font-bold text-white">Guillermo Oliveto</h3>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_1_title">Decano de la UTN FRBA</p>
+                                        <p class="text-xs text-gray-400" data-key="speaker_1_bio">Miembro del Comité Ejecutivo del GEDC</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Speaker 2 -->
+                            <div class="swiper-slide">
+                                <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar w-full flex flex-col">
+                                    <img src="/images/mariopetrucci.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Mario Petrucci">
+                                    <h3 class="text-xl font-bold text-white">Mario Petrucci</h3>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <p class="text-cyan-400 mb-2" data-key="speaker_2_title">Presidente Federación Argentina de Ajedrez</p>
+                                        <p class="text-sm text-gray-400" data-key="speaker_2_bio">&nbsp;</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Speaker 3 -->
+                            <div class="swiper-slide">
+                                <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-br w-full flex flex-col">
+                                    <img src="/images/rafafraga.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Rafael Fraga">
+                                    <h3 class="text-xl font-bold text-white">Rafael Fraga</h3>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_3_title">LATAM Business Development Lead at Cardano Foundation</p>
+                                        <p class="text-sm text-gray-400" data-key="speaker_3_bio">&nbsp;</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Speaker 4 -->
+                            <div class="swiper-slide">
+                                <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar w-full flex flex-col">
+                                    <img src="/images/fedeweill.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Fede Weill">
+                                    <h3 class="text-xl font-bold text-white">Fede Weill</h3>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <p class="text-cyan-400 mb-2" data-key="speaker_4_title">Co-founder of Txpipe.io</p>
+                                        <p class="text-sm text-gray-400" data-key="speaker_4_bio">Decentralizing the future.</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <!-- Speaker 5 -->
+                            <div class="swiper-slide">
+                                <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-be w-full flex flex-col">
+                                    <img src="/images/hugues.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Hugues Dorchy">
+                                    <h3 class="text-xl font-bold text-white">Hugues Dorchy</h3>
+                                    <div class="flex-grow flex flex-col justify-center">
+                                        <p class="text-cyan-400 mb-2" data-key="speaker_5_title">Founder of Sead</p>
+                                        <p class="text-xs text-gray-400" data-key="speaker_5_bio">A "breakthrough maker" in digital identity and Web3.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                        <!-- Add Navigation -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
             </section>
@@ -531,6 +616,9 @@
         </div>
     </dialog>
     
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const translations = {
@@ -545,6 +633,7 @@
                     speaker_2_title: 'President of the Argentine Chess Federation', speaker_2_bio: '',
                     speaker_3_title: 'LATAM Business Development Lead at Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-founder of Txpipe.io', speaker_4_bio: 'Decentralizing the future.',
+                    speaker_5_title: 'Founder of Sead', speaker_5_bio: 'A "breakthrough maker" in digital identity and Web3.',
                     past_events_title: 'Revive the Experience', past_events_subtitle: 'Moments from our previous events that defined the community.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Our Valued Sponsors', sponsors_subtitle: 'Powering the future of decentralization in LATAM.',
@@ -601,6 +690,7 @@
                     speaker_2_title: 'Presidente Federación Argentina de Ajedrez', speaker_2_bio: '',
                     speaker_3_title: 'LATAM Business Development Lead en Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-fundador de Txpipe.io', speaker_4_bio: 'Descentralizando el futuro.',
+                    speaker_5_title: 'Fundador de Sead', speaker_5_bio: 'Un "creador de avances" en identidad digital y Web3.',
                     past_events_title: 'Revive la Experiencia', past_events_subtitle: 'Momentos de nuestros eventos anteriores que definieron a la comunidad.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nuestros Valiosos Sponsors', sponsors_subtitle: 'Impulsando el futuro de la descentralización en LATAM.',
@@ -657,6 +747,7 @@
                     speaker_2_title: 'Presidente da Federação Argentina de Xadrez', speaker_2_bio: '',
                     speaker_3_title: 'Líder de Desenvolvimento de Negócios LATAM na Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-fundador da Txpipe.io', speaker_4_bio: 'Descentralizando o futuro.',
+                    speaker_5_title: 'Fundador da Sead', speaker_5_bio: 'Um "criador de avanços" em identidade digital e Web3.',
                     past_events_title: 'Reviva a Experiência', past_events_subtitle: 'Momentos de nossos eventos anteriores que definiram a comunidade.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nossos Valiosos Patrocinadores', sponsors_subtitle: 'Potencializando o futuro da descentralização na LATAM.',
@@ -701,6 +792,63 @@
                     day14_title: 'Curso Aiken Dia 10 e Início do Hackathon', day14_topics: 'Encerramento do curso: Vulnerabilidades comuns, Padrões comuns, Próximos passos. Início do Hackathon: Formação de equipes, Desenvolvimento intensivo',
                     day15_title: 'Summit e Final do Hackathon', day15_topics: 'Final do Hackathon (manhã), Cardano Summit LATAM BA (a partir das 14:00)',
                     day16_title: 'Experiência VIP', day16_topics: 'Dia exclusivo para patrocinadores, palestrantes e convidados especiais em um local surpresa.'
+                },
+                 ja: {
+                    nav_venues: '会場', nav_speakers: 'スピーカー', nav_past_events: '過去のイベント', nav_sponsors: 'スポンサー', nav_team: 'チーム',
+                    hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Cardano Tech Weekの成功を基に、ラテンアメリカ全土に拡大し、つながり、構築し、革新します。', hero_cta_sponsor: 'スポンサーになる',
+                    cities_title: '2つの都市、1つの壮大なサミット', cities_subtitle: 'Cardanoエコシステムをブラジルとアルゼンチンの中心にお届けします。',
+                    rio_city: 'リオデジャネイロ', rio_date: '2025年10月', rio_description: '活気あふれるリオの街でのLATAMツアーの最初の目的地。エネルギッシュなネットワーキング、最先端の技術トーク、忘れられない体験をご期待ください。', rio_details_soon: '詳細は近日公開',
+                    ba_city: 'ブエノスアイレス', ba_date: '2025年11月', ba_description: '情熱的なアルゼンチンの首都でのグランドフィナーレ。地域の生態系への深いダイブ、成長と協力の一年を祝います。', ba_details_button: 'BAエクスペリエンスを見る',
+                    speakers_title: '注目のスピーカー', speakers_subtitle: 'ブロックチェーンの未来を形作るCardanoエコシステムの優れた頭脳と主要な声。',
+                    speaker_1_title: 'UTN FRBA学部長', speaker_1_bio: 'GEDC実行委員会メンバー',
+                    speaker_2_title: 'アルゼンチンチェス連盟会長', speaker_2_bio: '',
+                    speaker_3_title: 'Cardano財団LATAM事業開発リード', speaker_3_bio: '',
+                    speaker_4_title: 'Txpipe.io共同創設者', speaker_4_bio: '未来を分散化する。',
+                    speaker_5_title: 'Seadの創設者', speaker_5_bio: 'デジタルアイデンティティとWeb3の「ブレークスルーメーカー」。',
+                    past_events_title: '体験を追体験', past_events_subtitle: 'コミュニティを定義した過去のイベントの瞬間。',
+                    video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
+                    sponsors_title: '貴重なスポンサーの皆様', sponsors_subtitle: 'LATAMにおける分散化の未来を支える。',
+                    main_sponsors: 'メインスポンサー', ecosystem_sponsors: 'エコシステムスポンサー',
+                    media_partners_title: 'メディアパートナー', media_partners_subtitle: 'エコシステム全体に情報を広める。',
+                    team_title: '組織チーム紹介', team_subtitle: 'このサミットを実現させる情熱的な個人。',
+                    team_role_kehua: '総合オーガナイザー', team_role_sabrina: 'マーケティング＆コミュニティマネージャー', team_role_jose: 'イベントディレクター', team_role_yen: '財務・予算コーディネーター', team_role_nicolas: 'テクニカルマネージャー',
+                    footer_made_with_love: 'コミュニティによる、コミュニティのためのイベント。',
+                    back_to_summit: 'メインサミットに戻る',
+                    ba_experience_title: 'ブエノスアイレス体験', ba_experience_subtitle: '学習、構築、競争の没入型の一週間。究極のCardano開発者チャレンジに備えましょう。',
+                    ba_agenda_title: '2025年11月の議題', legend_aiken: 'Aikenコース', legend_hackathon: 'ハッカソン', legend_summit: 'Cardanoサミット', legend_vip: 'VIPデー',
+                    day_mon: '月', day_tue: '火', day_wed: '水', day_thu: '木', day_fri: '金', day_sat: '土', day_sun: '日',
+                    hackathon_title: 'ハッカソン', hackathon_desc: '新しいスキルを試しましょう。賞品を競い、革新的なdAppを構築し、CardanoのOGからフィードバックを得ましょう。(11月14-15日)',
+                    summit_title: 'Cardano LATAMサミット', summit_desc: 'メインイベント。基調講演、技術パネル、エコシステムショーケースが満載の一日。(11月15日)',
+                    vip_title: 'VIPデー', vip_desc: 'スポンサー、スピーカー、特別ゲスト専用の特別な一日。ハイレベルなネットワーキングと戦略的な円卓会議が特徴です。(11月16日)', vip_acquire_ticket: 'VIPチケットを入手',
+                    reg_hub_title: 'あなたの道を選ぶ',
+                    track_full_title: 'フルエクスペリエンス', track_full_desc: '完全なパッケージ。集中Aikenコースに参加し、ハッカソンで競いましょう。', track_button: '今すぐ登録',
+                    track_course_title: 'Aikenコースのみ', track_course_desc: '学習に集中。10日間の専門家主導のブートキャンプでスマートコントラクトをマスターしましょう。', track_button_2: '今すぐ登録',
+                    track_hackathon_title: 'ハッカソンのみ', track_hackathon_desc: '構築の準備はできましたか？48時間のコンペティションに直接参加し、あなたのスキルを披露しましょう。', track_button_3: '今すぐ登録',
+                    track_summit_title: 'サミットのみ', track_summit_desc: '基調講演、パネル、ネットワーキングが満載のメインイベントデーにご参加ください。', track_summit_button: 'Lumaでチケットを入手',
+                    form_title_full: 'フルエクスペリエンス登録', form_title_course: 'Aikenコース登録', form_title_hackathon: 'ハッカソン登録',
+                    form_section_personal: '個人情報', form_section_technical: '技術プロファイル', form_section_commitment: 'コミットメントと同意',
+                    form_name: '氏名', form_email: 'メールアドレス', form_phone: '電話番号', form_portfolio: 'GitHub / ポートフォリオURL',
+                    form_study_level: '学歴', option_student: '学生', option_professional: '卒業生/専門家', option_self_taught: '独学', option_other: 'その他',
+                    form_specialty: '研究分野/専門',
+                    form_skills_title: '技術スキル（該当するものすべてを選択）', skill_blockchain: 'ブロックチェーン', skill_smart_contracts: 'スマートコントラクト', skill_frontend: 'フロントエンド開発', skill_backend: 'バックエンド開発',
+                    form_experience_detail: '選択したスキルに関するあなたの経験を説明してください',
+                    form_availability_check: '2025年11月3日から15日まで、CABAでのフルタイムセッション（月〜金、午前9時〜午後5時）に参加できることを確認します。',
+                    form_privacy_check: 'イベント主催者が管理および教育目的で私の個人データを使用することを許可します。',
+                    form_submit: '今すぐ申し込む',
+                    vip_modal_title: 'ゴールデンチケット', vip_modal_subtitle: 'VIPアクセス', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
+                    vip_modal_instruction_1: '1. 上記のアドレスに200₳を送信してください。', vip_modal_instruction_2: '2. 重要：トランザクションメモにIDと氏名を追加してください。',
+                    day3_title: 'Aikenコース - 1日目', day3_topics: 'コース紹介、ツール、暗号技術、ブロックチェーンの仕組み',
+                    day4_title: 'Aikenコース - 2日目', day4_topics: 'UTXOモデル、（E）UTXO、オンチェーン対オフチェーン',
+                    day5_title: 'Aikenコース - 3日目', day5_topics: 'オフチェーンTx作成、ネイティブスクリプト、ネイティブトークン',
+                    day6_title: 'Aikenコース - 4日目', day6_topics: 'Plutusバリデーター、関数型言語、Aiken入門',
+                    day7_title: 'Aikenコース - 5日目', day7_topics: 'Web2からWeb3への適応、スクリプトコンテキスト、最初のDApp',
+                    day10_title: 'Aikenコース - 6日目', day10_topics: 'NFT作成、NFTの使用（ギフトカードDApp）、オラクル',
+                    day11_title: 'Aikenコース - 7日目', day11_topics: 'Cardanoの時間、ベスティングバリデーター',
+                    day12_title: 'Aikenコース - 8日目', day12_topics: '単体テスト、プロパティベースのテスト、スワップ契約',
+                    day13_title: 'Aikenコース - 9日目', day13_topics: 'DAppのステーブルコイン',
+                    day14_title: 'Aikenコース10日目＆ハッカソンキックオフ', day14_topics: 'コースのまとめ：一般的な脆弱性、パターン、次のステップ。ハッカソン開始：チーム編成、集中構築セッション',
+                    day15_title: 'サミット＆ハッカソン決勝', day15_topics: 'ハッカソン決勝（午前）、CardanoサミットLATAM BA（14:00開始）',
+                    day16_title: 'VIPエクスペリエンス', day16_topics: 'スポンサー、スピーカー、特別ゲストのためのサプライズロケーションでの特別な一日。'
                 }
             };
 
@@ -891,6 +1039,31 @@
                     }
                 });
             }
+
+            // --- Swiper Initialization ---
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                },
+            });
 
             // Initial Load
             setLanguage('en'); 
