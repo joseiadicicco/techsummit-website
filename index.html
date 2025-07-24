@@ -517,7 +517,7 @@
                 <div id="registration-form-container" class="hidden mt-16 max-w-3xl mx-auto">
                      <div class="bg-gray-800 p-8 rounded-2xl border border-cyan-500/50">
                         <h3 id="form-title" class="text-2xl font-bold mb-6 text-center">Registration</h3>
-                        <form id="application-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                        <form id="application-form" action="https://formspree.io/f/mjkowvdg" method="POST">
                             <input type="hidden" id="registration-type" name="registration_type" value="">
                             
                             <div class="border-b border-gray-700 pb-6 mb-6">
@@ -580,7 +580,7 @@
                                     <div class="flex items-start">
                                         <input id="availability" name="availability" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
                                         <div class="ml-3 text-sm">
-                                            <label for="availability" class="font-medium text-gray-300" data-key="form_availability_check">I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.</label>
+                                            <label for="availability" id="availability-label" class="font-medium text-gray-300" data-key="form_availability_check_full">I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.</label>
                                         </div>
                                     </div>
                                     <div class="flex items-start">
@@ -670,7 +670,9 @@
                     form_specialty: 'Area of Study / Specialty',
                     form_skills_title: 'Technical Skills (select all that apply)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Frontend Dev', skill_backend: 'Backend Dev',
                     form_experience_detail: 'Please describe your experience with the selected skills',
-                    form_availability_check: 'I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.',
+                    form_availability_check_full: 'I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 15, 2025.',
+                    form_availability_check_course: 'I confirm I can attend the full-time sessions (Mon-Fri, 9am-5pm) in CABA from Nov 3 to Nov 14, 2025.',
+                    form_availability_check_hackathon: 'I confirm I can attend the full-time sessions (Fri-Sat, 9am-5pm) in CABA from Nov 14 to Nov 15, 2025.',
                     form_privacy_check: 'I authorize the event organizers to use my personal data for administrative and educational purposes.',
                     form_submit: 'Apply Now',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
@@ -727,7 +729,9 @@
                     form_specialty: 'Carrera / Especialidad',
                     form_skills_title: 'Habilidades Técnicas (selecciona todas las que apliquen)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Desarrollo Frontend', skill_backend: 'Desarrollo Backend',
                     form_experience_detail: 'Por favor describe tu experiencia en los puntos anteriores',
-                    form_availability_check: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Lun-Vie, 9 a 17hs) en CABA del 3 al 15 de Noviembre de 2025.',
+                    form_availability_check_full: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Lun-Vie, 9 a 17hs) en CABA del 3 al 15 de Noviembre de 2025.',
+                    form_availability_check_course: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Lun-Vie, 9 a 17hs) en CABA del 3 al 14 de Noviembre de 2025.',
+                    form_availability_check_hackathon: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Vie-Sáb, 9 a 17hs) en CABA del 14 al 15 de Noviembre de 2025.',
                     form_privacy_check: 'Autorizo a los organizadores a utilizar mis datos personales para fines administrativos y educativos.',
                     form_submit: 'Postular Ahora',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
@@ -784,7 +788,9 @@
                     form_specialty: 'Área de Estudo / Especialidade',
                     form_skills_title: 'Habilidades Técnicas (selecione todas as aplicáveis)', skill_blockchain: 'Blockchain', skill_smart_contracts: 'Smart Contracts', skill_frontend: 'Dev Frontend', skill_backend: 'Dev Backend',
                     form_experience_detail: 'Por favor, descreva sua experiência com as habilidades selecionadas',
-                    form_availability_check: 'Confirmo que posso participar das sessões em tempo integral (Seg-Sex, 9h-17h) em CABA de 3 a 15 de novembro de 2025.',
+                    form_availability_check_full: 'Confirmo que posso participar das sessões em tempo integral (Seg-Sex, 9h-17h) em CABA de 3 a 15 de novembro de 2025.',
+                    form_availability_check_course: 'Confirmo que posso participar das sessões em tempo integral (Seg-Sex, 9h-17h) em CABA de 3 a 14 de novembro de 2025.',
+                    form_availability_check_hackathon: 'Confirmo que posso participar das sessões em tempo integral (Sex-Sáb, 9h-17h) em CABA de 14 a 15 de novembro de 2025.',
                     form_privacy_check: 'Autorizo os organizadores do evento a usar meus dados pessoais para fins administrativos e educacionais.',
                     form_submit: 'Inscreva-se Agora',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
@@ -841,7 +847,9 @@
                     form_specialty: '研究分野/専門',
                     form_skills_title: '技術スキル（該当するものすべてを選択）', skill_blockchain: 'ブロックチェーン', skill_smart_contracts: 'スマートコントラクト', skill_frontend: 'フロントエンド開発', skill_backend: 'バックエンド開発',
                     form_experience_detail: '選択したスキルに関するあなたの経験を説明してください',
-                    form_availability_check: '2025年11月3日から15日まで、CABAでのフルタイムセッション（月〜金、午前9時〜午後5時）に参加できることを確認します。',
+                    form_availability_check_full: '2025年11月3日から15日まで、CABAでのフルタイムセッション（月〜金、午前9時〜午後5時）に参加できることを確認します。',
+                    form_availability_check_course: '2025年11月3日から14日まで、CABAでのフルタイムセッション（月〜金、午前9時〜午後5時）に参加できることを確認します。',
+                    form_availability_check_hackathon: '2025年11月14日から15日まで、CABAでのフルタイムセッション（金〜土、午前9時〜午後5時）に参加できることを確認します。',
                     form_privacy_check: 'イベント主催者が管理および教育目的で私の個人データを使用することを許可します。',
                     form_submit: '今すぐ申し込む',
                     vip_modal_title: 'ゴールデンチケット', vip_modal_subtitle: 'VIPアクセス', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
@@ -1011,6 +1019,15 @@
                     const track = button.getAttribute('data-track');
                     registrationTypeInput.value = track;
                     
+                    const availabilityLabel = document.getElementById('availability-label');
+                    let commitmentKey = 'form_availability_check_full'; // Default
+                    if (track === 'course') {
+                        commitmentKey = 'form_availability_check_course';
+                    } else if (track === 'hackathon') {
+                        commitmentKey = 'form_availability_check_hackathon';
+                    }
+                    availabilityLabel.dataset.key = commitmentKey;
+
                     registrationFormContainer.classList.remove('hidden');
                     updateFormTitle(); 
                     updateTranslations();
