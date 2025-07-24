@@ -591,11 +591,22 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <p id="form-status" class="text-center text-red-400 h-6 mt-4"></p>
 
                             <div class="mt-8">
                                 <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-lg" data-key="form_submit">Apply Now</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+                <div id="success-message" class="hidden mt-16 max-w-3xl mx-auto text-center">
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-green-500/50">
+                        <svg class="w-16 h-16 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-2xl font-bold mt-6 mb-4 text-white" data-key="success_title">Application Sent!</h3>
+                        <p class="text-gray-400" data-key="success_message">Thank you for your interest. We have received your application and will review it shortly. We will contact you via email with the next steps.</p>
+                        <button id="close-success-message" class="mt-8 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-colors" data-key="success_close_button">Close</button>
                     </div>
                 </div>
 
@@ -675,6 +686,11 @@
                     form_availability_check_hackathon: 'I confirm I can attend the full-time sessions (Fri-Sat, 9am-5pm) in CABA from Nov 14 to Nov 15, 2025.',
                     form_privacy_check: 'I authorize the event organizers to use my personal data for administrative and educational purposes.',
                     form_submit: 'Apply Now',
+                    form_submitting: 'Sending...',
+                    form_error: 'Oops! There was a problem submitting your form.',
+                    success_title: 'Application Sent!',
+                    success_message: 'Thank you for your interest. We have received your application and will review it shortly. We will contact you via email with the next steps.',
+                    success_close_button: 'Close',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Send 200 ₳ to the address above.', vip_modal_instruction_2: '2. Important: Add your ID and full name in the transaction memo.',
                     day3_title: 'Aiken Course - Day 1', day3_topics: 'Course Intro, Tools, Cryptography, How Blockchain Works',
@@ -734,6 +750,11 @@
                     form_availability_check_hackathon: 'Confirmo que puedo asistir a las sesiones de tiempo completo (Vie-Sáb, 9 a 17hs) en CABA del 14 al 15 de Noviembre de 2025.',
                     form_privacy_check: 'Autorizo a los organizadores a utilizar mis datos personales para fines administrativos y educativos.',
                     form_submit: 'Postular Ahora',
+                    form_submitting: 'Enviando...',
+                    form_error: '¡Ups! Hubo un problema al enviar tu formulario.',
+                    success_title: '¡Postulación Enviada!',
+                    success_message: 'Gracias por tu interés. Hemos recibido tu postulación y la revisaremos en breve. Nos pondremos en contacto contigo por correo electrónico para informarte los próximos pasos.',
+                    success_close_button: 'Cerrar',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envíe 200 ₳ a la dirección indicada.', vip_modal_instruction_2: '2. Importante: Añada su ID y nombre completo en el memo de la transacción.',
                     day3_title: 'Curso Aiken - Día 1', day3_topics: 'Intro al curso, Herramientas, Criptografía, Funcionamiento de Blockchain',
@@ -793,6 +814,11 @@
                     form_availability_check_hackathon: 'Confirmo que posso participar das sessões em tempo integral (Sex-Sáb, 9h-17h) em CABA de 14 a 15 de novembro de 2025.',
                     form_privacy_check: 'Autorizo os organizadores do evento a usar meus dados pessoais para fins administrativos e educacionais.',
                     form_submit: 'Inscreva-se Agora',
+                    form_submitting: 'Enviando...',
+                    form_error: 'Opa! Houve um problema ao enviar seu formulário.',
+                    success_title: 'Inscrição Enviada!',
+                    success_message: 'Obrigado pelo seu interesse. Recebemos sua inscrição e a analisaremos em breve. Entraremos em contato por e-mail com os próximos passos.',
+                    success_close_button: 'Fechar',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envie 200 ₳ para o endereço acima.', vip_modal_instruction_2: '2. Importante: Adicione seu ID e nome completo no memorando da transação.',
                     day3_title: 'Curso Aiken - Dia 1', day3_topics: 'Introdução ao curso, Ferramentas, Criptografia, Como funciona a Blockchain',
@@ -852,6 +878,11 @@
                     form_availability_check_hackathon: '2025年11月14日から15日まで、CABAでのフルタイムセッション（金〜土、午前9時〜午後5時）に参加できることを確認します。',
                     form_privacy_check: 'イベント主催者が管理および教育目的で私の個人データを使用することを許可します。',
                     form_submit: '今すぐ申し込む',
+                    form_submitting: '送信中...',
+                    form_error: 'おっと！フォームの送信中に問題が発生しました。',
+                    success_title: '申し込み完了！',
+                    success_message: 'ご関心をお寄せいただきありがとうございます。お申し込みを受け付けました。内容を確認後、追ってメールにてご連絡いたします。',
+                    success_close_button: '閉じる',
                     vip_modal_title: 'ゴールデンチケット', vip_modal_subtitle: 'VIPアクセス', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. 上記のアドレスに200₳を送信してください。', vip_modal_instruction_2: '2. 重要：トランザクションメモにIDと氏名を追加してください。',
                     day3_title: 'Aikenコース - 1日目', day3_topics: 'コース紹介、ツール、暗号技術、ブロックチェーンの仕組み',
@@ -883,6 +914,10 @@
             const registrationTypeInput = document.getElementById('registration-type');
             const calendarGrid = document.getElementById('calendar');
             const tooltip = document.getElementById('calendar-tooltip');
+            const form = document.getElementById('application-form');
+            const successMessage = document.getElementById('success-message');
+            const closeSuccessMessageButton = document.getElementById('close-success-message');
+            const formStatus = document.getElementById('form-status');
             
             const vipModal = document.getElementById('vip-modal');
             const openVipModalButton = document.getElementById('vip-ticket-button');
@@ -1041,6 +1076,48 @@
                     setTimeout(() => { document.getElementById('name').focus(); }, 500);
                 });
             });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const data = new FormData(form);
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                
+                submitButton.disabled = true;
+                submitButton.textContent = translations[currentLanguage]['form_submitting'] || 'Sending...';
+                formStatus.textContent = '';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        registrationFormContainer.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                        form.reset();
+                    } else {
+                        formStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
+                    }
+                } catch (error) {
+                    formStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
+                    console.error(error);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                    updateTranslations(); // Restore button text from data-key
+                }
+            });
+
+            closeSuccessMessageButton.addEventListener('click', () => {
+                successMessage.classList.add('hidden');
+                document.getElementById('buenos-aires-details').scrollIntoView({ behavior: 'smooth' });
+            });
+
 
             // --- Corrected Modal Logic ---
             if (vipModal && openVipModalButton && closeVipModalButton) {
