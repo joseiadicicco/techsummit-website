@@ -185,6 +185,12 @@
         }
         .swiper-button-next, .swiper-button-prev {
             color: #67e8f9; /* cyan-300 */
+            --swiper-navigation-size: 28px;
+            background-color: rgba(17, 24, 39, 0.5);
+            width: 44px;
+            height: 44px;
+            border-radius: 9999px;
+            top: 40%;
         }
         .swiper-pagination-bullet-active {
             background: #67e8f9; /* cyan-300 */
@@ -1042,8 +1048,6 @@
 
             // --- Swiper Initialization ---
             const swiper = new Swiper('.swiper-container', {
-                slidesPerView: 1,
-                spaceBetween: 30,
                 loop: true,
                 pagination: {
                     el: '.swiper-pagination',
@@ -1054,13 +1058,20 @@
                     prevEl: '.swiper-button-prev',
                 },
                 breakpoints: {
+                    320: {
+                        slidesPerView: 1.2,
+                        spaceBetween: 15,
+                        centeredSlides: true,
+                    },
                     640: {
                         slidesPerView: 2,
                         spaceBetween: 20,
+                        centeredSlides: false,
                     },
                     1024: {
                         slidesPerView: 4,
                         spaceBetween: 30,
+                        centeredSlides: false,
                     },
                 },
             });
