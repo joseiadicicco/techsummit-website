@@ -148,20 +148,20 @@
         }
 
         /* Modal Styles using <dialog> */
-        #vip-modal {
+        #vip-modal, #sponsor-modal {
             background: transparent;
             border: none;
-            max-width: 24rem; /* sm */
+            max-width: 28rem; /* md */
             width: 100%;
             padding: 0;
             box-shadow: none;
         }
-        #vip-modal::backdrop {
+        #vip-modal::backdrop, #sponsor-modal::backdrop {
             background: rgba(17, 24, 39, 0.8); /* bg-gray-900 with opacity */
             backdrop-filter: blur(4px);
         }
         /* Animation for dialog */
-        #vip-modal[open] {
+        #vip-modal[open], #sponsor-modal[open] {
             animation: fadeIn 0.3s ease-out;
         }
         @keyframes fadeIn {
@@ -194,6 +194,33 @@
         }
         .swiper-pagination-bullet-active {
             background: #67e8f9; /* cyan-300 */
+        }
+        
+        /* Golden Shimmer Effect for VIP Ticket Button */
+        .vip-ticket-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(250, 204, 21, 0.1);
+        }
+        .vip-ticket-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(253, 224, 71, 0.6), transparent);
+            transform: skewX(-25deg);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
         }
     </style>
 </head>
@@ -239,7 +266,7 @@
                     <p class="text-2xl md:text-4xl font-light text-cyan-300 mt-2" data-key="hero_subtitle">LATAM 2025</p>
                     <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300" data-key="hero_description">Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.</p>
                     <div class="mt-8 flex justify-center gap-4">
-                         <a href="#sponsors" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105" data-key="hero_cta_sponsor">Become a Sponsor</a>
+                         <a href="#sponsors" id="open-sponsor-modal-button" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105" data-key="hero_cta_sponsor">Become a Sponsor</a>
                     </div>
                 </div>
             </section>
@@ -483,7 +510,7 @@
 
                             <h4 class="text-xl font-bold mb-2" data-key="vip_title">VIP Day</h4>
                             <p class="text-gray-400" data-key="vip_desc">An exclusive day for sponsors, speakers, and special guests, featuring high-level networking and strategic roundtables. (Nov 16)</p>
-                            <button id="vip-ticket-button" class="mt-2 text-amber-400 hover:text-amber-300 font-bold" data-key="vip_acquire_ticket">Acquire VIP Ticket</button>
+                            <button id="vip-ticket-button" class="mt-2 text-amber-400 hover:text-amber-300 font-bold vip-ticket-button" data-key="vip_acquire_ticket">Acquire VIP Ticket</button>
                         </div>
 
                     </div>
@@ -524,19 +551,19 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="name" class="block text-sm font-medium text-gray-300" data-key="form_name">Full Name</label>
-                                        <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                        <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                                     </div>
                                     <div>
                                         <label for="email" class="block text-sm font-medium text-gray-300" data-key="form_email">Email Address</label>
-                                        <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                        <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                                     </div>
                                     <div>
                                         <label for="phone" class="block text-sm font-medium text-gray-300" data-key="form_phone">Phone Number</label>
-                                        <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500" placeholder="+54 9 11 12345678">
+                                        <input type="tel" name="phone" id="phone" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white" placeholder="+54 9 11 12345678">
                                     </div>
                                     <div>
                                         <label for="portfolio" class="block text-sm font-medium text-gray-300" data-key="form_portfolio">GitHub / Portfolio URL</label>
-                                        <input type="url" name="portfolio" id="portfolio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                        <input type="url" name="portfolio" id="portfolio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                                     </div>
                                 </div>
                             </div>
@@ -546,7 +573,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="study-level" class="block text-sm font-medium text-gray-300" data-key="form_study_level">Level of Study</label>
-                                        <select id="study-level" name="study_level" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                        <select id="study-level" name="study_level" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                                             <option value="student" data-key="option_student">Student</option>
                                             <option value="professional" data-key="option_professional">Graduate / Professional</option>
                                             <option value="self_taught" data-key="option_self_taught">Self-taught</option>
@@ -555,7 +582,7 @@
                                     </div>
                                     <div>
                                         <label for="specialty" class="block text-sm font-medium text-gray-300" data-key="form_specialty">Area of Study / Specialty</label>
-                                        <input type="text" name="specialty" id="specialty" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
+                                        <input type="text" name="specialty" id="specialty" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                                     </div>
                                 </div>
                                 <div class="mt-4">
@@ -569,7 +596,7 @@
                                 </div>
                                 <div class="mt-4">
                                     <label for="experience-detail" class="block text-sm font-medium text-gray-300" data-key="form_experience_detail">Please describe your experience with the selected skills</label>
-                                    <textarea id="experience-detail" name="experience_detail" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                                    <textarea id="experience-detail" name="experience_detail" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"></textarea>
                                 </div>
                             </div>
                             
@@ -635,6 +662,48 @@
         </div>
     </dialog>
     
+    <dialog id="sponsor-modal">
+        <div class="bg-gray-800 p-8 rounded-2xl border border-cyan-500/50 relative">
+             <button id="close-sponsor-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-white p-1 rounded-full transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div id="sponsor-form-content">
+                <h3 class="text-2xl font-bold mb-6 text-center text-white" data-key="sponsor_modal_title">Become a Sponsor</h3>
+                <form id="sponsor-form" action="https://formspree.io/f/meozgovk" method="POST">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="sponsor-name" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_name">Name / Company Name</label>
+                            <input type="text" name="name" id="sponsor-name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div>
+                            <label for="sponsor-email" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_email">Contact Email</label>
+                            <input type="email" name="email" id="sponsor-email" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div>
+                            <label for="sponsor-phone" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_phone">Contact Phone (Optional)</label>
+                            <input type="tel" name="phone" id="sponsor-phone" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div>
+                            <label for="sponsor-message" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_message">Message (Optional)</label>
+                            <textarea name="message" id="sponsor-message" rows="4" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"></textarea>
+                        </div>
+                    </div>
+                    <p id="sponsor-form-status" class="text-center text-red-400 h-6 mt-4"></p>
+                    <div class="mt-8">
+                        <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-lg" data-key="sponsor_form_submit">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="sponsor-success-message" class="hidden text-center">
+                <svg class="w-16 h-16 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-white" data-key="sponsor_success_title">Thank You!</h3>
+                <p class="text-gray-400" data-key="sponsor_success_message">Your inquiry has been sent. Our team will get back to you shortly.</p>
+            </div>
+        </div>
+    </dialog>
+
     <!-- Swiper.js JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -690,6 +759,14 @@
                     success_title: 'Application Sent!',
                     success_message: 'Thank you for your interest. We have received your application and will review it shortly. We will contact you via email with the next steps.',
                     success_close_button: 'Close',
+                    sponsor_modal_title: 'Become a Sponsor',
+                    sponsor_form_name: 'Name / Company Name',
+                    sponsor_form_email: 'Contact Email',
+                    sponsor_form_phone: 'Contact Phone (Optional)',
+                    sponsor_form_message: 'Message (Optional)',
+                    sponsor_form_submit: 'Send Inquiry',
+                    sponsor_success_title: 'Thank You!',
+                    sponsor_success_message: 'Your inquiry has been sent. Our team will get back to you shortly.',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'VIP Access', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Send 200 ₳ to the address above.', vip_modal_instruction_2: '2. Important: Add your ID and full name in the transaction memo.',
                     day3_title: 'Aiken Course - Day 1', day3_topics: 'Course Intro, Tools, Cryptography, How Blockchain Works',
@@ -754,6 +831,14 @@
                     success_title: '¡Postulación Enviada!',
                     success_message: 'Gracias por tu interés. Hemos recibido tu postulación y la revisaremos en breve. Nos pondremos en contacto contigo por correo electrónico para informarte los próximos pasos.',
                     success_close_button: 'Cerrar',
+                    sponsor_modal_title: 'Conviértete en Sponsor',
+                    sponsor_form_name: 'Nombre / Nombre de la Empresa',
+                    sponsor_form_email: 'Email de Contacto',
+                    sponsor_form_phone: 'Teléfono de Contacto (Opcional)',
+                    sponsor_form_message: 'Mensaje (Opcional)',
+                    sponsor_form_submit: 'Enviar Consulta',
+                    sponsor_success_title: '¡Gracias!',
+                    sponsor_success_message: 'Tu consulta ha sido enviada. Nuestro equipo se pondrá en contacto contigo a la brevedad.',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acceso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envíe 200 ₳ a la dirección indicada.', vip_modal_instruction_2: '2. Importante: Añada su ID y nombre completo en el memo de la transacción.',
                     day3_title: 'Curso Aiken - Día 1', day3_topics: 'Intro al curso, Herramientas, Criptografía, Funcionamiento de Blockchain',
@@ -818,6 +903,14 @@
                     success_title: 'Inscrição Enviada!',
                     success_message: 'Obrigado pelo seu interesse. Recebemos sua inscrição e a analisaremos em breve. Entraremos em contato por e-mail com os próximos passos.',
                     success_close_button: 'Fechar',
+                    sponsor_modal_title: 'Torne-se um Patrocinador',
+                    sponsor_form_name: 'Nome / Nome da Empresa',
+                    sponsor_form_email: 'E-mail de Contato',
+                    sponsor_form_phone: 'Telefone de Contato (Opcional)',
+                    sponsor_form_message: 'Mensagem (Opcional)',
+                    sponsor_form_submit: 'Enviar Consulta',
+                    sponsor_success_title: 'Obrigado!',
+                    sponsor_success_message: 'Sua consulta foi enviada. Nossa equipe entrará em contato com você em breve.',
                     vip_modal_title: 'Golden Ticket', vip_modal_subtitle: 'Acesso VIP', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. Envie 200 ₳ para o endereço acima.', vip_modal_instruction_2: '2. Importante: Adicione seu ID e nome completo no memorando da transação.',
                     day3_title: 'Curso Aiken - Dia 1', day3_topics: 'Introdução ao curso, Ferramentas, Criptografia, Como funciona a Blockchain',
@@ -882,6 +975,14 @@
                     success_title: '申し込み完了！',
                     success_message: 'ご関心をお寄せいただきありがとうございます。お申し込みを受け付けました。内容を確認後、追ってメールにてご連絡いたします。',
                     success_close_button: '閉じる',
+                    sponsor_modal_title: 'スポンサーになる',
+                    sponsor_form_name: '氏名/会社名',
+                    sponsor_form_email: '連絡先メールアドレス',
+                    sponsor_form_phone: '連絡先電話番号（任意）',
+                    sponsor_form_message: 'メッセージ（任意）',
+                    sponsor_form_submit: '問い合わせを送信',
+                    sponsor_success_title: 'ありがとうございます！',
+                    sponsor_success_message: 'お問い合わせが送信されました。担当者より追ってご連絡いたします。',
                     vip_modal_title: 'ゴールデンチケット', vip_modal_subtitle: 'VIPアクセス', vip_modal_address: 'addr1q8fjh0tardg9drc2hqkplj4erwjvrngyqy2t7adn4wx5ylgqqdgc7n2tswxsfhqyu2s6s8n62fm8w8dgnss2fk3q498s68a3gy',
                     vip_modal_instruction_1: '1. 上記のアドレスに200₳を送信してください。', vip_modal_instruction_2: '2. 重要：トランザクションメモにIDと氏名を追加してください。',
                     day3_title: 'Aikenコース - 1日目', day3_topics: 'コース紹介、ツール、暗号技術、ブロックチェーンの仕組み',
@@ -921,6 +1022,13 @@
             const vipModal = document.getElementById('vip-modal');
             const openVipModalButton = document.getElementById('vip-ticket-button');
             const closeVipModalButton = document.getElementById('close-vip-modal-button');
+
+            const sponsorModal = document.getElementById('sponsor-modal');
+            const openSponsorModalButton = document.getElementById('open-sponsor-modal-button');
+            const closeSponsorModalButton = document.getElementById('close-sponsor-modal-button');
+            const sponsorForm = document.getElementById('sponsor-form');
+            const sponsorFormContent = document.getElementById('sponsor-form-content');
+            const sponsorSuccessMessage = document.getElementById('sponsor-success-message');
 
             const eventDays = {
                 3: { key: 'day3', class: 'bg-indigo-500' }, 4: { key: 'day4', class: 'bg-indigo-500' },
@@ -1118,29 +1226,56 @@
             });
 
 
-            // --- Corrected Modal Logic ---
+            // --- Modal Logic ---
             if (vipModal && openVipModalButton && closeVipModalButton) {
-                openVipModalButton.addEventListener('click', () => {
-                    vipModal.showModal();
-                });
-
-                closeVipModalButton.addEventListener('click', () => {
-                    vipModal.close();
-                });
-
-                vipModal.addEventListener('click', (event) => {
-                    const rect = vipModal.getBoundingClientRect();
-                    const isInDialog = (
-                        rect.top <= event.clientY &&
-                        event.clientY <= rect.top + rect.height &&
-                        rect.left <= event.clientX &&
-                        event.clientX <= rect.left + rect.width
-                    );
-                    if (!isInDialog) {
-                        vipModal.close();
-                    }
-                });
+                openVipModalButton.addEventListener('click', () => vipModal.showModal());
+                closeVipModalButton.addEventListener('click', () => vipModal.close());
+                vipModal.addEventListener('click', (e) => { if (e.target === vipModal) vipModal.close(); });
             }
+            
+            if (sponsorModal && openSponsorModalButton && closeSponsorModalButton) {
+                openSponsorModalButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sponsorModal.showModal();
+                });
+                closeSponsorModalButton.addEventListener('click', () => sponsorModal.close());
+                sponsorModal.addEventListener('click', (e) => { if (e.target === sponsorModal) sponsorModal.close(); });
+            }
+
+            sponsorForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const data = new FormData(sponsorForm);
+                const submitButton = sponsorForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                const sponsorFormStatus = document.getElementById('sponsor-form-status');
+
+                submitButton.disabled = true;
+                submitButton.textContent = translations[currentLanguage]['form_submitting'] || 'Sending...';
+                sponsorFormStatus.textContent = '';
+
+                try {
+                    const response = await fetch(sponsorForm.action, {
+                        method: sponsorForm.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        sponsorFormContent.classList.add('hidden');
+                        sponsorSuccessMessage.classList.remove('hidden');
+                        sponsorForm.reset();
+                    } else {
+                        sponsorFormStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
+                    }
+                } catch (error) {
+                    sponsorFormStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                    updateTranslations();
+                }
+            });
+
 
             // --- Swiper Initialization ---
             const swiper = new Swiper('.swiper-container', {
