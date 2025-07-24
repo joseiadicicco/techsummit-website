@@ -673,8 +673,12 @@
                 <form id="sponsor-form" action="https://formspree.io/f/meozgovk" method="POST">
                     <div class="space-y-4">
                         <div>
-                            <label for="sponsor-name" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_name">Name / Company Name</label>
-                            <input type="text" name="name" id="sponsor-name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                            <label for="sponsor-contact-name" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_contact_name">Contact Name</label>
+                            <input type="text" name="contact_name" id="sponsor-contact-name" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div>
+                            <label for="sponsor-company-name" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_company_name">Company Name (Optional)</label>
+                            <input type="text" name="company_name" id="sponsor-company-name" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
                         </div>
                         <div>
                             <label for="sponsor-email" class="block text-sm font-medium text-gray-300" data-key="sponsor_form_email">Contact Email</label>
@@ -760,7 +764,8 @@
                     success_message: 'Thank you for your interest. We have received your application and will review it shortly. We will contact you via email with the next steps.',
                     success_close_button: 'Close',
                     sponsor_modal_title: 'Become a Sponsor',
-                    sponsor_form_name: 'Name / Company Name',
+                    sponsor_form_contact_name: 'Contact Name',
+                    sponsor_form_company_name: 'Company Name (Optional)',
                     sponsor_form_email: 'Contact Email',
                     sponsor_form_phone: 'Contact Phone (Optional)',
                     sponsor_form_message: 'Message (Optional)',
@@ -832,7 +837,8 @@
                     success_message: 'Gracias por tu interés. Hemos recibido tu postulación y la revisaremos en breve. Nos pondremos en contacto contigo por correo electrónico para informarte los próximos pasos.',
                     success_close_button: 'Cerrar',
                     sponsor_modal_title: 'Conviértete en Sponsor',
-                    sponsor_form_name: 'Nombre / Nombre de la Empresa',
+                    sponsor_form_contact_name: 'Nombre de Contacto',
+                    sponsor_form_company_name: 'Nombre de la Empresa (Opcional)',
                     sponsor_form_email: 'Email de Contacto',
                     sponsor_form_phone: 'Teléfono de Contacto (Opcional)',
                     sponsor_form_message: 'Mensaje (Opcional)',
@@ -904,7 +910,8 @@
                     success_message: 'Obrigado pelo seu interesse. Recebemos sua inscrição e a analisaremos em breve. Entraremos em contato por e-mail com os próximos passos.',
                     success_close_button: 'Fechar',
                     sponsor_modal_title: 'Torne-se um Patrocinador',
-                    sponsor_form_name: 'Nome / Nome da Empresa',
+                    sponsor_form_contact_name: 'Nome de Contato',
+                    sponsor_form_company_name: 'Nome da Empresa (Opcional)',
                     sponsor_form_email: 'E-mail de Contato',
                     sponsor_form_phone: 'Telefone de Contato (Opcional)',
                     sponsor_form_message: 'Mensagem (Opcional)',
@@ -976,7 +983,8 @@
                     success_message: 'ご関心をお寄せいただきありがとうございます。お申し込みを受け付けました。内容を確認後、追ってメールにてご連絡いたします。',
                     success_close_button: '閉じる',
                     sponsor_modal_title: 'スポンサーになる',
-                    sponsor_form_name: '氏名/会社名',
+                    sponsor_form_contact_name: '担当者名',
+                    sponsor_form_company_name: '会社名（任意）',
                     sponsor_form_email: '連絡先メールアドレス',
                     sponsor_form_phone: '連絡先電話番号（任意）',
                     sponsor_form_message: 'メッセージ（任意）',
