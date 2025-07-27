@@ -181,6 +181,7 @@
         .swiper-slide {
             display: flex;
             justify-content: center;
+            align-items: center;
             height: auto; /* Allow slide to grow */
         }
         .swiper-button-next, .swiper-button-prev {
@@ -365,6 +366,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Speaker 6 -->
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-ar w-full flex flex-col">
+                                        <img src="/images/adriano.png" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Adriano Fiorenza">
+                                        <h3 class="text-xl font-bold text-white">Adriano Fiorenza</h3>
+                                        <div class="flex-grow flex flex-col justify-center">
+                                            <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_6_title">Founder of GameChanger Wallet</p>
+                                            <p class="text-xs text-gray-400" data-key="speaker_6_bio">Enabling open, user-first Web3 ecosystems</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -445,10 +457,14 @@
 
                     <div>
                         <h3 class="text-2xl font-bold text-gray-300 mb-8" data-key="ecosystem_sponsors">Ecosystem Sponsors</h3>
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center max-w-4xl mx-auto">
-                            <div class="flex justify-center p-4"> <img src="/images/sead.png" alt="Sead Logo" class="max-w-[150px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
-                            <div class="flex justify-center p-4"> <img src="/images/mithr.png" alt="Mithr Logo" class="max-w-[110px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
-                            <div class="flex justify-center p-4"> <img src="/images/txpipe.png" alt="TxPipe Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
+                        <div class="swiper-container ecosystem-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="/images/sead.png" alt="Sead Logo" class="max-w-[150px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="swiper-slide"><img src="/images/mithr.png" alt="Mithr Logo" class="max-w-[110px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="swiper-slide"><img src="/images/txpipe.png" alt="TxPipe Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="swiper-slide"><img src="/images/gamechanger.png" alt="Gamechanger Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="swiper-slide"><img src="/images/ctimelines.png" alt="Cardano Timelines Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -459,8 +475,8 @@
                     <h2 class="text-3xl md:text-5xl font-bold mb-4" data-key="media_partners_title">Media Partners</h2>
                     <p class="text-lg text-gray-400 mb-16" data-key="media_partners_subtitle">Spreading the word across the ecosystem.</p>
                     <div class="grid grid-cols-2 gap-8 items-center max-w-lg mx-auto">
-                        <div class="flex justify-center p-4"> <img src="/images/newsletter.png" alt="Newsletter Logo" class="max-w-[120px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
-                        <div class="flex justify-center p-4"> <img src="/images/feed.png" alt="Feed Logo" class="max-w-[120px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
+                        <div class="flex justify-center p-4"> <img src="/images/newsletter.png" alt="Newsletter Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
+                        <div class="flex justify-center p-4"> <img src="/images/feed.png" alt="Feed Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
                     </div>
                 </div>
             </section>
@@ -727,6 +743,7 @@
                     speaker_3_title: 'LATAM Business Development Lead at Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-founder of Txpipe.io', speaker_4_bio: 'Decentralizing the future.',
                     speaker_5_title: 'Founder of Sead', speaker_5_bio: 'A "breakthrough maker" in digital identity and Web3.',
+                    speaker_6_title: 'Founder of GameChanger Wallet', speaker_6_bio: 'Enabling open, user-first Web3 ecosystems',
                     past_events_title: 'Revive the Experience', past_events_subtitle: 'Moments from our previous events that defined the community.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Our Valued Sponsors', sponsors_subtitle: 'Powering the future of decentralization in LATAM.',
@@ -800,6 +817,7 @@
                     speaker_3_title: 'LATAM Business Development Lead en Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-fundador de Txpipe.io', speaker_4_bio: 'Descentralizando el futuro.',
                     speaker_5_title: 'Fundador de Sead', speaker_5_bio: 'Un "creador de avances" en identidad digital y Web3.',
+                    speaker_6_title: 'Fundador de GameChanger Wallet', speaker_6_bio: 'Habilitando ecosistemas Web3 abiertos y centrados en el usuario',
                     past_events_title: 'Revive la Experiencia', past_events_subtitle: 'Momentos de nuestros eventos anteriores que definieron a la comunidad.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nuestros Valiosos Sponsors', sponsors_subtitle: 'Impulsando el futuro de la descentralización en LATAM.',
@@ -873,6 +891,7 @@
                     speaker_3_title: 'Líder de Desenvolvimento de Negócios LATAM na Cardano Foundation', speaker_3_bio: '',
                     speaker_4_title: 'Co-fundador da Txpipe.io', speaker_4_bio: 'Descentralizando o futuro.',
                     speaker_5_title: 'Fundador da Sead', speaker_5_bio: 'Um "criador de avanços" em identidade digital e Web3.',
+                    speaker_6_title: 'Fundador da GameChanger Wallet', speaker_6_bio: 'Capacitando ecossistemas Web3 abertos e focados no usuário',
                     past_events_title: 'Reviva a Experiência', past_events_subtitle: 'Momentos de nossos eventos anteriores que definiram a comunidade.',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: 'Nossos Valiosos Patrocinadores', sponsors_subtitle: 'Potencializando o futuro da descentralização na LATAM.',
@@ -946,6 +965,7 @@
                     speaker_3_title: 'Cardano財団LATAM事業開発リード', speaker_3_bio: '',
                     speaker_4_title: 'Txpipe.io共同創設者', speaker_4_bio: '未来を分散化する。',
                     speaker_5_title: 'Seadの創設者', speaker_5_bio: 'デジタルアイデンティティとWeb3の「ブレークスルーメーカー」。',
+                    speaker_6_title: 'GameChanger Walletの創設者', speaker_6_bio: 'オープンでユーザーファーストのWeb3エコシステムを実現',
                     past_events_title: '体験を追体験', past_events_subtitle: 'コミュニティを定義した過去のイベントの瞬間。',
                     video1_title: 'Cardano Summit Buenos Aires 2021', video2_title: 'Cardano Summit Buenos Aires 2022', video3_title: 'Cardano Summit Buenos Aires 2023', video4_title: 'Cardano Summit Buenos Aires 2024', video5_title: 'Cardano Tech Week 2024',
                     sponsors_title: '貴重なスポンサーの皆様', sponsors_subtitle: 'LATAMにおける分散化の未来を支える。',
@@ -1312,6 +1332,26 @@
                         slidesPerView: 4,
                         spaceBetween: 30,
                         centeredSlides: false,
+                    },
+                },
+            });
+
+            const ecosystemSwiper = new Swiper('.ecosystem-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                slidesPerView: 2,
+                spaceBetween: 30,
+                breakpoints: {
+                    640: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 50,
                     },
                 },
             });
