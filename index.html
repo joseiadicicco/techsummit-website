@@ -181,8 +181,11 @@
         .swiper-slide {
             display: flex;
             justify-content: center;
-            align-items: stretch; /* Changed from center to stretch for equal height cards */
+            align-items: center; /* Default alignment for all carousels */
             height: auto;
+        }
+        #speakers .swiper-slide {
+            align-items: stretch; /* Specific for speaker cards to ensure equal height */
         }
         .swiper-button-next, .swiper-button-prev {
             color: #67e8f9; /* cyan-300 */
