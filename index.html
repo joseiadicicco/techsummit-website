@@ -278,13 +278,13 @@
                     <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto" data-key="cities_subtitle">We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.</p>
                     
                     <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden card-glow">
+                        <div id="rio-card-link" class="bg-gray-800 rounded-2xl overflow-hidden card-glow cursor-pointer">
                             <img src="/images/rio.jpg" alt="[Imagen de Río de Janeiro de noche]" class="w-full h-72 object-cover">
                             <div class="p-8">
                                 <h3 class="text-3xl font-bold mb-2" data-key="rio_city">Rio de Janeiro</h3>
                                 <p class="text-cyan-400 text-xl font-semibold mb-4" data-key="rio_date">October 2025</p>
                                 <p class="text-gray-400" data-key="rio_description">The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.</p>
-                                <div class="mt-6 w-full bg-gray-700 text-white font-bold py-3 px-6 rounded-lg text-center" data-key="rio_details_soon">Details Coming Soon</div>
+                                <div class="mt-6 w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-center" data-key="rio_details_button">View RIO Experience</div>
                             </div>
                         </div>
 
@@ -474,9 +474,10 @@
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="text-3xl md:text-5xl font-bold mb-4" data-key="media_partners_title">Media Partners</h2>
                     <p class="text-lg text-gray-400 mb-16" data-key="media_partners_subtitle">Spreading the word across the ecosystem.</p>
-                    <div class="grid grid-cols-2 gap-8 items-center max-w-lg mx-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 items-center max-w-2xl mx-auto">
                         <div class="flex justify-center p-4"> <img src="/images/newsletter.png" alt="Newsletter Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
                         <div class="flex justify-center p-4"> <img src="/images/feed.png" alt="Feed Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
+                        <div class="flex justify-center p-4"> <img src="/images/cointelegraph.png" alt="Coin Telegraph Logo" class="max-w-[180px] w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-300"> </div>
                     </div>
                 </div>
             </section>
@@ -490,10 +491,152 @@
         </footer>
     </div>
 
+    <div id="rio-details" class="hidden">
+        <section class="pt-8 md:pt-12 pb-20 md:pb-28 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <button id="back-to-main-rio" class="mb-8 inline-flex items-center text-cyan-400 hover:text-cyan-300">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span data-key="back_to_summit">Back to Main Summit</span>
+                </button>
+
+                <h2 class="text-4xl md:text-6xl font-bold text-center mb-4 text-glow" data-key="rio_experience_title">The Rio Experience</h2>
+                <p class="text-center text-lg text-gray-400 mb-16 max-w-3xl mx-auto" data-key="rio_experience_subtitle">Join us in the marvelous city for a day of deep technical dives and community building.</p>
+
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div class="bg-gray-800 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6" data-key="rio_agenda_title">October 2025 Agenda</h3>
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                                    <div class="flex items-center"><span class="w-4 h-4 bg-cyan-500 rounded-sm mr-2"></span><span data-key="legend_hackathon">Hackathon</span></div>
+                                    <div class="flex items-center"><span class="w-4 h-4 bg-purple-700 rounded-sm mr-2"></span><span data-key="legend_summit">Cardano Summit</span></div>
+                                </div>
+                            </div>
+                            <div id="calendar-rio" class="calendar-grid text-xs text-center font-semibold">
+                                <!-- Calendar for Rio will be populated by JS -->
+                            </div>
+                        </div>
+                        
+                        <div id="agenda-details-rio">
+                            <h4 class="text-xl font-bold mb-2" data-key="summit_title_rio">Cardano LATAM Summit</h4>
+                            <p class="text-gray-400 mb-4" data-key="summit_desc_rio">The main event. A full day of keynotes, technical panels, and ecosystem showcases. (Oct 15)</p>
+                        </div>
+
+                    </div>
+
+                    <div class="flex flex-col space-y-8">
+                        <h3 class="text-2xl font-bold text-center" data-key="reg_hub_title">Choose Your Path</h3>
+                        <div class="bg-gray-800 p-6 rounded-2xl border-2 border-gray-700 track-card">
+                            <h4 class="text-xl font-bold" data-key="track_hackathon_title">Hackathon Only</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_hackathon_desc">Ready to build? Jump straight into the 48-hour competition and showcase your skills.</p>
+                            <button class="register-button w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-6 rounded-lg" data-track="rio-hackathon" data-key="track_button_3">Register Now</button>
+                        </div>
+                         <div class="bg-gray-800 p-6 rounded-2xl border-2 border-gray-700 track-card">
+                            <h4 class="text-xl font-bold" data-key="track_summit_title">Summit Only</h4>
+                            <p class="text-gray-400 mt-2 mb-4 text-sm" data-key="track_summit_desc">Join us for the main event day, full of keynotes, panels, and networking.</p>
+                            <button type="button" class="block w-full bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg" data-key="track_summit_button" data-luma-action="checkout" data-luma-event-id="evt-yK5Fegc6GRDFIeG">Get your Ticket on Luma</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RIO HACKATHON FORM -->
+                <div id="registration-form-container-rio" class="hidden mt-16 max-w-3xl mx-auto">
+                     <div class="bg-gray-800 p-8 rounded-2xl border border-cyan-500/50">
+                        <h3 id="form-title-rio" class="text-2xl font-bold mb-6 text-center">Registration</h3>
+                        <form id="application-form-rio" action="https://formspree.io/f/mldloenz" method="POST">
+                            <input type="hidden" id="registration-type-rio" name="registration_type" value="rio-hackathon">
+                            
+                            <div class="border-b border-gray-700 pb-6 mb-6">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_personal">Personal Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="name-rio" class="block text-sm font-medium text-gray-300" data-key="form_name">Full Name</label>
+                                        <input type="text" name="name" id="name-rio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                                    </div>
+                                    <div>
+                                        <label for="email-rio" class="block text-sm font-medium text-gray-300" data-key="form_email">Email Address</label>
+                                        <input type="email" name="email" id="email-rio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                                    </div>
+                                    <div>
+                                        <label for="phone-rio" class="block text-sm font-medium text-gray-300" data-key="form_phone">Phone Number</label>
+                                        <input type="tel" name="phone" id="phone-rio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white" placeholder="+55 21 912345678">
+                                    </div>
+                                    <div>
+                                        <label for="portfolio-rio" class="block text-sm font-medium text-gray-300" data-key="form_portfolio">GitHub / Portfolio URL</label>
+                                        <input type="url" name="portfolio" id="portfolio-rio" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-b border-gray-700 pb-6 mb-6">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_technical">Technical Profile</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="study-level-rio" class="block text-sm font-medium text-gray-300" data-key="form_study_level">Level of Study</label>
+                                        <select id="study-level-rio" name="study_level" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                                            <option value="student" data-key="option_student">Student</option>
+                                            <option value="professional" data-key="option_professional">Graduate / Professional</option>
+                                            <option value="self_taught" data-key="option_self_taught">Self-taught</option>
+                                            <option value="other" data-key="option_other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="specialty-rio" class="block text-sm font-medium text-gray-300" data-key="form_specialty">Area of Study / Specialty</label>
+                                        <input type="text" name="specialty" id="specialty-rio" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="block text-sm font-medium text-gray-300" data-key="form_skills_title">Technical Skills (select all that apply)</label>
+                                    <div class="mt-2 grid grid-cols-2 gap-2">
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="blockchain" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_blockchain">Blockchain</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="smart_contracts" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_smart_contracts">Smart Contracts</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="frontend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_frontend">Frontend Dev</span></label>
+                                        <label class="flex items-center bg-gray-700 p-3 rounded-md"><input type="checkbox" name="skills" value="backend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3"><span data-key="skill_backend">Backend Dev</span></label>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label for="experience-detail-rio" class="block text-sm font-medium text-gray-300" data-key="form_experience_detail">Please describe your experience with the selected skills</label>
+                                    <textarea id="experience-detail-rio" name="experience_detail" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-cyan-500 focus:border-cyan-500 text-white"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_section_commitment">Commitment & Consent</h4>
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <input id="privacy-rio" name="privacy" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
+                                        <div class="ml-3 text-sm">
+                                            <label for="privacy-rio" class="font-medium text-gray-300" data-key="form_privacy_check">I authorize the event organizers to use my personal data for administrative and educational purposes.</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p id="form-status-rio" class="text-center text-red-400 h-6 mt-4"></p>
+
+                            <div class="mt-8">
+                                <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition-colors text-lg" data-key="form_submit">Apply Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="success-message-rio" class="hidden mt-16 max-w-3xl mx-auto text-center">
+                    <div class="bg-gray-800 p-8 rounded-2xl border border-green-500/50">
+                        <svg class="w-16 h-16 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-2xl font-bold mt-6 mb-4 text-white" data-key="success_title">Application Sent!</h3>
+                        <p class="text-gray-400" data-key="success_message">Thank you for your interest. We have received your application and will review it shortly. We will contact you via email with the next steps.</p>
+                        <button id="close-success-message-rio" class="mt-8 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-colors" data-key="success_close_button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <div id="buenos-aires-details" class="hidden">
         <section class="pt-8 md:pt-12 pb-20 md:pb-28 bg-gray-900">
             <div class="container mx-auto px-6">
-                <button id="back-to-main" class="mb-8 inline-flex items-center text-cyan-400 hover:text-cyan-300">
+                <button id="back-to-main-ba" class="mb-8 inline-flex items-center text-cyan-400 hover:text-cyan-300">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     <span data-key="back_to_summit">Back to Main Summit</span>
                 </button>
@@ -735,7 +878,7 @@
                     nav_venues: 'Venues', nav_speakers: 'Speakers', nav_past_events: 'Past Events', nav_sponsors: 'Sponsors', nav_team: 'Team',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.', hero_cta_sponsor: 'Become a Sponsor',
                     cities_title: 'Two Cities, One Epic Summit', cities_subtitle: "We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.",
-                    rio_city: 'Rio de Janeiro', rio_date: 'October 2025', rio_description: 'The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.', rio_details_soon: 'Details Coming Soon',
+                    rio_city: 'Rio de Janeiro', rio_date: 'October 2025', rio_description: 'The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.', rio_details_button: 'View RIO Experience',
                     ba_city: 'Buenos Aires', ba_date: 'November 2025', ba_description: 'The grand finale in the passionate capital of Argentina. A deep dive into the local ecosystem, celebrating a year of growth and collaboration.', ba_details_button: 'View BA Experience',
                     speakers_title: 'Featured Speakers', speakers_subtitle: 'The brilliant minds and leading voices of the Cardano ecosystem shaping the future of blockchain.',
                     speaker_1_title: 'Dean of UTN FRBA', speaker_1_bio: 'Executive Committee Member of GEDC',
@@ -753,6 +896,10 @@
                     team_role_kehua: 'General Organizer', team_role_sabrina: 'Marketing & Community Manager', team_role_jose: 'Event Director', team_role_yen: 'Finance and Budget Coordinator', team_role_nicolas: 'Technical Manager',
                     footer_made_with_love: 'An event by the community, for the community.',
                     back_to_summit: 'Back to Main Summit',
+                    rio_experience_title: 'The Rio Experience', rio_experience_subtitle: 'Join us in the marvelous city for a day of deep technical dives and community building.',
+                    rio_agenda_title: 'October 2025 Agenda',
+                    summit_title_rio: 'Cardano LATAM Summit', summit_desc_rio: 'The main event. A full day of keynotes, technical panels, and ecosystem showcases. (Oct 15)',
+                    day15_rio_title: 'Cardano Summit Rio', day15_rio_topics: 'A full day of keynotes, technical panels, and ecosystem showcases.',
                     ba_experience_title: 'The Buenos Aires Experience', ba_experience_subtitle: 'An immersive week of learning, building, and competition. Prepare for the ultimate Cardano developer challenge.',
                     ba_agenda_title: 'November 2025 Agenda', legend_aiken: 'Aiken Course', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'VIP Day',
                     day_mon: 'MON', day_tue: 'TUE', day_wed: 'WED', day_thu: 'THU', day_fri: 'FRI', day_sat: 'SAT', day_sun: 'SUN',
@@ -809,7 +956,7 @@
                     nav_venues: 'Sedes', nav_speakers: 'Oradores', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Basándonos en el éxito de la Cardano Tech Week, nos expandimos por América Latina para conectar, construir e innovar.', hero_cta_sponsor: 'Conviértete en Sponsor',
                     cities_title: 'Dos Ciudades, Un Summit Épico', cities_subtitle: 'Llevamos el ecosistema de Cardano al corazón de Brasil y Argentina.',
-                    rio_city: 'Río de Janeiro', rio_date: 'Octubre 2025', rio_description: 'La primera parada de nuestro tour LATAM en la vibrante ciudad de Río. Espera networking de alta energía, charlas de tecnología punta y experiencias inolvidables.', rio_details_soon: 'Detalles Próximamente',
+                    rio_city: 'Río de Janeiro', rio_date: 'Octubre 2025', rio_description: 'La primera parada de nuestro tour LATAM en la vibrante ciudad de Río. Espera networking de alta energía, charlas de tecnología punta y experiencias inolvidables.', rio_details_button: 'Ver Experiencia RIO',
                     ba_city: 'Buenos Aires', ba_date: 'Noviembre 2025', ba_description: 'La gran final en la apasionada capital de Argentina. Una inmersión profunda en el ecosistema local, celebrando un año de crecimiento y colaboración.', ba_details_button: 'Ver Experiencia BA',
                     speakers_title: 'Oradores Destacados', speakers_subtitle: 'Las mentes brillantes y las voces líderes del ecosistema de Cardano que dan forma al futuro de la blockchain.',
                     speaker_1_title: 'Decano de la UTN FRBA', speaker_1_bio: 'Miembro del Comité Ejecutivo del GEDC',
@@ -827,6 +974,10 @@
                     team_role_kehua: 'Organizador General', team_role_sabrina: 'Marketing & Community Manager', team_role_jose: 'Director del Evento', team_role_yen: 'Coordinadora de Finanzas y Presupuesto', team_role_nicolas: 'Gerente Técnico',
                     footer_made_with_love: 'Un evento por la comunidad, para la comunidad.',
                     back_to_summit: 'Volver al Summit Principal',
+                    rio_experience_title: 'La Experiencia Rio', rio_experience_subtitle: 'Únete a nosotros en la ciudad maravillosa para un día de inmersión técnica y construcción de comunidad.',
+                    rio_agenda_title: 'Agenda Octubre 2025',
+                    summit_title_rio: 'Cardano LATAM Summit', summit_desc_rio: 'El evento principal. Un día completo de keynotes, paneles técnicos y showcases del ecosistema. (15 Oct)',
+                    day15_rio_title: 'Cardano Summit Rio', day15_rio_topics: 'Un día completo de keynotes, paneles técnicos y showcases del ecosistema.',
                     ba_experience_title: 'La Experiencia Buenos Aires', ba_experience_subtitle: 'Una semana inmersiva de aprendizaje, construcción y competencia. Prepárate para el desafío definitivo para desarrolladores de Cardano.',
                     ba_agenda_title: 'Agenda Noviembre 2025', legend_aiken: 'Curso de Aiken', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'Día VIP',
                     day_mon: 'LUN', day_tue: 'MAR', day_wed: 'MIÉ', day_thu: 'JUE', day_fri: 'VIE', day_sat: 'SÁB', day_sun: 'DOM',
@@ -883,7 +1034,7 @@
                     nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Com base no sucesso da Cardano Tech Week, estamos expandindo pela América Latina para conectar, construir e inovar.', hero_cta_sponsor: 'Torne-se um Patrocinador',
                     cities_title: 'Duas Cidades, Um Summit Épico', cities_subtitle: 'Estamos trazendo o ecossistema Cardano para o coração do Brasil e da Argentina.',
-                    rio_city: 'Rio de Janeiro', rio_date: 'Outubro de 2025', rio_description: 'A primeira parada de nossa turnê LATAM na vibrante cidade do Rio. Espere networking de alta energia, palestras de tecnologia de ponta e experiências inesquecíveis.', rio_details_soon: 'Detalhes em Breve',
+                    rio_city: 'Rio de Janeiro', rio_date: 'Outubro de 2025', rio_description: 'A primeira parada de nossa turnê LATAM na vibrante cidade do Rio. Espere networking de alta energia, palestras de tecnologia de ponta e experiências inesquecíveis.', rio_details_button: 'Ver Experiência RIO',
                     ba_city: 'Buenos Aires', ba_date: 'Novembro de 2025', ba_description: 'A grande final na apaixonada capital da Argentina. Um mergulho profundo no ecossistema local, comemorando um ano de crescimento e colaboração.', ba_details_button: 'Ver Experiência BA',
                     speakers_title: 'Palestrantes em Destaque', speakers_subtitle: 'As mentes brilhantes e as vozes líderes do ecossistema Cardano que moldam o futuro da blockchain.',
                     speaker_1_title: 'Reitor da UTN FRBA', speaker_1_bio: 'Membro do Comitê Executivo do GEDC',
@@ -901,6 +1052,10 @@
                     team_role_kehua: 'Organizador Geral', team_role_sabrina: 'Gerente de Marketing e Comunidade', team_role_jose: 'Diretor do Evento', team_role_yen: 'Coordenadora de Finanças e Orçamento', team_role_nicolas: 'Gerente Técnico',
                     footer_made_with_love: 'Um evento da comunidade, para a comunidade.',
                     back_to_summit: 'Voltar ao Summit Principal',
+                    rio_experience_title: 'A Experiência Rio', rio_experience_subtitle: 'Junte-se a nós na cidade maravilhosa para um dia de imersão técnica e construção de comunidade.',
+                    rio_agenda_title: 'Agenda de Outubro de 2025',
+                    summit_title_rio: 'Cardano LATAM Summit', summit_desc_rio: 'O evento principal. Um dia inteiro de keynotes, painéis técnicos e showcases do ecossistema. (15 Out)',
+                    day15_rio_title: 'Cardano Summit Rio', day15_rio_topics: 'Um dia inteiro de keynotes, painéis técnicos e showcases do ecossistema.',
                     ba_experience_title: 'A Experiência Buenos Aires', ba_experience_subtitle: 'Uma semana imersiva de aprendizado, construção e competição. Prepare-se para o desafio final para desenvolvedores Cardano.',
                     ba_agenda_title: 'Agenda de Novembro de 2025', legend_aiken: 'Curso de Aiken', legend_hackathon: 'Hackathon', legend_summit: 'Cardano Summit', legend_vip: 'Dia VIP',
                     day_mon: 'SEG', day_tue: 'TER', day_wed: 'QUA', day_thu: 'QUI', day_fri: 'SEX', day_sat: 'SÁB', day_sun: 'DOM',
@@ -957,7 +1112,7 @@
                     nav_venues: '会場', nav_speakers: 'スピーカー', nav_past_events: '過去のイベント', nav_sponsors: 'スポンサー', nav_team: 'チーム',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Cardano Tech Weekの成功を基に、ラテンアメリカ全土に拡大し、つながり、構築し、革新します。', hero_cta_sponsor: 'スポンサーになる',
                     cities_title: '2つの都市、1つの壮大なサミット', cities_subtitle: 'Cardanoエコシステムをブラジルとアルゼンチンの中心にお届けします。',
-                    rio_city: 'リオデジャネイロ', rio_date: '2025年10月', rio_description: '活気あふれるリオの街でのLATAMツアーの最初の目的地。エネルギッシュなネットワーキング、最先端の技術トーク、忘れられない体験をご期待ください。', rio_details_soon: '詳細は近日公開',
+                    rio_city: 'リオデジャネイロ', rio_date: '2025年10月', rio_description: '活気あふれるリオの街でのLATAMツアーの最初の目的地。エネルギッシュなネットワーキング、最先端の技術トーク、忘れられない体験をご期待ください。', rio_details_button: 'RIOエクスペリエンスを見る',
                     ba_city: 'ブエノスアイレス', ba_date: '2025年11月', ba_description: '情熱的なアルゼンチンの首都でのグランドフィナーレ。地域の生態系への深いダイブ、成長と協力の一年を祝います。', ba_details_button: 'BAエクスペリエンスを見る',
                     speakers_title: '注目のスピーカー', speakers_subtitle: 'ブロックチェーンの未来を形作るCardanoエコシステムの優れた頭脳と主要な声。',
                     speaker_1_title: 'UTN FRBA学部長', speaker_1_bio: 'GEDC実行委員会メンバー',
@@ -975,6 +1130,10 @@
                     team_role_kehua: '総合オーガナイザー', team_role_sabrina: 'マーケティング＆コミュニティマネージャー', team_role_jose: 'イベントディレクター', team_role_yen: '財務・予算コーディネーター', team_role_nicolas: 'テクニカルマネージャー',
                     footer_made_with_love: 'コミュニティによる、コミュニティのためのイベント。',
                     back_to_summit: 'メインサミットに戻る',
+                    rio_experience_title: 'リオ体験', rio_experience_subtitle: '素晴らしい街で、技術的な深いダイブとコミュニティ構築の一日にご参加ください。',
+                    rio_agenda_title: '2025年10月の議題',
+                    summit_title_rio: 'Cardano LATAMサミット', summit_desc_rio: 'メインイベント。基調講演、技術パネル、エコシステムショーケースが満載の一日。(10月15日)',
+                    day15_rio_title: 'Cardano Summit Rio', day15_rio_topics: '基調講演、技術パネル、エコシステムショーケースが満載の一日。',
                     ba_experience_title: 'ブエノスアイレス体験', ba_experience_subtitle: '学習、構築、競争の没入型の一週間。究極のCardano開発者チャレンジに備えましょう。',
                     ba_agenda_title: '2025年11月の議題', legend_aiken: 'Aikenコース', legend_hackathon: 'ハッカソン', legend_summit: 'Cardanoサミット', legend_vip: 'VIPデー',
                     day_mon: '月', day_tue: '火', day_wed: '水', day_thu: '木', day_fri: '金', day_sat: '土', day_sun: '日',
@@ -1033,21 +1192,38 @@
             const langMenuButton = document.getElementById('lang-menu-button');
             const langMenu = document.getElementById('lang-menu');
             const currentLangSpan = document.getElementById('current-lang');
+            
+            const rioCardLink = document.getElementById('rio-card-link');
             const baCardLink = document.getElementById('ba-card-link');
+            
             const mainContentContainer = document.getElementById('main-content-container');
+            
+            const rioDetails = document.getElementById('rio-details');
             const buenosAiresDetails = document.getElementById('buenos-aires-details');
-            const backToMainButton = document.getElementById('back-to-main');
+            
+            const backToMainRioButton = document.getElementById('back-to-main-rio');
+            const backToMainBaButton = document.getElementById('back-to-main-ba');
+
             const registrationFormContainer = document.getElementById('registration-form-container');
+            const registrationFormContainerRio = document.getElementById('registration-form-container-rio');
+
             const registerButtons = document.querySelectorAll('.register-button');
             const formTitle = document.getElementById('form-title');
             const registrationTypeInput = document.getElementById('registration-type');
+            
             const calendarGrid = document.getElementById('calendar');
+            const calendarRioGrid = document.getElementById('calendar-rio');
+            
             const tooltip = document.getElementById('calendar-tooltip');
+            
             const form = document.getElementById('application-form');
             const successMessage = document.getElementById('success-message');
             const closeSuccessMessageButton = document.getElementById('close-success-message');
-            const formStatus = document.getElementById('form-status');
             
+            const formRio = document.getElementById('application-form-rio');
+            const successMessageRio = document.getElementById('success-message-rio');
+            const closeSuccessMessageButtonRio = document.getElementById('close-success-message-rio');
+
             const vipModal = document.getElementById('vip-modal');
             const openVipModalButton = document.getElementById('vip-ticket-button');
             const closeVipModalButton = document.getElementById('close-vip-modal-button');
@@ -1059,7 +1235,7 @@
             const sponsorFormContent = document.getElementById('sponsor-form-content');
             const sponsorSuccessMessage = document.getElementById('sponsor-success-message');
 
-            const eventDays = {
+            const eventDaysBA = {
                 3: { key: 'day3', class: 'bg-indigo-500' }, 4: { key: 'day4', class: 'bg-indigo-500' },
                 5: { key: 'day5', class: 'bg-indigo-500' }, 6: { key: 'day6', class: 'bg-indigo-500' },
                 7: { key: 'day7', class: 'bg-indigo-500' },
@@ -1070,7 +1246,11 @@
                 16: { key: 'day16', class: 'golden-ticket-bg' }
             };
 
-            const populateCalendar = () => {
+            const eventDaysRio = {
+                15: { key: 'day15_rio', class: 'bg-purple-700' }
+            };
+
+            const populateCalendarBA = () => {
                 calendarGrid.innerHTML = '';
                 const dayNames = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
                 dayNames.forEach(day => {
@@ -1080,8 +1260,7 @@
                     calendarGrid.appendChild(dayEl);
                 });
 
-                // This is a simplified way to get the first day of Nov 2025 (Saturday).
-                // Day 1 is Saturday, so we need 5 empty slots for Mon-Fri.
+                // Nov 2025 starts on a Saturday. We need 5 empty slots for Mon-Fri.
                 for (let i = 0; i < 5; i++) { 
                     calendarGrid.appendChild(document.createElement('div'));
                 }
@@ -1091,8 +1270,8 @@
                     dayEl.className = 'calendar-day flex items-center justify-center rounded';
                     dayEl.textContent = i;
 
-                    if (eventDays[i]) {
-                        const eventInfo = eventDays[i];
+                    if (eventDaysBA[i]) {
+                        const eventInfo = eventDaysBA[i];
                         dayEl.classList.add(...eventInfo.class.split(' '), 'text-white', 'font-bold', 'cursor-pointer');
                         dayEl.dataset.tooltipKey = eventInfo.key;
                     } else {
@@ -1100,12 +1279,45 @@
                     }
                     calendarGrid.appendChild(dayEl);
                 }
-                addTooltipListeners();
+                addTooltipListeners(calendarGrid);
                 updateTranslations();
             };
 
-            const addTooltipListeners = () => {
-                 calendarGrid.querySelectorAll('[data-tooltip-key]').forEach(dayEl => {
+            const populateCalendarRio = () => {
+                calendarRioGrid.innerHTML = '';
+                const dayNames = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+                dayNames.forEach(day => {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'text-gray-500 text-center';
+                    dayEl.dataset.key = `day_${day}`;
+                    calendarRioGrid.appendChild(dayEl);
+                });
+
+                // Oct 2025 starts on a Wednesday. We need 2 empty slots for Mon-Tue.
+                for (let i = 0; i < 2; i++) { 
+                    calendarRioGrid.appendChild(document.createElement('div'));
+                }
+
+                for (let i = 1; i <= 31; i++) {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'calendar-day flex items-center justify-center rounded';
+                    dayEl.textContent = i;
+
+                    if (eventDaysRio[i]) {
+                        const eventInfo = eventDaysRio[i];
+                        dayEl.classList.add(...eventInfo.class.split(' '), 'text-white', 'font-bold', 'cursor-pointer');
+                        dayEl.dataset.tooltipKey = eventInfo.key;
+                    } else {
+                        dayEl.classList.add('bg-gray-700/50');
+                    }
+                    calendarRioGrid.appendChild(dayEl);
+                }
+                addTooltipListeners(calendarRioGrid);
+                updateTranslations();
+            };
+
+            const addTooltipListeners = (calendar) => {
+                 calendar.querySelectorAll('[data-tooltip-key]').forEach(dayEl => {
                     dayEl.addEventListener('mouseenter', (e) => {
                         const key = e.target.dataset.tooltipKey;
                         const titleKey = `${key}_title`;
@@ -1134,14 +1346,21 @@
                 });
             };
 
-            const updateFormTitle = () => {
-                const track = registrationTypeInput.value;
-                if (!track) return;
-                let titleKey = '';
-                if (track === 'full') titleKey = 'form_title_full';
-                else if (track === 'course') titleKey = 'form_title_course';
-                else if (track === 'hackathon') titleKey = 'form_title_hackathon';
-                if (titleKey && formTitle) formTitle.dataset.key = titleKey;
+            const updateFormTitle = (track) => {
+                let formTitleEl;
+                if (track.startsWith('rio')) {
+                    formTitleEl = document.getElementById('form-title-rio');
+                } else {
+                    formTitleEl = document.getElementById('form-title');
+                }
+
+                if (!track || !formTitleEl) return;
+                
+                let titleKey = 'form_title_hackathon'; // Default to hackathon
+                if (track.includes('full')) titleKey = 'form_title_full';
+                else if (track.includes('course')) titleKey = 'form_title_course';
+                
+                formTitleEl.dataset.key = titleKey;
             };
 
             const updateTranslations = () => {
@@ -1151,7 +1370,7 @@
                         element.textContent = translations[currentLanguage][key];
                     }
                 });
-                document.querySelectorAll('#study-level option').forEach(option => {
+                document.querySelectorAll('select[id^="study-level"] option').forEach(option => {
                     const key = option.getAttribute('data-key');
                     if(translations[currentLanguage] && translations[currentLanguage][key]) option.textContent = translations[currentLanguage][key];
                 });
@@ -1160,7 +1379,8 @@
             const setLanguage = (lang) => {
                 if (!translations[lang]) return;
                 currentLanguage = lang;
-                populateCalendar(); 
+                populateCalendarBA(); 
+                populateCalendarRio();
                 currentLangSpan.textContent = lang.toUpperCase();
                 document.documentElement.lang = lang;
                 langMenu.classList.add('hidden');
@@ -1171,13 +1391,26 @@
             document.addEventListener('click', () => { if (!langMenu.classList.contains('hidden')) langMenu.classList.add('hidden'); });
             langMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); } });
             
+            rioCardLink.addEventListener('click', () => {
+                mainContentContainer.classList.add('hidden');
+                rioDetails.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            });
+
             baCardLink.addEventListener('click', () => {
                 mainContentContainer.classList.add('hidden');
                 buenosAiresDetails.classList.remove('hidden');
                 window.scrollTo(0, 0);
             });
 
-            backToMainButton.addEventListener('click', () => {
+            backToMainRioButton.addEventListener('click', () => {
+                mainContentContainer.classList.remove('hidden');
+                rioDetails.classList.add('hidden');
+                registrationFormContainerRio.classList.add('hidden');
+                window.scrollTo(0, 0);
+            });
+
+            backToMainBaButton.addEventListener('click', () => {
                 mainContentContainer.classList.remove('hidden');
                 buenosAiresDetails.classList.add('hidden');
                 registrationFormContainer.classList.add('hidden');
@@ -1188,70 +1421,88 @@
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     const track = button.getAttribute('data-track');
-                    registrationTypeInput.value = track;
+                    let formContainer;
                     
-                    const availabilityLabel = document.getElementById('availability-label');
-                    let commitmentKey = 'form_availability_check_full'; // Default
-                    if (track === 'course') {
-                        commitmentKey = 'form_availability_check_course';
-                    } else if (track === 'hackathon') {
-                        commitmentKey = 'form_availability_check_hackathon';
+                    if (track.startsWith('rio')) {
+                        formContainer = registrationFormContainerRio;
+                        document.getElementById('registration-type-rio').value = track;
+                    } else {
+                        formContainer = registrationFormContainer;
+                        document.getElementById('registration-type').value = track;
+                        const availabilityLabel = document.getElementById('availability-label');
+                        let commitmentKey = 'form_availability_check_full'; // Default
+                        if (track === 'course') {
+                            commitmentKey = 'form_availability_check_course';
+                        } else if (track === 'hackathon') {
+                            commitmentKey = 'form_availability_check_hackathon';
+                        }
+                        availabilityLabel.dataset.key = commitmentKey;
                     }
-                    availabilityLabel.dataset.key = commitmentKey;
 
-                    registrationFormContainer.classList.remove('hidden');
-                    updateFormTitle(); 
+                    formContainer.classList.remove('hidden');
+                    updateFormTitle(track); 
                     updateTranslations();
                     
                     const headerOffset = 80;
-                    const elementPosition = registrationFormContainer.getBoundingClientRect().top;
+                    const elementPosition = formContainer.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     
-                    setTimeout(() => { document.getElementById('name').focus(); }, 500);
+                    setTimeout(() => { formContainer.querySelector('input[type="text"]').focus(); }, 500);
                 });
             });
-
-            form.addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const data = new FormData(form);
-                const submitButton = form.querySelector('button[type="submit"]');
+            
+            const handleFormSubmit = async (formEl, statusEl, successEl) => {
+                const data = new FormData(formEl);
+                const submitButton = formEl.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.innerHTML;
                 
                 submitButton.disabled = true;
                 submitButton.textContent = translations[currentLanguage]['form_submitting'] || 'Sending...';
-                formStatus.textContent = '';
+                statusEl.textContent = '';
 
                 try {
-                    const response = await fetch(form.action, {
-                        method: form.method,
+                    const response = await fetch(formEl.action, {
+                        method: formEl.method,
                         body: data,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: { 'Accept': 'application/json' }
                     });
 
                     if (response.ok) {
-                        registrationFormContainer.classList.add('hidden');
-                        successMessage.classList.remove('hidden');
-                        form.reset();
+                        formEl.parentElement.parentElement.classList.add('hidden');
+                        successEl.classList.remove('hidden');
+                        formEl.reset();
                     } else {
-                        formStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
+                        statusEl.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem.';
                     }
                 } catch (error) {
-                    formStatus.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem submitting your form.';
-                    console.error(error);
+                    statusEl.textContent = translations[currentLanguage]['form_error'] || 'Oops! There was a problem.';
                 } finally {
                     submitButton.disabled = false;
                     submitButton.innerHTML = originalButtonText;
-                    updateTranslations(); // Restore button text from data-key
+                    updateTranslations();
                 }
+            };
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleFormSubmit(form, document.getElementById('form-status'), successMessage);
+            });
+
+            formRio.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleFormSubmit(formRio, document.getElementById('form-status-rio'), successMessageRio);
             });
 
             closeSuccessMessageButton.addEventListener('click', () => {
                 successMessage.classList.add('hidden');
-                document.getElementById('buenos-aires-details').scrollIntoView({ behavior: 'smooth' });
+                buenosAiresDetails.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            closeSuccessMessageButtonRio.addEventListener('click', () => {
+                successMessageRio.classList.add('hidden');
+                rioDetails.scrollIntoView({ behavior: 'smooth' });
             });
 
 
