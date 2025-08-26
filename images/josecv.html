@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            -webkit-print-color-adjust: exact; /* Asegura que los colores se impriman correctamente */
+            -webkit-print-color-adjust: exact; /* Ensures colors print correctly */
             print-color-adjust: exact;
         }
         @media print {
@@ -22,10 +22,17 @@
             .no-print {
                 display: none;
             }
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            .interactive-icon {
+                display: none;
+            }
         }
         .list-bullet::before {
             content: '•';
-            color: #3b82f6; /* Color azul de Tailwind (blue-500) */
+            color: #3b82f6; /* Tailwind's blue-500 */
             font-weight: bold;
             display: inline-block;
             width: 1em;
@@ -48,10 +55,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     joseiadicicco@gmail.com
                 </a>
-                <span class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <a href="https://wa.me/5491162978103" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-600 transition-colors">
+                    <img src="https://techsummit.lat/images/whatsapplogo.png" alt="WhatsApp Logo" class="h-4 w-4 mr-2">
                     +54 9 11 6297-8103
-                </span>
+                </a>
                 <a href="https://www.linkedin.com/in/joseiadicicco/" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-blue-600 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     linkedin.com/in/joseiadicicco
@@ -60,7 +67,7 @@
         </header>
 
         <main class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- Columna Izquierda -->
+            <!-- Left Column -->
             <div class="md:col-span-1">
                 <section>
                     <h3 class="text-lg font-semibold text-gray-700 border-b-2 border-blue-500 pb-2 mb-4">KEY COMPETENCIES</h3>
@@ -103,7 +110,7 @@
                 </section>
             </div>
 
-            <!-- Columna Derecha -->
+            <!-- Right Column -->
             <div class="md:col-span-2">
                 <section>
                     <h3 class="text-lg font-semibold text-gray-700 border-b-2 border-blue-500 pb-2 mb-4">KEY ACHIEVEMENTS & IMPACT</h3>
@@ -111,23 +118,23 @@
                         <div>
                             <h4 class="font-semibold text-gray-800 text-base">1. Ecosystem Architecture & Infrastructure</h4>
                             <ul class="mt-2 space-y-2 text-gray-600 text-sm pl-4">
-                                <li class="list-bullet"><strong class="text-gray-700">Pioneered Academic Adoption:</strong> Established **ALBA Labs** at premier public universities (UTN & UBA), creating a global hackathon model adopted by **IOG**.</li>
-                                <li class="list-bullet"><strong class="text-gray-700">Built Foundational Infrastructure:</strong> Deployed a pioneering physical Cardano node (**ONE1**) and installed a node at UTN.</li>
-                                <li class="list-bullet"><strong class="text-gray-700">Strengthened the Core Protocol:</strong> Identified and reported a critical bug in the Cardano node's networking layer, contributing to protocol integrity.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Pioneered Academic Adoption:</strong> Established <a href="https://www.youtube.com/watch?v=RHZrFeiT0wc" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold"><strong>ALBA Labs</strong> at premier public university (UTN)<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1 inline-block interactive-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>, creating a global hackathon model adopted by <strong>IOG</strong>.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Built Foundational Infrastructure:</strong> Deployed a pioneering physical Cardano node (<strong>ONE1</strong>) and installed a node at UTN.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Strengthened the Core Protocol:</strong> <a href="https://github.com/IntersectMBO/cardano-node/issues/4707" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Identified and reported a critical bug<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1 inline-block interactive-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a> in the Cardano node's networking layer, contributing to protocol integrity.</li>
                             </ul>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-800 text-base">2. Community & Global Engagement</h4>
                             <ul class="mt-2 space-y-2 text-gray-600 text-sm pl-4">
-                                <li class="list-bullet"><strong class="text-gray-700">Led Global Strategic Events:</strong> Organized the **Cardano Summit** for five consecutive years, serving as the ecosystem's central hub.</li>
-                                <li class="list-bullet"><strong class="text-gray-700">United the Global Community:</strong> Hosted international delegates from 50+ countries for the **Cardano Constitution** signing events.</li>
-                                <li class="list-bullet"><strong class="text-gray-700">Scaled Community from the Ground Up:</strong> Founded a grassroots network that evolved into **The Cardano Confederation**.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Led Global Strategic Events:</strong> Organized the <strong>Cardano Summit</strong> for five consecutive years, serving as the ecosystem's central hub.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">United the Global Community:</strong> Hosted international delegates from 50+ countries for the <a href="https://www.youtube.com/watch?v=_3DBif2cQPA" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold"><strong>Cardano Constitution</strong> signing events<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1 inline-block interactive-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></a>.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Scaled Community from the Ground Up:</strong> Founded a grassroots network that evolved into <strong>The Cardano Confederation</strong>.</li>
                             </ul>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-800 text-base">3. Governance & Strategic Leadership</h4>
                             <ul class="mt-2 space-y-2 text-gray-600 text-sm pl-4">
-                                <li class="list-bullet"><strong class="text-gray-700">Shaped Core Governance:</strong> As a **Founding Member of Intersect**, played a direct role in the genesis of the organization.</li>
+                                <li class="list-bullet"><strong class="text-gray-700">Shaped Core Governance:</strong> As a <strong>Founding Member of Intersect</strong>, played a direct role in the genesis of the organization.</li>
                                 <li class="list-bullet"><strong class="text-gray-700">Hosted Constitutional Workshop:</strong> Organized and hosted the official Intersect constitutional workshop in Buenos Aires, facilitating a key governance milestone.</li>
                             </ul>
                         </div>
@@ -150,13 +157,6 @@
             </div>
         </main>
         
-        <!-- Botón de Imprimir -->
-        <div class="text-center mt-12 no-print">
-            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">
-                Guardar como PDF / Imprimir
-            </button>
-        </div>
-
     </div>
 </body>
 </html>
