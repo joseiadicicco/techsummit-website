@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading Agenda...</title>
+    <script>
+        (function() {
+            // The cutoff date is November 1st, 2025.
+            // Anything before this date will be considered the "Rio" period.
+            // Anything on or after this date will be the "Buenos Aires" period.
+            const rioEndDate = new Date('2025-11-01T00:00:00Z');
+            const now = new Date();
+            const origin = window.location.origin;
+            let targetPath;
+
+            if (now < rioEndDate) {
+                // If we are before November 2025, redirect to the Rio agenda.
+                targetPath = '/agenda.html#rio';
+            } else {
+                // Otherwise, redirect to the Buenos Aires agenda.
+                targetPath = '/agenda.html#ba';
+            }
+            // Construct the full URL and redirect.
+            window.location.replace(origin + targetPath);
+        })();
+    </script>
+</head>
+<body>
+    <p>Loading the correct agenda for you...</p>
+</body>
+</html>
