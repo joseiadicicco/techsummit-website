@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda - Cardano Tech Summit 2025 LATAM</title>
+    <title>Cardano Tech Summit 2025 LATAM - Agenda</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,56 +12,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: #111827; color: #F9FAFB; }
-        .text-glow { text-shadow: 0 0 8px rgba(0, 51, 173, 0.7), 0 0 20px rgba(0, 51, 173, 0.5); }
-        .tab-button.active { border-color: #22d3ee; color: #22d3ee; }
-        .timeline-item { border-left-color: #374151; }
-        .timeline-item:hover { border-left-color: #22d3ee; }
-        .timeline-icon { background-color: #374151; }
-        .timeline-item:hover .timeline-icon { background-color: #22d3ee; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(0, 51, 173, 0.7), 0 0 20px rgba(0, 51, 173, 0.5);
+        }
+        .tab-button.active {
+            background-color: #0891b2; /* cyan-600 */
+            color: #ffffff;
+        }
+        .timeline-item:hover .timeline-icon {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+        }
+        .timeline-item .timeline-icon {
+            background-color: #1f2937; /* bg-gray-800 */
+            border: 2px solid #0891b2; /* border-cyan-600 */
+        }
+        .track-card {
+            background-color: rgba(31, 41, 55, 0.5);
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-50">
 
-    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-             <a href="index.html" class="text-2xl font-bold text-white">
-                 <span class="text-2xl md:text-3xl font-black text-white">TechSummit<span class="text-cyan-400">.Lat</span></span>
-            </a>
-            <div class="relative">
-                <button id="lang-menu-button" class="flex items-center space-x-2 border border-gray-700 px-3 py-2 rounded-md hover:bg-gray-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.002 6.002 0 0111.336 0H4.332zM15.668 11.973A6.002 6.002 0 014.332 11.973h11.336z" clip-rule="evenodd" /></svg>
-                    <span id="current-lang">EN</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div id="lang-menu" class="hidden absolute right-0 mt-2 w-32 bg-gray-800 rounded-md shadow-lg py-1 z-10">
-                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="en">English</a>
-                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="es">Español</a>
-                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="pt">Português</a>
-                    <a href="#" class="block px-4 py-2 text-sm hover:bg-cyan-600" data-lang="ja">日本語</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main class="container mx-auto px-6 py-16 md:py-24">
-        <h1 class="text-4xl md:text-6xl font-bold text-center mb-4 text-glow" data-key="agenda_title">Event Agenda</h1>
-        <p class="text-center text-lg text-gray-400 mb-12" data-key="agenda_subtitle">Discover the full schedule for our events in Rio and Buenos Aires.</p>
+    <main class="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-glow" data-key="agenda_title">Event Agenda</h1>
+            <p class="mt-4 text-lg text-gray-400 max-w-3xl mx-auto" data-key="agenda_subtitle">Discover the full schedule for our events in Rio and Buenos Aires.</p>
+        </div>
 
         <!-- Tabs -->
-        <div class="flex justify-center border-b border-gray-700 mb-12">
-            <button id="tab-rio" class="tab-button text-lg font-semibold py-4 px-8 border-b-2 transition-colors duration-300" data-key="tab_rio">Rio de Janeiro</button>
-            <button id="tab-ba" class="tab-button text-lg font-semibold py-4 px-8 border-b-2 border-transparent text-gray-500 hover:text-white transition-colors duration-300" data-key="tab_ba">Buenos Aires</button>
+        <div class="flex justify-center mb-12 bg-gray-800 rounded-full p-1 max-w-sm mx-auto">
+            <button id="tab-rio" class="tab-button w-1/2 py-2 px-4 rounded-full transition-colors duration-300 active" data-key="tab_rio">Rio de Janeiro</button>
+            <button id="tab-ba" class="tab-button w-1/2 py-2 px-4 rounded-full transition-colors duration-300" data-key="tab_ba">Buenos Aires</button>
         </div>
 
         <!-- Rio Agenda Content -->
-        <div id="content-rio" class="agenda-content">
-            <h2 class="text-3xl font-bold text-center text-cyan-400 mb-2" data-key="rio_event_date">October 15th, 2025</h2>
-            <p class="text-center text-gray-500 mb-12" data-key="rio_event_location">Museu do Amanhã</p>
+        <div id="content-rio">
+            <div class="text-center mb-12 p-6 bg-gray-800/50 rounded-2xl">
+                <h2 class="text-3xl font-bold text-cyan-400" data-key="rio_event_date">October 15th, 2025</h2>
+                <p class="text-gray-300 text-lg" data-key="rio_event_location">Museu do Amanhã</p>
+            </div>
 
-            <div class="max-w-4xl mx-auto">
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
+            <div class="max-w-5xl mx-auto">
+                <!-- Timeline Container -->
+                <!-- 09:00 - 10:00 -->
+                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 border-gray-700 transition-all duration-300">
                     <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
                         <i class="fas fa-coffee"></i>
                     </div>
@@ -69,140 +72,180 @@
                     <h3 class="text-xl font-bold mb-2" data-key="rio_title_1">Arrivals, Check-in & Networking Breakfast</h3>
                     <p class="text-gray-400" data-key="rio_speakers_1">MC: Curió</p>
                 </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
+                
+                <!-- 10:00 - 12:45 (Parallel Tracks) -->
+                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 border-gray-700 transition-all duration-300">
                     <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-microphone-alt"></i>
+                        <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_2">10:00 - 10:15</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_2">Keynote: Head of Innovation CAIXA</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_2">Tiberio Zortea</p>
-                </div>
-                 <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
+                    <p class="text-cyan-400 font-semibold text-sm mb-1">10:00 - 13:00</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mt-4">
+                        <!-- Auditorio Principal -->
+                        <div class="track-card">
+                            <h4 class="text-2xl font-bold mb-4 text-cyan-300" data-key="track_main_auditorium">Main Auditorium</h4>
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_2">10:00 - 10:15</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_2">Keynote: Head of Innovation CAIXA</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_2">Tiberio Zortea</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_3">10:15 - 10:45</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_3">Panel: Gov. Stage</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_3">Serpro, Petrobras, CVM, FINEP</p>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_4">10:45 - 11:05</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_4">Keynote Speech</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_4">Rafael Fraga (Cardano Foundation)</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_5">11:05 - 11:45</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_5">Panel: SAF Demo</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_5">PETROBRAS, PUC-RIO, SERPRO, CF</p>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_6">11:45 - 12:05</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_6">IOG Keynote</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_6">JJ Siller</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_7">12:05 - 12:45</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_7">Panel: Education Stage</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_7">PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arquibancada -->
+                        <div class="track-card">
+                            <h4 class="text-2xl font-bold mb-4 text-amber-300" data-key="track_arquibancada">Arquibancada (Atrium)</h4>
+                             <div class="space-y-6">
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_1">10:00 - 10:45</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_1">Decoding Cardano DeFi: Turning UTXOs into Portfolios</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_1">Exura Labs (Javier Acosta & Pamela Johnson)</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_2">10:45 - 11:30</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_2">Building ZK-Powered Dapps</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_2">Edda Labs & Mesh (Erick Romero)</p>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_3">11:30 - 12:15</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_3">Development of dApps in the UTxO model</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_3">TxPipe (Emmanuel Gunther)</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_4">12:15 - 13:00</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_4">Educational Innovation in Cardano: The Mithrandir S.A.S. Token Model</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_4">Mithrandir S.A.S. (Ulises Barreiro)</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_3">10:15 - 10:45</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_3">Panel: Gov. Stage</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_3">Serpro, Petrobras, CVM, FINEP</p>
                 </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_4">10:45 - 11:05</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_4">Keynote Speech</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_4">Rafael Fraga (Cardano Foundation)</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_5">11:05 - 11:45</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_5">Panel: SAF Demo</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_5">PETROBRAS, PUC-RIO, SERPRO, CF</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_6">11:45 - 12:05</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_6">IOG Keynote</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_6">JJ Siler</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_7">12:05 - 12:45</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_7">Panel: Education Stage</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_7">PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
+
+                <!-- 12:45 - 14:15 -->
+                 <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 border-gray-700 transition-all duration-300">
                     <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_8">12:45 - 14:15</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_8">Lunch & Cultural Presentation</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_8">Networking</p>
+                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_8">Networking Lunch & Cultural Presentation</h3>
                 </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
+
+                <!-- 14:15 - 17:00 (Parallel Tracks) -->
+                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 border-gray-700 transition-all duration-300">
                     <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
+                       <i class="fas fa-users"></i>
                     </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_9">14:15 - 14:45</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_9">Panel: Cardano Tech Stage</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_9">Txpipe, Edda Labs, Exura, Andamio, TapDano</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
+                    <p class="text-cyan-400 font-semibold text-sm mb-1">14:15 - 17:00</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mt-4">
+                        <!-- Auditorio Principal -->
+                        <div class="track-card">
+                            <h4 class="text-2xl font-bold mb-4 text-cyan-300" data-key="track_main_auditorium">Main Auditorium</h4>
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_9">14:15 - 14:45</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_9">Panel: Cardano Tech Stage</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_9">Txpipe, Edda Labs, Exura, Andamio, TapDano</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_10">14:45 - 15:15</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_10">Panel: Finance Stage</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_10">Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa</p>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_11">15:15 - 15:40</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_11">Fireside Chat</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_11">Garcia (Petrobras)</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_12">15:40 - 15:55</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_12">Quick Break</h5>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_13">15:55 - 16:30</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_13">Panel: Exchanges Stage</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_13">Bitrue, Binance, Bitget, Mercado Bitcoin</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_14">16:30 - 16:45</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_14">Petrobras Keynote</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_14">Speaker TBD</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="rio_time_15">16:45 - 17:00</p>
+                                    <h5 class="text-lg font-bold" data-key="rio_title_15">Closing Remarks</h5>
+                                    <p class="text-gray-400 text-sm" data-key="rio_speakers_15">Latam Team</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arquibancada -->
+                        <div class="track-card">
+                            <h4 class="text-2xl font-bold mb-4 text-amber-300" data-key="track_arquibancada">Arquibancada (Atrium)</h4>
+                             <div class="space-y-6">
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_5">14:15 - 15:00</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_5">Verified trust protocol for distributed work, built on Cardano</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_5">Andamio</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_6">15:00 - 15:45</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_6">Community Panel</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_6">Cardano Ambassadors</p>
+                                </div>
+                                 <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_7">15:45 - 16:30</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_7">Surprise!</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_7">To be announced</p>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-400" data-key="arq_time_8">16:30 - 17:00</p>
+                                    <h5 class="text-lg font-bold" data-key="arq_title_8">DRep Workshop</h5>
+                                    <p class="text-gray-400 text-sm" data-key="arq_speakers_8">Community Panel</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_10">14:45 - 15:15</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_10">Panel: Finance Stage</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_10">Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa</p>
                 </div>
-                 <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_11">15:15 - 15:40</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_11">Fireside Chat</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_11">Garcia (Petrobras)</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-pause-circle"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_12">15:40 - 15:55</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_12">Quick Break</h3>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_13">15:55 - 16:30</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_13">Panel: Exchanges Stage</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_13">Bitrue, Binance, Bitget, Mercado Bitcoin</p>
-                </div>
-                <!-- Timeline Item -->
-                <div class="timeline-item relative pl-8 sm:pl-12 py-6 border-l-2 transition-all duration-300">
-                    <div class="timeline-icon absolute -left-4 top-8 h-8 w-8 rounded-full flex items-center justify-center text-white transition-all duration-300">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <p class="text-cyan-400 font-semibold text-sm mb-1" data-key="rio_time_14">16:30 - 16:45</p>
-                    <h3 class="text-xl font-bold mb-2" data-key="rio_title_14">Petrobras Keynote</h3>
-                    <p class="text-gray-400" data-key="rio_speakers_14">TBC</p>
-                </div>
+
             </div>
         </div>
 
         <!-- Buenos Aires Agenda Content -->
-        <div id="content-ba" class="agenda-content hidden">
-            <h2 class="text-3xl font-bold text-center text-cyan-400 mb-2" data-key="ba_event_date">November 2025</h2>
+        <div id="content-ba" class="hidden">
             <div class="text-center">
-                <p class="text-2xl font-bold mt-16" data-key="ba_coming_soon">Full Agenda Coming Soon!</p>
-                <p class="text-gray-400 mt-4" data-key="ba_stay_tuned">Stay tuned for updates on our Buenos Aires event.</p>
+                <h2 class="text-3xl font-bold text-cyan-400" data-key="ba_event_date">November 2025</h2>
+                <p class="mt-4 text-2xl text-gray-300" data-key="ba_coming_soon">Full Agenda Coming Soon!</p>
+                <p class="mt-2 text-gray-400" data-key="ba_stay_tuned">Stay tuned for updates on our Buenos Aires event.</p>
             </div>
         </div>
     </main>
-
-    <footer class="bg-gray-900 mt-16">
-        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
-            <p>© 2025 Cardano Tech Summit LATAM. All Rights Reserved.</p>
-        </div>
-    </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -210,85 +253,122 @@
             en: {
                 agenda_title: "Event Agenda", agenda_subtitle: "Discover the full schedule for our events in Rio and Buenos Aires.", tab_rio: "Rio de Janeiro", tab_ba: "Buenos Aires",
                 rio_event_date: "October 15th, 2025", rio_event_location: "Museu do Amanhã",
+                track_main_auditorium: "Main Auditorium", track_arquibancada: "Arquibancada (Atrium)",
                 rio_time_1: "09:00 - 10:00", rio_title_1: "Arrivals, Check-in & Networking Breakfast", rio_speakers_1: "MC: Curió",
                 rio_time_2: "10:00 - 10:15", rio_title_2: "Keynote: Head of Innovation CAIXA", rio_speakers_2: "Tiberio Zortea",
                 rio_time_3: "10:15 - 10:45", rio_title_3: "Panel: Gov. Stage", rio_speakers_3: "Serpro, Petrobras, CVM, FINEP",
                 rio_time_4: "10:45 - 11:05", rio_title_4: "Keynote Speech", rio_speakers_4: "Rafael Fraga (Cardano Foundation)",
                 rio_time_5: "11:05 - 11:45", rio_title_5: "Panel: SAF Demo", rio_speakers_5: "PETROBRAS, PUC-RIO, SERPRO, CF",
-                rio_time_6: "11:45 - 12:05", rio_title_6: "IOG Keynote", rio_speakers_6: "JJ Siler",
+                rio_time_6: "11:45 - 12:05", rio_title_6: "IOG Keynote", rio_speakers_6: "JJ Siller",
                 rio_time_7: "12:05 - 12:45", rio_title_7: "Panel: Education Stage", rio_speakers_7: "PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper",
-                rio_time_8: "12:45 - 14:15", rio_title_8: "Lunch & Cultural Presentation", rio_speakers_8: "Networking",
+                rio_time_8: "12:45 - 14:15", rio_title_8: "Networking Lunch & Cultural Presentation",
                 rio_time_9: "14:15 - 14:45", rio_title_9: "Panel: Cardano Tech Stage", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
                 rio_time_10: "14:45 - 15:15", rio_title_10: "Panel: Finance Stage", rio_speakers_10: "Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa",
                 rio_time_11: "15:15 - 15:40", rio_title_11: "Fireside Chat", rio_speakers_11: "Garcia (Petrobras)",
                 rio_time_12: "15:40 - 15:55", rio_title_12: "Quick Break",
                 rio_time_13: "15:55 - 16:30", rio_title_13: "Panel: Exchanges Stage", rio_speakers_13: "Bitrue, Binance, Bitget, Mercado Bitcoin",
-                rio_time_14: "16:30 - 16:45", rio_title_14: "Petrobras Keynote", rio_speakers_14: "TBC",
+                rio_time_14: "16:30 - 16:45", rio_title_14: "Petrobras Keynote", rio_speakers_14: "Speaker TBD",
+                rio_time_15: "16:45 - 17:00", rio_title_15: "Closing Remarks", rio_speakers_15: "Latam Team",
+                arq_time_1: "10:00 - 10:45", arq_title_1: "Decoding Cardano DeFi: Turning UTXOs into Portfolios", arq_speakers_1: "Exura Labs (Javier Acosta & Pamela Johnson)",
+                arq_time_2: "10:45 - 11:30", arq_title_2: "Building ZK-Powered Dapps", arq_speakers_2: "Edda Labs & Mesh (Erick Romero)",
+                arq_time_3: "11:30 - 12:15", arq_title_3: "Development of dApps in the UTxO model", arq_speakers_3: "TxPipe (Emmanuel Gunther)",
+                arq_time_4: "12:15 - 13:00", arq_title_4: "Educational Innovation in Cardano: The Mithrandir S.A.S. Token Model", arq_speakers_4: "Mithrandir S.A.S. (Ulises Barreiro)",
+                arq_time_5: "14:15 - 15:00", arq_title_5: "Verified trust protocol for distributed work, built on Cardano", arq_speakers_5: "Andamio",
+                arq_time_6: "15:00 - 15:45", arq_title_6: "Community Panel", arq_speakers_6: "Cardano Ambassadors",
+                arq_time_7: "15:45 - 16:30", arq_title_7: "Surprise!", arq_speakers_7: "To be announced",
+                arq_time_8: "16:30 - 17:00", arq_title_8: "DRep Workshop", arq_speakers_8: "Community Panel",
                 ba_event_date: "November 2025", ba_coming_soon: "Full Agenda Coming Soon!", ba_stay_tuned: "Stay tuned for updates on our Buenos Aires event."
             },
             es: {
                 agenda_title: "Agenda del Evento", agenda_subtitle: "Descubre el cronograma completo para nuestros eventos en Río y Buenos Aires.", tab_rio: "Río de Janeiro", tab_ba: "Buenos Aires",
                 rio_event_date: "15 de Octubre, 2025", rio_event_location: "Museu do Amanhã",
+                track_main_auditorium: "Auditorio Principal", track_arquibancada: "Arquibancada (Atrium)",
                 rio_time_1: "09:00 - 10:00", rio_title_1: "Llegadas, Check-in y Desayuno de Networking", rio_speakers_1: "MC: Curió",
                 rio_time_2: "10:00 - 10:15", rio_title_2: "Keynote: Jefe de Innovación CAIXA", rio_speakers_2: "Tiberio Zortea",
                 rio_time_3: "10:15 - 10:45", rio_title_3: "Panel: Escenario Gubernamental", rio_speakers_3: "Serpro, Petrobras, CVM, FINEP",
                 rio_time_4: "10:45 - 11:05", rio_title_4: "Discurso Principal", rio_speakers_4: "Rafael Fraga (Cardano Foundation)",
                 rio_time_5: "11:05 - 11:45", rio_title_5: "Panel: Demo SAF", rio_speakers_5: "PETROBRAS, PUC-RIO, SERPRO, CF",
-                rio_time_6: "11:45 - 12:05", rio_title_6: "Keynote de IOG", rio_speakers_6: "JJ Siler",
-                rio_time_7: "12:05 - 12:45", rio_title_7: "Panel: Escenario Educativo", rio_speakers_7: "PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper",
-                rio_time_8: "12:45 - 14:15", rio_title_8: "Almuerzo y Presentación Cultural", rio_speakers_8: "Networking",
-                rio_time_9: "14:15 - 14:45", rio_title_9: "Panel: Escenario Tecnológico de Cardano", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
+                rio_time_6: "11:45 - 12:05", rio_title_6: "Keynote de IOG", rio_speakers_6: "JJ Siller",
+                rio_time_7: "12:05 - 12:45", rio_title_7: "Panel: Escenario de Educación", rio_speakers_7: "PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper",
+                rio_time_8: "12:45 - 14:15", rio_title_8: "Almuerzo de Networking y Presentación Cultural",
+                rio_time_9: "14:15 - 14:45", rio_title_9: "Panel: Escenario Técnico de Cardano", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
                 rio_time_10: "14:45 - 15:15", rio_title_10: "Panel: Escenario Financiero", rio_speakers_10: "Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa",
                 rio_time_11: "15:15 - 15:40", rio_title_11: "Charla Íntima", rio_speakers_11: "Garcia (Petrobras)",
-                rio_time_12: "15:40 - 15:55", rio_title_12: "Breve Descanso",
+                rio_time_12: "15:40 - 15:55", rio_title_12: "Descanso Breve",
                 rio_time_13: "15:55 - 16:30", rio_title_13: "Panel: Escenario de Exchanges", rio_speakers_13: "Bitrue, Binance, Bitget, Mercado Bitcoin",
-                rio_time_14: "16:30 - 16:45", rio_title_14: "Keynote de Petrobras", rio_speakers_14: "A confirmar",
+                rio_time_14: "16:30 - 16:45", rio_title_14: "Keynote de Petrobras", rio_speakers_14: "Orador por confirmar",
+                rio_time_15: "16:45 - 17:00", rio_title_15: "Palabras de Cierre", rio_speakers_15: "Equipo Latam",
+                arq_time_1: "10:00 - 10:45", arq_title_1: "Decodificando Cardano DeFi: Convirtiendo UTXOs en Portafolios", arq_speakers_1: "Exura Labs (Javier Acosta & Pamela Johnson)",
+                arq_time_2: "10:45 - 11:30", arq_title_2: "Construyendo Dapps con ZK", arq_speakers_2: "Edda Labs & Mesh (Erick Romero)",
+                arq_time_3: "11:30 - 12:15", arq_title_3: "Desarrollo de dApps en el modelo UTxO", arq_speakers_3: "TxPipe (Emmanuel Gunther)",
+                arq_time_4: "12:15 - 13:00", arq_title_4: "Innovación Educativa en Cardano: El Modelo de Token de Mithrandir S.A.S.", arq_speakers_4: "Mithrandir S.A.S. (Ulises Barreiro)",
+                arq_time_5: "14:15 - 15:00", arq_title_5: "Protocolo de confianza verificada para trabajo distribuido, construido en Cardano", arq_speakers_5: "Andamio",
+                arq_time_6: "15:00 - 15:45", arq_title_6: "Panel Comunitario", arq_speakers_6: "Embajadores de Cardano",
+                arq_time_7: "15:45 - 16:30", arq_title_7: "¡Sorpresa!", arq_speakers_7: "Por anunciar",
+                arq_time_8: "16:30 - 17:00", arq_title_8: "Taller DRep", arq_speakers_8: "Panel Comunitario",
                 ba_event_date: "Noviembre 2025", ba_coming_soon: "¡Agenda Completa Próximamente!", ba_stay_tuned: "Mantente atento a las actualizaciones sobre nuestro evento en Buenos Aires."
             },
             pt: {
                 agenda_title: "Agenda do Evento", agenda_subtitle: "Descubra a programação completa para nossos eventos no Rio e em Buenos Aires.", tab_rio: "Rio de Janeiro", tab_ba: "Buenos Aires",
                 rio_event_date: "15 de Outubro de 2025", rio_event_location: "Museu do Amanhã",
+                track_main_auditorium: "Auditório Principal", track_arquibancada: "Arquibancada (Átrio)",
                 rio_time_1: "09:00 - 10:00", rio_title_1: "Chegadas, Check-in e Café da Manhã com Networking", rio_speakers_1: "MC: Curió",
                 rio_time_2: "10:00 - 10:15", rio_title_2: "Palestra: Chefe de Inovação da CAIXA", rio_speakers_2: "Tiberio Zortea",
                 rio_time_3: "10:15 - 10:45", rio_title_3: "Painel: Palco Governamental", rio_speakers_3: "Serpro, Petrobras, CVM, FINEP",
                 rio_time_4: "10:45 - 11:05", rio_title_4: "Palestra Principal", rio_speakers_4: "Rafael Fraga (Cardano Foundation)",
-                rio_time_5: "11:05 - 11:45", rio_title_5: "Painel: Demonstração SAF", rio_speakers_5: "PETROBRAS, PUC-RIO, SERPRO, CF",
-                rio_time_6: "11:45 - 12:05", rio_title_6: "Palestra da IOG", rio_speakers_6: "JJ Siler",
+                rio_time_5: "11:05 - 11:45", rio_title_5: "Painel: Demo SAF", rio_speakers_5: "PETROBRAS, PUC-RIO, SERPRO, CF",
+                rio_time_6: "11:45 - 12:05", rio_title_6: "Palestra da IOG", rio_speakers_6: "JJ Siller",
                 rio_time_7: "12:05 - 12:45", rio_title_7: "Painel: Palco da Educação", rio_speakers_7: "PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper",
-                rio_time_8: "12:45 - 14:15", rio_title_8: "Almoço e Apresentação Cultural", rio_speakers_8: "Networking",
-                rio_time_9: "14:15 - 14:45", rio_title_9: "Painel: Palco de Tecnologia Cardano", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
+                rio_time_8: "12:45 - 14:15", rio_title_8: "Almoço de Networking e Apresentação Cultural",
+                rio_time_9: "14:15 - 14:45", rio_title_9: "Painel: Palco Técnico da Cardano", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
                 rio_time_10: "14:45 - 15:15", rio_title_10: "Painel: Palco Financeiro", rio_speakers_10: "Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa",
                 rio_time_11: "15:15 - 15:40", rio_title_11: "Bate-papo", rio_speakers_11: "Garcia (Petrobras)",
                 rio_time_12: "15:40 - 15:55", rio_title_12: "Pausa Rápida",
-                rio_time_13: "15:55 - 16:30", rio_title_13: "Painel: Palco de Exchanges", rio_speakers_13: "Bitrue, Binance, Bitget, Mercado Bitcoin",
-                rio_time_14: "16:30 - 16:45", rio_title_14: "Palestra da Petrobras", rio_speakers_14: "A confirmar",
+                rio_time_13: "15:55 - 16:30", rio_title_13: "Painel: Palco das Exchanges", rio_speakers_13: "Bitrue, Binance, Bitget, Mercado Bitcoin",
+                rio_time_14: "16:30 - 16:45", rio_title_14: "Palestra da Petrobras", rio_speakers_14: "Palestrante a confirmar",
+                rio_time_15: "16:45 - 17:00", rio_title_15: "Considerações Finais", rio_speakers_15: "Equipe Latam",
+                arq_time_1: "10:00 - 10:45", arq_title_1: "Decodificando o DeFi da Cardano: Transformando UTXOs em Portfólios", arq_speakers_1: "Exura Labs (Javier Acosta & Pamela Johnson)",
+                arq_time_2: "10:45 - 11:30", arq_title_2: "Construindo Dapps com ZK", arq_speakers_2: "Edda Labs & Mesh (Erick Romero)",
+                arq_time_3: "11:30 - 12:15", arq_title_3: "Desenvolvimento de dApps no modelo UTxO", arq_speakers_3: "TxPipe (Emmanuel Gunther)",
+                arq_time_4: "12:15 - 13:00", arq_title_4: "Inovação Educacional na Cardano: O Modelo de Token da Mithrandir S.A.S.", arq_speakers_4: "Mithrandir S.A.S. (Ulises Barreiro)",
+                arq_time_5: "14:15 - 15:00", arq_title_5: "Protocolo de confiança verificada para trabalho distribuído, construído na Cardano", arq_speakers_5: "Andamio",
+                arq_time_6: "15:00 - 15:45", arq_title_6: "Painel da Comunidade", arq_speakers_6: "Embaixadores da Cardano",
+                arq_time_7: "15:45 - 16:30", arq_title_7: "Surpresa!", arq_speakers_7: "A ser anunciado",
+                arq_time_8: "16:30 - 17:00", arq_title_8: "Workshop DRep", arq_speakers_8: "Painel da Comunidade",
                 ba_event_date: "Novembro de 2025", ba_coming_soon: "Agenda Completa em Breve!", ba_stay_tuned: "Fique atento para atualizações sobre nosso evento em Buenos Aires."
             },
             ja: {
                 agenda_title: "イベントアジェンダ", agenda_subtitle: "リオとブエノスアイレスでのイベントの全スケジュールをご覧ください。", tab_rio: "リオデジャネイロ", tab_ba: "ブエノスアイレス",
                 rio_event_date: "2025年10月15日", rio_event_location: "未来の博物館",
+                track_main_auditorium: "メインオーディトリアム", track_arquibancada: "アルキバンカーダ（アトリウム）",
                 rio_time_1: "09:00 - 10:00", rio_title_1: "到着、チェックイン＆ネットワーキング朝食", rio_speakers_1: "MC: Curió",
                 rio_time_2: "10:00 - 10:15", rio_title_2: "基調講演：CAIXAイノベーション責任者", rio_speakers_2: "Tiberio Zortea",
                 rio_time_3: "10:15 - 10:45", rio_title_3: "パネル：政府ステージ", rio_speakers_3: "Serpro, Petrobras, CVM, FINEP",
                 rio_time_4: "10:45 - 11:05", rio_title_4: "基調講演", rio_speakers_4: "Rafael Fraga (Cardano Foundation)",
                 rio_time_5: "11:05 - 11:45", rio_title_5: "パネル：SAFデモ", rio_speakers_5: "PETROBRAS, PUC-RIO, SERPRO, CF",
-                rio_time_6: "11:45 - 12:05", rio_title_6: "IOG基調講演", rio_speakers_6: "JJ Siler",
+                rio_time_6: "11:45 - 12:05", rio_title_6: "IOG基調講演", rio_speakers_6: "JJ Siller",
                 rio_time_7: "12:05 - 12:45", rio_title_7: "パネル：教育ステージ", rio_speakers_7: "PUC, UnB, UFRJ, Uni. Petrobras, Niteroi, FGV, Insper",
-                rio_time_8: "12:45 - 14:15", rio_title_8: "昼食＆文化紹介", rio_speakers_8: "ネットワーキング",
+                rio_time_8: "12:45 - 14:15", rio_title_8: "ネットワーキングランチ＆文化紹介",
                 rio_time_9: "14:15 - 14:45", rio_title_9: "パネル：Cardanoテックステージ", rio_speakers_9: "Txpipe, Edda Labs, Exura, Andamio, TapDano",
                 rio_time_10: "14:45 - 15:15", rio_title_10: "パネル：金融ステージ", rio_speakers_10: "Banco do Brasil, HASHDEX, Transfero, Binance, BTG Pactual, Caixa",
                 rio_time_11: "15:15 - 15:40", rio_title_11: "ファイアサイドチャット", rio_speakers_11: "Garcia (Petrobras)",
                 rio_time_12: "15:40 - 15:55", rio_title_12: "短い休憩",
                 rio_time_13: "15:55 - 16:30", rio_title_13: "パネル：取引所ステージ", rio_speakers_13: "Bitrue, Binance, Bitget, Mercado Bitcoin",
-                rio_time_14: "16:30 - 16:45", rio_title_14: "Petrobras基調講演", rio_speakers_14: "未定",
-                ba_event_date: "2025年11月", ba_coming_soon: "全アジェンダは近日公開！", ba_stay_tuned: "ブエノスアイレスのイベントに関する最新情報をお待ちください。"
+                rio_time_14: "16:30 - 16:45", rio_title_14: "Petrobras基調講演", rio_speakers_14: "スピーカー未定",
+                rio_time_15: "16:45 - 17:00", rio_title_15: "閉会の辞", rio_speakers_15: "Latamチーム",
+                arq_time_1: "10:00 - 10:45", arq_title_1: "Cardano DeFiの解読：UTXOをポートフォリオに変える", arq_speakers_1: "Exura Labs (Javier Acosta & Pamela Johnson)",
+                arq_time_2: "10:45 - 11:30", arq_title_2: "ZKを活用したDappsの構築", arq_speakers_2: "Edda Labs & Mesh (Erick Romero)",
+                arq_time_3: "11:30 - 12:15", arq_title_3: "UTxOモデルでのdApps開発", arq_speakers_3: "TxPipe (Emmanuel Gunther)",
+                arq_time_4: "12:15 - 13:00", arq_title_4: "Cardanoにおける教育革新：Mithrandir S.A.S.トークンモデル", arq_speakers_4: "Mithrandir S.A.S. (Ulises Barreiro)",
+                arq_time_5: "14:15 - 15:00", arq_title_5: "Cardano上に構築された分散作業のための検証済み信頼プロトコル", arq_speakers_5: "Andamio",
+                arq_time_6: "15:00 - 15:45", arq_title_6: "コミュニティパネル", arq_speakers_6: "Cardanoアンバサダー",
+                arq_time_7: "15:45 - 16:30", arq_title_7: "サプライズ！", arq_speakers_7: "後日発表",
+                arq_time_8: "16:30 - 17:00", arq_title_8: "DRepワークショップ", arq_speakers_8: "コミュニティパネル",
+                ba_event_date: "2025年11月", ba_coming_soon: "全アジェンダは近日公開！", ba_stay_tuned: "ブエノスアイレスイベントの最新情報をお楽しみに。"
             }
         };
 
         let currentLanguage = 'en';
-        const langMenuButton = document.getElementById('lang-menu-button');
-        const langMenu = document.getElementById('lang-menu');
-        const currentLangSpan = document.getElementById('current-lang');
 
         const tabRio = document.getElementById('tab-rio');
         const tabBa = document.getElementById('tab-ba');
@@ -307,45 +387,37 @@
         function setLanguage(lang) {
             if (!translations[lang]) return;
             currentLanguage = lang;
-            currentLangSpan.textContent = lang.toUpperCase();
-            document.documentElement.lang = lang;
-            langMenu.classList.add('hidden');
             updateTranslations();
         }
 
-        langMenuButton.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('hidden'); });
-        document.addEventListener('click', () => { if (!langMenu.classList.contains('hidden')) langMenu.classList.add('hidden'); });
-        langMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { e.preventDefault(); setLanguage(e.target.getAttribute('data-lang')); } });
-
-        tabRio.addEventListener('click', () => {
-            tabRio.classList.add('active');
-            tabBa.classList.remove('active');
-            contentRio.classList.remove('hidden');
-            contentBa.classList.add('hidden');
-        });
-
-        tabBa.addEventListener('click', () => {
-            tabBa.classList.add('active');
-            tabRio.classList.remove('active');
-            contentBa.classList.remove('hidden');
-            contentRio.classList.add('hidden');
-        });
-
-        function showAgendaFromHash() {
-            const hash = window.location.hash;
-            if (hash === '#ba') {
-                tabBa.click();
+        function showTab(tabName) {
+            if (tabName === 'rio') {
+                contentRio.classList.remove('hidden');
+                contentBa.classList.add('hidden');
+                tabRio.classList.add('active');
+                tabBa.classList.remove('active');
             } else {
-                tabRio.click();
+                contentRio.classList.add('hidden');
+                contentBa.classList.remove('hidden');
+                tabRio.classList.remove('active');
+                tabBa.classList.add('active');
             }
         }
 
-        // Initial setup
+        tabRio.addEventListener('click', () => showTab('rio'));
+        tabBa.addEventListener('click', () => showTab('ba'));
+
+        // Determine which tab to show based on URL hash
+        if (window.location.hash === '#ba') {
+            showTab('ba');
+        } else {
+            showTab('rio');
+        }
+
+        // Initialize with a default language
         setLanguage('en');
-        showAgendaFromHash();
     });
     </script>
 </body>
 </html>
-
 
