@@ -367,12 +367,17 @@
                 ctx.textAlign = 'center';
                 ctx.fillStyle = '#FFFFFF';
                 ctx.font = `bold ${height * 0.08}px 'Poppins', sans-serif`;
-                ctx.fillText(speaker.name, width / 2, height * 0.74);
+                
+                // Conditional Y position for Twitter to avoid overlap
+                const nameY = platform === 'twitter' ? height * 0.72 : height * 0.74;
+                ctx.fillText(speaker.name, width / 2, nameY);
                 
                 const titleText = translations[lang][speaker.titleKey] || translations['en'][speaker.titleKey];
                 ctx.fillStyle = '#67e8f9';
                 ctx.font = `600 ${height * 0.035}px 'Poppins', sans-serif`;
-                wrapText(titleText, width / 2, height * 0.82, width * 0.8, height * 0.045);
+                
+                const titleY = platform === 'twitter' ? height * 0.80 : height * 0.82;
+                wrapText(titleText, width / 2, titleY, width * 0.8, height * 0.045);
 
                 // Define texts
                 const speakerAtText = translations[lang].speaker_at || translations['en'].speaker_at;
