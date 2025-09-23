@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Assets Generator - Cardano Tech Summit 2025</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.7), 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+        select, button {
+            background-color: #374151;
+            border-color: #4b5563;
+        }
+        .platform-btn.active {
+            background-color: #0891b2;
+            border-color: #0891b2;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-50">
+
+    <div class="container mx-auto px-4 py-12">
+        <header class="text-center mb-12">
+             <h1 class="text-4xl md:text-5xl font-black text-white">TechSummit<span class="text-cyan-400">.Lat</span></h1>
+            <h2 class="text-2xl mt-2 text-gray-300">Speaker Social Media Kit</h2>
+            <p class="text-gray-400 mt-2">Generate your personalized image for LinkedIn or Twitter.</p>
+        </header>
+
+        <main class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gray-800 rounded-lg shadow-lg mb-8">
+                <!-- Controls -->
+                <div>
+                    <label for="speaker-select" class="block mb-2 text-sm font-medium text-gray-300">1. Select your name</label>
+                    <select id="speaker-select" class="w-full p-2.5 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
+                        <option selected disabled>Choose a speaker...</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-gray-300">2. Choose platform</label>
+                    <div class="flex space-x-2">
+                        <button id="platform-linkedin" class="platform-btn flex-1 p-2.5 rounded-lg border-2 border-gray-600 active">LinkedIn</button>
+                        <button id="platform-twitter" class="platform-btn flex-1 p-2.5 rounded-lg border-2 border-gray-600">Twitter</button>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="language-select" class="block mb-2 text-sm font-medium text-gray-300">3. Select language</label>
+                    <select id="language-select" class="w-full p-2.5 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="pt">Português</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Canvas Preview -->
+            <div class="bg-gray-800 p-4 rounded-lg">
+                <canvas id="image-canvas" class="w-full rounded-md shadow-inner"></canvas>
+            </div>
+
+            <!-- Download Button -->
+            <div class="text-center mt-8">
+                <button id="download-btn" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
+                    Download Image
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- DATA ---
+        const speakers = [
+            { id: 'guillermo-oliveto', name: 'Guillermo Oliveto', photo: '/images/guillermooliveto.jpg', titleKey: 'speaker_1_title' },
+            { id: 'mario-petrucci', name: 'Mario Petrucci', photo: '/images/mariopetrucci.jpg', titleKey: 'speaker_2_title' },
+            { id: 'rafael-fraga', name: 'Rafael Fraga', photo: '/images/rafafraga.jpg', titleKey: 'speaker_3_title' },
+            { id: 'fede-weill', name: 'Fede Weill', photo: '/images/fedeweill.jpg', titleKey: 'speaker_4_title' },
+            { id: 'hugues-dorchy', name: 'Hugues Dorchy', photo: '/images/hugues.jpg', titleKey: 'speaker_5_title' },
+            { id: 'adriano-fiorenza', name: 'Adriano Fiorenza', photo: '/images/adriano.png', titleKey: 'speaker_6_title' },
+            { id: 'naielly-marques', name: 'Naielly Marques', photo: '/images/speakers/naielly.JPG', titleKey: 'speaker_7_title' },
+            { id: 'claudia-abbas', name: 'Claudia Abbas', photo: '/images/speakers/claudia.jpg', titleKey: 'speaker_8_title' },
+            { id: 'rodrigo-chaves', name: 'Rodrigo Chaves', photo: '/images/speakers/rodrigo.png', titleKey: 'speaker_9_title' },
+            { id: 'marco-tulio-lima', name: 'Marco Tulio Lima', photo: '/images/speakers/marco.png', titleKey: 'speaker_10_title' },
+            { id: 'marcelo-curi', name: 'Marcelo Curi', photo: '/images/speakers/marcelo.jpeg', titleKey: 'speaker_11_title' },
+            { id: 'leonardo-gomes', name: 'Leonardo Gomes', photo: '/images/speakers/leonardo.png', titleKey: 'speaker_12_title' },
+            { id: 'lucas-macchiavelli', name: 'Lucas Macchiavelli', photo: '/images/speakers/lucas.jpg', titleKey: 'speaker_13_title' },
+            { id: 'adriano-manso', name: 'Adriano Manso', photo: '/images/speakers/adrianom.jpeg', titleKey: 'speaker_14_title' },
+            { id: 'daniela-alves', name: 'Daniela Alves', photo: '/images/speakers/daniela.jpeg', titleKey: 'speaker_15_title' },
+            { id: 'kleber-santos', name: 'Kleber Santos', photo: '/images/speakers/kleber.png', titleKey: 'speaker_16_title' },
+            { id: 'jj-siler', name: 'J.J. Siler', photo: '/images/speakers/siler.jpeg', titleKey: 'speaker_17_title' },
+            { id: 'sebastian-pabon', name: 'Sebastian Pabon', photo: '/images/speakers/sebastian.jpeg', titleKey: 'speaker_18_title' },
+            { id: 'thiago-nunes', name: 'Thiago Nunes', photo: '/images/speakers/thiago.jpeg', titleKey: 'speaker_19_title' },
+            { id: 'javier-acosta', name: 'Javier Acosta', photo: '/images/speakers/javier.jpg', titleKey: 'speaker_20_title' },
+            { id: 'pamela-johnson', name: 'Pamela Johnson', photo: '/images/speakers/pamela.jpeg', titleKey: 'speaker_21_title' },
+            { id: 'erick-romero', name: 'Erick Romero', photo: '/images/speakers/erick.jpg', titleKey: 'speaker_22_title' },
+            { id: 'ulises-barreiro', name: 'Ulises Barreiro', photo: '/images/speakers/ulises.jpg', titleKey: 'speaker_23_title' },
+            { id: 'rodrigo-oyarzun', name: 'Rodrigo Oyarzun', photo: '/images/speakers/rodrigo.jpg', titleKey: 'speaker_24_title' },
+            { id: 'sebastian-videmato', name: 'Sebastian Videmato', photo: '/images/speakers/sebastianvidemato.jpeg', titleKey: 'speaker_25_title' },
+            { id: 'sebastian-aravena', name: 'Sebastian Aravena', photo: '/images/speakers/sebaaravena.jpeg', titleKey: 'speaker_26_title' },
+            { id: 'lucimar-cunha', name: 'Lucimar Cunha', photo: '/images/speakers/lucimar.jpeg', titleKey: 'speaker_27_title' },
+            { id: 'marcus-vinicius', name: 'Marcus Vinicius', photo: '/images/speakers/marcus.jpeg', titleKey: 'speaker_28_title' },
+            { id: 'otavio-lima', name: 'Otavio Lima', photo: '/images/speakers/otavio.jpg', titleKey: 'speaker_29_title' },
+            { id: 'fabio-moraes', name: 'Fábio Moraes', photo: '/images/speakers/fabio.jpeg', titleKey: 'speaker_30_title' }
+        ];
+
+        const translations = {
+            en: {
+                speaker_at: 'SPEAKER AT',
+                speaker_1_title: 'Dean of UTN FRBA',
+                speaker_2_title: 'President of the Argentine Chess Federation',
+                speaker_3_title: 'LATAM Business Development Lead at Cardano Foundation',
+                speaker_4_title: 'Co-founder of Txpipe.io',
+                speaker_5_title: 'Founder of Sead',
+                speaker_6_title: 'Founder of GameChanger Wallet',
+                speaker_7_title: 'Assistant Professor, PUC-Rio',
+                speaker_8_title: 'Professor, University of Brasília',
+                speaker_9_title: 'Air Emissions Inventory Coordinator, Petrobras',
+                speaker_10_title: 'Product Manager, SERPRO',
+                speaker_11_title: 'Blockchain & WEB3 Certified Architect, Petrobras',
+                speaker_12_title: 'Professor, PUC Rio',
+                speaker_13_title: 'Cardano Ambassador & DRep',
+                speaker_14_title: 'Legal Manager, Petrobras',
+                speaker_15_title: 'Co-founder, GovChainLab',
+                speaker_16_title: 'Assessor da Presidência, Serpro',
+                speaker_17_title: 'VP of Commercial, Input Output',
+                speaker_18_title: 'Co-founder, Andamio',
+                speaker_19_title: 'Founder, TapDano',
+                speaker_20_title: 'Founder, Exura Labs',
+                speaker_21_title: 'Co-Founder, Exura Labs',
+                speaker_22_title: 'CTO Edda Labs',
+                speaker_23_title: 'CEO, Token Mithrandir',
+                speaker_24_title: 'Cardano Ambassador',
+                speaker_25_title: 'Cardano Ambassador',
+                speaker_26_title: 'Community Manager, Cardano Foundation',
+                speaker_27_title: 'Subsecretária de Inovação, Niterói',
+                speaker_28_title: 'Cardano Community Builder & Consultant',
+                speaker_29_title: 'Cardano Ambassador. Founder & CEO at CardanoFeed.com',
+                speaker_30_title: 'Director of Education and Research at Abcripto'
+            },
+            es: {
+                speaker_at: 'PONENTE EN',
+                speaker_1_title: 'Decano de la UTN FRBA',
+                speaker_2_title: 'Presidente Federación Argentina de Ajedrez',
+                speaker_3_title: 'LATAM Business Development Lead en Cardano Foundation',
+                speaker_4_title: 'Co-fundador de Txpipe.io',
+                speaker_5_title: 'Fundador de Sead',
+                speaker_6_title: 'Fundador de GameChanger Wallet',
+                speaker_7_title: 'Profesora Asistente, PUC-Rio',
+                speaker_8_title: 'Profesora, Universidad de Brasília',
+                speaker_9_title: 'Coordinador de Emisiones Atmosféricas, Petrobras',
+                speaker_10_title: 'Gerente de Producto, SERPRO',
+                speaker_11_title: 'Arquitecto Certificado de Blockchain & WEB3, Petrobras',
+                speaker_12_title: 'Profesor, PUC Rio',
+                speaker_13_title: 'Cardano Ambassador & DRep',
+                speaker_14_title: 'Gerente Legal, Petrobras',
+                speaker_15_title: 'Co-fundadora, GovChainLab',
+                speaker_16_title: 'Assessor da Presidência, Serpro',
+                speaker_17_title: 'VP of Commercial, Input Output',
+                speaker_18_title: 'Co-fundador, Andamio',
+                speaker_19_title: 'Fundador, TapDano',
+                speaker_20_title: 'Fundador, Exura Labs',
+                speaker_21_title: 'Co-Fundadora, Exura Labs',
+                speaker_22_title: 'CTO Edda Labs',
+                speaker_23_title: 'CEO de Token Mithrandir',
+                speaker_24_title: 'Cardano Ambassador',
+                speaker_25_title: 'Cardano Ambassador',
+                speaker_26_title: 'Community Manager, Cardano Foundation',
+                speaker_27_title: 'Subsecretaria de Inovação, Niterói',
+                speaker_28_title: 'Cardano Community Builder & Consultant',
+                speaker_29_title: 'Embajador de Cardano. Fundador & CEO de CardanoFeed.com',
+                speaker_30_title: 'Director de Educación e Investigación en Abcripto'
+            },
+            pt: {
+                speaker_at: 'PALESTRANTE EM',
+                speaker_1_title: 'Reitor da UTN FRBA',
+                speaker_2_title: 'Presidente da Federação Argentina de Xadrez',
+                speaker_3_title: 'Líder de Desenvolvimento de Negócios LATAM na Cardano Foundation',
+                speaker_4_title: 'Co-fundador da Txpipe.io',
+                speaker_5_title: 'Fundador da Sead',
+                speaker_6_title: 'Fundador da GameChanger Wallet',
+                speaker_7_title: 'Professora Assistente, PUC-Rio',
+                speaker_8_title: 'Professora, Universidade de Brasília',
+                speaker_9_title: 'Coordinador de Emissões Atmosféricas, Petrobras',
+                speaker_10_title: 'Gerente de Produto, SERPRO',
+                speaker_11_title: 'Arquiteto Certificado de Blockchain & WEB3, Petrobras',
+                speaker_12_title: 'Professor, PUC Rio',
+                speaker_13_title: 'Cardano Ambassador & DRep',
+                speaker_14_title: 'Gerente Jurídico, Petrobras',
+                speaker_15_title: 'Co-fundadora, GovChainLab',
+                speaker_16_title: 'Assessor da Presidência, Serpro',
+                speaker_17_title: 'VP of Commercial, Input Output',
+                speaker_18_title: 'Co-founder, Andamio',
+                speaker_19_title: 'Fundador, TapDano',
+                speaker_20_title: 'Fundador, Exura Labs',
+                speaker_21_title: 'Co-Fundadora, Exura Labs',
+                speaker_22_title: 'CTO Edda Labs',
+                speaker_23_title: 'CEO, Token Mithrandir',
+                speaker_24_title: 'Cardano Ambassador',
+                speaker_25_title: 'Cardano Ambassador',
+                speaker_26_title: 'Community Manager, Cardano Foundation',
+                speaker_27_title: 'Subsecretária de Inovação, Niterói',
+                speaker_28_title: 'Cardano Community Builder & Consultant',
+                speaker_29_title: 'Cardano Ambassador. Founder & CEO da CardanoFeed.com',
+                speaker_30_title: 'Diretor de Educação e Pesquisa na Abcripto'
+            },
+            ja: {
+                speaker_at: '登壇者',
+                speaker_1_title: 'UTN FRBA学部長',
+                speaker_2_title: 'アルゼンチンチェス連盟会長',
+                speaker_3_title: 'Cardano財団 LATAM事業開発リード',
+                speaker_4_title: 'Txpipe.io 共同創設者',
+                speaker_5_title: 'Sead 創設者',
+                speaker_6_title: 'GameChanger Wallet 創設者',
+                speaker_7_title: 'PUC-Rio 助教授',
+                speaker_8_title: 'ブラジリア大学 教授',
+                speaker_9_title: 'Petrobras 大気排出量インベントリコーディネーター',
+                speaker_10_title: 'SERPRO プロダクトマネージャー',
+                speaker_11_title: 'Petrobras ブロックチェーン＆WEB3認定アーキテクト',
+                speaker_12_title: 'PUC Rio 教授',
+                speaker_13_title: 'Cardanoアンバサダー & DRep',
+                speaker_14_title: 'Petrobras 法務マネージャー',
+                speaker_15_title: 'GovChainLab 共同創設者',
+                speaker_16_title: 'Serpro 大統領補佐官',
+                speaker_17_title: 'Input Output コマーシャル担当副社長',
+                speaker_18_title: 'Andamio 共同創設者',
+                speaker_19_title: 'TapDano 創設者',
+                speaker_20_title: 'Exura Labs 創設者',
+                speaker_21_title: 'Exura Labs 共同創設者',
+                speaker_22_title: 'Edda Labs CTO',
+                speaker_23_title: 'Token Mithrandir CEO',
+                speaker_24_title: 'Cardanoアンバサダー',
+                speaker_25_title: 'Cardanoアンバサダー',
+                speaker_26_title: 'Cardano財団 コミュニティマネージャー',
+                speaker_27_title: 'ニテロイ市 イノベーション次官',
+                speaker_28_title: 'Cardanoコミュニティビルダー＆コンサルタント',
+                speaker_29_title: 'Cardanoアンバサダー。CardanoFeed.com 創設者＆CEO',
+                speaker_30_title: 'Abcripto 教育研究ディレクター'
+            }
+        };
+
+        // --- DOM ELEMENTS ---
+        const speakerSelect = document.getElementById('speaker-select');
+        const languageSelect = document.getElementById('language-select');
+        const linkedinBtn = document.getElementById('platform-linkedin');
+        const twitterBtn = document.getElementById('platform-twitter');
+        const canvas = document.getElementById('image-canvas');
+        const downloadBtn = document.getElementById('download-btn');
+        const ctx = canvas.getContext('2d');
+
+        // --- STATE ---
+        let selectedState = {
+            speakerId: null,
+            platform: 'linkedin',
+            language: 'en'
+        };
+        
+        // --- FUNCTIONS ---
+        
+        /** Populates the speaker dropdown */
+        function populateSpeakers() {
+            speakers.sort((a, b) => a.name.localeCompare(b.name));
+            speakers.forEach(speaker => {
+                const option = document.createElement('option');
+                option.value = speaker.id;
+                option.textContent = speaker.name;
+                speakerSelect.appendChild(option);
+            });
+        }
+
+        /** Draws the image on the canvas */
+        function generateImage() {
+            if (!selectedState.speakerId) return;
+
+            const speaker = speakers.find(s => s.id === selectedState.speakerId);
+            if (!speaker) return;
+
+            const lang = selectedState.language;
+            const platform = selectedState.platform;
+
+            // Set canvas dimensions based on platform
+            const width = platform === 'linkedin' ? 1080 : 1200;
+            const height = platform === 'linkedin' ? 1080 : 628;
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Load speaker image
+            const speakerImg = new Image();
+            speakerImg.crossOrigin = "Anonymous";
+            speakerImg.src = speaker.photo;
+            speakerImg.onerror = () => { console.error("Failed to load image:", speaker.photo); };
+            speakerImg.onload = () => {
+                // Background
+                ctx.fillStyle = '#111827';
+                ctx.fillRect(0, 0, width, height);
+
+                // Speaker Image (circular)
+                const imgSize = height * 0.5;
+                const imgX = (width / 2) - (imgSize / 2);
+                const imgY = height * 0.15;
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.clip();
+                ctx.drawImage(speakerImg, imgX, imgY, imgSize, imgSize);
+                ctx.restore();
+                
+                // --- TEXT ---
+                ctx.textAlign = 'center';
+
+                // Speaker Name
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = `bold ${height * 0.08}px 'Poppins', sans-serif`;
+                ctx.fillText(speaker.name, width / 2, height * 0.75);
+                
+                // Speaker Title
+                const titleText = translations[lang][speaker.titleKey] || translations['en'][speaker.titleKey];
+                ctx.fillStyle = '#67e8f9'; // A lighter cyan for better readability
+                ctx.font = `600 ${height * 0.035}px 'Poppins', sans-serif`;
+                wrapText(titleText, width / 2, height * 0.82, width * 0.8, height * 0.04);
+
+                // Event Info
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
+                const speakerAtText = translations[lang].speaker_at || translations['en'].speaker_at;
+                ctx.fillText(speakerAtText, width / 2, height * 0.10);
+                
+                // Main Logo
+                drawLogo(width / 2, height * 0.95, height * 0.05);
+            };
+        }
+        
+        /** Helper function to draw the main logo */
+        function drawLogo(x, y, size) {
+            ctx.font = `900 ${size}px 'Poppins', sans-serif`;
+            const text = "TechSummit.Lat";
+            const mainText = "TechSummit";
+            const mainTextWidth = ctx.measureText(mainText).width;
+            const totalWidth = ctx.measureText(text).width;
+            const startX = x - totalWidth / 2;
+
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillText(mainText, startX + mainTextWidth / 2, y);
+            
+            ctx.fillStyle = '#22d3ee';
+            ctx.fillText(".Lat", startX + mainTextWidth + ctx.measureText(".Lat").width / 2, y);
+        }
+
+        /** Helper function to wrap long text */
+        function wrapText(text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let testLine = '';
+            let lineArray = [];
+
+            for(let n = 0; n < words.length; n++) {
+                testLine += `${words[n]} `;
+                let metrics = ctx.measureText(testLine);
+                let testWidth = metrics.width;
+                if (testWidth > maxWidth && n > 0) {
+                    lineArray.push(line);
+                    line = `${words[n]} `;
+                    testLine = `${words[n]} `;
+                } else {
+                    line = testLine;
+                }
+            }
+            lineArray.push(line);
+            
+            let startY = y;
+            if (lineArray.length > 1) {
+                startY -= (lineHeight * (lineArray.length -1))/2;
+            }
+
+            for(let i = 0; i < lineArray.length; i++) {
+                ctx.fillText(lineArray[i].trim(), x, startY + (i * lineHeight));
+            }
+        }
+
+        /** Handles state updates and triggers redraw */
+        function updateAndDraw() {
+            const speakerId = speakerSelect.value;
+            const language = languageSelect.value;
+            const platform = selectedState.platform;
+
+            if (speakerId) {
+                selectedState.speakerId = speakerId;
+                selectedState.language = language;
+                downloadBtn.disabled = false;
+                generateImage();
+            } else {
+                downloadBtn.disabled = true;
+            }
+        }
+
+        // --- EVENT LISTENERS ---
+        speakerSelect.addEventListener('change', updateAndDraw);
+        languageSelect.addEventListener('change', updateAndDraw);
+
+        linkedinBtn.addEventListener('click', () => {
+            selectedState.platform = 'linkedin';
+            linkedinBtn.classList.add('active');
+            twitterBtn.classList.remove('active');
+            updateAndDraw();
+        });
+
+        twitterBtn.addEventListener('click', () => {
+            selectedState.platform = 'twitter';
+            twitterBtn.classList.add('active');
+            linkedinBtn.classList.remove('active');
+            updateAndDraw();
+        });
+        
+        downloadBtn.addEventListener('click', () => {
+            const speaker = speakers.find(s => s.id === selectedState.speakerId);
+            const link = document.createElement('a');
+            link.download = `TechSummit_Speaker_${speaker.name.replace(/ /g, '_')}_${selectedState.platform}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+        // --- INITIALIZATION ---
+        populateSpeakers();
+    });
+    </script>
+</body>
+</html>
