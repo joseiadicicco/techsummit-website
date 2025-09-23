@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
@@ -38,22 +38,22 @@
     <div class="container mx-auto px-4 py-12">
         <header class="text-center mb-12">
              <h1 class="text-4xl md:text-5xl font-black text-white">TechSummit<span class="text-cyan-400">.Lat</span></h1>
-            <h2 class="text-2xl mt-2 text-gray-300">Speaker Social Media Kit</h2>
-            <p class="text-gray-400 mt-2">Generate your personalized image and post text for LinkedIn or Twitter.</p>
+            <h2 class="text-2xl mt-2 text-gray-300" data-key="header_title">Speaker Social Media Kit</h2>
+            <p class="text-gray-400 mt-2" data-key="header_subtitle">Generate your personalized image and post text for LinkedIn or Twitter.</p>
         </header>
 
         <main class="max-w-4xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gray-800 rounded-lg shadow-lg mb-8">
                 <!-- Controls -->
                 <div>
-                    <label for="speaker-select" class="block mb-2 text-sm font-medium text-gray-300">1. Select your name</label>
+                    <label for="speaker-select" class="block mb-2 text-sm font-medium text-gray-300" data-key="label_select_name">1. Select your name</label>
                     <select id="speaker-select" class="w-full p-2.5 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
-                        <option selected disabled>Choose a speaker...</option>
+                        <option selected disabled data-key="option_choose_speaker">Choose a speaker...</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-300">2. Choose platform</label>
+                    <label class="block mb-2 text-sm font-medium text-gray-300" data-key="label_choose_platform">2. Choose platform</label>
                     <div class="flex space-x-2">
                         <button id="platform-linkedin" class="platform-btn flex-1 p-2.5 rounded-lg border-2 border-gray-600 active">LinkedIn</button>
                         <button id="platform-twitter" class="platform-btn flex-1 p-2.5 rounded-lg border-2 border-gray-600">Twitter</button>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div>
-                    <label for="language-select" class="block mb-2 text-sm font-medium text-gray-300">3. Select language</label>
+                    <label for="language-select" class="block mb-2 text-sm font-medium text-gray-300" data-key="label_select_language">3. Select language</label>
                     <select id="language-select" class="w-full p-2.5 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
                         <option value="en">English</option>
                         <option value="es">Español</option>
@@ -73,23 +73,23 @@
             
             <!-- Canvas Preview -->
             <div class="bg-gray-800 p-4 rounded-lg">
-                <h3 class="text-lg font-bold mb-4 text-center text-gray-300">Image Preview</h3>
+                <h3 class="text-lg font-bold mb-4 text-center text-gray-300" data-key="preview_title">Image Preview</h3>
                 <canvas id="image-canvas" class="w-full rounded-md shadow-inner"></canvas>
             </div>
 
             <!-- Download Button -->
             <div class="text-center mt-6">
-                <button id="download-btn" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
+                <button id="download-btn" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled data-key="download_button">
                     Download Image
                 </button>
             </div>
 
             <!-- Post Text Generator -->
             <div class="mt-12">
-                <h3 class="text-lg font-bold mb-4 text-center text-gray-300">Social Media Post Text</h3>
+                <h3 class="text-lg font-bold mb-4 text-center text-gray-300" data-key="post_text_title">Social Media Post Text</h3>
                 <div class="relative">
                     <textarea id="post-text" rows="7" class="w-full p-4 rounded-lg text-gray-200" readonly></textarea>
-                    <button id="copy-text-btn" class="absolute top-3 right-3 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
+                    <button id="copy-text-btn" class="absolute top-3 right-3 bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg disabled:bg-gray-500 disabled:cursor-not-allowed" disabled data-key="copy_button">
                         Copy Text
                     </button>
                 </div>
@@ -136,6 +136,17 @@
 
         const translations = {
             en: {
+                header_title: "Speaker Social Media Kit",
+                header_subtitle: "Generate your personalized image and post text for LinkedIn or Twitter.",
+                label_select_name: "1. Select your name",
+                option_choose_speaker: "Choose a speaker...",
+                label_choose_platform: "2. Choose platform",
+                label_select_language: "3. Select language",
+                preview_title: "Image Preview",
+                download_button: "Download Image",
+                post_text_title: "Social Media Post Text",
+                copy_button: "Copy Text",
+                copied_confirmation: "Copied!",
                 post_text: "✨ We are pleased to announce [@SpeakerName] as a speaker at the Cardano Tech Summit 2025 in Rio de Janeiro! 🚀\n\n📅 October 15, 9 AM.\n📍 Museum of Tomorrow\n\nAn unmissable event of innovation, technology, and future.",
                 speaker_at: 'SPEAKER AT',
                 speaker_1_title: 'Dean of UTN FRBA',
@@ -170,6 +181,17 @@
                 speaker_30_title: 'Director of Education and Research at Abcripto'
             },
             es: {
+                header_title: "Kit de Redes Sociales para Ponentes",
+                header_subtitle: "Genera tu imagen y texto personalizados para LinkedIn o Twitter.",
+                label_select_name: "1. Selecciona tu nombre",
+                option_choose_speaker: "Elige un ponente...",
+                label_choose_platform: "2. Elige la plataforma",
+                label_select_language: "3. Selecciona el idioma",
+                preview_title: "Vista Previa de la Imagen",
+                download_button: "Descargar Imagen",
+                post_text_title: "Texto para Publicación",
+                copy_button: "Copiar Texto",
+                copied_confirmation: "¡Copiado!",
                 post_text: "✨ ¡Tenemos el agrado de anunciar a [@SpeakerName] como speaker del Cardano Tech Summit 2025 en Río de Janeiro! 🚀\n\n📅 15 de octubre, 9Hs.\n📍 Museo del Mañana\n\nUn encuentro imperdible de innovación, tecnología y futuro.",
                 speaker_at: 'PONENTE EN',
                 speaker_1_title: 'Decano de la UTN FRBA',
@@ -177,6 +199,17 @@
                 speaker_30_title: 'Director de Educación e Investigación en Abcripto'
             },
             pt: {
+                header_title: "Kit de Mídia Social para Palestrantes",
+                header_subtitle: "Gere sua imagem e texto personalizados para LinkedIn ou Twitter.",
+                label_select_name: "1. Selecione seu nome",
+                option_choose_speaker: "Escolha um palestrante...",
+                label_choose_platform: "2. Escolha a plataforma",
+                label_select_language: "3. Selecione o idioma",
+                preview_title: "Pré-visualização da Imagem",
+                download_button: "Baixar Imagem",
+                post_text_title: "Texto para Publicação",
+                copy_button: "Copiar Texto",
+                copied_confirmation: "Copiado!",
                 post_text: "✨ Temos o prazer de anunciar [@SpeakerName] como palestrante no Cardano Tech Summit 2025 no Rio de Janeiro! 🚀\n\n📅 15 de outubro, 9h.\n📍 Museu do Amanhã\n\nUm encontro imperdível de inovação, tecnologia e futuro.",
                 speaker_at: 'PALESTRANTE EM',
                 speaker_1_title: 'Reitor da UTN FRBA',
@@ -184,6 +217,17 @@
                 speaker_30_title: 'Diretor de Educação e Pesquisa na Abcripto'
             },
             ja: {
+                header_title: "登壇者向けソーシャルメディアキット",
+                header_subtitle: "LinkedInまたはTwitter用の個人用画像と投稿テキストを生成します。",
+                label_select_name: "1. あなたの名前を選択してください",
+                option_choose_speaker: "登壇者を選択...",
+                label_choose_platform: "2. プラットフォームを選択",
+                label_select_language: "3. 言語を選択",
+                preview_title: "画像プレビュー",
+                download_button: "画像をダウンロード",
+                post_text_title: "ソーシャルメディア投稿テキスト",
+                copy_button: "テキストをコピー",
+                copied_confirmation: "コピーしました！",
                 post_text: "✨ リオデジャネイロで開催されるCardano Tech Summit 2025に[@SpeakerName]氏が登壇者として参加されることをお知らせします！🚀\n\n📅 10月15日、午前9時\n📍 明日の博物館\n\n革新、技術、そして未来についての見逃せないイベントです。",
                 speaker_at: '登壇者',
                 speaker_1_title: 'UTN FRBA学部長',
@@ -227,6 +271,16 @@
                 option.value = speaker.id;
                 option.textContent = speaker.name;
                 speakerSelect.appendChild(option);
+            });
+        }
+        
+        function updateStaticText() {
+            const lang = selectedState.language;
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.dataset.key;
+                if(translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
             });
         }
 
@@ -295,15 +349,22 @@
                 // --- Calculate total width ---
                 // Measure "SPEAKER AT"
                 ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
+                ctx.letterSpacing = '0px';
                 const speakerAtTextWidth = ctx.measureText(speakerAtText).width;
 
                 // Measure Logo
-                const logoFontSize = height * 0.03;
+                const logoFontSize = height * 0.035; // Increased size
                 ctx.font = `900 ${logoFontSize}px 'Poppins', sans-serif`;
-                const logoMainWidth = ctx.measureText(logoMainText).width;
+                
+                // Measure ".Lat" first
+                ctx.letterSpacing = '0px'; // Ensure no spacing for this part
                 const logoSubWidth = ctx.measureText(logoSubText).width;
-                const totalLogoWidth = logoMainWidth + logoSubWidth;
 
+                // Now measure "TechSummit" with spacing
+                ctx.letterSpacing = '2px'; // Add spacing
+                const logoMainWidth = ctx.measureText(logoMainText).width;
+
+                const totalLogoWidth = logoMainWidth + logoSubWidth;
                 const totalBlockWidth = speakerAtTextWidth + spacing + totalLogoWidth;
 
                 // --- Start drawing ---
@@ -317,21 +378,25 @@
                 ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                 ctx.textAlign = 'left';
+                ctx.letterSpacing = '0px'; // Reset for this text
                 ctx.fillText(speakerAtText, currentX, yPos);
                 currentX += speakerAtTextWidth + spacing;
 
                 // 2. Draw Logo
                 ctx.font = `900 ${logoFontSize}px 'Poppins', sans-serif`;
                 ctx.fillStyle = '#FFFFFF';
+                ctx.letterSpacing = '2px'; // Apply spacing for TechSummit
                 ctx.fillText(logoMainText, currentX, yPos);
                 currentX += logoMainWidth;
 
                 ctx.fillStyle = '#22d3ee';
+                ctx.letterSpacing = '0px'; // Reset for .Lat
                 ctx.fillText(logoSubText, currentX, yPos);
 
                 // Reset text properties for subsequent drawing
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'alphabetic'; // Default baseline
+                ctx.letterSpacing = '0px';
                 
             } catch (error) {
                 console.error("Error generating image:", error);
@@ -381,9 +446,12 @@
 
         function updateAssets() {
             const speakerId = speakerSelect.value;
+            selectedState.language = languageSelect.value;
+            
+            updateStaticText();
+            
             if (speakerId && speakerId !== 'Choose a speaker...') {
                 selectedState.speakerId = speakerId;
-                selectedState.language = languageSelect.value;
                 downloadBtn.disabled = false;
                 copyTextBtn.disabled = false;
                 generateImage();
@@ -428,14 +496,17 @@
             postTextarea.select();
             document.execCommand('copy'); // Using execCommand for broader compatibility in iFrames
             const originalText = copyTextBtn.textContent;
-            copyTextBtn.textContent = 'Copied!';
+            const lang = selectedState.language;
+            copyTextBtn.textContent = translations[lang].copied_confirmation || 'Copied!';
             setTimeout(() => {
                 copyTextBtn.textContent = originalText;
+                updateStaticText(); // Restore original button text in correct language
             }, 2000);
         });
 
         // --- INITIALIZATION ---
         populateSpeakers();
+        updateStaticText();
     });
     </script>
 </body>
