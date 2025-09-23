@@ -286,12 +286,53 @@
                 ctx.font = `600 ${height * 0.035}px 'Poppins', sans-serif`;
                 wrapText(titleText, width / 2, height * 0.82, width * 0.8, height * 0.04);
 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-                ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
+                // Define texts
                 const speakerAtText = translations[lang].speaker_at || translations['en'].speaker_at;
-                ctx.fillText(speakerAtText, width / 2, height * 0.10);
+                const logoMainText = "TechSummit";
+                const logoSubText = ".Lat";
+                const spacing = width * 0.02;
+
+                // --- Calculate total width ---
+                // Measure "SPEAKER AT"
+                ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
+                const speakerAtTextWidth = ctx.measureText(speakerAtText).width;
+
+                // Measure Logo
+                const logoFontSize = height * 0.03;
+                ctx.font = `900 ${logoFontSize}px 'Poppins', sans-serif`;
+                const logoMainWidth = ctx.measureText(logoMainText).width;
+                const logoSubWidth = ctx.measureText(logoSubText).width;
+                const totalLogoWidth = logoMainWidth + logoSubWidth;
+
+                const totalBlockWidth = speakerAtTextWidth + spacing + totalLogoWidth;
+
+                // --- Start drawing ---
+                let currentX = (width / 2) - (totalBlockWidth / 2);
+                const yPos = height * 0.10;
+
+                // Set vertical alignment for consistency
+                ctx.textBaseline = 'middle';
+
+                // 1. Draw "SPEAKER AT"
+                ctx.font = `bold ${height * 0.025}px 'Poppins', sans-serif`;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.textAlign = 'left';
+                ctx.fillText(speakerAtText, currentX, yPos);
+                currentX += speakerAtTextWidth + spacing;
+
+                // 2. Draw Logo
+                ctx.font = `900 ${logoFontSize}px 'Poppins', sans-serif`;
+                ctx.fillStyle = '#FFFFFF';
+                ctx.fillText(logoMainText, currentX, yPos);
+                currentX += logoMainWidth;
+
+                ctx.fillStyle = '#22d3ee';
+                ctx.fillText(logoSubText, currentX, yPos);
+
+                // Reset text properties for subsequent drawing
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'alphabetic'; // Default baseline
                 
-                drawLogo(width / 2, height * 0.95, height * 0.05);
             } catch (error) {
                 console.error("Error generating image:", error);
                 ctx.fillStyle = '#111827';
@@ -303,21 +344,6 @@
             }
         }
         
-        function drawLogo(x, y, size) {
-            ctx.font = `900 ${size}px 'Poppins', sans-serif`;
-            const text = "TechSummit.Lat";
-            const mainText = "TechSummit";
-            const mainTextWidth = ctx.measureText(mainText).width;
-            const totalWidth = ctx.measureText(text).width;
-            const startX = x - totalWidth / 2;
-
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillText(mainText, startX + mainTextWidth / 2, y);
-            
-            ctx.fillStyle = '#22d3ee';
-            ctx.fillText(".Lat", startX + mainTextWidth + ctx.measureText(".Lat").width / 2, y);
-        }
-
         function wrapText(text, x, y, maxWidth, lineHeight) {
             const words = text.split(' ');
             let line = '';
