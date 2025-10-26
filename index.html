@@ -122,6 +122,12 @@
         .speaker-card-mx::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23006093' d='M0 0h1v2H0z'/%3E%3Cpath fill='%23fff' d='M1 0h1v2H1z'/%3E%3Cpath fill='%23CE1126' d='M2 0h1v2H2z'/%3E%3C/svg%3E");
         }
+        .speaker-card-hr::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23C8102E' d='M0 0h3v2H0z'/%3E%3Cpath fill='%23fff' d='M0 0h1v1H0z'/%3E%3Cpath fill='%23fff' d='M1 1h1v1H1z'/%3E%3Cpath fill='%23fff' d='M2 0h1v1H2z'/%3E%3Cpath fill='%23fff' d='M0 1h1v1H0z'/%3E%3Cpath fill='%23fff' d='M1 0h1v1H1z'/%3E%3Cpath fill='%23fff' d='M2 1h1v1H2z'/%3E%3C/svg%3E");
+        }
+        .speaker-card-pt::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23000000' d='M0 0h1v2H0z'/%3E%3Cpath fill='%23FF0000' d='M1 0h2v2H1z'/%3E%3C/svg%3E");
+        }
         .speaker-card > * {
             position: relative;
             z-index: 1;
@@ -337,9 +343,12 @@
                                                 <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_1_title">Decano de la UTN FRBA</p>
                                                 <p class="text-xs text-gray-400" data-key="speaker_1_bio">Miembro del Comité Ejecutivo del GEDC</p>
                                             </div>
-                                            <a href="https://www.linkedin.com/in/ingolivetoutn/" target="_blank" class="text-white hover:text-cyan-400 transition-colors mt-4">
-                                                <i class="fab fa-linkedin fa-2x"></i>
-                                            </a>
+                                            <div class="flex justify-center items-center space-x-4 mt-4">
+                                                <img src="/images/utn.png" alt="UTN Logo" class="w-8 h-8 object-contain">
+                                                <a href="https://www.linkedin.com/in/ingolivetoutn/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                                    <i class="fab fa-linkedin fa-2x"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -366,9 +375,12 @@
                                                 <p class="text-cyan-400 mb-2 text-sm" data-key="speaker_17_title">VP of Commercial, Input Output</p>
                                                 <p class="text-sm text-gray-400" data-key="speaker_17_bio">Working on deal making, acquisitions, commercial partnerships, and our global office network for IO.</p>
                                             </div>
-                                            <a href="https://www.linkedin.com/in/j-j-s-b3191113/" target="_blank" class="text-white hover:text-cyan-400 transition-colors mt-4">
-                                                <i class="fab fa-linkedin fa-2x"></i>
-                                            </a>
+                                            <div class="flex justify-center items-center space-x-4 mt-4">
+                                                <img src="/images/iohk-symbol-inverted.png" alt="IOG Logo" class="w-8 h-8 object-contain">
+                                                <a href="https://www.linkedin.com/in/j-j-s-b3191113/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                                    <i class="fab fa-linkedin fa-2x"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -380,11 +392,14 @@
                                         <div class="flex-grow flex flex-col justify-between">
                                             <div>
                                                 <p class="text-cyan-400 mb-2 text-sm">Product Manager at Input Output Engineering</p>
-                                                <p class="text-xs text-gray-400">Product Manager at IOE overseeing key developer tools including cardano-cli, cardano-api, cardano-testnet, and kes-agent. Leading initiatives to revise stake pool incentives and improve Developer Experience with new WASM library and gRPC server.</p>
+                                                <p class="text-xs text-gray-400">Product Manager at IOE overseeing key developer tools. Leading initiatives to revise stake pool incentives and improve Developer Experience.</p>
                                             </div>
-                                            <a href="https://www.linkedin.com/in/carloslopezdelara/" target="_blank" class="text-white hover:text-cyan-400 transition-colors mt-4">
-                                                <i class="fab fa-linkedin fa-2x"></i>
-                                            </a>
+                                            <div class="flex justify-center items-center space-x-4 mt-4">
+                                                <img src="/images/iohk-symbol-inverted.png" alt="IOG Logo" class="w-8 h-8 object-contain">
+                                                <a href="https://www.linkedin.com/in/carloslopezdelara/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                                    <i class="fab fa-linkedin fa-2x"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1193,6 +1208,44 @@
                                             <a href="https://www.linkedin.com/in/wilmer-leonardo-varón-63a29666" target="_blank" class="text-white hover:text-cyan-400 transition-colors mt-4">
                                                 <i class="fab fa-linkedin fa-2x"></i>
                                             </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Speaker: Teodor Petricevic -->
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-hr w-full flex flex-col">
+                                        <img src="/images/petricevic.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Teodor Petricevic">
+                                        <h3 class="text-xl font-bold text-white">Teodor Petricevic</h3>
+                                        <div class="flex-grow flex flex-col justify-between">
+                                            <div>
+                                                <p class="text-cyan-400 mb-2 text-sm">Digital Partnerships and Accelerator Lead, UNDP</p>
+                                                <p class="text-xs text-gray-400">Social innovator and impact entrepreneurship expert with 20+ years of leadership experience. Drives blockchain and impact business acceleration initiatives at UNDP Europe and Central Asia.</p>
+                                            </div>
+                                            <div class="flex justify-center items-center space-x-4 mt-4">
+                                                <img src="/images/undp.jpg" alt="UNDP Logo" class="w-8 h-8 object-contain">
+                                                <a href="https://www.linkedin.com/in/teopetricevic/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                                    <i class="fab fa-linkedin fa-2x"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Speaker: Robertino Martinez -->
+                                <div class="swiper-slide">
+                                    <div class="bg-gray-900 p-6 rounded-lg text-center speaker-card speaker-card-pt w-full flex flex-col">
+                                        <img src="/images/robertino.jpg" class="w-48 h-48 rounded-full mx-auto mb-4 border-4 border-gray-700 object-cover" alt="Robertino Martinez">
+                                        <h3 class="text-xl font-bold text-white">Robertino Martinez</h3>
+                                        <div class="flex-grow flex flex-col justify-between">
+                                            <div>
+                                                <p class="text-cyan-400 mb-2 text-sm">Education Lead at IOG</p>
+                                                <p class="text-xs text-gray-400">Engineer and technical founder with expertise in machine learning and software development. Delivers courses on Haskell and Cardano technologies worldwide.</p>
+                                            </div>
+                                            <div class="flex justify-center items-center space-x-4 mt-4">
+                                                <img src="/images/iohk-symbol-inverted.png" alt="IOG Logo" class="w-8 h-8 object-contain">
+                                                <a href="https://www.linkedin.com/in/robertino-martinez-880598141/" target="_blank" class="text-white hover:text-cyan-400 transition-colors">
+                                                    <i class="fab fa-linkedin fa-2x"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
