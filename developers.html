@@ -3,177 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenida al Curso de Cardano Developers</title>
+    <title>Cardano Developers Course - Tech Summit LATAM</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #F9FAFB;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+        }
     </style>
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-3xl mx-auto my-10 bg-white rounded-lg shadow-2xl overflow-hidden">
-        
-        <!-- Encabezado -->
-        <header class="bg-slate-900 text-white p-8 text-center">
-            <h1 class="text-3xl font-bold mb-2">¡Bienvenido/a al Curso de "Cardano Developers"!</h1>
-            <p class="text-lg text-slate-300">Estamos listos para comenzar esta increíble experiencia.</p>
-        </header>
-
-        <!-- Contenido Principal -->
-        <main class="p-8 sm:p-10 text-gray-800 leading-relaxed">
-            
-            <p class="text-lg mb-6">¡Hola, developer!</p>
-            <p class="mb-6">Estamos muy contentos de confirmar tu participación. ¡Mañana, <strong>Lunes 3 de Noviembre</strong>, damos inicio oficial a nuestro curso de capacitación!</p>
-
-            <!-- Caja de Información Crítica -->
-            <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mb-8 text-center">
-                <h2 class="text-xl font-bold text-blue-800 mb-3">Información de Inicio</h2>
-                <p class="text-lg mb-2"><strong>Día:</strong> Lunes, 3 de Noviembre</p>
-                <p class="text-lg mb-4"><strong>Hora:</strong> 09:00 AM (Hora de Buenos Aires, UTC -3)</p>
-                
-                <a href="[AQUÍ VA EL ENLACE DE GOOGLE MEET]" 
-                   target="_blank" 
-                   class="inline-block bg-blue-600 text-white text-lg font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
-                    Unirse a la Clase (Google Meet)
-                </a>
-                <p class="text-sm text-gray-600 mt-4">Te recomendamos conectarte 5 minutos antes para probar tu audio y video.</p>
-            </div>
-
-            <!-- Modalidades y Fechas -->
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-gray-200 pb-2 mb-4">Modalidades y Fechas</h2>
-                
-                <!-- Semana 1: Virtual -->
-                <div class="mb-6">
-                    <h3 class="text-xl font-semibold text-slate-700 mb-2">Semana 1: Virtual</h3>
-                    <ul class="list-disc list-inside bg-gray-50 p-4 rounded-lg">
-                        <li><strong>Fechas:</strong> 3 al 7 de Noviembre</li>
-                        <li><strong>Modalidad:</strong> 100% Virtual</li>
-                        <li><strong>Horario:</strong> 09:00 a 13:00 hs (UTC -3)</li>
-                    </ul>
-                </div>
-
-                <!-- Semana 2: Híbrida -->
-                <div class="mb-6">
-                    <h3 class="text-xl font-semibold text-slate-700 mb-2">Semana 2: Híbrida (Presencial + Virtual)</h3>
-                    <ul class="list-disc list-inside bg-gray-50 p-4 rounded-lg">
-                        <li><strong>Fechas:</strong> 10 al 13 de Noviembre</li>
-                        <li><strong>Modalidad:</strong> Híbrida (para quienes asistan presencialmente)</li>
-                        <li><strong>Horario:</strong> 09:00 a 13:00 hs (UTC -3)</li>
-                    </ul>
-
-                    <!-- Detalles Presencial -->
-                    <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-5">
-                        <h4 class="font-bold text-amber-800 text-lg mb-2 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                            Detalles para Asistencia Presencial
-                        </h4>
-                        <p class="text-amber-700 mb-2"><strong>Lugar:</strong> Edificio Cero + Infinito (C0+∞), Ciudad Universitaria (UBA).</p>
-                        <p class="text-amber-700 mb-2"><strong>Aulas:</strong> 2203, 2204 y Office 2 (sala de café).</p>
-                        <p class="text-amber-700"><strong>Importante:</strong> El espacio (cedido por el Centro Nacional de Datos) tiene capacidad para 30-40 personas. Es fundamental que traigas tu <strong>propia notebook</strong>.</p>
-                    </div>
-                </div>
-
-                <!-- Hackathon -->
-                <div>
-                    <h3 class="text-xl font-semibold text-slate-700 mb-2">Día Final: Hackathon</h3>
-                    <ul class="list-disc list-inside bg-gray-50 p-4 rounded-lg">
-                        <li><strong>Fecha:</strong> Viernes, 14 de Noviembre</li>
-                        <li><strong>Modalidad:</strong> Presencial (Aula 2203)</li>
-                        <li><strong>Horario:</strong> 09:00 a 18:00 hs (Jornada completa)</li>
-                        <li class="mt-2">Servirá como <strong>evaluación final</strong> y habrá <strong>importantes premios</strong> para los equipos ganadores.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Programa del Curso -->
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-gray-200 pb-2 mb-4">Cronograma del Curso</h2>
-                
-                <ol class="relative border-l border-gray-300 ml-3">
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">1</span>
-                        <h4 class="font-semibold text-gray-900">Día 1: Introducción</h4>
-                        <p class="text-sm text-gray-600">Conceptos fundamentales: criptografía, blockchains, transacciones, bloques, nodos, y wallets.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">2</span>
-                        <h4 class="font-semibold text-gray-900">Día 2: Modelo EUTxO</h4>
-                        <p class="text-sm text-gray-600">Modelo UTxO y EUTxO. Diferencia entre on-chain y off-chain.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">3</span>
-                        <h4 class="font-semibold text-gray-900">Día 3: Native Scripts y Native Tokens</h4>
-                        <p class="text-sm text-gray-600">Librerías off-chain, scripts nativos e introducción a Native Tokens.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">4</span>
-                        <h4 class="font-semibold text-gray-900">Día 4: Aiken y validadores</h4>
-                        <p class="text-sm text-gray-600">Introducción al lenguaje Aiken y validadores.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">5</span>
-                        <h4 class="font-semibold text-gray-900">Día 5: Web2 a Web3</h4>
-                        <p class="text-sm text-gray-600">Agregar interacción con Cardano a una web. Contexto de un script, vesting DApp.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">6</span>
-                        <h4 class="font-semibold text-gray-900">Día 6: Validadores parametrizados y Políticas monetarias</h4>
-                        <p class="text-sm text-gray-600">Validadores parametrizados, políticas monetarias, y NFTs.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">7</span>
-                        <h4 class="font-semibold text-gray-900">Día 7: Oráculo</h4>
-                        <p class="text-sm text-gray-600">Implementación de oráculo DApp.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">8</span>
-                        <h4 class="font-semibold text-gray-900">Día 8: Testing</h4>
-                        <p class="text-sm text-gray-600">Unit testing y property testing de validadores.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">9</span>
-                        <h4 class="font-semibold text-gray-900">Día 9: Patrones comúnes</h4>
-                        <p class="text-sm text-gray-600">Vulnerabilidades y patrones comunes de smart contracts.</p>
-                    </li>
-                    <li class="mb-6 ml-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-4 ring-white">10</span>
-                        <h4 class="font-semibold text-gray-900">Día 10: Hackathon</h4>
-                        <p class="text-sm text-gray-600">Cardano Summit Hackathon.</p>
-                    </li>
-                </ol>
-            </section>
-
-            <!-- Equipo Docente -->
-            <section class="mb-8">
-                <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-gray-200 pb-2 mb-4">Equipo Docente (IOG Education)</h2>
-                <ul class="list-disc list-inside">
-                    <li>Robertino Martínez</li>
-                    <li>Karina López</li>
-                    <li>Arturo Mora (Soporte Online)</li>
-                    <li>Antonio Ibarra (Soporte Online)</li>
-                </ul>
-            </section>
-            
-            <!-- Info Adicional -->
-            <section class="border-t border-gray-200 pt-6 mt-8">
-                <p class="text-sm text-gray-600 mb-2">Este curso reúne a casi 80 estudiantes de Argentina, Chile, Bolivia, Brasil, Perú, Colombia, España y Venezuela, con y sin asistencia presencial.</p>
-                <p class="text-sm text-gray-600"><strong>Certificación:</strong> Se otorgarán certificados de asistencia (online o presencial) según corresponda. El Hackathon funciona como evaluación final.</p>
-            </section>
-
-            <!-- Cierre -->
-            <div class="mt-10 pt-6 border-t border-gray-200">
-                <p class="text-lg">¡Estamos ansiosos por comenzar esta aventura contigo!</p>
-                <p class="text-lg mt-2">¡Nos vemos mañana!</p>
-                <br>
-                <p class="font-semibold">El Equipo de IOG Education</p>
-            </div>
-
-        </main>
+<body>
+    <!-- Language Selector -->
+    <div class="fixed top-4 right-4 z-50">
+        <select id="language-selector" class="bg-gray-800 text-white border border-cyan-500 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
+            <option value="es">🇪🇸 Español</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="pt">🇧🇷 Português</option>
+        </select>
     </div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-20 text-center border-b-4 border-cyan-500">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl font-bold mb-4 text-glow" data-key="header_title">¡Bienvenido/a al Curso de "Cardano Developers"!</h1>
+            <p class="text-xl text-cyan-400" data-key="header_subtitle">Estamos listos para comenzar esta increíble experiencia.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto my-12 px-6">
+        
+        <!-- Welcome Section -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700 card-glow">
+            <p class="text-lg mb-4" data-key="welcome_greeting">¡Hola, developer!</p>
+            <p class="text-gray-300 mb-4" data-key="welcome_text">Estamos muy contentos de confirmar tu participación. ¡Mañana, <strong>Lunes 3 de Noviembre</strong>, damos inicio oficial a nuestro curso de capacitación!</p>
+        </section>
+
+        <!-- Start Info Box -->
+        <div class="bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl p-8 mb-8 text-center shadow-2xl">
+            <h2 class="text-2xl font-bold mb-4" data-key="start_title">Información de Inicio</h2>
+            <p class="text-lg mb-2"><strong data-key="start_day">Día:</strong> <span data-key="start_day_value">Lunes, 3 de Noviembre</span></p>
+            <p class="text-lg mb-6"><strong data-key="start_time">Hora:</strong> <span data-key="start_time_value">09:00 AM (Hora de Buenos Aires, UTC -3)</span></p>
+            
+            <a href="[AQUÍ VA EL ENLACE DE GOOGLE MEET]" 
+               target="_blank" 
+               class="inline-block bg-white text-cyan-700 text-lg font-bold py-4 px-10 rounded-xl shadow-lg hover:bg-gray-100 transition-colors duration-300">
+                <span data-key="join_button">Unirse a la Clase (Google Meet)</span>
+            </a>
+            <p class="text-sm text-cyan-100 mt-4" data-key="join_note">Te recomendamos conectarte 5 minutos antes para probar tu audio y video.</p>
+        </div>
+
+        <!-- Schedule Section -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700">
+            <h2 class="text-3xl font-bold text-white border-b-2 border-cyan-500 pb-3 mb-6" data-key="schedule_title">Modalidades y Fechas</h2>
+            
+            <!-- Week 1 -->
+            <div class="mb-6 bg-gray-900 rounded-xl p-6 border border-gray-700">
+                <h3 class="text-xl font-semibold text-cyan-400 mb-3" data-key="week1_title">Semana 1: Virtual</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li><strong data-key="dates">Fechas:</strong> <span data-key="week1_dates">3 al 7 de Noviembre</span></li>
+                    <li><strong data-key="modality">Modalidad:</strong> <span data-key="week1_modality">100% Virtual</span></li>
+                    <li><strong data-key="schedule">Horario:</strong> <span data-key="week1_schedule">09:00 a 13:00 hs (UTC -3)</span></li>
+                </ul>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="mb-6 bg-gray-900 rounded-xl p-6 border border-gray-700">
+                <h3 class="text-xl font-semibold text-cyan-400 mb-3" data-key="week2_title">Semana 2: Híbrida (Presencial + Virtual)</h3>
+                <ul class="space-y-2 text-gray-300 mb-4">
+                    <li><strong data-key="dates">Fechas:</strong> <span data-key="week2_dates">10 al 13 de Noviembre</span></li>
+                    <li><strong data-key="modality">Modalidad:</strong> <span data-key="week2_modality">Híbrida (para quienes asistan presencialmente)</span></li>
+                    <li><strong data-key="schedule">Horario:</strong> <span data-key="week2_schedule">09:00 a 13:00 hs (UTC -3)</span></li>
+                </ul>
+
+                <!-- Presential Details -->
+                <div class="bg-amber-900/30 border border-amber-600/50 rounded-lg p-5">
+                    <h4 class="font-bold text-amber-400 text-lg mb-3" data-key="presential_title">📍 Detalles para Asistencia Presencial</h4>
+                    <p class="text-gray-300 mb-2"><strong data-key="location">Lugar:</strong> <span data-key="location_value">Edificio Cero + Infinito (C0+∞), Ciudad Universitaria (UBA).</span></p>
+                    <p class="text-gray-300 mb-2"><strong data-key="rooms">Aulas:</strong> <span data-key="rooms_value">2203, 2204 y Office 2 (sala de café).</span></p>
+                    <p class="text-gray-300"><strong data-key="important">Importante:</strong> <span data-key="important_note">El espacio (cedido por el Centro Nacional de Datos) tiene capacidad para 30-40 personas. Es fundamental que traigas tu <strong>propia notebook</strong>.</span></p>
+                </div>
+            </div>
+
+            <!-- Hackathon -->
+            <div class="bg-gray-900 rounded-xl p-6 border border-cyan-500">
+                <h3 class="text-xl font-semibold text-cyan-400 mb-3" data-key="hackathon_title">Día Final: Hackathon</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li><strong data-key="date">Fecha:</strong> <span data-key="hackathon_date">Viernes, 14 de Noviembre</span></li>
+                    <li><strong data-key="modality">Modalidad:</strong> <span data-key="hackathon_modality">Presencial (Aula 2203)</span></li>
+                    <li><strong data-key="schedule">Horario:</strong> <span data-key="hackathon_schedule">09:00 a 18:00 hs (Jornada completa)</span></li>
+                    <li class="text-cyan-300 mt-3" data-key="hackathon_note">Servirá como <strong>evaluación final</strong> y habrá <strong>importantes premios</strong> para los equipos ganadores.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Course Program -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700">
+            <h2 class="text-3xl font-bold text-white border-b-2 border-cyan-500 pb-3 mb-6" data-key="program_title">Cronograma del Curso</h2>
+            
+            <ol class="relative border-l-2 border-cyan-500 ml-3 space-y-6">
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">1</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day1_title">Día 1: Introducción</h4>
+                    <p class="text-sm text-gray-400" data-key="day1_desc">Conceptos fundamentales: criptografía, blockchains, transacciones, bloques, nodos, y wallets.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">2</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day2_title">Día 2: Modelo EUTxO</h4>
+                    <p class="text-sm text-gray-400" data-key="day2_desc">Modelo UTxO y EUTxO. Diferencia entre on-chain y off-chain.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">3</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day3_title">Día 3: Native Scripts y Native Tokens</h4>
+                    <p class="text-sm text-gray-400" data-key="day3_desc">Librerías off-chain, scripts nativos e introducción a Native Tokens.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">4</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day4_title">Día 4: Aiken y validadores</h4>
+                    <p class="text-sm text-gray-400" data-key="day4_desc">Introducción al lenguaje Aiken y validadores.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">5</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day5_title">Día 5: Web2 a Web3</h4>
+                    <p class="text-sm text-gray-400" data-key="day5_desc">Agregar interacción con Cardano a una web. Contexto de un script, vesting DApp.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">6</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day6_title">Día 6: Validadores parametrizados y Políticas monetarias</h4>
+                    <p class="text-sm text-gray-400" data-key="day6_desc">Validadores parametrizados, políticas monetarias, y NFTs.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">7</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day7_title">Día 7: Oráculo</h4>
+                    <p class="text-sm text-gray-400" data-key="day7_desc">Implementación de oráculo DApp.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">8</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day8_title">Día 8: Testing</h4>
+                    <p class="text-sm text-gray-400" data-key="day8_desc">Unit testing y property testing de validadores.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">9</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day9_title">Día 9: Patrones comunes</h4>
+                    <p class="text-sm text-gray-400" data-key="day9_desc">Vulnerabilidades y patrones comunes de smart contracts.</p>
+                </li>
+                <li class="ml-8">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-cyan-500 rounded-full -left-4 ring-4 ring-gray-800 text-white font-bold text-sm">10</span>
+                    <h4 class="font-semibold text-white text-lg" data-key="day10_title">Día 10: Hackathon</h4>
+                    <p class="text-sm text-gray-400" data-key="day10_desc">Cardano Summit Hackathon.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Teaching Team -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-gray-700">
+            <h2 class="text-3xl font-bold text-white border-b-2 border-cyan-500 pb-3 mb-6" data-key="team_title">Equipo Docente (IOG Education)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                    <p class="text-white font-semibold">👨‍🏫 Robertino Martínez</p>
+                </div>
+                <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                    <p class="text-white font-semibold">👩‍🏫 Karina López</p>
+                </div>
+                <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                    <p class="text-white font-semibold">💻 Arturo Mora <span class="text-cyan-400 text-sm" data-key="online_support">(Soporte Online)</span></p>
+                </div>
+                <div class="bg-gray-900 rounded-lg p-4 border border-gray-700">
+                    <p class="text-white font-semibold">💻 Antonio Ibarra <span class="text-cyan-400 text-sm" data-key="online_support">(Soporte Online)</span></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Additional Info -->
+        <section class="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-2xl p-8 mb-8 border border-cyan-500/50">
+            <p class="text-gray-300 mb-4" data-key="participants_info">Este curso reúne a casi 80 estudiantes de Argentina, Chile, Bolivia, Brasil, Colombia, España, México, Perú y Venezuela, con y sin asistencia presencial.</p>
+            <p class="text-gray-300"><strong data-key="certification">Certificación:</strong> <span data-key="certification_text">Se otorgarán certificados de asistencia (online o presencial) según corresponda. El Hackathon funciona como evaluación final.</span></p>
+        </section>
+
+        <!-- Closing -->
+        <div class="bg-gray-800 rounded-2xl p-8 border border-gray-700 text-center">
+            <p class="text-xl mb-2" data-key="closing1">¡Estamos ansiosos por comenzar esta aventura contigo!</p>
+            <p class="text-xl mb-4" data-key="closing2">¡Nos vemos mañana!</p>
+            <p class="font-bold text-cyan-400 text-lg" data-key="team_signature">El Equipo de IOG Education</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-16">
+        <div class="max-w-4xl mx-auto text-center text-gray-400">
+            <p data-key="footer_text">Cardano Tech Summit 2025 LATAM</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                es: {
+                    header_title: '¡Bienvenido/a al Curso de "Cardano Developers"!',
+                    header_subtitle: 'Estamos listos para comenzar esta increíble experiencia.',
+                    welcome_greeting: '¡Hola, developer!',
+                    welcome_text: 'Estamos muy contentos de confirmar tu participación. ¡Mañana, <strong>Lunes 3 de Noviembre</strong>, damos inicio oficial a nuestro curso de capacitación!',
+                    start_title: 'Información de Inicio',
+                    start_day: 'Día:',
+                    start_day_value: 'Lunes, 3 de Noviembre',
+                    start_time: 'Hora:',
+                    start_time_value: '09:00 AM (Hora de Buenos Aires, UTC -3)',
+                    join_button: 'Unirse a la Clase (Google Meet)',
+                    join_note: 'Te recomendamos conectarte 5 minutos antes para probar tu audio y video.',
+                    schedule_title: 'Modalidades y Fechas',
+                    week1_title: 'Semana 1: Virtual',
+                    dates: 'Fechas:',
+                    week1_dates: '3 al 7 de Noviembre',
+                    modality: 'Modalidad:',
+                    week1_modality: '100% Virtual',
+                    schedule: 'Horario:',
+                    week1_schedule: '09:00 a 13:00 hs (UTC -3)',
+                    week2_title: 'Semana 2: Híbrida (Presencial + Virtual)',
+                    week2_dates: '10 al 13 de Noviembre',
+                    week2_modality: 'Híbrida (para quienes asistan presencialmente)',
+                    week2_schedule: '09:00 a 13:00 hs (UTC -3)',
+                    presential_title: '📍 Detalles para Asistencia Presencial',
+                    location: 'Lugar:',
+                    location_value: 'Edificio Cero + Infinito (C0+∞), Ciudad Universitaria (UBA).',
+                    rooms: 'Aulas:',
+                    rooms_value: '2203, 2204 y Office 2 (sala de café).',
+                    important: 'Importante:',
+                    important_note: 'El espacio (cedido por el Centro Nacional de Datos) tiene capacidad para 30-40 personas. Es fundamental que traigas tu <strong>propia notebook</strong>.',
+                    hackathon_title: 'Día Final: Hackathon',
+                    date: 'Fecha:',
+                    hackathon_date: 'Viernes, 14 de Noviembre',
+                    hackathon_modality: 'Presencial (Aula 2203)',
+                    hackathon_schedule: '09:00 a 18:00 hs (Jornada completa)',
+                    hackathon_note: 'Servirá como <strong>evaluación final</strong> y habrá <strong>importantes premios</strong> para los equipos ganadores.',
+                    program_title: 'Cronograma del Curso',
+                    day1_title: 'Día 1: Introducción',
+                    day1_desc: 'Conceptos fundamentales: criptografía, blockchains, transacciones, bloques, nodos, y wallets.',
+                    day2_title: 'Día 2: Modelo EUTxO',
+                    day2_desc: 'Modelo UTxO y EUTxO. Diferencia entre on-chain y off-chain.',
+                    day3_title: 'Día 3: Native Scripts y Native Tokens',
+                    day3_desc: 'Librerías off-chain, scripts nativos e introducción a Native Tokens.',
+                    day4_title: 'Día 4: Aiken y validadores',
+                    day4_desc: 'Introducción al lenguaje Aiken y validadores.',
+                    day5_title: 'Día 5: Web2 a Web3',
+                    day5_desc: 'Agregar interacción con Cardano a una web. Contexto de un script, vesting DApp.',
+                    day6_title: 'Día 6: Validadores parametrizados y Políticas monetarias',
+                    day6_desc: 'Validadores parametrizados, políticas monetarias, y NFTs.',
+                    day7_title: 'Día 7: Oráculo',
+                    day7_desc: 'Implementación de oráculo DApp.',
+                    day8_title: 'Día 8: Testing',
+                    day8_desc: 'Unit testing y property testing de validadores.',
+                    day9_title: 'Día 9: Patrones comunes',
+                    day9_desc: 'Vulnerabilidades y patrones comunes de smart contracts.',
+                    day10_title: 'Día 10: Hackathon',
+                    day10_desc: 'Cardano Summit Hackathon.',
+                    team_title: 'Equipo Docente (IOG Education)',
+                    online_support: '(Soporte Online)',
+                    participants_info: 'Este curso reúne a casi 80 estudiantes de Argentina, Chile, Bolivia, Brasil, Colombia, España, México, Perú y Venezuela, con y sin asistencia presencial.',
+                    certification: 'Certificación:',
+                    certification_text: 'Se otorgarán certificados de asistencia (online o presencial) según corresponda. El Hackathon funciona como evaluación final.',
+                    closing1: '¡Estamos ansiosos por comenzar esta aventura contigo!',
+                    closing2: '¡Nos vemos mañana!',
+                    team_signature: 'El Equipo de IOG Education',
+                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                },
+                en: {
+                    header_title: 'Welcome to the "Cardano Developers" Course!',
+                    header_subtitle: 'We are ready to begin this incredible experience.',
+                    welcome_greeting: 'Hello, developer!',
+                    welcome_text: 'We are very happy to confirm your participation. Tomorrow, <strong>Monday, November 3rd</strong>, we officially start our training course!',
+                    start_title: 'Start Information',
+                    start_day: 'Day:',
+                    start_day_value: 'Monday, November 3rd',
+                    start_time: 'Time:',
+                    start_time_value: '09:00 AM (Buenos Aires Time, UTC -3)',
+                    join_button: 'Join the Class (Google Meet)',
+                    join_note: 'We recommend connecting 5 minutes early to test your audio and video.',
+                    schedule_title: 'Modalities and Dates',
+                    week1_title: 'Week 1: Virtual',
+                    dates: 'Dates:',
+                    week1_dates: 'November 3rd to 7th',
+                    modality: 'Modality:',
+                    week1_modality: '100% Virtual',
+                    schedule: 'Schedule:',
+                    week1_schedule: '09:00 to 13:00 (UTC -3)',
+                    week2_title: 'Week 2: Hybrid (In-Person + Virtual)',
+                    week2_dates: 'November 10th to 13th',
+                    week2_modality: 'Hybrid (for those attending in person)',
+                    week2_schedule: '09:00 to 13:00 (UTC -3)',
+                    presential_title: '📍 In-Person Attendance Details',
+                    location: 'Location:',
+                    location_value: 'Zero + Infinity Building (C0+∞), University City (UBA).',
+                    rooms: 'Rooms:',
+                    rooms_value: '2203, 2204 and Office 2 (coffee room).',
+                    important: 'Important:',
+                    important_note: 'The space (provided by the National Data Center) has capacity for 30-40 people. It is essential that you bring your <strong>own laptop</strong>.',
+                    hackathon_title: 'Final Day: Hackathon',
+                    date: 'Date:',
+                    hackathon_date: 'Friday, November 14th',
+                    hackathon_modality: 'In-Person (Room 2203)',
+                    hackathon_schedule: '09:00 to 18:00 (Full day)',
+                    hackathon_note: 'It will serve as the <strong>final evaluation</strong> and there will be <strong>important prizes</strong> for the winning teams.',
+                    program_title: 'Course Schedule',
+                    day1_title: 'Day 1: Introduction',
+                    day1_desc: 'Fundamental concepts: cryptography, blockchains, transactions, blocks, nodes, and wallets.',
+                    day2_title: 'Day 2: EUTxO Model',
+                    day2_desc: 'UTxO and EUTxO models. Difference between on-chain and off-chain.',
+                    day3_title: 'Day 3: Native Scripts and Native Tokens',
+                    day3_desc: 'Off-chain libraries, native scripts, and introduction to Native Tokens.',
+                    day4_title: 'Day 4: Aiken and validators',
+                    day4_desc: 'Introduction to the Aiken language and validators.',
+                    day5_title: 'Day 5: Web2 to Web3',
+                    day5_desc: 'Adding Cardano interaction to a web. Script context, vesting DApp.',
+                    day6_title: 'Day 6: Parameterized validators and Monetary policies',
+                    day6_desc: 'Parameterized validators, monetary policies, and NFTs.',
+                    day7_title: 'Day 7: Oracle',
+                    day7_desc: 'Oracle DApp implementation.',
+                    day8_title: 'Day 8: Testing',
+                    day8_desc: 'Unit testing and property testing of validators.',
+                    day9_title: 'Day 9: Common patterns',
+                    day9_desc: 'Vulnerabilities and common patterns of smart contracts.',
+                    day10_title: 'Day 10: Hackathon',
+                    day10_desc: 'Cardano Summit Hackathon.',
+                    team_title: 'Teaching Team (IOG Education)',
+                    online_support: '(Online Support)',
+                    participants_info: 'This course brings together nearly 80 students from Argentina, Chile, Bolivia, Brazil, Colombia, Spain, Mexico, Peru, and Venezuela, with and without in-person attendance.',
+                    certification: 'Certification:',
+                    certification_text: 'Attendance certificates (online or in-person) will be awarded accordingly. The Hackathon serves as the final evaluation.',
+                    closing1: 'We are excited to begin this adventure with you!',
+                    closing2: 'See you tomorrow!',
+                    team_signature: 'The IOG Education Team',
+                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                },
+                pt: {
+                    header_title: 'Bem-vindo ao Curso "Cardano Developers"!',
+                    header_subtitle: 'Estamos prontos para começar esta incrível experiência.',
+                    welcome_greeting: 'Olá, developer!',
+                    welcome_text: 'Estamos muito felizes em confirmar sua participação. Amanhã, <strong>Segunda-feira, 3 de Novembro</strong>, iniciamos oficialmente nosso curso de capacitação!',
+                    start_title: 'Informações de Início',
+                    start_day: 'Dia:',
+                    start_day_value: 'Segunda-feira, 3 de Novembro',
+                    start_time: 'Horário:',
+                    start_time_value: '09:00 (Horário de Buenos Aires, UTC -3)',
+                    join_button: 'Entrar na Aula (Google Meet)',
+                    join_note: 'Recomendamos conectar-se 5 minutos antes para testar seu áudio e vídeo.',
+                    schedule_title: 'Modalidades e Datas',
+                    week1_title: 'Semana 1: Virtual',
+                    dates: 'Datas:',
+                    week1_dates: '3 a 7 de Novembro',
+                    modality: 'Modalidade:',
+                    week1_modality: '100% Virtual',
+                    schedule: 'Horário:',
+                    week1_schedule: '09:00 às 13:00 (UTC -3)',
+                    week2_title: 'Semana 2: Híbrida (Presencial + Virtual)',
+                    week2_dates: '10 a 13 de Novembro',
+                    week2_modality: 'Híbrida (para quem participar presencialmente)',
+                    week2_schedule: '09:00 às 13:00 (UTC -3)',
+                    presential_title: '📍 Detalhes para Participação Presencial',
+                    location: 'Local:',
+                    location_value: 'Edifício Zero + Infinito (C0+∞), Cidade Universitária (UBA).',
+                    rooms: 'Salas:',
+                    rooms_value: '2203, 2204 e Office 2 (sala de café).',
+                    important: 'Importante:',
+                    important_note: 'O espaço (cedido pelo Centro Nacional de Dados) tem capacidade para 30-40 pessoas. É fundamental que você traga seu <strong>próprio notebook</strong>.',
+                    hackathon_title: 'Dia Final: Hackathon',
+                    date: 'Data:',
+                    hackathon_date: 'Sexta-feira, 14 de Novembro',
+                    hackathon_modality: 'Presencial (Sala 2203)',
+                    hackathon_schedule: '09:00 às 18:00 (Dia completo)',
+                    hackathon_note: 'Servirá como <strong>avaliação final</strong> e haverá <strong>prêmios importantes</strong> para as equipes vencedoras.',
+                    program_title: 'Cronograma do Curso',
+                    day1_title: 'Dia 1: Introdução',
+                    day1_desc: 'Conceitos fundamentais: criptografia, blockchains, transações, blocos, nós e carteiras.',
+                    day2_title: 'Dia 2: Modelo EUTxO',
+                    day2_desc: 'Modelos UTxO e EUTxO. Diferença entre on-chain e off-chain.',
+                    day3_title: 'Dia 3: Native Scripts e Native Tokens',
+                    day3_desc: 'Bibliotecas off-chain, scripts nativos e introdução aos Native Tokens.',
+                    day4_title: 'Dia 4: Aiken e validadores',
+                    day4_desc: 'Introdução à linguagem Aiken e validadores.',
+                    day5_title: 'Dia 5: Web2 para Web3',
+                    day5_desc: 'Adicionar interação com Cardano a uma web. Contexto de um script, vesting DApp.',
+                    day6_title: 'Dia 6: Validadores parametrizados e Políticas monetárias',
+                    day6_desc: 'Validadores parametrizados, políticas monetárias e NFTs.',
+                    day7_title: 'Dia 7: Oráculo',
+                    day7_desc: 'Implementação de oráculo DApp.',
+                    day8_title: 'Dia 8: Testing',
+                    day8_desc: 'Unit testing e property testing de validadores.',
+                    day9_title: 'Dia 9: Padrões comuns',
+                    day9_desc: 'Vulnerabilidades e padrões comuns de smart contracts.',
+                    day10_title: 'Dia 10: Hackathon',
+                    day10_desc: 'Cardano Summit Hackathon.',
+                    team_title: 'Equipe Docente (IOG Education)',
+                    online_support: '(Suporte Online)',
+                    participants_info: 'Este curso reúne quase 80 estudantes da Argentina, Chile, Bolívia, Brasil, Colômbia, Espanha, México, Peru e Venezuela, com e sem participação presencial.',
+                    certification: 'Certificação:',
+                    certification_text: 'Certificados de participação (online ou presencial) serão concedidos conforme o caso. O Hackathon funciona como avaliação final.',
+                    closing1: 'Estamos ansiosos para começar esta aventura com você!',
+                    closing2: 'Vejo você amanhã!',
+                    team_signature: 'A Equipe IOG Education',
+                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                }
+            };
+
+            let currentLanguage = 'es';
+
+            function updateLanguage(lang) {
+                currentLanguage = lang;
+                const elements = document.querySelectorAll('[data-key]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                localStorage.setItem('selectedLanguage', lang);
+            }
+
+            const languageSelector = document.getElementById('language-selector');
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'es';
+            languageSelector.value = savedLanguage;
+            updateLanguage(savedLanguage);
+
+            languageSelector.addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+        });
+    </script>
 </body>
 </html>
