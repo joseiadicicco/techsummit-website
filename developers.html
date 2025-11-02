@@ -60,17 +60,89 @@
             <p class="text-gray-300 mb-4" data-key="welcome_text">Estamos muy contentos de confirmar tu participación. ¡Mañana, <strong>Lunes 3 de Noviembre</strong>, damos inicio oficial a nuestro curso de capacitación!</p>
         </section>
 
+        <!-- Instructor Message -->
+        <section class="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-2xl p-8 mb-8 border border-cyan-500/50">
+            <div class="flex items-start space-x-4 mb-4">
+                <div class="text-4xl">👋</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-2" data-key="instructor_title">Mensaje del Instructor</h2>
+                    <p class="text-gray-300 mb-4" data-key="instructor_intro">Soy Robertino, Education Lead en IOG, y voy a ser su instructor junto a Karina y Antonio.</p>
+                </div>
+            </div>
+            
+            <div class="space-y-4 text-gray-300">
+                <p data-key="instructor_modality">La <strong>primera semana será online</strong> y la <strong>segunda mixta</strong> (presencial pero con livestream para los que no puedan asistir a la UBA). Es la primera vez que no damos el curso 100% presencial, por lo que la primer semana será experimental.</p>
+                
+                <p data-key="instructor_interactive">Las lecciones serán lo más <strong>interactivas</strong> posibles dentro de las limitaciones de hacerlas online, así que por favor <strong>pregunten en el momento</strong> que tienen la duda, no al final. Para el que no quiera/pueda levantar la mano, Karina y Antonio van a estar monitoreando los chats y podrán contestarles directamente.</p>
+            </div>
+        </section>
+
+        <!-- Discord Section -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-purple-500/50">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="text-3xl">💬</div>
+                <h2 class="text-2xl font-bold text-purple-400" data-key="discord_title">Únete a Discord</h2>
+            </div>
+            
+            <p class="text-gray-300 mb-4" data-key="discord_text">Las discusiones asíncronas serán a través del canal <strong>#cardano-devs-español</strong> en el Discord técnico de IOG que creamos explícitamente para este curso.</p>
+            
+            <a href="https://discord.com/invite/2Nh2MQgz3h" 
+               target="_blank" 
+               class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg">
+                <span data-key="discord_button">🔗 Unirse al Discord de IOG</span>
+            </a>
+            
+            <p class="text-sm text-gray-400 mt-4" data-key="discord_note">⚠️ Asegúrate de identificarte como <strong>builder</strong> para que te aparezca el canal de devs en español.</p>
+        </section>
+
+        <!-- Certification and Evaluation -->
+        <section class="bg-gray-800 rounded-2xl p-8 mb-8 border border-amber-500/50">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="text-3xl">🎓</div>
+                <h2 class="text-2xl font-bold text-amber-400" data-key="certification_title">Evaluación y Certificados</h2>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-gray-900 rounded-lg p-6 border-l-4 border-amber-500">
+                    <h3 class="text-lg font-semibold text-amber-400 mb-2" data-key="homework_title">📝 Tareas</h3>
+                    <p class="text-gray-300" data-key="homework_text">Todas las clases <strong>menos la primera</strong> tienen tarea a completar dentro del mismo día.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-green-900/20 rounded-lg p-6 border border-green-500/50">
+                        <h3 class="text-lg font-semibold text-green-400 mb-2" data-key="cert_completed_title">✅ Certificado de Completado</h3>
+                        <p class="text-sm text-gray-300" data-key="cert_completed_text">Para los que asistan <strong>presencialmente</strong> la segunda semana: necesario entregar todas las tareas y solucionar la primera etapa del hackathon.</p>
+                    </div>
+                    
+                    <div class="bg-blue-900/20 rounded-lg p-6 border border-blue-500/50">
+                        <h3 class="text-lg font-semibold text-blue-400 mb-2" data-key="cert_attended_title">📜 Certificado de Asistido</h3>
+                        <p class="text-sm text-gray-300" data-key="cert_attended_text">Para los que cursen <strong>online</strong>: no es posible evaluar el progreso completamente, por lo que obtendrán certificado de asistencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Start Info Box -->
         <div class="bg-gradient-to-br from-cyan-600 to-blue-700 rounded-2xl p-8 mb-8 text-center shadow-2xl">
             <h2 class="text-2xl font-bold mb-4" data-key="start_title">Información de Inicio</h2>
             <p class="text-lg mb-2"><strong data-key="start_day">Día:</strong> <span data-key="start_day_value">Lunes, 3 de Noviembre</span></p>
             <p class="text-lg mb-6"><strong data-key="start_time">Hora:</strong> <span data-key="start_time_value">09:00 AM (Hora de Buenos Aires, UTC -3)</span></p>
             
-            <a href="[AQUÍ VA EL ENLACE DE GOOGLE MEET]" 
-               target="_blank" 
-               class="inline-block bg-white text-cyan-700 text-lg font-bold py-4 px-10 rounded-xl shadow-lg hover:bg-gray-100 transition-colors duration-300">
-                <span data-key="join_button">Unirse a la Clase (Google Meet)</span>
-            </a>
+            <div class="relative inline-block group">
+                <a href="#" 
+                   onclick="return false;"
+                   class="inline-block bg-white text-cyan-700 text-lg font-bold py-4 px-10 rounded-xl shadow-lg hover:bg-gray-100 transition-colors duration-300 cursor-not-allowed opacity-75">
+                    <span data-key="join_button">Unirse a la Clase (Google Meet)</span>
+                </a>
+                <!-- Tooltip -->
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-cyan-500">
+                    <span data-key="link_tooltip">El enlace se habilitará unas horas antes del comienzo del curso</span>
+                    <!-- Arrow -->
+                    <div class="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
+                        <div class="border-8 border-transparent border-t-gray-800"></div>
+                    </div>
+                </div>
+            </div>
             <p class="text-sm text-cyan-100 mt-4" data-key="join_note">Te recomendamos conectarte 5 minutos antes para probar tu audio y video.</p>
         </div>
 
@@ -286,7 +358,23 @@
                     closing1: '¡Estamos ansiosos por comenzar esta aventura contigo!',
                     closing2: '¡Nos vemos mañana!',
                     team_signature: 'El Equipo de IOG Education',
-                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                    footer_text: 'Cardano Tech Summit 2025 LATAM',
+                    link_tooltip: 'El enlace se habilitará unas horas antes del comienzo del curso',
+                    instructor_title: 'Mensaje del Instructor',
+                    instructor_intro: 'Soy Robertino, Education Lead en IOG, y voy a ser su instructor junto a Karina y Antonio.',
+                    instructor_modality: 'La <strong>primera semana será online</strong> y la <strong>segunda mixta</strong> (presencial pero con livestream para los que no puedan asistir a la UBA). Es la primera vez que no damos el curso 100% presencial, por lo que la primer semana será experimental.',
+                    instructor_interactive: 'Las lecciones serán lo más <strong>interactivas</strong> posibles dentro de las limitaciones de hacerlas online, así que por favor <strong>pregunten en el momento</strong> que tienen la duda, no al final. Para el que no quiera/pueda levantar la mano, Karina y Antonio van a estar monitoreando los chats y podrán contestarles directamente.',
+                    discord_title: 'Únete a Discord',
+                    discord_text: 'Las discusiones asíncronas serán a través del canal <strong>#cardano-devs-español</strong> en el Discord técnico de IOG que creamos explícitamente para este curso.',
+                    discord_button: '🔗 Unirse al Discord de IOG',
+                    discord_note: '⚠️ Asegúrate de identificarte como <strong>builder</strong> para que te aparezca el canal de devs en español.',
+                    certification_title: 'Evaluación y Certificados',
+                    homework_title: '📝 Tareas',
+                    homework_text: 'Todas las clases <strong>menos la primera</strong> tienen tarea a completar dentro del mismo día.',
+                    cert_completed_title: '✅ Certificado de Completado',
+                    cert_completed_text: 'Para los que asistan <strong>presencialmente</strong> la segunda semana: necesario entregar todas las tareas y solucionar la primera etapa del hackathon.',
+                    cert_attended_title: '📜 Certificado de Asistido',
+                    cert_attended_text: 'Para los que cursen <strong>online</strong>: no es posible evaluar el progreso completamente, por lo que obtendrán certificado de asistencia.'
                 },
                 en: {
                     header_title: 'Welcome to the "Cardano Developers" Course!',
@@ -354,7 +442,23 @@
                     closing1: 'We are excited to begin this adventure with you!',
                     closing2: 'See you tomorrow!',
                     team_signature: 'The IOG Education Team',
-                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                    footer_text: 'Cardano Tech Summit 2025 LATAM',
+                    link_tooltip: 'The link will be enabled a few hours before the course starts',
+                    instructor_title: 'Message from the Instructor',
+                    instructor_intro: 'I\'m Robertino, Education Lead at IOG, and I will be your instructor along with Karina and Antonio.',
+                    instructor_modality: 'The <strong>first week will be online</strong> and the <strong>second week hybrid</strong> (in-person but with livestream for those who cannot attend UBA). This is the first time we\'re not doing the course 100% in-person, so the first week will be experimental.',
+                    instructor_interactive: 'The lessons will be as <strong>interactive</strong> as possible within the limitations of doing them online, so please <strong>ask questions in the moment</strong> you have a doubt, not at the end. For those who don\'t want/can\'t raise their hand, Karina and Antonio will be monitoring the chats and can answer you directly.',
+                    discord_title: 'Join Discord',
+                    discord_text: 'Asynchronous discussions will be through the <strong>#cardano-devs-español</strong> channel on the IOG technical Discord that we created explicitly for this course.',
+                    discord_button: '🔗 Join IOG Discord',
+                    discord_note: '⚠️ Make sure to identify yourself as a <strong>builder</strong> so the Spanish devs channel appears for you.',
+                    certification_title: 'Evaluation and Certificates',
+                    homework_title: '📝 Homework',
+                    homework_text: 'All classes <strong>except the first</strong> have homework to complete within the same day.',
+                    cert_completed_title: '✅ Completion Certificate',
+                    cert_completed_text: 'For those attending <strong>in-person</strong> the second week: must submit all homework and solve the first stage of the hackathon.',
+                    cert_attended_title: '📜 Attendance Certificate',
+                    cert_attended_text: 'For those taking the course <strong>online</strong>: it is not possible to fully evaluate progress, so they will receive an attendance certificate.'
                 },
                 pt: {
                     header_title: 'Bem-vindo ao Curso "Cardano Developers"!',
@@ -422,7 +526,23 @@
                     closing1: 'Estamos ansiosos para começar esta aventura com você!',
                     closing2: 'Vejo você amanhã!',
                     team_signature: 'A Equipe IOG Education',
-                    footer_text: 'Cardano Tech Summit 2025 LATAM'
+                    footer_text: 'Cardano Tech Summit 2025 LATAM',
+                    link_tooltip: 'O link será habilitado algumas horas antes do início do curso',
+                    instructor_title: 'Mensagem do Instrutor',
+                    instructor_intro: 'Sou Robertino, Education Lead na IOG, e serei seu instrutor junto com Karina e Antonio.',
+                    instructor_modality: 'A <strong>primeira semana será online</strong> e a <strong>segunda híbrida</strong> (presencial mas com livestream para quem não puder comparecer à UBA). Esta é a primeira vez que não fazemos o curso 100% presencial, então a primeira semana será experimental.',
+                    instructor_interactive: 'As aulas serão o mais <strong>interativas</strong> possível dentro das limitações de fazê-las online, então por favor <strong>perguntem no momento</strong> que tiverem a dúvida, não no final. Para quem não quiser/puder levantar a mão, Karina e Antonio estarão monitorando os chats e poderão responder diretamente.',
+                    discord_title: 'Entre no Discord',
+                    discord_text: 'As discussões assíncronas serão através do canal <strong>#cardano-devs-español</strong> no Discord técnico da IOG que criamos explicitamente para este curso.',
+                    discord_button: '🔗 Entrar no Discord da IOG',
+                    discord_note: '⚠️ Certifique-se de se identificar como <strong>builder</strong> para que o canal de devs em espanhol apareça para você.',
+                    certification_title: 'Avaliação e Certificados',
+                    homework_title: '📝 Tarefas',
+                    homework_text: 'Todas as aulas <strong>exceto a primeira</strong> têm tarefa para completar no mesmo dia.',
+                    cert_completed_title: '✅ Certificado de Conclusão',
+                    cert_completed_text: 'Para quem participar <strong>presencialmente</strong> na segunda semana: necessário entregar todas as tarefas e resolver a primeira etapa do hackathon.',
+                    cert_attended_title: '📜 Certificado de Participação',
+                    cert_attended_text: 'Para quem fizer o curso <strong>online</strong>: não é possível avaliar o progresso completamente, então receberão certificado de participação.'
                 }
             };
 
