@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardano Hackathon 2025 - $10,000 in Prizes</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    
+    <!-- SOCIAL MEDIA PREVIEW -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techsummit.lat/hackathon.html">
+    <meta property="og:title" content="Cardano Hackathon 2025 - $10,000 in Prizes">
+    <meta property="og:description" content="Join the ultimate Cardano developer challenge. Compete for $10,000 in prizes and build the future of blockchain.">
+    <meta property="og:image" content="https://techsummit.lat/images/social-preview.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+        }
+        .prize-card {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(79, 70, 229, 0.1) 100%);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+        .prize-card:hover {
+            border-color: rgba(6, 182, 212, 0.8);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .speech-bubble-arrow {
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 12px solid #1f2937;
+            backface-visibility: hidden;
+        }
+        
+        .speech-bubble-arrow::before {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+        
+        .speech-bubble-arrow.flipped {
+            right: auto;
+            left: -12px;
+            border-left: none;
+            border-right: 12px solid #1f2937;
+        }
+        
+        .speech-bubble-arrow.flipped::before {
+            right: auto;
+            left: 4px;
+            border-left: none;
+            border-right: 10px solid white;
+        }
+        
+        .samurai-quote {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="fixed top-4 right-4 z-50">
+        <select id="language-selector" class="bg-gray-800 text-white border border-cyan-500 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cyan-500 cursor-pointer">
+            <option value="es">🇪🇸 Español</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="pt">🇧🇷 Português</option>
+        </select>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 border-b-4 border-cyan-500">
+        
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')]"></div>
+        </div>
+        
+        <div class="relative max-w-6xl mx-auto px-6 py-20 text-center">
+            <div class="mb-6 relative z-20">
+                <span class="inline-block bg-cyan-500/20 text-cyan-400 px-6 py-2 rounded-full text-sm font-bold border border-cyan-500/50" data-key="hero_badge">
+                    November 14-15, 2025 • Buenos Aires
+                </span>
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-black mb-6 text-glow" data-key="hero_title">
+                Cardano Hackathon 2025
+            </h1>
+            
+            <div class="mb-8 relative">
+                <!-- Samurai silhouettes flanking the prize -->
+                <div class="inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-gray-900 px-8 py-4 rounded-2xl transform rotate-1 shadow-2xl">
+                    <p class="text-sm font-bold uppercase tracking-wider" data-key="prize_label">Total Prize Pool</p>
+                    <p class="text-5xl font-black">US$ 10,000</p>
+                </div>
+            </div>
+            
+            <p class="text-xl md:text-2xl text-gray-300 mb-6 max-w-3xl mx-auto" data-key="hero_subtitle">
+                Become a Cardano Samurai. Build the future of blockchain with honor and skill.
+            </p>
+            <p class="text-lg text-cyan-300 mb-8 max-w-2xl mx-auto font-semibold" data-key="hero_samurai">
+                ⚔️ Warriors compete for glory, prizes, and legendary samurai swords ⚔️
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center relative">
+                <!-- Samurai Cardano with Speech Bubble -->
+                <div id="samurai-container" class="absolute -right-32 lg:-right-24 xl:-right-20 -top-64 md:-top-72 w-48 h-48 md:w-56 md:h-56 hidden lg:block z-20 animate-float cursor-move" style="user-select: none; will-change: transform;">
+                    <img id="samurai-img" src="/images/samuraicardano.png" alt="Cardano Samurai" class="w-full h-full object-contain drop-shadow-2xl pointer-events-none" style="backface-visibility: hidden;">
+                    <!-- Comic Speech Bubble -->
+                    <div id="speech-bubble" class="absolute -left-52 top-12 w-48 bg-white text-gray-900 p-4 rounded-2xl shadow-2xl border-4 border-gray-800 pointer-events-none" style="backface-visibility: hidden; transition: left 0.3s ease, right 0.3s ease;">
+                        <p class="text-sm font-bold text-center samurai-quote" data-key="samurai_quote_1">Show your honor!</p>
+                        <div id="speech-arrow" class="speech-bubble-arrow"></div>
+                    </div>
+                </div>
+                
+                <a href="#register" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all shadow-lg hover:shadow-cyan-500/50 hover:scale-105">
+                    <span data-key="cta_register">🚀 Register Now</span>
+                </a>
+                <a href="/" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all">
+                    <span data-key="cta_back">← Back to Summit</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        
+        <!-- About Section -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-8 text-cyan-400" data-key="about_title">The Way of the Cardano Samurai</h2>
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border-2 border-red-500/30 relative overflow-hidden">
+                <p class="text-lg text-gray-300 mb-4" data-key="about_text1">
+                    The Cardano Hackathon 2025 is a <strong class="text-cyan-400">48-hour intensive battle</strong> where developers, designers, and blockchain warriors come together to forge innovative decentralized applications on Cardano with the precision and discipline of a samurai.
+                </p>
+                <p class="text-lg text-gray-300 mb-4" data-key="about_text2">
+                    Whether you're a seasoned blockchain warrior or just completed our Cardano Developers Course, this is your chance to prove your skills, learn from sensei mentors, and compete for glory, honor, and legendary rewards.
+                </p>
+                <div class="mt-6 p-4 bg-red-900/20 border-l-4 border-red-500 rounded">
+                    <p class="text-gray-200 font-semibold" data-key="about_samurai_quote">
+                        🗡️ "The way of the warrior is found in code. Build with honor, compete with respect, emerge victorious."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-8 text-cyan-400" data-key="details_title">Event Details</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center card-glow">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-2" data-key="when_title">When</h3>
+                    <p class="text-gray-300" data-key="when_text">November 14-15, 2025<br>48 hours of building</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center card-glow">
+                    <div class="text-4xl mb-4">📍</div>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-2" data-key="where_title">Where</h3>
+                    <p class="text-gray-300" data-key="where_text">Edificio Cero + Infinito<br>Ciudad Universitaria, Buenos Aires</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center card-glow">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="text-xl font-bold text-cyan-400 mb-2" data-key="who_title">Who</h3>
+                    <p class="text-gray-300" data-key="who_text">Developers, designers, and blockchain enthusiasts</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Section -->
+        <section class="mb-16 relative">
+            <h2 class="text-4xl font-bold text-center mb-4 text-cyan-400" data-key="prizes_title">Legendary Rewards</h2>
+            <p class="text-center text-xl text-gray-400 mb-2" data-key="prizes_subtitle">US$10,000 + Samurai Katanas for the Champions</p>
+            <p class="text-center text-sm text-gray-500 mb-8" data-key="prizes_swords_note">Each winner receives a ceremonial katana as a symbol of their victory</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 1st Place -->
+                <div class="prize-card rounded-2xl p-8 text-center relative overflow-hidden border-2 border-yellow-500/50">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="text-6xl mb-4">🥇</div>
+                    <h3 class="text-2xl font-bold text-yellow-400 mb-2" data-key="prize_first">Shogun Champion</h3>
+                    <p class="text-4xl font-black text-white mb-2">US$ 5,000</p>
+                    <div class="mt-4 mb-2">
+                        <div class="mb-2">
+                            <svg width="60" height="60" viewBox="0 0 100 100" class="mx-auto">
+                                <defs>
+                                    <linearGradient id="blackKatana" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#4a4a4a;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Blade -->
+                                <path d="M10 50 L85 50 L83 48 L12 48 Z" fill="url(#blackKatana)" stroke="#0a0a0a" stroke-width="0.5"/>
+                                <path d="M10 50 L85 50 L83 52 L12 52 Z" fill="#0a0a0a"/>
+                                <!-- Handle -->
+                                <rect x="5" y="47" width="8" height="6" fill="#2d2d2d" stroke="#000" stroke-width="0.5"/>
+                                <line x1="7" y1="47" x2="7" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <line x1="9" y1="47" x2="9" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <line x1="11" y1="47" x2="11" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <!-- Guard -->
+                                <rect x="12" y="46" width="3" height="8" fill="#1a1a1a" stroke="#000" stroke-width="0.5"/>
+                                <!-- Tip -->
+                                <path d="M85 50 L95 50" stroke="url(#blackKatana)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <p class="text-lg font-bold text-gray-200" data-key="prize_first_sword">Black Katana</p>
+                        <p class="text-xs text-gray-400" data-key="prize_first_sword_desc">Power & Balance - Authority, mystery and discipline</p>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-3" data-key="prize_first_desc">+ Mentorship & Eternal Glory</p>
+                </div>
+                
+                <!-- 2nd Place -->
+                <div class="prize-card rounded-2xl p-8 text-center relative overflow-hidden border-2 border-red-500/50">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="text-6xl mb-4">🥈</div>
+                    <h3 class="text-2xl font-bold text-red-400 mb-2" data-key="prize_second">Daimyo Warrior</h3>
+                    <p class="text-4xl font-black text-white mb-2">US$ 3,000</p>
+                    <div class="mt-4 mb-2">
+                        <div class="mb-2">
+                            <svg width="60" height="60" viewBox="0 0 100 100" class="mx-auto">
+                                <defs>
+                                    <linearGradient id="redKatana" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#8B0000;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#DC143C;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#FF4444;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Blade -->
+                                <path d="M10 50 L85 50 L83 48 L12 48 Z" fill="url(#redKatana)" stroke="#8B0000" stroke-width="0.5"/>
+                                <path d="M10 50 L85 50 L83 52 L12 52 Z" fill="#6B0000"/>
+                                <!-- Handle -->
+                                <rect x="5" y="47" width="8" height="6" fill="#4a0000" stroke="#2a0000" stroke-width="0.5"/>
+                                <line x1="7" y1="47" x2="7" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <line x1="9" y1="47" x2="9" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <line x1="11" y1="47" x2="11" y2="53" stroke="#FFD700" stroke-width="0.5"/>
+                                <!-- Guard -->
+                                <rect x="12" y="46" width="3" height="8" fill="#8B0000" stroke="#5a0000" stroke-width="0.5"/>
+                                <!-- Tip -->
+                                <path d="M85 50 L95 50" stroke="url(#redKatana)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <p class="text-lg font-bold text-red-300" data-key="prize_second_sword">Red Katana</p>
+                        <p class="text-xs text-gray-400" data-key="prize_second_sword_desc">Passion & Courage - Energy, bravery and samurai honor</p>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-3" data-key="prize_second_desc">+ Ecosystem Support & Honor</p>
+                </div>
+                
+                <!-- 3rd Place -->
+                <div class="prize-card rounded-2xl p-8 text-center relative overflow-hidden border-2 border-gray-300/50">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gray-400/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="text-6xl mb-4">🥉</div>
+                    <h3 class="text-2xl font-bold text-gray-300 mb-2" data-key="prize_third">Ronin Guardian</h3>
+                    <p class="text-4xl font-black text-white mb-2">US$ 2,000</p>
+                    <div class="mt-4 mb-2">
+                        <div class="mb-3">
+                            <svg width="80" height="80" viewBox="0 0 100 100" class="mx-auto">
+                                <defs>
+                                    <linearGradient id="whiteKatana" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#d4d4d4;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#f5f5f5;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#d4d4d4;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Blade -->
+                                <path d="M10 50 L85 50 L90 48 L90 52 L85 50 Z" fill="url(#whiteKatana)" stroke="#a3a3a3" stroke-width="1"/>
+                                <!-- Guard -->
+                                <rect x="12" y="46" width="4" height="8" fill="#e5e5e5" stroke="#a3a3a3"/>
+                                <!-- Handle -->
+                                <rect x="2" y="47" width="12" height="6" fill="#c0c0c0" stroke="#808080"/>
+                                <line x1="4" y1="49" x2="4" y2="51" stroke="#d4d4d4" stroke-width="0.5"/>
+                                <line x1="6" y1="49" x2="6" y2="51" stroke="#d4d4d4" stroke-width="0.5"/>
+                                <line x1="8" y1="49" x2="8" y2="51" stroke="#d4d4d4" stroke-width="0.5"/>
+                                <line x1="10" y1="49" x2="10" y2="51" stroke="#d4d4d4" stroke-width="0.5"/>
+                            </svg>
+                        </div>
+                        <p class="text-lg font-bold text-gray-100" data-key="prize_third_sword">White Katana</p>
+                        <p class="text-xs text-gray-400" data-key="prize_third_sword_desc">Purity & Harmony - Nobility, calmness and spiritual elegance</p>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-3" data-key="prize_third_desc">+ Community Recognition</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What to Expect -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-8 text-cyan-400" data-key="expect_title">What to Expect</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-cyan-500">
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        <span class="text-cyan-400">✨</span> <span data-key="expect_1_title">Expert Mentorship</span>
+                    </h3>
+                    <p class="text-gray-300" data-key="expect_1_text">Get guidance from Cardano OGs and experienced blockchain developers throughout the event.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-cyan-500">
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        <span class="text-cyan-400">🛠️</span> <span data-key="expect_2_title">Resources & Tools</span>
+                    </h3>
+                    <p class="text-gray-300" data-key="expect_2_text">Access to development tools, APIs, documentation, and technical support.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-cyan-500">
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        <span class="text-cyan-400">🍕</span> <span data-key="expect_3_title">Food & Refreshments</span>
+                    </h3>
+                    <p class="text-gray-300" data-key="expect_3_text">Meals, snacks, and beverages provided throughout the 48-hour event.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border-l-4 border-cyan-500">
+                    <h3 class="text-xl font-bold text-white mb-2">
+                        <span class="text-cyan-400">🤝</span> <span data-key="expect_4_title">Networking</span>
+                    </h3>
+                    <p class="text-gray-300" data-key="expect_4_text">Connect with fellow developers, potential co-founders, and ecosystem leaders.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section id="register" class="mb-16 relative">
+            <div class="bg-gray-800 rounded-2xl p-8 border border-cyan-500/50">
+                <h2 class="text-4xl font-bold text-center mb-4 text-cyan-400" data-key="register_title">Register for the Hackathon</h2>
+                <p class="text-center text-gray-400 mb-8" data-key="register_subtitle">Fill out the form below to secure your spot</p>
+                
+                <form id="hackathon-form" action="https://formspree.io/f/mjkowvdg" method="POST" class="max-w-3xl mx-auto">
+                    <input type="hidden" name="registration_type" value="hackathon-only">
+                    
+                    <!-- Personal Information -->
+                    <div class="border-b border-gray-700 pb-6 mb-6">
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_personal">Personal Information</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_name">Full Name</label>
+                                <input type="text" name="name" id="name" required class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_email">Email Address</label>
+                                <input type="email" name="email" id="email" required class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_phone">Phone Number</label>
+                                <input type="tel" name="phone" id="phone" required class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white" placeholder="+54 9 11 1234567">
+                            </div>
+                            <div>
+                                <label for="country" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_country">Country</label>
+                                <input type="text" name="country" id="country" required class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Profile -->
+                    <div class="border-b border-gray-700 pb-6 mb-6">
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_technical">Technical Profile</h4>
+                        <div class="mb-4">
+                            <label for="github" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_github">GitHub / Portfolio URL</label>
+                            <input type="url" name="github" id="github" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-300 mb-3" data-key="form_skills">Technical Skills (select all that apply)</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="blockchain" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_blockchain">Blockchain</span>
+                                </label>
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="smart_contracts" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_smart_contracts">Smart Contracts</span>
+                                </label>
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="frontend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_frontend">Frontend</span>
+                                </label>
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="backend" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_backend">Backend</span>
+                                </label>
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="design" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_design">Design</span>
+                                </label>
+                                <label class="flex items-center bg-gray-700 p-3 rounded-md hover:bg-gray-600 cursor-pointer transition">
+                                    <input type="checkbox" name="skills" value="other" class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mr-3">
+                                    <span data-key="skill_other">Other</span>
+                                </label>
+                            </div>
+                        </div>
+                    <div>
+                        <label for="experience" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_experience">Tell us about your warrior path and what you will forge</label>
+                        <textarea id="experience" name="experience" rows="4" required class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white" placeholder="Share your coding journey and the dApp you plan to create..."></textarea>
+                    </div>
+                    </div>
+
+                    <!-- Team Information -->
+                    <div class="border-b border-gray-700 pb-6 mb-6">
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_team">Team Information (Optional)</h4>
+                        <div class="mb-4">
+                            <label for="team_name" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_team_name">Team Name (if you already have one)</label>
+                            <input type="text" name="team_name" id="team_name" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white">
+                        </div>
+                        <div>
+                            <label for="teammates" class="block text-sm font-medium text-gray-300 mb-2" data-key="form_teammates">Team Members' Names (if applicable)</label>
+                            <input type="text" name="teammates" id="teammates" class="w-full bg-gray-700 border-gray-600 rounded-md shadow-sm py-3 px-4 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-white" placeholder="Name 1, Name 2, Name 3...">
+                        </div>
+                    </div>
+
+                    <!-- Commitment -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-4" data-key="form_commitment">Commitment</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <input id="availability" name="availability" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
+                                <div class="ml-3 text-sm">
+                                    <label for="availability" class="font-medium text-gray-300" data-key="form_availability">
+                                        I confirm I can attend the full 48-hour hackathon (November 14-15, 2025) in Buenos Aires.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-cyan-600 border-gray-500 rounded focus:ring-cyan-500 mt-1">
+                                <div class="ml-3 text-sm">
+                                    <label for="privacy" class="font-medium text-gray-300" data-key="form_privacy">
+                                        I authorize the event organizers to use my personal data for administrative purposes.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p id="form-status" class="text-center text-red-400 h-6 mb-4"></p>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:shadow-cyan-500/50 hover:scale-105">
+                        <span data-key="form_submit">🚀 Register for Hackathon</span>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="success-message" class="hidden mt-8 text-center">
+                    <div class="bg-gray-900 p-8 rounded-2xl border border-green-500/50">
+                        <svg class="w-16 h-16 mx-auto text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="text-2xl font-bold mt-6 mb-4 text-white" data-key="success_title">Registration Successful!</h3>
+                        <p class="text-gray-400" data-key="success_message">Thank you for registering! We'll contact you soon with more details about the hackathon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold text-center mb-8 text-cyan-400" data-key="faq_title">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-2" data-key="faq_1_q">Do I need to have a team?</h3>
+                    <p class="text-gray-300" data-key="faq_1_a">No! You can participate individually or form teams during the event. Teams can have up to 5 members.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-2" data-key="faq_2_q">Do I need to complete the Developers Course first?</h3>
+                    <p class="text-gray-300" data-key="faq_2_a">Not required! While course participants are welcome, the hackathon is open to all developers with blockchain experience.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-2" data-key="faq_3_q">What should I bring?</h3>
+                    <p class="text-gray-300" data-key="faq_3_a">Bring your laptop, chargers, and enthusiasm! We'll provide internet, food, and workspace.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-2" data-key="faq_4_q">Is there a registration fee?</h3>
+                    <p class="text-gray-300" data-key="faq_4_a">No! The hackathon is completely free to attend.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-gray-400 mb-4" data-key="footer_text">Part of Cardano Tech Summit 2025 LATAM</p>
+            <div class="flex justify-center space-x-6">
+                <a href="/" class="text-cyan-400 hover:text-cyan-300 transition">
+                    <span data-key="footer_link_summit">Main Summit</span>
+                </a>
+                <a href="/developers.html" class="text-cyan-400 hover:text-cyan-300 transition">
+                    <span data-key="footer_link_course">Developers Course</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const translations = {
+                es: {
+                    hero_badge: 'Noviembre 14-15, 2025 • Buenos Aires',
+                    hero_title: 'Cardano Hackathon 2025',
+                    prize_label: 'Premio Total',
+                    hero_subtitle: 'Conviértete en un Samurai de Cardano. Construye el futuro de blockchain con honor y destreza.',
+                    hero_samurai: '⚔️ Los guerreros compiten por gloria, premios y espadas samurai legendarias ⚔️',
+                    samurai_quote_1: '¡Demuestra tu honor!',
+                    samurai_quote_2: '¡El camino del código te espera!',
+                    samurai_quote_3: '¡Forja tu destino, guerrero!',
+                    samurai_quote_4: '¡La gloria espera a los valientes!',
+                    samurai_quote_5: '¡Únete a la batalla!',
+                    samurai_quote_6: 'Sensei Robertino te guiará en el camino del código',
+                    samurai_quote_7: 'Sensei Karina iluminará tu sabiduría blockchain',
+                    samurai_quote_8: 'Sensei Antonio fortalecerá tus habilidades',
+                    samurai_quote_9: 'Sensei Arturo afilará tu mente de guerrero',
+                    samurai_quote_10: '¿Listo para ser un Guerrero de Honor de Cardano?',
+                    samurai_quote_11: 'Solo los mejores ganarán las Tres Katanas del Honor',
+                    samurai_quote_12: '¡Demuestra tu fuerza en el campo de batalla tecnológico!',
+                    cta_register: '🚀 Inscribirse Ahora',
+                    cta_back: '← Volver al Summit',
+                    about_title: 'El Camino del Samurai de Cardano',
+                    about_text1: 'El Cardano Hackathon 2025 es una <strong class="text-cyan-400">batalla intensiva de 48 horas</strong> donde desarrolladores, diseñadores y guerreros blockchain se reúnen para forjar aplicaciones descentralizadas innovadoras en Cardano con la precisión y disciplina de un samurai.',
+                    about_text2: 'Ya seas un guerrero blockchain experimentado o acabes de completar nuestro Curso de Desarrolladores Cardano, esta es tu oportunidad de demostrar tus habilidades, aprender de mentores sensei y competir por gloria, honor y recompensas legendarias.',
+                    about_samurai_quote: '🗡️ "El camino del guerrero se encuentra en el código. Construye con honor, compite con respeto, emerge victorioso."',
+                    details_title: 'Detalles del Evento',
+                    when_title: 'Cuándo',
+                    when_text: '14-15 de Noviembre, 2025<br>48 horas de construcción',
+                    where_title: 'Dónde',
+                    where_text: 'Edificio Cero + Infinito<br>Ciudad Universitaria, Buenos Aires',
+                    who_title: 'Quién',
+                    who_text: 'Desarrolladores, diseñadores y entusiastas blockchain',
+                    prizes_title: 'Recompensas Legendarias',
+                    prizes_subtitle: 'US$10,000 + Katanas Samurai para los Campeones',
+                    prizes_swords_note: 'Cada ganador recibe una katana ceremonial como símbolo de su victoria',
+                    prize_first: 'Campeón Shogun',
+                    prize_first_sword: 'Katana Negra',
+                    prize_first_sword_desc: 'Poder y equilibrio - Autoridad, misterio y disciplina',
+                    prize_first_desc: '+ Mentoría y Gloria Eterna',
+                    prize_second: 'Guerrero Daimyo',
+                    prize_second_sword: 'Katana Roja',
+                    prize_second_sword_desc: 'Pasión y coraje - Energía, valentía y honor samurái',
+                    prize_second_desc: '+ Apoyo del Ecosistema y Honor',
+                    prize_third: 'Guardián Ronin',
+                    prize_third_sword: 'Katana Blanca',
+                    prize_third_sword_desc: 'Pureza y armonía - Nobleza, calma y elegancia espiritual',
+                    prize_third_desc: '+ Reconocimiento de la Comunidad',
+                    expect_title: 'Qué Esperar',
+                    expect_1_title: 'Mentoría Experta',
+                    expect_1_text: 'Obtén orientación de OGs de Cardano y desarrolladores blockchain experimentados durante todo el evento.',
+                    expect_2_title: 'Recursos y Herramientas',
+                    expect_2_text: 'Acceso a herramientas de desarrollo, APIs, documentación y soporte técnico.',
+                    expect_3_title: 'Comida y Bebidas',
+                    expect_3_text: 'Comidas, snacks y bebidas proporcionadas durante las 48 horas del evento.',
+                    expect_4_title: 'Networking',
+                    expect_4_text: 'Conecta con otros desarrolladores, potenciales co-fundadores y líderes del ecosistema.',
+                    register_title: 'Inscribirse al Hackathon',
+                    register_subtitle: 'Completa el formulario para asegurar tu lugar',
+                    form_personal: 'Información Personal',
+                    form_name: 'Nombre Completo',
+                    form_email: 'Correo Electrónico',
+                    form_phone: 'Teléfono',
+                    form_country: 'País',
+                    form_technical: 'Perfil Técnico',
+                    form_github: 'GitHub / URL de Portfolio',
+                    form_skills: 'Habilidades Técnicas (selecciona todas las que apliquen)',
+                    skill_blockchain: 'Blockchain',
+                    skill_smart_contracts: 'Smart Contracts',
+                    skill_frontend: 'Frontend',
+                    skill_backend: 'Backend',
+                    skill_design: 'Diseño',
+                    skill_other: 'Otro',
+                    form_experience: 'Cuéntanos sobre tu camino guerrero y qué vas a forjar',
+                    form_team: 'Información del Equipo (Opcional)',
+                    form_team_name: 'Nombre del Equipo (si ya tienes uno)',
+                    form_teammates: 'Nombres de los Miembros del Equipo (si aplica)',
+                    form_commitment: 'Compromiso',
+                    form_availability: 'Confirmo que puedo asistir al hackathon completo de 48 horas (14-15 de Noviembre, 2025) en Buenos Aires.',
+                    form_privacy: 'Autorizo a los organizadores a usar mis datos personales para fines administrativos.',
+                    form_submit: '🚀 Inscribirse al Hackathon',
+                    success_title: '¡Inscripción Exitosa!',
+                    success_message: '¡Gracias por inscribirte! Te contactaremos pronto con más detalles sobre el hackathon.',
+                    faq_title: 'Preguntas Frecuentes',
+                    faq_1_q: '¿Necesito tener un equipo?',
+                    faq_1_a: '¡No! Puedes participar individualmente o formar equipos durante el evento. Los equipos pueden tener hasta 5 miembros.',
+                    faq_2_q: '¿Necesito completar el Curso de Desarrolladores primero?',
+                    faq_2_a: '¡No es obligatorio! Aunque los participantes del curso son bienvenidos, el hackathon está abierto a todos los desarrolladores con experiencia en blockchain.',
+                    faq_3_q: '¿Qué debo traer?',
+                    faq_3_a: '¡Trae tu laptop, cargadores y entusiasmo! Nosotros proporcionamos internet, comida y espacio de trabajo.',
+                    faq_4_q: '¿Hay una tarifa de inscripción?',
+                    faq_4_a: '¡No! El hackathon es completamente gratuito.',
+                    footer_text: 'Parte del Cardano Tech Summit 2025 LATAM',
+                    footer_link_summit: 'Summit Principal',
+                    footer_link_course: 'Curso de Desarrolladores'
+                },
+                en: {
+                    hero_badge: 'November 14-15, 2025 • Buenos Aires',
+                    hero_title: 'Cardano Hackathon 2025',
+                    prize_label: 'Total Prize Pool',
+                    hero_subtitle: 'Become a Cardano Samurai. Build the future of blockchain with honor and skill.',
+                    hero_samurai: '⚔️ Warriors compete for glory, prizes, and legendary samurai swords ⚔️',
+                    samurai_quote_1: 'Show your honor!',
+                    samurai_quote_2: 'The way of code awaits!',
+                    samurai_quote_3: 'Forge your destiny, warrior!',
+                    samurai_quote_4: 'Glory awaits the brave!',
+                    samurai_quote_5: 'Join the battle!',
+                    samurai_quote_6: 'Sensei Robertino will guide you on the path of code',
+                    samurai_quote_7: 'Sensei Karina will illuminate your blockchain wisdom',
+                    samurai_quote_8: 'Sensei Antonio will strengthen your skills',
+                    samurai_quote_9: 'Sensei Arturo will sharpen your warrior mind',
+                    samurai_quote_10: 'Ready to become a Cardano Warrior of Honor?',
+                    samurai_quote_11: 'Only the best will earn the Three Katanas of Honor',
+                    samurai_quote_12: 'Prove your strength on the tech battlefield!',
+                    cta_register: '🚀 Register Now',
+                    cta_back: '← Back to Summit',
+                    about_title: 'The Way of the Cardano Samurai',
+                    about_text1: 'The Cardano Hackathon 2025 is a <strong class="text-cyan-400">48-hour intensive battle</strong> where developers, designers, and blockchain warriors come together to forge innovative decentralized applications on Cardano with the precision and discipline of a samurai.',
+                    about_text2: 'Whether you\'re a seasoned blockchain warrior or just completed our Cardano Developers Course, this is your chance to prove your skills, learn from sensei mentors, and compete for glory, honor, and legendary rewards.',
+                    about_samurai_quote: '🗡️ "The way of the warrior is found in code. Build with honor, compete with respect, emerge victorious."',
+                    details_title: 'Event Details',
+                    when_title: 'When',
+                    when_text: 'November 14-15, 2025<br>48 hours of building',
+                    where_title: 'Where',
+                    where_text: 'Edificio Cero + Infinito<br>Ciudad Universitaria, Buenos Aires',
+                    who_title: 'Who',
+                    who_text: 'Developers, designers, and blockchain enthusiasts',
+                    prizes_title: 'Legendary Rewards',
+                    prizes_subtitle: 'US$10,000 + Samurai Katanas for the Champions',
+                    prizes_swords_note: 'Each winner receives a ceremonial katana as a symbol of their victory',
+                    prize_first: 'Shogun Champion',
+                    prize_first_sword: 'Black Katana',
+                    prize_first_sword_desc: 'Power & Balance - Authority, mystery and discipline',
+                    prize_first_desc: '+ Mentorship & Eternal Glory',
+                    prize_second: 'Daimyo Warrior',
+                    prize_second_sword: 'Red Katana',
+                    prize_second_sword_desc: 'Passion & Courage - Energy, bravery and samurai honor',
+                    prize_second_desc: '+ Ecosystem Support & Honor',
+                    prize_third: 'Ronin Guardian',
+                    prize_third_sword: 'White Katana',
+                    prize_third_sword_desc: 'Purity & Harmony - Nobility, calmness and spiritual elegance',
+                    prize_third_desc: '+ Community Recognition',
+                    expect_title: 'What to Expect',
+                    expect_1_title: 'Expert Mentorship',
+                    expect_1_text: 'Get guidance from Cardano OGs and experienced blockchain developers throughout the event.',
+                    expect_2_title: 'Resources & Tools',
+                    expect_2_text: 'Access to development tools, APIs, documentation, and technical support.',
+                    expect_3_title: 'Food & Refreshments',
+                    expect_3_text: 'Meals, snacks, and beverages provided throughout the 48-hour event.',
+                    expect_4_title: 'Networking',
+                    expect_4_text: 'Connect with fellow developers, potential co-founders, and ecosystem leaders.',
+                    register_title: 'Register for the Hackathon',
+                    register_subtitle: 'Fill out the form below to secure your spot',
+                    form_personal: 'Personal Information',
+                    form_name: 'Full Name',
+                    form_email: 'Email Address',
+                    form_phone: 'Phone Number',
+                    form_country: 'Country',
+                    form_technical: 'Technical Profile',
+                    form_github: 'GitHub / Portfolio URL',
+                    form_skills: 'Technical Skills (select all that apply)',
+                    skill_blockchain: 'Blockchain',
+                    skill_smart_contracts: 'Smart Contracts',
+                    skill_frontend: 'Frontend',
+                    skill_backend: 'Backend',
+                    skill_design: 'Design',
+                    skill_other: 'Other',
+                    form_experience: 'Tell us about your warrior path and what you will forge',
+                    form_team: 'Team Information (Optional)',
+                    form_team_name: 'Team Name (if you already have one)',
+                    form_teammates: 'Team Members\' Names (if applicable)',
+                    form_commitment: 'Commitment',
+                    form_availability: 'I confirm I can attend the full 48-hour hackathon (November 14-15, 2025) in Buenos Aires.',
+                    form_privacy: 'I authorize the event organizers to use my personal data for administrative purposes.',
+                    form_submit: '🚀 Register for Hackathon',
+                    success_title: 'Registration Successful!',
+                    success_message: 'Thank you for registering! We\'ll contact you soon with more details about the hackathon.',
+                    faq_title: 'Frequently Asked Questions',
+                    faq_1_q: 'Do I need to have a team?',
+                    faq_1_a: 'No! You can participate individually or form teams during the event. Teams can have up to 5 members.',
+                    faq_2_q: 'Do I need to complete the Developers Course first?',
+                    faq_2_a: 'Not required! While course participants are welcome, the hackathon is open to all developers with blockchain experience.',
+                    faq_3_q: 'What should I bring?',
+                    faq_3_a: 'Bring your laptop, chargers, and enthusiasm! We\'ll provide internet, food, and workspace.',
+                    faq_4_q: 'Is there a registration fee?',
+                    faq_4_a: 'No! The hackathon is completely free to attend.',
+                    footer_text: 'Part of Cardano Tech Summit 2025 LATAM',
+                    footer_link_summit: 'Main Summit',
+                    footer_link_course: 'Developers Course'
+                },
+                pt: {
+                    hero_badge: '14-15 de Novembro, 2025 • Buenos Aires',
+                    hero_title: 'Cardano Hackathon 2025',
+                    prize_label: 'Prêmio Total',
+                    hero_subtitle: 'Torne-se um Samurai de Cardano. Construa o futuro do blockchain com honra e habilidade.',
+                    hero_samurai: '⚔️ Guerreiros competem por glória, prêmios e espadas samurai lendárias ⚔️',
+                    samurai_quote_1: 'Mostre sua honra!',
+                    samurai_quote_2: 'O caminho do código espera!',
+                    samurai_quote_3: 'Forge seu destino, guerreiro!',
+                    samurai_quote_4: 'A glória aguarda os bravos!',
+                    samurai_quote_5: 'Junte-se à batalha!',
+                    samurai_quote_6: 'Sensei Robertino guiará você no caminho do código',
+                    samurai_quote_7: 'Sensei Karina iluminará sua sabedoria blockchain',
+                    samurai_quote_8: 'Sensei Antonio fortalecerá suas habilidades',
+                    samurai_quote_9: 'Sensei Arturo afiará sua mente de guerreiro',
+                    samurai_quote_10: 'Pronto para ser um Guerreiro de Honra de Cardano?',
+                    samurai_quote_11: 'Apenas os melhores ganharão as Três Katanas da Honra',
+                    samurai_quote_12: 'Prove sua força no campo de batalha tecnológico!',
+                    cta_register: '🚀 Inscrever-se Agora',
+                    cta_back: '← Voltar ao Summit',
+                    about_title: 'O Caminho do Samurai de Cardano',
+                    about_text1: 'O Cardano Hackathon 2025 é uma <strong class="text-cyan-400">batalha intensiva de 48 horas</strong> onde desenvolvedores, designers e guerreiros blockchain se reúnem para forjar aplicações descentralizadas inovadoras no Cardano com a precisão e disciplina de um samurai.',
+                    about_text2: 'Seja você um guerreiro blockchain experiente ou tenha acabado de completar nosso Curso de Desenvolvedores Cardano, esta é sua chance de provar suas habilidades, aprender com mentores sensei e competir por glória, honra e recompensas lendárias.',
+                    about_samurai_quote: '🗡️ "O caminho do guerreiro está no código. Construa com honra, compita com respeito, emerja vitorioso."',
+                    details_title: 'Detalhes do Evento',
+                    when_title: 'Quando',
+                    when_text: '14-15 de Novembro, 2025<br>48 horas de construção',
+                    where_title: 'Onde',
+                    where_text: 'Edifício Cero + Infinito<br>Cidade Universitária, Buenos Aires',
+                    who_title: 'Quem',
+                    who_text: 'Desenvolvedores, designers e entusiastas blockchain',
+                    prizes_title: 'Recompensas Lendárias',
+                    prizes_subtitle: 'US$10.000 + Katanas Samurai para os Campeões',
+                    prizes_swords_note: 'Cada vencedor recebe uma katana cerimonial como símbolo de sua vitória',
+                    prize_first: 'Campeão Shogun',
+                    prize_first_sword: 'Katana Negra',
+                    prize_first_sword_desc: 'Poder e equilíbrio - Autoridade, mistério e disciplina',
+                    prize_first_desc: '+ Mentoria e Glória Eterna',
+                    prize_second: 'Guerreiro Daimyo',
+                    prize_second_sword: 'Katana Vermelha',
+                    prize_second_sword_desc: 'Paixão e coragem - Energia, valentia e honra samurai',
+                    prize_second_desc: '+ Apoio do Ecossistema e Honra',
+                    prize_third: 'Guardião Ronin',
+                    prize_third_sword: 'Katana Branca',
+                    prize_third_sword_desc: 'Pureza e harmonia - Nobreza, calma e elegância espiritual',
+                    prize_third_desc: '+ Reconhecimento da Comunidade',
+                    expect_title: 'O que Esperar',
+                    expect_1_title: 'Mentoria Especializada',
+                    expect_1_text: 'Obtenha orientação de OGs do Cardano e desenvolvedores blockchain experientes durante todo o evento.',
+                    expect_2_title: 'Recursos e Ferramentas',
+                    expect_2_text: 'Acesso a ferramentas de desenvolvimento, APIs, documentação e suporte técnico.',
+                    expect_3_title: 'Comida e Bebidas',
+                    expect_3_text: 'Refeições, lanches e bebidas fornecidos durante as 48 horas do evento.',
+                    expect_4_title: 'Networking',
+                    expect_4_text: 'Conecte-se com outros desenvolvedores, potenciais co-fundadores e líderes do ecossistema.',
+                    register_title: 'Inscrever-se no Hackathon',
+                    register_subtitle: 'Preencha o formulário para garantir sua vaga',
+                    form_personal: 'Informações Pessoais',
+                    form_name: 'Nome Completo',
+                    form_email: 'Endereço de Email',
+                    form_phone: 'Telefone',
+                    form_country: 'País',
+                    form_technical: 'Perfil Técnico',
+                    form_github: 'GitHub / URL do Portfolio',
+                    form_skills: 'Habilidades Técnicas (selecione todas que se aplicam)',
+                    skill_blockchain: 'Blockchain',
+                    skill_smart_contracts: 'Smart Contracts',
+                    skill_frontend: 'Frontend',
+                    skill_backend: 'Backend',
+                    skill_design: 'Design',
+                    skill_other: 'Outro',
+                    form_experience: 'Conte-nos sobre seu caminho guerreiro e o que você vai forjar',
+                    form_team: 'Informações da Equipe (Opcional)',
+                    form_team_name: 'Nome da Equipe (se já tiver uma)',
+                    form_teammates: 'Nomes dos Membros da Equipe (se aplicável)',
+                    form_commitment: 'Compromisso',
+                    form_availability: 'Confirmo que posso participar do hackathon completo de 48 horas (14-15 de Novembro, 2025) em Buenos Aires.',
+                    form_privacy: 'Autorizo os organizadores a usar meus dados pessoais para fins administrativos.',
+                    form_submit: '🚀 Inscrever-se no Hackathon',
+                    success_title: 'Inscrição Bem-sucedida!',
+                    success_message: 'Obrigado por se inscrever! Entraremos em contato em breve com mais detalhes sobre o hackathon.',
+                    faq_title: 'Perguntas Frequentes',
+                    faq_1_q: 'Preciso ter uma equipe?',
+                    faq_1_a: 'Não! Você pode participar individualmente ou formar equipes durante o evento. As equipes podem ter até 5 membros.',
+                    faq_2_q: 'Preciso completar o Curso de Desenvolvedores primeiro?',
+                    faq_2_a: 'Não é obrigatório! Embora os participantes do curso sejam bem-vindos, o hackathon está aberto a todos os desenvolvedores com experiência em blockchain.',
+                    faq_3_q: 'O que devo trazer?',
+                    faq_3_a: 'Traga seu laptop, carregadores e entusiasmo! Forneceremos internet, comida e espaço de trabalho.',
+                    faq_4_q: 'Há taxa de inscrição?',
+                    faq_4_a: 'Não! O hackathon é completamente gratuito.',
+                    footer_text: 'Parte do Cardano Tech Summit 2025 LATAM',
+                    footer_link_summit: 'Summit Principal',
+                    footer_link_course: 'Curso de Desenvolvedores'
+                }
+            };
+
+            let currentLanguage = 'es';
+
+            // Samurai quotes rotation
+            let currentQuoteIndex = 1;
+            const totalQuotes = 12;
+            
+            function rotateSamuraiQuote() {
+                currentQuoteIndex = (currentQuoteIndex % totalQuotes) + 1;
+                const quoteElement = document.querySelector('.samurai-quote');
+                const quoteKey = `samurai_quote_${currentQuoteIndex}`;
+                
+                if (quoteElement && translations[currentLanguage][quoteKey]) {
+                    // Fade out
+                    quoteElement.style.opacity = '0';
+                    setTimeout(() => {
+                        quoteElement.textContent = translations[currentLanguage][quoteKey];
+                        quoteElement.style.opacity = '1';
+                    }, 500);
+                }
+            }
+            
+            // Rotate quotes every 5 seconds
+            setInterval(rotateSamuraiQuote, 5000);
+            
+            // Make samurai draggable
+            const samuraiContainer = document.getElementById('samurai-container');
+            const samuraiImg = document.getElementById('samurai-img');
+            const speechBubble = document.getElementById('speech-bubble');
+            const speechArrow = document.getElementById('speech-arrow');
+            
+            if (samuraiContainer) {
+                let isDragging = false;
+                let hasMoved = false;
+                let currentX = 0;
+                let currentY = 0;
+                let initialX = 0;
+                let initialY = 0;
+                let isFlipped = false;
+
+                samuraiContainer.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    hasMoved = true;
+                    initialX = e.clientX - currentX;
+                    initialY = e.clientY - currentY;
+                    samuraiContainer.classList.remove('animate-float');
+                    samuraiContainer.style.cursor = 'grabbing';
+                    // Desactivar transiciones durante el arrastre
+                    speechBubble.style.transition = 'none';
+                    samuraiImg.style.transition = 'none';
+                });
+
+                document.addEventListener('mousemove', function(e) {
+                    if (isDragging) {
+                        e.preventDefault();
+                        currentX = e.clientX - initialX;
+                        currentY = e.clientY - initialY;
+                        
+                        // Usar transform3d para mejor performance
+                        samuraiContainer.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+                        
+                        // Calcular la posición absoluta del samurai en la pantalla
+                        const rect = samuraiContainer.getBoundingClientRect();
+                        const samuraiCenterX = rect.left + rect.width / 2;
+                        const screenCenterX = window.innerWidth / 2;
+                        
+                        // Si el samurai está en la mitad izquierda de la pantalla
+                        if (samuraiCenterX < screenCenterX && !isFlipped) {
+                            // Voltear el samurai
+                            samuraiImg.style.transform = 'scaleX(-1)';
+                            // Mover el globo al lado derecho
+                            speechBubble.style.left = 'auto';
+                            speechBubble.style.right = '-13rem';
+                            // Voltear la flecha
+                            speechArrow.classList.add('flipped');
+                            isFlipped = true;
+                        } else if (samuraiCenterX >= screenCenterX && isFlipped) {
+                            // Volver a la orientación original
+                            samuraiImg.style.transform = 'scaleX(1)';
+                            // Mover el globo al lado izquierdo
+                            speechBubble.style.left = '-13rem';
+                            speechBubble.style.right = 'auto';
+                            // Voltear la flecha de vuelta
+                            speechArrow.classList.remove('flipped');
+                            isFlipped = false;
+                        }
+                    }
+                });
+
+                document.addEventListener('mouseup', function() {
+                    if (isDragging) {
+                        isDragging = false;
+                        samuraiContainer.style.cursor = 'move';
+                        // Reactivar transiciones suaves después de soltar
+                        speechBubble.style.transition = 'left 0.3s ease, right 0.3s ease';
+                        samuraiImg.style.transition = 'transform 0.3s ease';
+                    }
+                });
+            }
+            
+            function updateLanguage(lang) {
+                currentLanguage = lang;
+                const elements = document.querySelectorAll('[data-key]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                localStorage.setItem('selectedLanguage', lang);
+                
+                // Update samurai quote with current index
+                const quoteElement = document.querySelector('.samurai-quote');
+                const quoteKey = `samurai_quote_${currentQuoteIndex}`;
+                if (quoteElement && translations[lang][quoteKey]) {
+                    quoteElement.textContent = translations[lang][quoteKey];
+                }
+            }
+
+            const languageSelector = document.getElementById('language-selector');
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'es';
+            languageSelector.value = savedLanguage;
+            updateLanguage(savedLanguage);
+
+            languageSelector.addEventListener('change', (e) => {
+                updateLanguage(e.target.value);
+            });
+
+            // Form submission
+            const form = document.getElementById('hackathon-form');
+            const formStatus = document.getElementById('form-status');
+            const successMessage = document.getElementById('success-message');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formStatus.textContent = '';
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        successMessage.classList.remove('hidden');
+                        window.scrollTo({ top: successMessage.offsetTop - 100, behavior: 'smooth' });
+                    } else {
+                        formStatus.textContent = 'Error submitting form. Please try again.';
+                    }
+                } catch (error) {
+                    formStatus.textContent = 'Error submitting form. Please try again.';
+                }
+            });
+
+            // Smooth scroll to register
+            document.querySelectorAll('a[href="#register"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
