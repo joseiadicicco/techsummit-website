@@ -244,9 +244,153 @@
             50% { left: 150%; }
             100% { left: 150%; }
         }
+        
+        /* Hackathon Modal Styles */
+        .hackathon-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .hackathon-modal {
+            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+            border: 2px solid #06B6D4;
+            border-radius: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(6, 182, 212, 0.5);
+            animation: slideUp 0.4s ease-out;
+        }
+        
+        .hackathon-prize-glow {
+            animation: prizeGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes prizeGlow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(250, 204, 21, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(250, 204, 21, 0.8); }
+        }
+        
+        /* Floating Hackathon Button */
+        .floating-hackathon-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.6);
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-hackathon-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(6, 182, 212, 0.8);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-50 overflow-x-hidden">
+
+    <!-- Hackathon Popup Modal -->
+    <div id="hackathon-modal-overlay" class="hackathon-modal-overlay hidden">
+        <div class="hackathon-modal">
+            <button id="close-hackathon-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-bold z-10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-700 transition">
+                ×
+            </button>
+            
+            <div class="p-8 text-center">
+                <div class="mb-4">
+                    <span class="inline-block bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-bold border border-cyan-500/50">
+                        <span data-key="hackathon_modal_badge">🚀 New! Hackathon 2025</span>
+                    </span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-black text-white mb-4">
+                    <span data-key="hackathon_modal_title">Cardano Hackathon</span>
+                </h2>
+                
+                <div class="mb-6 hackathon-prize-glow inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-gray-900 px-6 py-3 rounded-xl">
+                    <p class="text-sm font-bold uppercase tracking-wider" data-key="hackathon_modal_prize_label">Prize Pool</p>
+                    <p class="text-4xl font-black">US$ 10,000</p>
+                </div>
+                
+                <p class="text-lg text-gray-300 mb-4" data-key="hackathon_modal_desc">
+                    Become a Cardano Samurai in the ultimate 48-hour battle. Build with honor, compete with skill!
+                </p>
+                <p class="text-md text-cyan-300 mb-6 font-semibold" data-key="hackathon_modal_swords">
+                    ⚔️ Win legendary samurai swords + cash prizes
+                </p>
+                
+                <div class="space-y-3 text-left bg-gray-800/50 rounded-lg p-4 mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">📅</span>
+                        <span class="text-gray-300" data-key="hackathon_modal_when">November 14-15, 2025</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">📍</span>
+                        <span class="text-gray-300" data-key="hackathon_modal_where">Buenos Aires, Argentina</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">⚔️</span>
+                        <span class="text-gray-300" data-key="hackathon_modal_prizes">Samurai Swords + US$5K, US$3K, US$2K</span>
+                    </div>
+                </div>
+                
+                <a href="/hackathon.html" class="block w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 px-6 rounded-xl text-lg transition-all shadow-lg hover:shadow-cyan-500/50 hover:scale-105 mb-3">
+                    <span data-key="hackathon_modal_cta">🎯 Learn More & Register</span>
+                </a>
+                
+                <button id="remind-later" class="text-sm text-gray-400 hover:text-gray-300 transition">
+                    <span data-key="hackathon_modal_later">Remind me later</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Hackathon Button -->
+    <a href="/hackathon.html" class="floating-hackathon-btn hidden" id="floating-hackathon-btn">
+        <span class="flex items-center space-x-2">
+            <span class="text-2xl">🏆</span>
+            <span data-key="floating_btn_text">Hackathon US$10K</span>
+        </span>
+    </a>
 
     <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -290,6 +434,28 @@
                     <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300" data-key="hero_description">Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.</p>
                     <div class="mt-8 flex justify-center gap-4">
                          <a href="#sponsors" id="open-sponsor-modal-button" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105" data-key="hero_cta_sponsor">Become a Sponsor</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hackathon Banner -->
+            <section class="bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 py-8">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-5xl">🏆</div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-black text-white">
+                                    <span data-key="hackathon_banner_title">Cardano Hackathon 2025</span>
+                                </h3>
+                                <p class="text-cyan-100 font-semibold">
+                                    <span data-key="hackathon_banner_subtitle">US$10,000 in prizes • Nov 14-15 • Buenos Aires</span>
+                                </p>
+                            </div>
+                        </div>
+                        <a href="/hackathon.html" class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105 whitespace-nowrap">
+                            <span data-key="hackathon_banner_cta">Register Now 🚀</span>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -1798,6 +1964,20 @@
                 en: {
                     nav_venues: 'Venues', nav_speakers: 'Speakers', nav_past_events: 'Past Events', nav_sponsors: 'Sponsors', nav_team: 'Team',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Building on the success of Cardano Tech Week, we are expanding across Latin America to connect, build, and innovate.', hero_cta_sponsor: 'Become a Sponsor',
+                    hackathon_modal_badge: '🚀 New! Hackathon 2025',
+                    hackathon_modal_title: 'Cardano Hackathon',
+                    hackathon_modal_prize_label: 'Prize Pool',
+                    hackathon_modal_desc: 'Become a Cardano Samurai in the ultimate 48-hour battle. Build with honor, compete with skill!',
+                    hackathon_modal_swords: '⚔️ Win legendary samurai swords + cash prizes',
+                    hackathon_modal_prizes: 'Samurai Swords + US$5K, US$3K, US$2K',
+                    hackathon_modal_when: 'November 14-15, 2025',
+                    hackathon_modal_where: 'Buenos Aires, Argentina',
+                    hackathon_modal_cta: '🎯 Learn More & Register',
+                    hackathon_modal_later: 'Remind me later',
+                    hackathon_banner_title: 'Cardano Hackathon 2025',
+                    hackathon_banner_subtitle: 'US$10,000 in prizes • Nov 14-15 • Buenos Aires',
+                    hackathon_banner_cta: 'Register Now 🚀',
+                    floating_btn_text: 'Hackathon US$10K',
                     cities_title: 'Two Cities, One Epic Summit', cities_subtitle: "We're bringing the Cardano ecosystem to the heart of Brazil and Argentina.",
                     rio_city: 'Rio de Janeiro', rio_date: 'October 2025', rio_description: 'The first stop of our LATAM tour in the vibrant city of Rio. Expect high-energy networking, cutting-edge tech talks, and unforgettable experiences.', rio_details_button: 'View RIO Experience',
                     ba_city: 'Buenos Aires', ba_date: 'November 2025', ba_description: 'The grand finale in the passionate capital of Argentina. A deep dive into the local ecosystem, celebrating a year of growth and collaboration.', ba_details_button: 'View BA Experience',
@@ -1937,6 +2117,21 @@
                 es: {
                     nav_venues: 'Sedes', nav_agenda: 'Agenda', nav_speakers: 'Oradores', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Sponsors', nav_team: 'Equipo',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Basándonos en el éxito de la Cardano Tech Week, nos expandimos por América Latina para conectar, construir e innovar.', hero_cta_sponsor: 'Conviértete en Sponsor',
+                    hackathon_modal_badge: '🚀 ¡Nuevo! Hackathon 2025',
+                    hackathon_modal_title: 'Cardano Hackathon',
+                    hackathon_modal_prize_label: 'Premio Total',
+                    hackathon_modal_desc: '¡Conviértete en un Samurai de Cardano en la batalla definitiva de 48 horas! Construye con honor, compite con destreza.',
+                    hackathon_modal_swords: '⚔️ Gana espadas samurai legendarias + premios en efectivo',
+                    hackathon_modal_prizes: 'Espadas Samurai + US$5K, US$3K, US$2K',
+                    hackathon_modal_when: '14-15 de Noviembre, 2025',
+                    hackathon_modal_where: 'Buenos Aires, Argentina',
+                    hackathon_modal_prizes: '3 premios: US$5K, US$3K, US$2K',
+                    hackathon_modal_cta: '🎯 Más Info e Inscripción',
+                    hackathon_modal_later: 'Recordármelo después',
+                    hackathon_banner_title: 'Cardano Hackathon 2025',
+                    hackathon_banner_subtitle: 'US$10,000 en premios • 14-15 Nov • Buenos Aires',
+                    hackathon_banner_cta: 'Inscribirse Ahora 🚀',
+                    floating_btn_text: 'Hackathon US$10K',
                     cities_title: 'Dos Ciudades, Un Summit Épico', cities_subtitle: 'Llevamos el ecosistema de Cardano al corazón de Brasil y Argentina.',
                     rio_city: 'Río de Janeiro', rio_date: 'Octubre 2025', rio_description: 'La primera parada de nuestro tour LATAM en la vibrante ciudad de Río. Espera networking de alta energía, charlas de tecnología punta y experiencias inolvidables.', rio_details_button: 'Ver Experiencia RIO',
                     ba_city: 'Buenos Aires', ba_date: 'Noviembre 2025', ba_description: 'La gran final en la apasionada capital de Argentina. Una inmersión profunda en el ecosistema local, celebrando un año de crecimiento y colaboración.', ba_details_button: 'Ver Experiencia BA',
@@ -2077,6 +2272,19 @@
                 pt: {
                     nav_venues: 'Locais', nav_speakers: 'Palestrantes', nav_past_events: 'Eventos Anteriores', nav_sponsors: 'Patrocinadores', nav_team: 'Equipe',
                     hero_title: 'Cardano Tech Summit', hero_subtitle: 'LATAM 2025', hero_description: 'Com base no sucesso da Cardano Tech Week, estamos expandindo pela América Latina para conectar, construir e inovar.', hero_cta_sponsor: 'Torne-se um Patrocinador',
+                    hackathon_modal_badge: '🚀 Novo! Hackathon 2025',
+                    hackathon_modal_title: 'Cardano Hackathon',
+                    hackathon_modal_prize_label: 'Prêmio Total',
+                    hackathon_modal_desc: 'Participe da competição definitiva de 48 horas! Construa dApps inovadoras no Cardano e ganhe prêmios incríveis.',
+                    hackathon_modal_when: '14-15 de Novembro, 2025',
+                    hackathon_modal_where: 'Buenos Aires, Argentina',
+                    hackathon_modal_prizes: '3 prêmios: US$5K, US$3K, US$2K',
+                    hackathon_modal_cta: '🎯 Saiba Mais e Inscreva-se',
+                    hackathon_modal_later: 'Lembre-me depois',
+                    hackathon_banner_title: 'Cardano Hackathon 2025',
+                    hackathon_banner_subtitle: 'US$10.000 em prêmios • 14-15 Nov • Buenos Aires',
+                    hackathon_banner_cta: 'Inscreva-se Agora 🚀',
+                    floating_btn_text: 'Hackathon US$10K',
                     cities_title: 'Duas Cidades, Um Summit Épico', cities_subtitle: 'Estamos trazendo o ecossistema Cardano para o coração do Brasil e da Argentina.',
                     rio_city: 'Rio de Janeiro', rio_date: 'Outubro de 2025', rio_description: 'A primeira parada de nossa turnê LATAM na vibrante cidade do Rio. Espere networking de alta energia, palestras de tecnologia de ponta e experiências inesquecíveis.', rio_details_button: 'Ver Experiência RIO',
                     ba_city: 'Buenos Aires', ba_date: 'Novembro de 2025', ba_description: 'A grande final na apaixonada capital da Argentina. Um mergulho profundo no ecossistema local, comemorando um ano de crescimento e colaboração.', ba_details_button: 'Ver Experiência BA',
@@ -2240,6 +2448,19 @@
                 ja: {
                     nav_venues: '会場', nav_agenda: '議題', nav_speakers: 'スピーカー', nav_past_events: '過去のイベント', nav_sponsors: 'スポンサー', nav_team: 'チーム',
                     hero_title: 'Cardanoテックサミット', hero_subtitle: 'LATAM 2025', hero_description: 'Cardanoテックウィークの成功を基に、ラテンアメリカ全土に拡大し、つながり、構築し、革新します。', hero_cta_sponsor: 'スポンサーになる',
+                    hackathon_modal_badge: '🚀 新着！ハッカソン2025',
+                    hackathon_modal_title: 'Cardanoハッカソン',
+                    hackathon_modal_prize_label: '賞金総額',
+                    hackathon_modal_desc: '究極の48時間開発競技に参加！Cardanoで革新的なdAppsを構築し、素晴らしい賞品を獲得しましょう！',
+                    hackathon_modal_when: '2025年11月14-15日',
+                    hackathon_modal_where: 'ブエノスアイレス、アルゼンチン',
+                    hackathon_modal_prizes: '3つの賞品：US$5K、US$3K、US$2K',
+                    hackathon_modal_cta: '🎯 詳細情報と登録',
+                    hackathon_modal_later: '後で思い出させる',
+                    hackathon_banner_title: 'Cardanoハッカソン2025',
+                    hackathon_banner_subtitle: '賞金総額US$10,000 • 11月14-15日 • ブエノスアイレス',
+                    hackathon_banner_cta: '今すぐ登録 🚀',
+                    floating_btn_text: 'ハッカソン US$10K',
                     cities_title: '二つの都市、一つの壮大なサミット', cities_subtitle: 'Cardanoエコシステムをブラジルとアルゼンチンの中心にお届けします。',
                     rio_city: 'リオデジャネイロ', rio_date: '2025年10月', rio_description: '活気あふれるリオ市でのLATAMツアーの最初の目的地。ハイエネルギーなネットワーキング、最先端の技術トーク、忘れられない体験をお楽しみに。', rio_details_button: 'RIOエクスペリエンスを見る',
                     ba_city: 'ブエノスアイレス', ba_date: '2025年11月', ba_description: '情熱的なアルゼンチンの首都でのグランドフィナーレ。地域のエコシステムに深く潜り、一年間の成長と協力を祝います。', ba_details_button: 'BAエクスペリエンスを見る',
@@ -2779,6 +3000,52 @@
                     aikenButton.click();
                 }
             }
+
+            // Hackathon Modal & Floating Button Logic
+            const hackathonModal = document.getElementById('hackathon-modal-overlay');
+            const closeModalBtn = document.getElementById('close-hackathon-modal');
+            const remindLaterBtn = document.getElementById('remind-later');
+            const floatingBtn = document.getElementById('floating-hackathon-btn');
+            
+            // Check if user has dismissed the modal
+            const hasSeenModal = localStorage.getItem('hackathon_modal_seen');
+            const dismissedUntil = localStorage.getItem('hackathon_modal_dismissed_until');
+            const now = Date.now();
+            
+            // Show modal after 3 seconds if not seen or reminder time has passed
+            if (!hasSeenModal || (dismissedUntil && now > parseInt(dismissedUntil))) {
+                setTimeout(() => {
+                    hackathonModal.classList.remove('hidden');
+                }, 3000);
+            }
+            
+            // Show floating button after 5 seconds
+            setTimeout(() => {
+                floatingBtn.classList.remove('hidden');
+            }, 5000);
+            
+            // Close modal function
+            function closeModal() {
+                hackathonModal.classList.add('hidden');
+                localStorage.setItem('hackathon_modal_seen', 'true');
+            }
+            
+            // Close modal when clicking X
+            closeModalBtn.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            hackathonModal.addEventListener('click', (e) => {
+                if (e.target === hackathonModal) {
+                    closeModal();
+                }
+            });
+            
+            // Remind later (dismiss for 24 hours)
+            remindLaterBtn.addEventListener('click', () => {
+                const twentyFourHours = 24 * 60 * 60 * 1000;
+                localStorage.setItem('hackathon_modal_dismissed_until', (now + twentyFourHours).toString());
+                closeModal();
+            });
         });
     </script>
     
