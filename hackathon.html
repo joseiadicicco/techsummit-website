@@ -3,17 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardano Hackathon 2025 - $10,000 in Prizes</title>
+    <title>Cardano Hackathon 2025 - US$10,000 en Premios | Tech Summit LATAM</title>
+    <meta name="description" content="Únete al desafío de desarrollo Cardano más grande de LATAM. US$10,000 en premios. 14-15 de noviembre en Buenos Aires. ¡Conviértete en un Samurái de Cardano!">
     
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="/images/favicon.png">
     
-    <!-- SOCIAL MEDIA PREVIEW -->
+    <!-- OPEN GRAPH / FACEBOOK / WHATSAPP -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://techsummit.lat/hackathon.html">
-    <meta property="og:title" content="Cardano Hackathon 2025 - $10,000 in Prizes">
-    <meta property="og:description" content="Join the ultimate Cardano developer challenge. Compete for $10,000 in prizes and build the future of blockchain.">
-    <meta property="og:image" content="https://techsummit.lat/images/social-preview.png">
+    <meta property="og:site_name" content="Cardano Tech Summit LATAM">
+    <meta property="og:title" content="🏆 Cardano Hackathon 2025 - US$10,000 en Premios">
+    <meta property="og:description" content="Conviértete en un Samurái de Cardano 🥋 Competencia de 2 días | Curso gratuito incluido | 14-15 Nov en Buenos Aires, Argentina">
+    <meta property="og:image" content="https://techsummit.lat/images/samuraicardano.png">
+    <meta property="og:image:secure_url" content="https://techsummit.lat/images/samuraicardano.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cardano Hackathon 2025 - Samurai">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="pt_BR">
+    
+    <!-- TWITTER CARD / TELEGRAM -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CardanoSolar">
+    <meta name="twitter:creator" content="@CardanoSolar">
+    <meta name="twitter:url" content="https://techsummit.lat/hackathon.html">
+    <meta name="twitter:title" content="🏆 Cardano Hackathon 2025 - US$10,000 en Premios">
+    <meta name="twitter:description" content="Conviértete en un Samurái de Cardano 🥋 Competencia de 2 días | Curso gratuito incluido | 14-15 Nov en Buenos Aires, Argentina">
+    <meta name="twitter:image" content="https://techsummit.lat/images/samuraicardano.png">
+    <meta name="twitter:image:alt" content="Cardano Hackathon 2025 - Samurai">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1061,7 +1081,10 @@
                     if (response.ok) {
                         form.style.display = 'none';
                         successMessage.classList.remove('hidden');
-                        window.scrollTo({ top: successMessage.offsetTop - 100, behavior: 'smooth' });
+                        // Mantener el foco en la sección del formulario
+                        setTimeout(() => {
+                            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
                     } else {
                         formStatus.textContent = 'Error submitting form. Please try again.';
                     }
