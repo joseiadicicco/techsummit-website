@@ -903,6 +903,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button class="btn speed-btn" data-speed="7.5">30×</button>
     <button class="btn speed-btn" data-speed="25">100×</button>
     <button class="btn" id="btn-follow">📍 Seguir</button>
+    <button class="btn" id="btn-fleet" style="border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.1);">⚓ FLOTA</button>
   </div>
 </div>
 
@@ -1045,8 +1046,8 @@ const EVS = [
     title:'Graf Spee: primer hundimiento', date:'30 SEP 1939', loc:'Atlántico, frente a Brasil',
     desc:'El Graf Spee hunde el carguero Clement. La campaña de caza comercial en el Atlántico Sur ha comenzado. El Aurigny desciende por África Occidental.' },
   { d:78, lt:14.69, ln:-17.44, type:'family',
-    title:'⚓ Escala en Dakar', date:'OCT 1939', loc:'Dakar, Senegal',
-    desc:'El Aurigny hace escala técnica en Dakar, África Occidental Francesa. La familia deja atrás el hemisferio norte. El gran cruce del Atlántico Sur comienza.' },
+    title:'⚓ Escala en Dakar — Luba ve el mar de África', date:'OCT 1939', loc:'Dakar, Senegal — África Occidental Francesa',
+    desc:'Luba, de 14 años, se asoma a cubierta y ve por primera vez en su vida personas con piel negra en la costa. Creerá en ese primer instante que son piedras — un recuerdo que conservará toda su vida. Francia está en guerra con Alemania desde el 3 de septiembre: el Aurigny, con bandera francesa, es técnicamente un objetivo legítimo para el Graf Spee, que opera en el Atlántico central.' },
   { d: 60, lt: -9.02, ln:-34.28, type:'war',
     title:'⚓ Graf Spee — SS Clement (1°)', date:'30 SEP 1939', loc:'09°01′S 34°17′W',
     desc:'Primer hundimiento. 5.051 t. El capitán y jefe de máquinas tomados prisioneros. El Graf Spee se revela en el Atlántico Sur. Langsdorff aplica las Leyes de Presa: evacúa tripulación antes de hundir.' },
@@ -1060,8 +1061,8 @@ const EVS = [
     title:'⚓ Graf Spee — MV Africa Shell (Índico)', date:'15 NOV 1939', loc:'24°48′S 35°01′E — Canal de Mozambique',
     desc:'Único hundimiento en el Océano Índico. 706 t. Propósito psicológico: hacer creer a los británicos que el raider abandonó el Atlántico definitivamente. El capitán Dove fue hecho prisionero.' },
   { d:141, lt:-34.61, ln:-58.38, type:'war',
-    title:'⚔️ Suicidio de Langsdorff — Buenos Aires', date:'20 DIC 1939', loc:'Hotel Naval, Buenos Aires',
-    desc:'El capitán Hans Langsdorff se quita la vida envuelto en la bandera de la antigua marina imperial (Kaiserliche Marine) — no la nazi — asumiendo responsabilidad total por la pérdida del buque. Escribió al embajador alemán: "Para un comandante con honor, su destino está unido al de su barco."' },
+    title:'⚔️ Suicidio de Langsdorff — Hotel Naval, Buenos Aires', date:'20 DIC 1939', loc:'Hotel Naval, Av. Córdoba 622, Buenos Aires',
+    desc:'Hans Langsdorff se tiende sobre la bandera de la Kaiserliche Marine (la marina imperial del Kaiser, no la esvástica nazi) y se dispara. El gesto fue deliberado y preciso: usar la bandera imperial, no la del Reich, era un acto de disidencia silenciosa. Dejó una carta al embajador alemán: "Para un oficial con sentido del honor, su destino está unido al de su barco." Tenía 45 años. Sus hombres, que lo adoraban, lo enterraron en Buenos Aires. La familia Bekerej llevaba tres días en la Isla Martín García — a metros de la tripulación de ese mismo buque.' },
   { d:123, lt:-19.25, ln: 5.08, type:'war',
     title:'💥 Graf Spee hunde el Doric Star', date:'2 DIC 1939', loc:'Atlántico Sur Central',
     desc:'PELIGRO MÁXIMO: el Doric Star iba "adelante del Aurigny". El capitán navega en total silencio de radio y oscurecimiento. La familia Bekerej está a pocas millas náuticas del acorazado alemán.' },
@@ -1365,7 +1366,7 @@ function getNarrative(day){
   if(day< 45) return 'París, otoño del 39. Francia está en guerra. La organización HICEM —la agencia judía de emigración— coordina el pasaje. Basilio Szyp, desde Argentina, tramitó el "llamado" legal y probablemente el pasaje mismo. La espera dura ~2 meses: hay que esperar la próxima salida del Aurigny hacia el Río de la Plata, prevista para ~15 de noviembre.';
   if(day< 68) return 'A bordo del S.S. Aurigny, ~15 NOV 1939. El vapor francés zarpa de Le Havre. ~225 pasajeros: polacos, judíos, españoles, todos huyendo. La tercera clase es austera: literas de madera, agua racionada. Destino: Buenos Aires vía Dakar. Europa queda atrás.';
   if(day< 78) return 'El Golfo de Vizcaya, Canarias. El Aurigny navega con precaución: en el Atlántico Norte operan U-boats alemanes. El capitán recibe instrucciones del Almirantazgo francés. Pronto harán escala en Dakar.';
-  if(day< 93) return 'Dakar, Senegal. El Aurigny hace escala técnica en el puerto africano. Calor, colores, el Atlántico. Reabastecen combustible y agua. En pocos días cruzarán el ecuador hacia el Atlántico Sur.';
+  if(day< 93) return 'Dakar, Senegal. El Aurigny hace escala técnica en el puerto africano. Luba, de 14 años, se asoma a cubierta y ve por primera vez en su vida personas con piel negra en la costa. Años después relatará que en ese primer instante creyó que eran piedras. El barco reabastece combustible y agua. Francia ya está en guerra con Alemania — el Aurigny es técnicamente un objetivo legítimo para el Graf Spee, que en este momento caza mercantes en el Atlántico central.';
   if(day<107) return 'Atlántico Sur. Semanas en el mar abierto. En el mismo océano, el Graf Spee caça mercantes aliados. La tripulación del Aurigny escucha señales de socorro de barcos hundidos. Los pasajeros no lo saben.';
   if(day<120) return '⚠️ PELIGRO: El Graf Spee acaba de hundir el Doric Star —que iba "adelante del Aurigny" según los diarios navales. El capitán apaga las luces y navega en silencio de radio. La familia Bekerej está a pocas millas del acorazado alemán.';
   if(day<130) return 'El Aurigny sortea la zona de caza. Tres barcos hundidos en 5 días a menos de 300 millas. El capitán maniobra para alejarse del radar alemán. La Batalla del Río de la Plata estallará en días.';
@@ -1505,5 +1506,513 @@ mgM.setOpacity(0);
 updateUI(0);
 const sEl=document.createElement('style');sEl.textContent='@keyframes ripple{0%{transform:scale(1);opacity:0.45}100%{transform:scale(3.5);opacity:0}}';document.head.appendChild(sEl);
 </script>
+
+<!-- ══════════════════════════════════════════
+     FLEET MODAL
+══════════════════════════════════════════ -->
+<div id="fleet-modal" style="
+  display:none; position:fixed; inset:0; z-index:9000;
+  background:rgba(4,4,10,0.96); backdrop-filter:blur(8px);
+  overflow-y:auto; padding:20px 0 40px;
+  font-family:'Libre Baskerville',Georgia,serif;
+">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(201,168,76,0.3);">
+      <div>
+        <h2 style="font-family:'Special Elite',monospace;color:#E8C96E;font-size:22px;font-weight:normal;letter-spacing:2px;">✦ LA FLOTA ✦</h2>
+        <p style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#7A6E52;letter-spacing:1px;margin-top:3px;">TODOS LOS BUQUES INVOLUCRADOS EN LA HISTORIA · 1939</p>
+      </div>
+      <button id="fleet-close" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:#C9A84C;border-radius:6px;padding:8px 18px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:12px;">✕ CERRAR</button>
+    </div>
+
+    <!-- Section labels + grid -->
+    <div id="fleet-content"></div>
+  </div>
+</div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&display=swap');
+.fleet-section-title {
+  font-family:'Special Elite',monospace;
+  font-size:13px; letter-spacing:2px;
+  color:#C9A84C; padding:10px 0 8px;
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  margin:22px 0 14px;
+}
+.fleet-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:14px;
+}
+.ship-card {
+  background:rgba(12,12,24,0.9);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:8px;
+  padding:14px;
+  cursor:pointer;
+  transition:all 0.2s;
+  position:relative;
+  overflow:hidden;
+}
+.ship-card:hover { border-color:rgba(201,168,76,0.5); background:rgba(20,20,38,0.95); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
+.ship-card.selected { border-color:#C9A84C; box-shadow:0 0 16px rgba(201,168,76,0.25); }
+.ship-silhouette { width:100%; height:64px; margin-bottom:10px; display:flex; align-items:center; justify-content:center; }
+.ship-silhouette svg { max-width:100%; max-height:64px; }
+.ship-name { font-family:'Special Elite',monospace; font-size:13px; color:#E8C96E; margin-bottom:2px; }
+.ship-type { font-family:'Share Tech Mono',monospace; font-size:9px; color:#7A6E52; letter-spacing:1px; margin-bottom:8px; text-transform:uppercase; }
+.ship-stat { display:flex; justify-content:space-between; font-size:10px; padding:2px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+.ship-stat-label { color:#7A6E52; }
+.ship-stat-value { color:#BBA87A; font-weight:bold; font-size:10px; }
+.ship-fate { margin-top:8px; font-size:9.5px; font-style:italic; color:#8A7A5A; line-height:1.5; padding-top:6px; border-top:1px solid rgba(255,255,255,0.06); }
+.ship-role-badge {
+  position:absolute; top:8px; right:8px;
+  font-size:8px; padding:2px 6px; border-radius:10px;
+  font-family:'Share Tech Mono',monospace; letter-spacing:0.5px; text-transform:uppercase;
+}
+.badge-family   { background:rgba(201,168,76,0.2); color:#C9A84C; border:1px solid rgba(201,168,76,0.4); }
+.badge-german   { background:rgba(192,57,43,0.2); color:#E74C3C; border:1px solid rgba(192,57,43,0.4); }
+.badge-british  { background:rgba(41,128,185,0.2); color:#5DADE2; border:1px solid rgba(41,128,185,0.4); }
+.badge-victim   { background:rgba(139,0,0,0.2); color:#C0392B; border:1px solid rgba(139,0,0,0.4); }
+.badge-support  { background:rgba(108,52,131,0.2); color:#A569BD; border:1px solid rgba(108,52,131,0.4); }
+</style>
+
+<script>
+// ══════════════════════════════════════════
+//  FLEET DATA
+// ══════════════════════════════════════════
+const FLEET = [
+  {
+    section: '🚢 EL BARCO DE LA FAMILIA',
+    ships: [
+      {
+        name: 'S.S. AURIGNY',
+        type: 'Vapor mixto pasajeros/carga',
+        flag: '🇫🇷', badge: 'badge-family', badgeText: 'familia',
+        silhouette: 'passenger',
+        stats: [
+          ['Tonelaje (GRT)', '9.588 t'],
+          ['Construcción', '1917, Francia'],
+          ['Empresa', 'Chargeurs Réunis'],
+          ['Pasajeros', '~225 (100 1ª, 40 2ª, 85+ 3ª)'],
+          ['Propulsión', '2 máquinas triple expansión, 2 hélices'],
+          ['Ruta', 'Le Havre → Dakar → Buenos Aires'],
+          ['Llegada B.A.', '16 diciembre 1939'],
+          ['Destino final', 'Incautado por Argentina en 1941'],
+        ],
+        fate: 'Rebautizado "General San Martín" bajo bandera argentina. Sirvió a la Flota Mercante del Estado durante la guerra. La familia Bekerej viajó en 3ª clase.',
+        conn: 'El barco que salvó a Luba, Ksenia, Eustaquio y Nina. Navegó a pocas millas del Graf Spee en diciembre de 1939.',
+      }
+    ]
+  },
+  {
+    section: '⚓ EL CAZADOR ALEMÁN',
+    ships: [
+      {
+        name: 'ADMIRAL GRAF SPEE',
+        type: 'Panzerschiff (Acorazado de Bolsillo)',
+        flag: '🇩🇪', badge: 'badge-german', badgeText: 'enemigo',
+        silhouette: 'warship_heavy',
+        stats: [
+          ['Tonelaje real', '16.280 t (declarado 10.000)'],
+          ['Eslora', '186 m'],
+          ['Velocidad máx.', '28,5 nudos (efectiva ~24-25)'],
+          ['Autonomía', '16.300 mn a 18,6 nudos'],
+          ['Armamento ppal.', '6 cañones 28cm (torres triples)'],
+          ['Armamento sec.', '8 cañones 15cm'],
+          ['Radar', 'FMG Seetakt 368 MHz (primero en combate)'],
+          ['Tripulación', '~1.150 hombres'],
+          ['Capitán', 'Hans Langsdorff'],
+          ['Misión', '21 ago – 17 dic 1939 (111 días)'],
+          ['Barcos hundidos', '9 buques / 50.089 t totales'],
+        ],
+        fate: 'Hundido por su propia tripulación el 17 dic 1939, 4-6 millas frente a Montevideo (34°58′S 56°17′W). El capitán Langsdorff se suicidó el 20 dic en el Hotel Naval, Av. Córdoba 622, Buenos Aires, envuelto en la bandera imperial — no la nazi.',
+        conn: 'Hundió el SS Doric Star "adelante del Aurigny". Sus marineros fueron internados en Isla Martín García — la misma isla donde la familia Bekerej estaba en cuarentena.',
+      },
+      {
+        name: 'ALTMARK',
+        type: 'Petrolero de suministro / buque prisión',
+        flag: '🇩🇪', badge: 'badge-german', badgeText: 'apoyo',
+        silhouette: 'tanker',
+        stats: [
+          ['Tonelaje', '~14.000 t'],
+          ['Rol', 'Repostaje del Graf Spee en alta mar'],
+          ['Prisioneros', '~300 marineros aliados a bordo'],
+          ['Encuentros', '28 ago y 26-28 nov 1939'],
+        ],
+        fate: 'Capturado por el HMS Cossack en aguas noruegas el 16 feb 1940. Los 299 prisioneros británicos fueron liberados al grito de "The Navy’s here!"',
+        conn: 'Permitió al Graf Spee operar 111 días sin tocar puerto. En los dos repostajes transfirió prisioneros y suministros en alta mar.',
+      }
+    ]
+  },
+  {
+    section: '🇬🇧 LA FUERZA G — ROYAL NAVY',
+    ships: [
+      {
+        name: 'HMS AJAX',
+        type: 'Crucero ligero · Clase Leander',
+        flag: '🇬🇧', badge: 'badge-british', badgeText: 'británico',
+        silhouette: 'cruiser_light',
+        stats: [
+          ['Tonelaje', '7.270 t'],
+          ['Eslora', '169,3 m'],
+          ['Velocidad', '32,5 nudos'],
+          ['Armamento', '8 cañones 6" (152mm) en torres dobles'],
+          ['Tripulación', '~570 hombres'],
+          ['Comandante', 'Comodoro Henry Harwood (insignia)'],
+          ['Origen batalla', 'Islas Malvinas'],
+        ],
+        fate: 'Recibió impacto en torres "X" e "Y" (07:25). Siguió en combate y "sombreó" al Graf Spee hasta Montevideo. Sobrevivió la guerra.',
+        conn: 'Buque insignia de Harwood. Sus vigías avistaron el humo del Graf Spee a las 06:10 del 13 dic.',
+      },
+      {
+        name: 'HMNZS ACHILLES',
+        type: 'Crucero ligero · Clase Leander · Nueva Zelanda',
+        flag: '🇳🇿', badge: 'badge-british', badgeText: 'aliado',
+        silhouette: 'cruiser_light',
+        stats: [
+          ['Tonelaje', '7.270 t'],
+          ['Eslora', '169,3 m'],
+          ['Velocidad', '32,5 nudos'],
+          ['Armamento', '8 cañones 6" (152mm)'],
+          ['Tripulación', '~570 hombres'],
+          ['Origen batalla', 'Costa chilena vía Estrecho de Magallanes'],
+        ],
+        fate: 'Flanqueó al Graf Spee desde el NE junto al Ajax. Navegó a 30 nudos en aguas poco profundas durante la persecución, creando una estela masiva. Sobrevivió la guerra.',
+        conn: 'Navegó desde el Pacífico cruzando el Estrecho de Magallanes para llegar al punto de reunión el 10 dic.',
+      },
+      {
+        name: 'HMS EXETER',
+        type: 'Crucero pesado · Clase York',
+        flag: '🇬🇧', badge: 'badge-british', badgeText: 'británico',
+        silhouette: 'cruiser_heavy',
+        stats: [
+          ['Tonelaje', '8.390 t'],
+          ['Eslora', '175 m'],
+          ['Velocidad', '31 nudos'],
+          ['Armamento', '6 cañones 8" (203mm) en torres dobles'],
+          ['Tripulación', '~630 hombres'],
+          ['Capitán', 'F.S. Bell'],
+          ['Origen batalla', 'Sur del Atlántico'],
+        ],
+        fate: 'El blanco principal del Graf Spee. Torres "B" y "A" destruidas, torre "Y" bajo control local, escora 7° a estribor. Capitán Bell fue uno de los pocos supervivientes del puente. Destacado a Malvinas el 13:40 del 13 dic para reparaciones de emergencia.',
+        conn: 'Su proyectil destruyó la planta de purificación de combustible del Graf Spee — el golpe decisivo que condenó al acorazado alemán.',
+      },
+      {
+        name: 'HMS CUMBERLAND',
+        type: 'Crucero pesado · Clase County',
+        flag: '🇬🇧', badge: 'badge-british', badgeText: 'refuerzo',
+        silhouette: 'cruiser_heavy',
+        stats: [
+          ['Tonelaje', '9.750 t'],
+          ['Armamento', '8 cañones 8" (203mm)'],
+          ['Llegada', '14 dic 1939 (mientras GS en Mvd)'],
+        ],
+        fate: 'Los británicos hicieron creer al Alto Mando alemán que el Ark Royal y el Renown ya bloqueaban el estuario. En realidad solo el Cumberland se había sumado.',
+        conn: 'La campaña de desinformación que usó su llegada fue el arma final que convenció a Langsdorff de hundir su propio barco.',
+      }
+    ]
+  },
+  {
+    section: '💀 LAS VÍCTIMAS — BARCOS HUNDIDOS POR EL GRAF SPEE',
+    ships: [
+      {
+        name: 'SS CLEMENT',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '5.051 t'],
+          ['Fecha hundimiento', '30 sep 1939'],
+          ['Coordenadas', '09°01′S 34°17′W'],
+          ['Carga', 'Mercancía general'],
+        ],
+        fate: 'Primer hundimiento del Graf Spee. El capitán y jefe de máquinas fueron tomados prisioneros; el resto evacuado en botes. Langsdorff aplicó las Leyes de Presa.',
+        conn: 'Reveló la presencia del Graf Spee en el Atlántico sur. Las señales de socorro alertaron a la Royal Navy.',
+      },
+      {
+        name: 'SS ASHLEA',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '4.222 t'],
+          ['Fecha hundimiento', '7 oct 1939'],
+          ['Coordenadas', '09°52′S 03°28′W'],
+          ['Carga', 'Azúcar'],
+        ],
+        fate: 'Hundido con cargas explosivas tras transferir la tripulación al Graf Spee.',
+        conn: 'Uno de tres barcos hundidos en la misma semana en el Atlántico central.',
+      },
+      {
+        name: 'SS NEWTON BEACH',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '4.651 t'],
+          ['Capturado', '5 oct 1939'],
+          ['Hundido', '8 oct 1939'],
+          ['Coordenadas', '09°35′S 06°30′W'],
+        ],
+        fate: 'Usado como buque prisión durante 3 días. Hundido por ser demasiado lento para remolcar.',
+        conn: 'Langsdorff transfirió los prisioneros antes del hundimiento — su código de honor en acción.',
+      },
+      {
+        name: 'SS HUNTSMAN',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '8.196 t'],
+          ['Capturado', '10 oct 1939'],
+          ['Hundido', '17 oct 1939'],
+          ['Coordenadas', '08°30′S 05°15′W'],
+        ],
+        fate: 'Gran tripulación transferida al Altmark el 16 oct antes del hundimiento.',
+        conn: 'El más grande de los primeros hundimientos. Su tripulación viajó cautiva en el Altmark hasta ser liberada en Noruega.',
+      },
+      {
+        name: 'MV TREVANION',
+        type: 'Motonave de carga británica',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '5.299 t'],
+          ['Fecha hundimiento', '22 oct 1939'],
+          ['Coordenadas', '19°40′S 12°10′E'],
+          ['Zona', 'Atlántico sur frente a Angola'],
+        ],
+        fate: 'Emitió señales de socorro antes de hundirse, alertando a los grupos de caza sobre la posición del Graf Spee.',
+        conn: 'Primer hundimiento frente a la costa africana — el Graf Spee se acercaba al Cabo de Buena Esperanza.',
+      },
+      {
+        name: 'MV AFRICA SHELL',
+        type: 'Motonave de carga británica',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '706 t'],
+          ['Fecha hundimiento', '15 nov 1939'],
+          ['Coordenadas', '24°48′S 35°01′E'],
+          ['Zona', 'Canal de Mozambique — Océano Índico'],
+        ],
+        fate: 'El único hundimiento en el Océano Índico. El capitán Dove hecho prisionero, tripulación liberada en Mozambique.',
+        conn: 'El más pequeño de los 9. Propósito psicológico: hacer creer a la Royal Navy que el Graf Spee había abandonado el Atlántico.',
+      },
+      {
+        name: 'SS DORIC STAR',
+        type: 'Carguero refrigerado británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '10.086 t'],
+          ['Fecha hundimiento', '2 dic 1939'],
+          ['Coordenadas', '19°15′S 05°05′E'],
+          ['Carga', 'Productos refrigerados (carne, lana)'],
+        ],
+        fate: 'Logró emitir señal "RRRR" antes de hundirse. Esa señal fue la clave que permitió a Harwood predecir el rumbo del Graf Spee hacia el Río de la Plata.',
+        conn: 'Iba "adelante del Aurigny" según los diarios navales. La familia Bekerej estaba a pocas millas cuando fue hundido.',
+      },
+      {
+        name: 'SS TAIROA',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '7.983 t'],
+          ['Fecha hundimiento', '3 dic 1939'],
+          ['Coordenadas', '21°20′S 03°00′E'],
+          ['Carga', 'Mercancía general'],
+        ],
+        fate: 'Hundido tras persecución usando armamento secundario del Graf Spee.',
+        conn: 'Segundo hundimiento en 24 horas, en la misma zona que el Aurigny transitaba.',
+      },
+      {
+        name: 'SS STREONSHALH',
+        type: 'Carguero de vapor británico',
+        flag: '🇬🇧', badge: 'badge-victim', badgeText: 'hundido',
+        silhouette: 'freighter',
+        stats: [
+          ['Tonelaje (GRT)', '3.895 t'],
+          ['Fecha hundimiento', '7 dic 1939'],
+          ['Coordenadas', '25°00′S 20°00′W'],
+          ['Carga', 'Cereales'],
+        ],
+        fate: 'Última víctima del Graf Spee. El abordaje alemán recuperó documentos con rutas de convoyes que confirmaron el tráfico hacia el Río de la Plata.',
+        conn: 'Seis días después: la Batalla del Río de la Plata. Los documentos recuperados confirmaron a Langsdorff su próximo objetivo.',
+      },
+    ]
+  }
+];
+
+// ── SVG Silhouettes ──
+const SVG = {
+  passenger: `<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="48" rx="85" ry="8" fill="rgba(41,128,185,0.15)"/>
+      <path d="M20 46 L30 30 L170 30 L180 46 Z" fill="#C9A84C" opacity="0.7"/>
+      <rect x="40" y="18" width="120" height="13" rx="2" fill="#E8C96E" opacity="0.6"/>
+      <rect x="60" y="8" width="60" height="11" rx="2" fill="#BBA87A" opacity="0.5"/>
+      <rect x="78" y="2" width="8" height="7" fill="#9A8A60" opacity="0.6"/>
+      <rect x="110" y="4" width="6" height="5" fill="#9A8A60" opacity="0.5"/>
+      <rect x="42" y="30" width="7" height="6" fill="rgba(255,255,255,0.15)"/>
+      <rect x="54" y="30" width="7" height="6" fill="rgba(255,255,255,0.15)"/>
+      <rect x="66" y="30" width="7" height="6" fill="rgba(255,255,255,0.15)"/>
+      <rect x="140" y="30" width="7" height="6" fill="rgba(255,255,255,0.15)"/>
+      <rect x="152" y="30" width="7" height="6" fill="rgba(255,255,255,0.15)"/>
+    </g>
+  </svg>`,
+
+  warship_heavy: `<svg viewBox="0 0 200 55" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="47" rx="90" ry="7" fill="rgba(192,57,43,0.15)"/>
+      <path d="M10 45 L25 32 L175 32 L190 45 Z" fill="#C0392B" opacity="0.75"/>
+      <rect x="50" y="22" width="100" height="11" rx="1" fill="#E74C3C" opacity="0.55"/>
+      <!-- Forward triple turret -->
+      <rect x="38" y="17" width="22" height="10" rx="2" fill="#922B21" opacity="0.85"/>
+      <line x1="40" y1="20" x2="28" y2="14" stroke="#7B241C" stroke-width="2.5"/>
+      <line x1="49" y1="19" x2="39" y2="11" stroke="#7B241C" stroke-width="2.5"/>
+      <line x1="57" y1="20" x2="50" y2="13" stroke="#7B241C" stroke-width="2.5"/>
+      <!-- Aft triple turret -->
+      <rect x="140" y="17" width="22" height="10" rx="2" fill="#922B21" opacity="0.85"/>
+      <line x1="143" y1="20" x2="150" y2="13" stroke="#7B241C" stroke-width="2.5"/>
+      <line x1="151" y1="19" x2="161" y2="11" stroke="#7B241C" stroke-width="2.5"/>
+      <line x1="160" y1="20" x2="172" y2="14" stroke="#7B241C" stroke-width="2.5"/>
+      <!-- Superstructure -->
+      <rect x="80" y="14" width="18" height="9" rx="1" fill="#922B21" opacity="0.7"/>
+      <rect x="96" y="10" width="14" height="13" rx="1" fill="#7B241C" opacity="0.8"/>
+      <rect x="103" y="3" width="4" height="8" fill="#922B21" opacity="0.9"/>
+      <!-- Radar -->
+      <circle cx="105" cy="3" r="2.5" fill="none" stroke="#E74C3C" stroke-width="1"/>
+    </g>
+  </svg>`,
+
+  cruiser_light: `<svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="45" rx="88" ry="6" fill="rgba(41,128,185,0.15)"/>
+      <path d="M15 43 L28 31 L172 31 L185 43 Z" fill="#2980B9" opacity="0.7"/>
+      <rect x="45" y="21" width="110" height="11" rx="1" fill="#3498DB" opacity="0.5"/>
+      <!-- Twin turrets fore -->
+      <rect x="35" y="16" width="16" height="9" rx="1" fill="#1A6BB5" opacity="0.85"/>
+      <line x1="37" y1="19" x2="27" y2="13" stroke="#1A5499" stroke-width="2"/>
+      <line x1="49" y1="19" x2="41" y2="11" stroke="#1A5499" stroke-width="2"/>
+      <!-- Twin turrets aft -->
+      <rect x="150" y="16" width="16" height="9" rx="1" fill="#1A6BB5" opacity="0.85"/>
+      <line x1="152" y1="19" x2="160" y2="11" stroke="#1A5499" stroke-width="2"/>
+      <line x1="164" y1="19" x2="173" y2="13" stroke="#1A5499" stroke-width="2"/>
+      <!-- Bridge -->
+      <rect x="88" y="13" width="24" height="9" rx="1" fill="#1A6BB5" opacity="0.75"/>
+      <rect x="93" y="7" width="14" height="7" rx="1" fill="#1A5499" opacity="0.8"/>
+      <rect x="98" y="2" width="4" height="6" fill="#1A6BB5" opacity="0.9"/>
+    </g>
+  </svg>`,
+
+  cruiser_heavy: `<svg viewBox="0 0 200 54" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="46" rx="88" ry="7" fill="rgba(230,126,34,0.12)"/>
+      <path d="M12 44 L26 32 L174 32 L188 44 Z" fill="#E67E22" opacity="0.65"/>
+      <rect x="44" y="21" width="112" height="12" rx="1" fill="#E67E22" opacity="0.45"/>
+      <!-- 8" gun turrets -->
+      <rect x="30" y="16" width="18" height="10" rx="1" fill="#CA6F1E" opacity="0.9"/>
+      <line x1="32" y1="19" x2="20" y2="12" stroke="#AF601A" stroke-width="2.5"/>
+      <line x1="46" y1="19" x2="38" y2="10" stroke="#AF601A" stroke-width="2.5"/>
+      <rect x="152" y="16" width="18" height="10" rx="1" fill="#CA6F1E" opacity="0.9"/>
+      <line x1="154" y1="19" x2="162" y2="10" stroke="#AF601A" stroke-width="2.5"/>
+      <line x1="168" y1="19" x2="180" y2="12" stroke="#AF601A" stroke-width="2.5"/>
+      <rect x="86" y="12" width="28" height="11" rx="1" fill="#CA6F1E" opacity="0.7"/>
+      <rect x="92" y="5" width="16" height="8" rx="1" fill="#AF601A" opacity="0.8"/>
+      <rect x="98" y="1" width="4" height="5" fill="#CA6F1E"/>
+    </g>
+  </svg>`,
+
+  tanker: `<svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="44" rx="88" ry="7" fill="rgba(108,52,131,0.15)"/>
+      <path d="M12 42 L22 33 L178 33 L188 42 Z" fill="#6C3483" opacity="0.65"/>
+      <rect x="30" y="24" width="140" height="10" rx="1" fill="#7D3C98" opacity="0.5"/>
+      <!-- Tank cylinders -->
+      <ellipse cx="65" cy="28" rx="14" ry="6" fill="#5B2C6F" opacity="0.7"/>
+      <ellipse cx="100" cy="28" rx="14" ry="6" fill="#5B2C6F" opacity="0.7"/>
+      <ellipse cx="135" cy="28" rx="14" ry="6" fill="#5B2C6F" opacity="0.7"/>
+      <!-- Bridge/funnel -->
+      <rect x="25" y="17" width="18" height="12" rx="1" fill="#5B2C6F" opacity="0.8"/>
+      <rect x="30" y="10" width="8" height="8" rx="1" fill="#4A235A" opacity="0.9"/>
+    </g>
+  </svg>`,
+
+  freighter: `<svg viewBox="0 0 200 52" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none">
+      <ellipse cx="100" cy="44" rx="86" ry="6" fill="rgba(139,0,0,0.12)"/>
+      <path d="M18 42 L30 32 L170 32 L182 42 Z" fill="#7B241C" opacity="0.65"/>
+      <rect x="35" y="22" width="130" height="11" rx="1" fill="#922B21" opacity="0.45"/>
+      <!-- Cargo hatches -->
+      <rect x="42" y="32" width="22" height="8" rx="1" fill="#5D1212" opacity="0.7"/>
+      <rect x="72" y="32" width="22" height="8" rx="1" fill="#5D1212" opacity="0.7"/>
+      <rect x="102" y="32" width="22" height="8" rx="1" fill="#5D1212" opacity="0.7"/>
+      <rect x="132" y="32" width="22" height="8" rx="1" fill="#5D1212" opacity="0.7"/>
+      <!-- Bridge/funnel -->
+      <rect x="150" y="15" width="22" height="12" rx="1" fill="#7B241C" opacity="0.8"/>
+      <rect x="156" y="8" width="10" height="8" rx="1" fill="#6B1A1A" opacity="0.9"/>
+      <rect x="159" y="3" width="4" height="6" fill="#922B21" opacity="0.8"/>
+    </g>
+  </svg>`,
+};
+
+// ── Build fleet modal content ──
+function buildFleet() {
+  const container = document.getElementById('fleet-content');
+  let html = '';
+  FLEET.forEach(section => {
+    html += `<div class="fleet-section-title">${section.section}</div>`;
+    html += '<div class="fleet-grid">';
+    section.ships.forEach((ship, si) => {
+      const sil = SVG[ship.silhouette] || SVG.freighter;
+      const statsHtml = ship.stats.map(([k,v]) =>
+        `<div class="ship-stat"><span class="ship-stat-label">${k}</span><span class="ship-stat-value">${v}</span></div>`
+      ).join('');
+      html += `
+        <div class="ship-card" data-section="${section.section}" data-idx="${si}">
+          <span class="ship-role-badge ${ship.badge}">${ship.badgeText}</span>
+          <div class="ship-silhouette">${sil}</div>
+          <div class="ship-name">${ship.flag} ${ship.name}</div>
+          <div class="ship-type">${ship.type}</div>
+          ${statsHtml}
+          <div class="ship-fate">${ship.fate}</div>
+          <div style="margin-top:6px;padding-top:5px;border-top:1px solid rgba(201,168,76,0.15);font-size:9.5px;color:#C9A84C;font-style:italic;">${ship.conn}</div>
+        </div>`;
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+// ── Fleet modal open/close ──
+document.getElementById('btn-fleet').addEventListener('click', () => {
+  const modal = document.getElementById('fleet-modal');
+  if (!modal._built) { buildFleet(); modal._built = true; }
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+});
+document.getElementById('fleet-close').addEventListener('click', () => {
+  document.getElementById('fleet-modal').style.display = 'none';
+  document.body.style.overflow = '';
+});
+document.getElementById('fleet-modal').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('fleet-modal')) {
+    document.getElementById('fleet-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.getElementById('fleet-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
 </body>
 </html>
