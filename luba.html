@@ -876,6 +876,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="lg-row"><div class="lg-dot" style="background:#E67E22;"></div><span class="lg-text">Evento político/dipl.</span></div>
   <div class="lg-row"><div class="lg-dot" style="background:var(--crimson);"></div><span class="lg-text">Holocausto</span></div>
   <div class="lg-row"><div class="lg-dot" style="background:#A569BD;"></div><span class="lg-text">Cuarentena / Isla M.G.</span></div>
+  <div style="border-top:1px solid rgba(255,255,255,0.08);margin:5px 0;"></div>
+  <div class="lg-row"><div class="lg-line" style="background:transparent;border-top:2px dashed #2E86C1;width:22px;height:0;"></div><span class="lg-text">Ruta HMS Ajax</span></div>
+  <div class="lg-row"><div class="lg-line" style="background:transparent;border-top:2px dashed #1ABC9C;width:22px;height:0;"></div><span class="lg-text">Ruta HMNZS Achilles</span></div>
+  <div class="lg-row"><div class="lg-line" style="background:transparent;border-top:2px dashed #E67E22;width:22px;height:0;"></div><span class="lg-text">Ruta HMS Exeter</span></div>
 </div>
 
 <div id="controls">
@@ -893,11 +897,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <button class="btn" id="btn-reset">⏮</button>
     <button class="btn" id="play-btn">▶</button>
     <div id="date-ctr">1 AGO 1939</div>
-    <button class="btn speed-btn active" data-speed="2">1×</button>
-    <button class="btn speed-btn" data-speed="6">3×</button>
-    <button class="btn speed-btn" data-speed="20">10×</button>
-    <button class="btn speed-btn" data-speed="60">30×</button>
-    <button class="btn speed-btn" data-speed="200">100×</button>
+    <button class="btn speed-btn active" data-speed="0.25">1×</button>
+    <button class="btn speed-btn" data-speed="0.75">3×</button>
+    <button class="btn speed-btn" data-speed="2.5">10×</button>
+    <button class="btn speed-btn" data-speed="7.5">30×</button>
+    <button class="btn speed-btn" data-speed="25">100×</button>
     <button class="btn" id="btn-follow">📍 Seguir</button>
   </div>
 </div>
@@ -951,34 +955,62 @@ const WP = [
 
 // Graf Spee — real historical track
 const GS = [
-  { d: 21, lt: 53.53, ln:   8.11 },
-  { d: 28, lt: 45.00, ln: -14.00 },
-  { d: 42, lt: 20.00, ln: -25.00 },
-  { d: 52, lt: -8.50, ln: -26.00 }, // Clement (30 sep) — Atlántico frente a Brasil
-  { d: 58, lt:-22.00, ln: -28.00 }, // Baja por el Atlántico Sur
-  { d: 63, lt:-34.36, ln:  18.47 }, // Cabo de Buena Esperanza — rodea África por el sur
-  { d: 70, lt:-16.00, ln:  53.00 }, // Océano Índico (maniobra de distracción)
-  { d: 78, lt: -3.50, ln:  42.00 }, // Costa este de África — regresa
-  { d: 83, lt:-34.36, ln:  18.47 }, // Cabo de Buena Esperanza — regresa al Atlántico
-  { d: 87, lt:-28.00, ln:  10.00 }, // Atlántico sudeste
-  { d: 93, lt:-25.00, ln:  -5.00 }, // Atlántico sur central
-  { d: 97, lt:-25.00, ln: -10.00 },
-  { d:107, lt:-25.50, ln: -13.00 }, // Doric Star — "adelante del Aurigny"
-  { d:111, lt:-30.00, ln: -20.00 }, // Tairoa + Streonshalh
-  { d:120, lt:-33.00, ln: -40.00 },
-  { d:130, lt:-34.20, ln: -50.00 }, // Batalla (13 dic)
-  { d:135, lt:-34.91, ln: -55.90 }, // Montevideo (dañado)
+  // Salida Wilhelmshaven: 21 ago, 21:00h — 53°31′N 08°08′E
+  { d: 20, lt: 53.52, ln:  8.13 },
+  // Rodea Noruega/Dinamarca, cruza GIUK Gap (Islandia-Feroe)
+  { d: 22, lt: 57.50, ln:  4.00 },
+  { d: 24, lt: 63.00, ln: -8.00 },  // GIUK Gap
+  // 28 ago: primer encuentro con el Altmark (repostaje) ~45N 25W
+  { d: 27, lt: 45.00, ln:-22.00 },
+  // 3 sep: guerra declarada — posición 21°N 35°W
+  { d: 33, lt: 21.00, ln:-35.00 },
+  // Desciende por el Atlántico Central
+  { d: 50, lt:  4.00, ln:-32.00 },
+  // SS Clement: 30 sep — 09°01′S 34°17′W
+  { d: 60, lt: -9.02, ln:-34.28 },
+  // SS Ashlea: 7 oct — 09°52′S 03°28′W
+  { d: 67, lt: -9.87, ln: -3.47 },
+  // SS Newton Beach: 8 oct — 09°35′S 06°30′W (capturado 5 oct)
+  { d: 68, lt: -9.58, ln: -6.50 },
+  // SS Huntsman: 10 oct capturado — 08°30′S 05°15′W
+  { d: 70, lt: -8.50, ln: -5.25 },
+  // Hundido 17 oct — mismas coordenadas aprox.
+  { d: 77, lt:-10.00, ln: -5.00 },
+  // MV Trevanion: 22 oct — 19°40′S 12°10′E (Atlántico Sur frente a Angola/Namibia)
+  { d: 82, lt:-19.67, ln: 12.17 },
+  // Rumbo al Cabo de Buena Esperanza → Océano Índico
+  { d: 90, lt:-30.00, ln: 14.50 },
+  { d: 95, lt:-34.36, ln: 18.47 },  // Cabo de Buena Esperanza
+  { d:100, lt:-30.00, ln: 28.00 },
+  // MV Africa Shell: 15 nov — 24°48′S 35°01′E (Canal de Mozambique)
+  { d:106, lt:-24.80, ln: 35.01 },
+  // Regresa al Atlántico rodeando el Cabo
+  { d:111, lt:-34.36, ln: 18.47 },  // Cabo de Buena Esperanza (vuelta)
+  // 26-28 nov: segundo encuentro Altmark — transfiere prisioneros, repostaje
+  { d:118, lt:-28.00, ln:  4.00 },
+  // SS Doric Star: 2 dic — 19°15′S 05°05′E
+  { d:123, lt:-19.25, ln:  5.08 },
+  // SS Tairoa: 3 dic — 21°20′S 03°00′E
+  { d:124, lt:-21.33, ln:  3.00 },
+  // SS Streonshalh: 7 dic — 25°00′S 20°00′W
+  { d:128, lt:-25.00, ln:-20.00 },
+  // Batalla del Río de la Plata: 13 dic — 34°34′S 48°17′W
+  { d:134, lt:-34.57, ln:-48.28 },
+  // Montevideo (dañado): 14 dic
+  { d:135, lt:-34.91, ln:-56.17 },
 ];
 
 // Buques hundidos cerca del Aurigny
 const HUNTED = [
-  { d:107, lt:-25.50, ln:-13.00, name:'SS Doric Star',  date:'2 DIC 1939',
-    desc:'"El Doric Star estaba adelante del Aurigny" — registros navales. La familia Bekerej estaba a pocas millas náuticas del cazador.' },
-  { d:109, lt:-27.00, ln:-16.00, name:'SS Tairoa',      date:'3 DIC 1939',
-    desc:'Hundido en la misma zona de patrulla del Graf Spee. El capitán del Aurigny navegó en silencio de radio y oscurecimiento total.' },
-  { d:113, lt:-31.50, ln:-28.00, name:'SS Streonshalh', date:'7 DIC 1939',
-    desc:'Última víctima antes de la Batalla del Río de la Plata. El Aurigny sorteó esta zona de caza en los días previos.' },
+  { d:123, lt:-19.25, ln: 5.08, name:'SS Doric Star',  date:'2 DIC 1939',
+    desc:'Coordenadas exactas del KTB: 19°15′S 05°05′E. Carguero refrigerado de 10.086 t. Logró emitir señal "RRRR" antes de hundirse — lo que permitió al Comodoro Harwood predecir el rumbo del Graf Spee hacia el Plata. El Aurigny navegaba en la misma zona.' },
+  { d:124, lt:-21.33, ln: 3.00, name:'SS Tairoa',      date:'3 DIC 1939',
+    desc:'Coordenadas: 21°20′S 03°00′E. 7.983 t. Hundido tras persecución usando armamento secundario. El Aurigny estaba en las proximidades navegando hacia el sur.' },
+  { d:128, lt:-25.00, ln:-20.00, name:'SS Streonshalh', date:'7 DIC 1939',
+    desc:'Coordenadas: 25°00′S 20°00′W. 3.895 t. Última víctima. El abordaje alemán recuperó documentos con rutas de convoyes que confirmaron el tráfico hacia el Río de la Plata. Seis días después: la Batalla.' },
 ];
+
+
 
 const EVS = [
   { d: 2, lt: 49.84, ln: 24.03, type:'family',
@@ -1015,11 +1047,26 @@ const EVS = [
   { d:78, lt:14.69, ln:-17.44, type:'family',
     title:'⚓ Escala en Dakar', date:'OCT 1939', loc:'Dakar, Senegal',
     desc:'El Aurigny hace escala técnica en Dakar, África Occidental Francesa. La familia deja atrás el hemisferio norte. El gran cruce del Atlántico Sur comienza.' },
-  { d:107, lt:-25.50, ln:-13.00, type:'war',
+  { d: 60, lt: -9.02, ln:-34.28, type:'war',
+    title:'⚓ Graf Spee — SS Clement (1°)', date:'30 SEP 1939', loc:'09°01′S 34°17′W',
+    desc:'Primer hundimiento. 5.051 t. El capitán y jefe de máquinas tomados prisioneros. El Graf Spee se revela en el Atlántico Sur. Langsdorff aplica las Leyes de Presa: evacúa tripulación antes de hundir.' },
+  { d: 67, lt: -9.87, ln: -3.47, type:'war',
+    title:'⚓ Graf Spee — SS Ashlea & Newton Beach', date:'7-8 OCT 1939', loc:'Atlántico Sur Central',
+    desc:'Ashlea (4.222 t) y Newton Beach (4.651 t). El Newton Beach fue usado como buque prisión 3 días antes de ser hundido por ser demasiado lento. El Graf Spee acumula prisioneros.' },
+  { d: 82, lt:-19.67, ln: 12.17, type:'war',
+    title:'⚓ Graf Spee — MV Trevanion', date:'22 OCT 1939', loc:'19°40′S 12°10′E',
+    desc:'5.299 t frente a Angola/Namibia. La tripulación emitió señales de socorro que alertaron a los grupos de caza británicos. El Graf Spee revela su posición aproximada por primera vez.' },
+  { d:106, lt:-24.80, ln: 35.01, type:'war',
+    title:'⚓ Graf Spee — MV Africa Shell (Índico)', date:'15 NOV 1939', loc:'24°48′S 35°01′E — Canal de Mozambique',
+    desc:'Único hundimiento en el Océano Índico. 706 t. Propósito psicológico: hacer creer a los británicos que el raider abandonó el Atlántico definitivamente. El capitán Dove fue hecho prisionero.' },
+  { d:141, lt:-34.61, ln:-58.38, type:'war',
+    title:'⚔️ Suicidio de Langsdorff — Buenos Aires', date:'20 DIC 1939', loc:'Hotel Naval, Buenos Aires',
+    desc:'El capitán Hans Langsdorff se quita la vida envuelto en la bandera de la antigua marina imperial (Kaiserliche Marine) — no la nazi — asumiendo responsabilidad total por la pérdida del buque. Escribió al embajador alemán: "Para un comandante con honor, su destino está unido al de su barco."' },
+  { d:123, lt:-19.25, ln: 5.08, type:'war',
     title:'💥 Graf Spee hunde el Doric Star', date:'2 DIC 1939', loc:'Atlántico Sur Central',
     desc:'PELIGRO MÁXIMO: el Doric Star iba "adelante del Aurigny". El capitán navega en total silencio de radio y oscurecimiento. La familia Bekerej está a pocas millas náuticas del acorazado alemán.' },
-  { d:109, lt:-27.00, ln:-16.00, type:'war',
-    title:'Graf Spee — Tairoa & Streonshalh', date:'3-7 DIC 1939', loc:'Atlántico Sur',
+  { d:124, lt:-21.33, ln: 3.00, type:'war',
+    title:'Graf Spee — Tairoa & Streonshalh', date:'3-7 DIC 1939', loc:'21°20\'S 03°00\'E / 25°00\'S 20°00\'W',
     desc:'Dos cargueros más hundidos en la misma zona. El Graf Spee está en su máxima actividad. El Aurigny esquiva el radio de caza maniobrando con cautela.' },
   { d:130, lt:-34.50, ln:-49.10, type:'war',
     title:'⚔️ Batalla del Río de la Plata', date:'13 DIC 1939', loc:'Atlántico Sur',
@@ -1037,6 +1084,24 @@ const EVS = [
     title:'💍 Ksenia y Basilio se casan',
     date:'12 JUL 1945', loc:'Encarnación, Paraguay',
     desc:'Registro del Estado Civil de Encarnación, Acta N°53. Basilio Szyp (54 años, viudo, agricultor) contrae matrimonio con Ksenia Szostabuk (49 años, viuda, agricultora). Domicilio: Cuatro Potreros. Padres de Ksenia: Andrij Szostabuk y Agafia Ikanchuk. Cinco años después del escape de Novosulki, la familia tiene un hogar oficial.' },
+  { d:131, lt:-35.00, ln:-50.00, type:'war',
+    title:'⚓ Fuerza G — Punto de reunión 35°S 50°W', date:'10 DIC 1939', loc:'35°S 50°W — Atlántico Sur',
+    desc:'El Ajax (desde Malvinas) y el Achilles (desde el Pacífico vía Magallanes) se reúnen. El Exeter se unirá el 12 dic. Harwood fija el punto a 390 millas de Montevideo — predijo correctamente que el Graf Spee atacará el tráfico del Río de la Plata.' },
+  { d:133, lt:-32.00, ln:-47.00, type:'war',
+    title:'⚓ Ejercicios de "división de fuego" — 32°S 47°W', date:'12 DIC 1939', loc:'32°S 47°W',
+    desc:'Harwood practica con sus tres buques la táctica de pinza: el Exeter atacará desde el OESTE, Ajax y Achilles desde el NE. Esto obliga al Graf Spee a dividir su artillería. Mañana habrá contacto.' },
+  { d:134.0, lt:-34.57, ln:-48.28, type:'war',
+    title:'⚔️ BATALLA — 06:18 hs: primer disparo', date:'13 DIC 1939 · 06:18 hs', loc:'34°34′S 48°17′W',
+    desc:'El Graf Spee abre fuego al Exeter a 19.000 yardas (17.300 m). El Exeter vira al oeste, Ajax/Achilles flanquean desde el NE. La trampa de Harwood se cierra.' },
+  { d:134.1, lt:-34.57, ln:-48.50, type:'war',
+    title:'⚔️ Torre "B" del Exeter destruida — 06:26 hs', date:'13 DIC 1939 · 06:26 hs', loc:'Batalla del Plata',
+    desc:'Impacto directo en la torre "B" del Exeter. El puente de mando es barrido. El Capitán Bell es uno de los pocos supervivientes. A pesar de esto, el Exeter sigue combatiendo para atraer el fuego alemán.' },
+  { d:134.2, lt:-34.57, ln:-48.28, type:'war',
+    title:'⚔️ Impacto decisivo — planta de combustible destruida', date:'13 DIC 1939 · 07:15 hs', loc:'Batalla del Plata',
+    desc:'Un proyectil del Exeter penetra la estructura del Graf Spee cerca de la chimenea y destruye la planta de purificación de combustible diésel. Sin poder limpiar el combustible crudo, el Graf Spee no puede cruzar el Atlántico Norte. Langsdorff lo sabe: su buque es una trampa de acero.' },
+  { d:134.3, lt:-34.57, ln:-48.28, type:'war',
+    title:'⚔️ 07:45 hs — Langsdorff pone rumbo a Montevideo', date:'13 DIC 1939 · 07:45 hs', loc:'Batalla del Plata',
+    desc:'En lugar de perseguir y destruir a los debilitados cruceros ligeros, Langsdorff decide retirarse. 300 millas de persecución comienzan. Ajax y Achilles lo "sombrean" rotando posiciones. El Exeter es destacado a las Malvinas para reparaciones.' },
   { d:283, lt:51.51, ln:-0.13, type:'political',
     title:'Churchill reemplaza a Chamberlain', date:'10 MAY 1940', loc:'Londres',
     desc:'Winston Churchill asume como Primer Ministro de Gran Bretaña.' },
@@ -1070,8 +1135,139 @@ const LCHANGE = {
 // ── MAP ──
 const MAX_D = 1055;
 const START = new Date('1939-08-01T00:00:00');
+// ══════════════════════════════════════════
+//  BRITISH FLEET — Fuerza G (Harwood)
+//  Data from PDF: Batalla del Río de la Plata
+//  day 0 = 1 Aug 1939
+// ══════════════════════════════════════════
+
+// HMS AJAX — buque insignia de Harwood (desde Malvinas)
+// Aparece día 125 (Nov 30)
+const AJAX_WP = [
+  { d:125, lt:-51.68, ln:-57.85 }, // Malvinas
+  { d:128, lt:-46.00, ln:-55.00 }, // Navega NNE
+  { d:131, lt:-35.00, ln:-50.00 }, // Punto reunión: 35°S 50°W (10 dic)
+  { d:133, lt:-32.00, ln:-47.00 }, // Patrullaje 32°S 47°W (12 dic) — ejercicios táctica "división de fuego"
+  { d:134, lt:-34.57, ln:-48.28 }, // Contacto inicial 06:10 — 34°34'S 48°17'W
+  { d:134.33, lt:-34.42, ln:-49.49 }, // 08:00 persecución — 34°25'S 49°29'W
+  { d:135, lt:-34.80, ln:-55.50 }, // Sombrea al GS hacia Montevideo
+  { d:136, lt:-34.91, ln:-56.17 }, // Frente a Montevideo (vigila)
+  { d:142, lt:-34.91, ln:-56.17 }, // Permanece frente a Mvd
+];
+
+// HMNZS ACHILLES (desde costa oeste SA vía Estrecho de Magallanes)
+// Similar al Ajax pero viene del Pacífico
+const ACHILLES_WP = [
+  { d:122, lt:-41.00, ln:-74.00 }, // Costa chilena
+  { d:125, lt:-53.00, ln:-70.80 }, // Estrecho de Magallanes
+  { d:128, lt:-47.00, ln:-60.00 }, // Atlántico Sur
+  { d:131, lt:-35.00, ln:-50.00 }, // Punto reunión 35°S 50°W (10 dic) — se reúne con Ajax
+  { d:133, lt:-32.00, ln:-47.00 }, // Patrullaje 32°S 47°W (12 dic)
+  { d:134, lt:-34.57, ln:-48.28 }, // Batalla (flanqueo NE junto a Ajax)
+  { d:134.33, lt:-34.42, ln:-49.49 }, // Persecución
+  { d:135, lt:-34.80, ln:-55.50 }, // Sombrea al GS
+  { d:136, lt:-34.91, ln:-56.00 }, // Vigila frente a Mvd
+  { d:142, lt:-35.20, ln:-56.50 }, // Patrulla exterior
+];
+
+// HMS EXETER — crucero pesado (se une el 12 dic, luego a Malvinas para reparaciones)
+const EXETER_WP = [
+  { d:128, lt:-47.00, ln:-52.00 }, // Sur, navega NE para reunirse
+  { d:131, lt:-40.00, ln:-50.00 }, // En camino
+  { d:133, lt:-35.50, ln:-49.00 }, // Se une el 12 dic
+  { d:134, lt:-34.57, ln:-48.28 }, // Batalla — ataca desde el OESTE (flanqueo opuesto)
+  { d:134.25, lt:-36.00, ln:-50.00 }, // Se retira dañado (13:40) — rumbo Malvinas
+  { d:136, lt:-44.00, ln:-55.00 }, // Rumbo Malvinas
+  { d:140, lt:-51.68, ln:-57.85 }, // Malvinas para reparaciones de emergencia
+];
+
+// ── Interpolation helper ──
+function interpShip(wps, day) {
+  if (!wps || day < wps[0].d) return null;
+  const last = wps[wps.length-1];
+  if (day >= last.d) return {lt:last.lt, ln:last.ln};
+  for (let i=0; i<wps.length-1; i++) {
+    if (day >= wps[i].d && day <= wps[i+1].d) {
+      const t = (day - wps[i].d) / (wps[i+1].d - wps[i].d);
+      return {
+        lt: wps[i].lt + (wps[i+1].lt - wps[i].lt)*t,
+        ln: wps[i].ln + (wps[i+1].ln - wps[i].ln)*t
+      };
+    }
+  }
+  return null;
+}
+
+function shipRouteUpTo(wps, day) {
+  const pts = [];
+  for (let i=0; i<wps.length; i++) {
+    if (wps[i].d < day) pts.push([wps[i].lt, wps[i].ln]);
+    else {
+      const p = interpShip(wps, day);
+      if(p) pts.push([p.lt, p.ln]);
+      break;
+    }
+  }
+  return pts;
+}
+
+
 const map = L.map('map',{center:[20,0],zoom:2,zoomControl:true,minZoom:2,maxZoom:10});
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB © OpenStreetMap',subdomains:'abcd',maxZoom:19}).addTo(map);
+
+// ── British ship markers ──
+function makeBritishIcon(label, col) {
+  return L.divIcon({
+    html:`<div style="background:${col};border:2px solid rgba(255,255,255,0.8);border-radius:3px;padding:1px 4px;font-size:9px;color:#fff;font-weight:bold;white-space:nowrap;box-shadow:0 0 6px ${col};">${label}</div>`,
+    className:'', iconAnchor:[20,10]
+  });
+}
+
+const ajaxM = L.marker([-51.68,-57.85], {
+  icon: makeBritishIcon('⚓ AJAX','#1a6bb5'), zIndexOffset:800, opacity:0
+}).bindPopup(`<div class="popup-title" style="color:#5DADE2">⚓ HMS Ajax</div>
+              <div class="popup-date">CRUCERO LIGERO · CLASE LEANDER · BUQUE INSIGNIA</div>
+              <div class="popup-body">Comodoro Henry Harwood. 8 cañones de 6 pulgadas (152mm). 32 nudos. Desde las Malvinas al punto de reunión 35°S 50°W el 10 dic. Ejecuta la táctica de pinza desde el NE.</div>`)
+  .addTo(map);
+
+const achillesM = L.marker([-41,-74], {
+  icon: makeBritishIcon('⚓ ACHILLES','#1a8c6b'), zIndexOffset:800, opacity:0
+}).bindPopup(`<div class="popup-title" style="color:#48C9B0">⚓ HMNZS Achilles</div>
+              <div class="popup-date">CRUCERO LIGERO · CLASE LEANDER · NUEVA ZELANDA</div>
+              <div class="popup-body">Similar al Ajax. Viene desde la costa oeste de Sudamérica vía Estrecho de Magallanes. Se reúne en 35°S 50°W el 10 dic. Flanquea al Graf Spee desde el NE junto al Ajax. Navega a 30 nudos en aguas poco profundas durante la persecución.</div>`)
+  .addTo(map);
+
+const exeterM = L.marker([-47,-52], {
+  icon: makeBritishIcon('⚓ EXETER','#b56b1a'), zIndexOffset:800, opacity:0
+}).bindPopup(`<div class="popup-title" style="color:#F0B040">⚓ HMS Exeter</div>
+              <div class="popup-date">CRUCERO PESADO · CLASE YORK</div>
+              <div class="popup-body">6 cañones de 8 pulgadas (203mm). Se une el 12 dic. En la batalla ataca desde el OESTE mientras Ajax/Achilles flanquean desde el NE. Recibe impactos en torres A y B, escora 7°, sigue en combate con torre Y bajo control local. Destacado a Malvinas el 13:40 del 13 dic para reparaciones de emergencia.</div>`)
+  .addTo(map);
+
+// Routes
+const ajaxLine     = L.polyline([], {color:'#2E86C1', weight:1.8, opacity:0.7, dashArray:'4 4'}).addTo(map);
+const achillesLine = L.polyline([], {color:'#1ABC9C', weight:1.8, opacity:0.7, dashArray:'4 4'}).addTo(map);
+const exeterLine   = L.polyline([], {color:'#E67E22', weight:1.8, opacity:0.7, dashArray:'4 4'}).addTo(map);
+
+// Battle zone marker (appears on day 134)
+const battleM = L.marker([-34.57,-48.28], {
+  icon: L.divIcon({
+    html:`<div style="font-size:22px;text-shadow:0 0 8px #ff4400,0 0 16px rgba(255,68,0,0.6);">⚔️</div>`,
+    className:'', iconSize:[26,26], iconAnchor:[13,13]
+  }),
+  zIndexOffset:2500, opacity:0
+}).bindPopup(`<div class="popup-title" style="color:#E74C3C">⚔️ BATALLA DEL RÍO DE LA PLATA</div>
+              <div class="popup-date">13 DIC 1939 · 06:10 hs · 34°34′S 48°17′W</div>
+              <div class="popup-body"><b>06:18</b> Graf Spee abre fuego al Exeter (19.000 yardas)<br>
+              <b>06:20</b> Exeter vira al OESTE, Ajax/Achilles al NE — maniobra de pinza<br>
+              <b>06:26</b> Torre "B" del Exeter destruida, puente barrido<br>
+              <b>06:37</b> Ajax lanza hidroavión Fairey Seafox (corrección de tiro)<br>
+              <b>06:38</b> Torres "A" y "Y" del Exeter fuera de combate<br>
+              <b>07:25</b> Graf Spee impacta torres "X" e "Y" del Ajax<br>
+              <b>07:45</b> Langsdorff pone rumbo a Montevideo — planta de purificación destruida</div>`)
+  .addTo(map);
+
+let battleShown = false;
 
 const routeLine = L.polyline([],{color:'#C9A84C',weight:2.5,opacity:0.85,dashArray:'7 5'}).addTo(map);
 const gsLine    = L.polyline([],{color:'#C0392B',weight:2,opacity:0.75,dashArray:'5 7'}).addTo(map);
@@ -1130,7 +1326,7 @@ function makeEvtIcon(type){
 let gsExplosionShown=false, mgShown=false;
 function showGSExplosion(){
   if(gsExplosionShown) return; gsExplosionShown=true;
-  L.marker([-34.91,-55.60],{icon:L.divIcon({html:`<div style="font-size:28px;text-shadow:0 0 10px #ff6600,0 0 20px #ff3300;animation:fade-in 0.5s ease;">💥</div>`,className:'',iconSize:[32,32],iconAnchor:[16,16]}),zIndexOffset:2000}).addTo(map)
+  L.marker([-34.97,-56.30],{icon:L.divIcon({html:`<div style="font-size:28px;text-shadow:0 0 10px #ff6600,0 0 20px #ff3300;animation:fade-in 0.5s ease;">💥</div>`,className:'',iconSize:[32,32],iconAnchor:[16,16]}),zIndexOffset:2000}).addTo(map)
    .bindPopup(`<div class="popup-title" style="color:#E74C3C">💥 Graf Spee — HUNDIDO</div><div class="popup-date">17 DIC 1939 · FRENTE A MONTEVIDEO</div><div class="popup-body">El capitán Langsdorff hunde su propio buque para no entregarlo. Sus 1.100 tripulantes son internados en Isla Martín García — donde la familia Bekerej lleva un día en cuarentena.</div>`).openPopup();
 }
 
@@ -1205,6 +1401,30 @@ function updateUI(day){
   if(day<136&&mgShown){mgShown=false;mgM.setOpacity(0);}
   document.getElementById('mg-box').classList.toggle('visible',day>=136&&day<=160);
   huntedMs.forEach(h=>h.m.setOpacity(day>=h.d?1:0));
+
+  // ── British ships animation ──
+  const ajaxPos = interpShip(AJAX_WP, day);
+  const achPos  = interpShip(ACHILLES_WP, day);
+  const exPos   = interpShip(EXETER_WP, day);
+
+  if(ajaxPos && day>=AJAX_WP[0].d) {
+    ajaxM.setLatLng([ajaxPos.lt, ajaxPos.ln]); ajaxM.setOpacity(1);
+    ajaxLine.setLatLngs(shipRouteUpTo(AJAX_WP, day));
+  } else if(day<AJAX_WP[0].d) { ajaxM.setOpacity(0); ajaxLine.setLatLngs([]); }
+
+  if(achPos && day>=ACHILLES_WP[0].d) {
+    achillesM.setLatLng([achPos.lt, achPos.ln]); achillesM.setOpacity(1);
+    achillesLine.setLatLngs(shipRouteUpTo(ACHILLES_WP, day));
+  } else if(day<ACHILLES_WP[0].d) { achillesM.setOpacity(0); achillesLine.setLatLngs([]); }
+
+  if(exPos && day>=EXETER_WP[0].d) {
+    exeterM.setLatLng([exPos.lt, exPos.ln]); exeterM.setOpacity(1);
+    exeterLine.setLatLngs(shipRouteUpTo(EXETER_WP, day));
+  } else if(day<EXETER_WP[0].d) { exeterM.setOpacity(0); exeterLine.setLatLngs([]); }
+
+  // Battle marker
+  if(day>=134 && !battleShown) { battleShown=true; battleM.setOpacity(1); }
+  if(day<134 && battleShown)   { battleShown=false; battleM.setOpacity(0); }
   if(day>=690){
     document.getElementById('holocaust-box').classList.add('visible');
     document.getElementById('holo-counter').textContent=Math.floor(Math.min(1,(day-690)/(920-690))*147000).toLocaleString('es');
@@ -1245,7 +1465,7 @@ function showToast(ev){
 }
 
 // ── ANIMATION ──
-let curDay=0,playing=false,speed=2,lastTs=null;
+let curDay=0,playing=false,speed=0.25,lastTs=null;
 function tick(ts){
   if(playing){if(lastTs!==null){curDay+=((ts-lastTs)/1000)*speed;if(curDay>=MAX_D){curDay=MAX_D;playing=false;document.getElementById('play-btn').textContent='▶';}updateUI(curDay);}lastTs=ts;}
   requestAnimationFrame(tick);
@@ -1264,7 +1484,7 @@ document.getElementById('play-btn').addEventListener('click',()=>{playing=!playi
 document.getElementById('btn-reset').addEventListener('click',()=>{
   playing=false;lastTs=null;curDay=0;document.getElementById('play-btn').textContent='▶';
   EVS.forEach(ev=>{if(evtMarkers[ev.d]){map.removeLayer(evtMarkers[ev.d]);delete evtMarkers[ev.d];}evtShown.delete(ev.d);});
-  gsExplosionShown=false;mgShown=false;mgM.setOpacity(0);huntedMs.forEach(h=>h.m.setOpacity(0));
+  gsExplosionShown=false;mgShown=false;battleShown=false;mgM.setOpacity(0);battleM.setOpacity(0);huntedMs.forEach(h=>h.m.setOpacity(0));ajaxM.setOpacity(0);achillesM.setOpacity(0);exeterM.setOpacity(0);ajaxLine.setLatLngs([]);achillesLine.setLatLngs([]);exeterLine.setLatLngs([]);
   document.getElementById('holocaust-box').classList.remove('visible');document.getElementById('mg-box').classList.remove('visible');
   routeLine.setLatLngs([]);gsLine.setLatLngs([]);
   map.flyTo([20,0],2,{duration:1});updateUI(0);
