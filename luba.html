@@ -798,7 +798,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 <div id="title-bar">
   <h1>✦ EL VIAJE DE LUBA BEKEREJ ✦</h1>
-  <p>NOVOSULKI, VOLINIA  →  BUENOS AIRES  ·  S.S. AURIGNY (CHARGEURS RÉUNIS)  ·  1939 — 1942</p>
+  <p>NOVOSILKI, VOLINIA (raión Volodymyr)  →  BUENOS AIRES  ·  S.S. AURIGNY (CHARGEURS RÉUNIS)  ·  1939 — 1942</p>
 </div>
 
 <div id="panel">
@@ -843,7 +843,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   </div>
 
   <div id="narrative">
-    Luba tiene 14 años y vive en Novosulki, Volinia occidental. Su padrastro Basilio Szyp emigró a Argentina, donde los espera como "llamante". Ksenia organiza la fuga con sus tres hijos. Hay que salir antes de que Europa estalle.
+    Luba tiene 14 años y vive en Novosilki, aldea del raión de Volodymyr, Volinia occidental. Su padrastro Basilio Szyp emigró a Argentina, donde los espera como "llamante". Ksenia organiza la fuga con sus tres hijos. Hay que salir antes de que Europa estalle.
   </div>
 
   <div id="mg-box">
@@ -934,11 +934,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 //        → Encarnación, Paraguay (Cuatro Potreros)
 // ══════════════════════════════════════════
 const WP = [
-  { d:  0, lt: 51.50, ln: 25.20, n:'Novosulki, Volinia — Salida est. ~28 AGO 1939', m:'land',  ic:'🏡' },
-  { d:  6, lt: 49.84, ln: 24.03, n:'Leópolis (Lviv)',              m:'land',  ic:'🚂' },
-  { d: 12, lt: 50.06, ln: 19.94, n:'Cracovia, Polonia',            m:'land',  ic:'🚂' },
-  { d: 18, lt: 50.08, ln: 14.42, n:'Praga',                        m:'land',  ic:'🚂' },
-  { d: 25, lt: 48.86, ln:  2.35, n:'París — Espera barco (SEP-NOV 1939)',         m:'land',  ic:'🏛️' },
+  { d:  0, lt: 50.74, ln: 24.22, n:'Novosilki, Volinia — Salida est. ~28 AGO 1939', m:'land',  ic:'🏡' },
+  { d:  2, lt: 50.85, ln: 24.32, n:'Volodymyr-Volynsky — estación de tren',  m:'land',  ic:'🚂' },
+  { d:  7, lt: 49.84, ln: 24.03, n:'Leópolis (Lviv)',              m:'land',  ic:'🚂' },
+  { d: 13, lt: 50.06, ln: 19.94, n:'Cracovia, Polonia',            m:'land',  ic:'🚂' },
+  { d: 19, lt: 50.08, ln: 14.42, n:'Praga',                        m:'land',  ic:'🚂' },
+  { d: 26, lt: 48.86, ln:  2.35, n:'París — Espera barco (SEP-NOV 1939)',         m:'land',  ic:'🏛️' },
   { d: 45, lt: 49.49, ln:  0.11, n:'Le Havre — Embarca S.S. Aurigny ~15 NOV 1939', m:'ship', ic:'⚓' },
   { d: 53, lt: 44.00, ln: -7.00, n:'Golfo de Vizcaya',             m:'ship',  ic:'🚢' },
   { d: 60, lt: 36.00, ln:-10.00, n:'Frente a Portugal',            m:'ship',  ic:'🚢' },
@@ -1014,10 +1015,10 @@ const HUNTED = [
 
 
 const EVS = [
-  { d: 2, lt: 49.84, ln: 24.03, type:'family',
-    title:'🚂 Cruce: Novosulki → Leópolis (Lviv)',
-    date:'~30 AGO 1939', loc:'Volinia / Galicia Oriental',
-    desc:'Con tres hijos (Eustaquio 16, Luba 14, Nina 9) y el equipaje que pudieron cargar, Ksenia aborda el tren en Volinia. El primer control polaco: pasaportes, preguntas, miradas. Leópolis, a 170 km, es la primera ciudad grande.' },
+  { d: 2, lt: 50.85, ln: 24.32, type:'family',
+    title:'🚂 Novosilki → Volodymyr-Volynsky → Leópolis',
+    date:'~30 AGO 1939', loc:'Novosilki — Volodymyr-Volynsky — Lviv',
+    desc:'Con tres hijos (Eustaquio 16, Luba 14, Nina 9) y el equipaje que pudieron cargar, Ksenia llega a pie o en carreta a la estación de Volodymyr-Volynsky, a unos 5-10 km. El pueblo estaba a solo 17 km de la frontera polaca. El tren los lleva 100 km al sur hacia Leópolis (Lviv). Primer control polaco: pasaportes, preguntas, miradas.' },
   { d: 7, lt: 50.06, ln: 19.94, type:'family',
     title:'🚂 Cruce: Lviv → Cracovia',
     date:'~5 SEP 1939', loc:'Polonia Central',
@@ -1106,10 +1107,10 @@ const EVS = [
   { d:283, lt:51.51, ln:-0.13, type:'political',
     title:'Churchill reemplaza a Chamberlain', date:'10 MAY 1940', loc:'Londres',
     desc:'Winston Churchill asume como Primer Ministro de Gran Bretaña.' },
-  { d:690, lt:51.50, ln:25.20, type:'holocaust',
+  { d:690, lt:50.74, ln:24.22, type:'holocaust',
     title:'💀 Barbarroja alcanza Volinia', date:'22 JUN 1941', loc:'Novosulki, Volinia',
     desc:'Alemania invade la URSS. Los Einsatzgruppen llegan a Volinia. Las masacres comienzan de inmediato. Los judíos de Novosulki que no escaparon son fusilados en fosas comunes.' },
-  { d:740, lt:50.90, ln:24.70, type:'holocaust',
+  { d:740, lt:50.74, ln:24.40, type:'holocaust',
     title:'💀 Masacres masivas en Volinia', date:'AGO-SEP 1941', loc:'Lutsk, Rivne, Volinia',
     desc:'Lutsk: 20.000 judíos asesinados. Rivne: 25.000. Aldea por aldea. Los vecinos de Novosulki que se quedaron ya no están.' },
   { d:870, lt:51.50, ln:13.40, type:'holocaust',
@@ -1213,7 +1214,7 @@ function shipRouteUpTo(wps, day) {
 }
 
 
-const map = L.map('map',{center:[20,0],zoom:2,zoomControl:true,minZoom:2,maxZoom:10});
+const map = L.map('map',{center:[22,5],zoom:2,zoomControl:true,minZoom:2,maxZoom:10});
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© CartoDB © OpenStreetMap',subdomains:'abcd',maxZoom:19}).addTo(map);
 
 // ── British ship markers ──
@@ -1312,7 +1313,7 @@ const mgM = L.marker([-34.18,-58.26],{
   .addTo(map);
 
 // Key waypoint labels
-[0,4,5,9,15,16,17].forEach(i=>{
+[0,1,5,6,10,16,17,18].forEach(i=>{
   const w=WP[i]; if(!w) return;
   L.marker([w.lt,w.ln],{icon:L.divIcon({html:`<div style="background:rgba(0,0,0,0.72);color:#C9A84C;border:1px solid rgba(201,168,76,0.35);border-radius:3px;padding:1px 5px;font-size:9px;white-space:nowrap;font-family:'Share Tech Mono',monospace;">${w.ic} ${w.n.split('—')[0].trim().split(',')[0]}</div>`,className:'',iconAnchor:[0,10]}),zIndexOffset:50,opacity:0.7}).addTo(map);
 });
@@ -1361,7 +1362,7 @@ function dayToDate(d){const r=new Date(START);r.setDate(r.getDate()+Math.floor(d
 function fmt(d){return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;}
 
 function getNarrative(day){
-  if(day<  6) return 'Fines de agosto de 1939. Novosulki, Volinia. Ksenia Szostabuk, viuda de Bekerej, 43 años, prepara la partida con sus tres hijos: Eustaquio (16), Luba (14) y Nina (9). Basilio Szyp ya emigró a Argentina. Salida estimada: ~28 AGO 1939 — tres días antes de que Alemania invada Polonia.';
+  if(day<  6) return 'Fines de agosto de 1939. Novosilki, raión de Volodymyr, Volinia occidental. Ksenia Szostabuk, viuda de Bekerej, 43 años, prepara la partida con sus tres hijos: Eustaquio (16), Luba (14) y Nina (9). Basilio Szyp ya emigró a Argentina. Salida estimada: ~28 AGO 1939 — tres días antes de que Alemania invada Polonia.';
   if(day< 19) return 'En tren. Ksenia y sus tres hijos cruzan Polonia con pasaportes polacos: Leópolis, Cracovia, Praga, Alemania ocupada. Más de 2.500 km con controles militares, soldados alemanes revisando documentos, trenes colapsados de refugiados. Nina tiene 9 años. Cada frontera cruzada es un milagro.';
   if(day< 45) return 'París, otoño del 39. Francia está en guerra. La organización HICEM —la agencia judía de emigración— coordina el pasaje. Basilio Szyp, desde Argentina, tramitó el "llamado" legal y probablemente el pasaje mismo. La espera dura ~2 meses: hay que esperar la próxima salida del Aurigny hacia el Río de la Plata, prevista para ~15 de noviembre.';
   if(day< 68) return 'A bordo del S.S. Aurigny, ~15 NOV 1939. El vapor francés zarpa de Le Havre. ~225 pasajeros: polacos, judíos, españoles, todos huyendo. La tercera clase es austera: literas de madera, agua racionada. Destino: Buenos Aires vía Dakar. Europa queda atrás.';
